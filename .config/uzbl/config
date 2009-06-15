@@ -52,17 +52,17 @@ bind S  = stop
 bind r  = reload
 bind +  = zoom_in
 bind -  = zoom_out
-bind T  = toggle_status
+bind t  = toggle_status
 bind ZZ = exit
 bind i  = toggle_insert_mode
 bind ;_ = runcmd bind %s
 bind :_ = runcmd %s
 
 # Page Navigation
-bind h  = scroll_vert -20
-bind j  = scroll_horz -20
-bind k  = scroll_horz 20
-bind l  = scroll_vert 20
+bind h  = scroll_horz -100
+bind j  = scroll_vert 100
+bind k  = scroll_vert -100
+bind l  = scroll_horz 100
 bind .* = search %s
 bind /  = search
 bind >  = scroll_end
@@ -70,17 +70,19 @@ bind <  = scroll_begin
 
 # Goto bindings
 bind B  = uri http://delicious.com/tags/unixist
+bind c  = sh "xclip -o > $6"
+bind C  = sh "xclip -i < $6"
 bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
 bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
 bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
 bind g_ = uri http://www.google.com/search?q=%s
 bind M  = uri http://mail.zoho.com
 bind o_ = uri %s
-bind O  = sh 'echo "keycmd o $6" > $4'
-bind t  = spawn uzbl
-bind T_ = spawn uzbl -u %s
 bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
 bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
 bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
-bind u  = uri http://unexist.scrapping.cc/
+bind s  = uri http://unexist.scrapping.cc/
+bind u  = spawn uzbl
+bind U_ = spawn uzbl -u %s
 bind x  = uri http://tronche.com/gui/x/xlib/function-index.html
+
