@@ -64,3 +64,4 @@ colors mustang
 
 " Maps
 map <F2> :browse confirm e<CR>
+map <F5> :FuzzyFinderBuffer<CR>
