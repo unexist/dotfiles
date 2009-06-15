@@ -1,0 +1,9 @@
+syntax: glob
+
+bin/*
+docs/*
+build/*
+downloads/*
+images/*
+misc/*
+projects/*

@@ -1,0 +1,86 @@
+#
+# @file Uzbl config
+#
+# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
+# @version $Id: zshrc,v 10 2008/09/10 12:52:34 unexist $
+#
+
+# Appearence
+set show_status         = 0
+set status_format       = <span font="DejaVu Sans Mono Bold 10"><span background="khaki" foreground="black">MODE</span> [<span weight="bold" foreground="red">KEYCMD</span>] <span foreground="#606060"> LOAD_PROGRESSBAR </span><span foreground="#99FF66">URI</span></span>
+set status_background   = #3d3d3d
+set status_top          = 0
+set status_pbar_done    = :
+set status_pbar_pending = .
+set status_pbar_width   = 20
+
+# Behaviour
+set always_insert_mode = 0
+set modkey             = Mod1
+set shell_cmd          = zsh -c %s ''
+set reset_command_mode = 0
+
+# Webkit
+set autoload_images       = 1
+set autoshrink_images     = 0
+set minimum_font_size     = 6
+set font_size             = 12
+set monospace_size        = 12
+set default_encoding      = utf-8
+set enforce_96_dpi        = 0
+set disable_plugins       = 0
+set disable_scripts       = 0
+set enable_spellchecker   = 1
+set enable_private        = 0
+set resizeable_text_areas = 1
+set print_background      = 0
+
+# Interface
+set fifo_dir   = /tmp
+set socket_dir = /tmp
+
+# Network
+set useragent  = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ] [ Arch Linux KERNREL x86_64 ]
+
+# Handler
+#set cookie_handler = spawn $XDG_DATA_HOME/uzbl/cookies.sh
+
+# Browser Control
+bind b  = back
+bind m  = forward
+bind S  = stop
+bind r  = reload
+bind +  = zoom_in
+bind -  = zoom_out
+bind T  = toggle_status
+bind ZZ = exit
+bind i  = toggle_insert_mode
+bind ;_ = runcmd bind %s
+bind :_ = runcmd %s
+
+# Page Navigation
+bind h  = scroll_vert -20
+bind j  = scroll_horz -20
+bind k  = scroll_horz 20
+bind l  = scroll_vert 20
+bind .* = search %s
+bind /  = search
+bind >  = scroll_end
+bind <  = scroll_begin
+
+# Goto bindings
+bind B  = uri http://delicious.com/tags/unixist
+bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
+bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
+bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
+bind g_ = uri http://www.google.com/search?q=%s
+bind M  = uri http://mail.zoho.com
+bind o_ = uri %s
+bind O  = sh 'echo "keycmd o $6" > $4'
+bind t  = spawn uzbl
+bind T_ = spawn uzbl -u %s
+bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
+bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
+bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
+bind u  = uri http://unexist.scrapping.cc/
+bind x  = uri http://tronche.com/gui/x/xlib/function-index.html

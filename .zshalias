@@ -1,0 +1,86 @@
+#
+# @file Zsh alias file
+#
+# @copyright (c) 2006-2008, Christoph Kappel <unexist@dorfelite.net>
+# @version $Id: zshrc,v 6 2008/09/10 12:42:49 unexist $
+#
+
+# ls
+alias ls='ls --color -phF'
+alias la='ls --color -aphF'
+alias ll='ls --color -lphF'
+alias l='ls --color -lphAF'
+
+# Miscellaneous
+alias q='clear && logout'
+alias ..='cd ..'
+
+# Security
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Misc
+alias rsget="wget -c --load-cookies /home/unexist/.cookies/rapidshare"
+
+# Sudo
+if [ -e /usr/bin/sudo ] ; then
+  alias halt='sudo /sbin/halt'
+  alias reboot='sudo /sbin/reboot'
+  alias susp='sudo s2ram -f -p -m'
+  alias ntpd="sudo ntpdate -b pool.ntp.org"
+  alias ncfg="sudo netcfg-menu"
+fi
+
+# Valgrind
+if [ -e /usr/bin/valgrind ] ; then
+  alias memcheck='valgrind --tool=memcheck --leak-check=full --suppressions=/home/unexist/.valgrind/default.supp'
+  alias addrcheck='valgrind --tool=addrcheck --leak-check=full'
+fi
+
+# Calc
+if [ -e /usr/bin/calc ] ; then
+  alias calc='noglob calc'
+fi
+
+# Mercurial
+if [ -e /usr/bin/hg ] ; then
+  alias hgs="hg status|grep -v '^?'"
+  alias hgd="hg diff"
+  alias hgc="hg ci"
+fi
+
+# Mpd
+if [ -e /usr/bin/mpc ] ; then
+  alias mpc="nocorrect mpc"
+fi
+
+# Swiftweasel
+if [ -e /usr/bin/swiftweasel ] ; then
+  alias swp="swiftweasel -no-remote -ProfileManager &>/dev/null &!"
+fi
+
+# Xephyr
+if [ -e /usr/bin/Xephyr ] ; then
+  alias xeph="Xephyr -ac -noreset -screen 800x600 :2 &>/dev/null &!"
+fi
+
+# urxvt
+if [ -e /usr/bin/urxvt ] ; then
+  alias urxvt="urxvt --perl-lib ${HOME}/.urxvt/ -pe mark-yank-urls"
+fi
+
+# GVim
+if [ -e /usr/bin/gvim ] ; then
+  alias gvim="gvim &>/dev/null &!"
+fi
+
+# Keychain
+if [ -f /usr/bin/keychain ] ; then
+  alias kc="keychain -q --nocolor id_rsa && source $HOME/.keychain/$HOST-sh"
+fi
+
+# Uzbl
+if [ -f /usr/bin/uzbl ] ; then
+  alias uzbl="uzbl &>/dev/null &!"
+fi
