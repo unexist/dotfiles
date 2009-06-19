@@ -1,0 +1,24 @@
+[ui]
+editor = vim
+username = unexist
+
+[extensions]
+hgext.keyword =
+
+[keyword]
+**.h =
+**.c =
+**.cpp =
+**.rb =
+**.sh =
+**.yml =
+**Rakefile* =
+
+[keywordmaps]
+RCSFile = {file|basename}
+Author = {author|user}
+Header = {file},v {rev} {date|utcdate} {author|user}
+Source = {file}
+Date = {date|utcdate}
+Id = {file},v {rev} {date|utcdate} {author|user}
+Rev = {rev}
