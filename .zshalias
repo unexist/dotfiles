@@ -6,7 +6,7 @@
 #
 
 # ls
-alias ls='ls --color -phF'
+alias ls='ls --color -phF --group-directories-first'
 alias la='ls --color -aphF'
 alias ll='ls --color -lphF'
 alias l='ls --color -lphAF'
