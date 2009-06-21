@@ -58,7 +58,7 @@
 #song_window_title_format = "{%a - }{%t}|{%f}"
 
 ##### columns settings #####
-song_columns_list_format = "(6)[green]{l} (6)[white]{y} (20)[magenta]{a} (20)[white]{b} (40)[magenta]{t}"
+song_columns_list_format = "(6)[green]{l} (6)[white]{y} (20)[magenta]{a} (34)[white]{b} (34)[magenta]{t}"
 
 ##### various settings #####
 #execute_on_song_change = ""
