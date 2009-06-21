@@ -1,0 +1,37 @@
+#
+# @file Mpd config
+#
+# @copyright (c) 2006-2008, Christoph Kappel <unexist@dorfelite.net>
+# @version $Id: zshrc,v 6 2008/09/10 12:42:49 unexist $
+#
+
+user                "unexist"
+port                "6600"
+music_directory     "/media/sda4/music/"
+playlist_directory  "/media/sda4/mpd/playlists"
+db_file             "/media/sda4/mpd/mpd.db"
+log_file            "/media/sda4/mpd/logs/mpd.log"
+error_file          "/media/sda4/mpd/logs/mpd.error"
+state_file          "/media/sda4/mpd/state"
+pid_file            "/media/sda4/mpd/mpd.pid"
+
+#audio_output {
+#  type              "shoutmp3"
+#  name              "meanas"
+#  description        "meanas"
+#  host              "localhost"
+#  port              "8000"
+#  mount              "/mpd"
+#  bitrate            "64"
+#  user              "source"
+#  password          "mc"
+#  format            "44100:16:2"
+#}
+
+audio_output {
+  type              "alsa"
+  name              "Alsa"
+  driver_options    "period_size=50000"
+  auto_resample     "no"
+  #format           "44100:16:2"
+}
