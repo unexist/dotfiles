@@ -100,14 +100,11 @@ snippet pr
 snippet fpr
 	fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
 snippet debug
-	printf("DEBUG %d\n", __LINE__");
-
+	printf("DEBUG %d\n", __LINE__);
 snippet doc
 	/** ${1:description} {{{
 	 * @brief ${2:brief}
 	 * ${3}
 	 **/
-
 snippet par
 	@param[${1:in}]  ${2:variable}  ${3:description}
-
