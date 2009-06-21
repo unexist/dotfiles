@@ -14,14 +14,15 @@ alias l='ls --color -lphAF'
 # Miscellaneous
 alias q='clear && logout'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias rsget='wget -c --load-cookies /home/unexist/.cookies/rapidshare --limit 700k'
+alias grep='grep -n'
 
 # Security
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-# Misc
-alias rsget="wget -c --load-cookies /home/unexist/.cookies/rapidshare"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
