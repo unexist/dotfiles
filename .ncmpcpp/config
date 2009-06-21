@@ -58,7 +58,7 @@
 #song_window_title_format = "{%a - }{%t}|{%f}"
 
 ##### columns settings #####
-song_columns_list_format = "(6)[white]{l} (6)[white]{y} (20)[cyan]{a} (20)[white]{b} (40)[cyan]{t}"
+song_columns_list_format = "(6)[white]{l} (6)[white]{y} (20)[magenta]{a} (20)[white]{b} (40)[magenta]{t}"
 
 ##### various settings #####
 #execute_on_song_change = ""
@@ -99,7 +99,7 @@ playlist_display_mode = "columns" (classic/columns)
 
 ##### colors definitions #####
 colors_enabled              = "yes"
-empty_tag_color             = "cyan"
+empty_tag_color             = "magenta"
 header_window_color         = "white"
 volume_color                = "white"
 state_line_color            = "default"
@@ -107,9 +107,9 @@ state_flags_color           = "default"
 main_window_color           = "white"
 color1                      = "white"
 color2                      = "magenta"
-main_window_highlight_color = "cyan"
-progressbar_color           = "cyan"
+main_window_highlight_color = "white"
+progressbar_color           = "blue"
 statusbar_color             = "default"
-active_column_color         = "green"
+active_column_color         = "magenta"
 window_border_color         = "green"
 active_window_border        = "red"
