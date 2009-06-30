@@ -24,10 +24,14 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Bookmarks
+alias ssh_wrap="ssh kappel@194.94.121.187"
+alias ssh_head="ssh root@192.168.222.99"
+
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
   alias halt='sudo /sbin/halt'
-  alias reboot='sudo /sbin/reboot'
+  alias reboot='sudo /sbin/reboot' 
   alias susp='sudo s2ram -f -p -m'
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
@@ -35,7 +39,7 @@ fi
 
 # Valgrind
 if [ -e /usr/bin/valgrind ] ; then
-  alias memcheck='valgrind --tool=memcheck --leak-check=full --suppressions=/home/unexist/.valgrind/default.supp'
+  alias memcheck='valgrind --tool=memcheck --leak-check=full'
   alias addrcheck='valgrind --tool=addrcheck --leak-check=full'
 fi
 
