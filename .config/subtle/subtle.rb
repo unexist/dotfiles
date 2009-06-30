@@ -114,8 +114,8 @@ TAGS = {
   "browser" => "opera",
   "editor"  => "[g]?vim",
   "test"    => "urxvt|xephyr",
-  "stick"   => "mplayer|imagemagick|chrom",
-  "float"   => "xlogo|mplayer|xephyr|evince|gimp|imagemagick|chrom",
+  "stick"   => "mplayer|display|chrom",
+  "float"   => "xlogo|mplayer|xephyr|evince|gimp|display|chrom",
   "top"     => "urxvt1|[g]?vim",
   "bottom"  => "urxvt2"
 }  
