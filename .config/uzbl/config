@@ -2,7 +2,7 @@
 # @file Uzbl config
 #
 # @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
-# @version $Id: zshrc,v 10 2008/09/10 12:52:34 unexist $
+# @version $Id$
 #
 
 # Appearence
@@ -40,7 +40,8 @@ set fifo_dir   = /tmp
 set socket_dir = /tmp
 
 # Network
-set useragent  = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ] [ Arch Linux KERNREL x86_64 ]
+set proxy_url  = http://127.0.0.1:8080
+set useragent  = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ]
 
 # Handler
 #set cookie_handler = spawn $XDG_DATA_HOME/uzbl/cookies.sh
@@ -70,19 +71,20 @@ bind <  = scroll_begin
 
 # Goto bindings
 bind B  = uri http://delicious.com/tags/unixist
-bind c  = sh "xclip -o > $6"
-bind C  = sh "xclip -i < $6"
+bind d  = uri http://dict.cc
 bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
 bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
 bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
 bind g_ = uri http://www.google.com/search?q=%s
 bind M  = uri http://mail.zoho.com
 bind o_ = uri %s
+bind O_ = spawn uzbl -u %s
+bind p  = sh "echo uri `xclip -selection primary -o` > $4"
+bind P  = sh "echo uri `xclip -selection clipboard -o` > $4"
 bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
 bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
 bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
-bind s  = uri http://unexist.scrapping.cc/
-bind u  = spawn uzbl
-bind U_ = spawn uzbl -u %s
+bind u  = uri http://unexist.scrapping.cc/
 bind x  = uri http://tronche.com/gui/x/xlib/function-index.html
-
+bind y  = sh "echo -n $6 | xclip"
+bind Y  = sh "echo -n \"$6 [ $7 ]\" | xclip"
