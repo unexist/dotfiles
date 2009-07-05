@@ -2,7 +2,7 @@
 # @file Zsh alias file
 #
 # @copyright (c) 2006-2008, Christoph Kappel <unexist@dorfelite.net>
-# @version $Id: zshrc,v 6 2008/09/10 12:42:49 unexist $
+# @version $Id$
 #
 
 # ls
@@ -68,6 +68,7 @@ fi
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
   alias xeph="Xephyr -ac -noreset -screen 800x600 :2 &>/dev/null &!"
+  alias xephxin="Xephyr -ac -noreset +xinerama -screen 1600x600 :2 &>/dev/null &!"
 fi
 
 # urxvt
