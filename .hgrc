@@ -6,13 +6,7 @@ username = unexist
 hgext.keyword =
 
 [keyword]
-**.h =
-**.c =
-**.cpp =
-**.rb =
-**.sh =
-**.yml =
-**Rakefile* =
+**.* =
 
 [keywordmaps]
 RCSFile = {file|basename}
