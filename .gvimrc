@@ -2,7 +2,7 @@
 " @file Vim config
 "
 " @copyright (c) 2008-2009, Christoph Kappel <unexist@dorfelite.net>
-" @version $Id: gvimrc,v 70 2009/06/14 20:16:32 unexist $
+" @version $Id$
 "
 "
 
