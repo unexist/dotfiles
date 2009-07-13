@@ -100,7 +100,7 @@ snippet pr
 snippet fpr
 	fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
 snippet debug
-	printf("DEBUG %d\n", __LINE__);
+	printf("DEBUG %s:%d\n", __FILE__, __LINE__);
 snippet doc
 	/** ${1:description} {{{
 	 * @brief ${2:brief}
