@@ -68,7 +68,7 @@ fi
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
   alias xeph="Xephyr -ac -noreset -screen 800x600 :2 &>/dev/null &!"
-  alias xephxin="Xephyr -ac -noreset +xinerama -screen 1600x600 :2 &>/dev/null &!"
+  alias xephxin="Xephyr -ac -noreset +xinerama -screen 800x800 :2 &>/dev/null &!"
 fi
 
 # urxvt

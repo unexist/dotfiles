@@ -66,11 +66,6 @@ if [ -e $HOME/bin ] ; then
 	export PATH=$HOME/bin:$PATH
 fi
 
-# Colorwrapper
-if [ -e $HOME/.cw ] ; then
-  export PATH=$HOME/.cw/def:$PATH
-fi
-
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
 	export EDITOR=/usr/bin/vim
