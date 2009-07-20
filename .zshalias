@@ -25,7 +25,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Bookmarks
-alias ssh_wrap="ssh -X kappel@194.94.121.187"
+alias ssh_blade="ssh -X kappel@194.94.121.187"
 alias ssh_head="ssh -X root@192.168.222.99"
 alias ssh_front="ssh -X kappel@194.94.121.248"
 
