@@ -21,6 +21,7 @@ if [ -e /usr/bin/xrandr ] ; then
 fi
 
 # Windowmanager
+#valgrind --tool=memcheck subtle &> ~/subtle.log &
 subtle &> ~/subtle.log &
 pid=$!
 

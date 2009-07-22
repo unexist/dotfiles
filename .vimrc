@@ -33,14 +33,11 @@ set wildignore=*.o,*.swp
 set pastetoggle=<F12>
 set nobackup
 
-" Syntax
-if has('syntax') && (&t_Co > 2 || has('gui_running'))
-  syntax on
-  colorscheme mustang
-endif
+syntax on
+colorscheme merged
 
 " Commandline
-if has('cmdline_info')
+if has("cmdline_info")
   set ruler
   set showcmd
 endif
@@ -51,22 +48,13 @@ map <F3> :NERDTreeToggle<CR>
 map <F5> :FuzzyFinderBuffer<CR>
 
 " Gui
-if has('gui_running')
+if has("gui_running")
   set guioptions=a
   set guifont=lucidatypewriter\ 10
 endif
 
+" Filetype
 if has("autocmd")
   filetype plugin on
   filetype indent off
-
-  augroup vimrcEx
-  au!
-  autocmd FileType text setlocal textwidth=78
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
 endif
