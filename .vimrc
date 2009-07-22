@@ -42,14 +42,7 @@ endif
 " Commandline
 if has('cmdline_info')
   set ruler
-  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
   set showcmd
-endif
-
-" Statusline
-if has('statusline')
-  set laststatus=2
-  set statusline=%<%f\ %=\:\b%n\[%{strlen(&ft)?&ft:'none'}/%{&encoding}/%{&fileformat}]%m%r%w\ %l,%c%V\ %P
 endif
 
 " Maps
