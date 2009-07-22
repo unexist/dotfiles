@@ -15,24 +15,24 @@
 *color9: #CF6171
 
 # DarkGreen + Green
-*color2: #73862F
-*color10: #b1d631
+*color2: #76B243
+*color10: #A8FF60
 
 # DarkYellow + Yellow
-*color3: #fff796
-*color11: #faf4c6
+*color3: #B2B27F
+*color11: #FFFFB6
 
 # DarkBlue + Blue
-*color4: #515c71
-*color12: #7e8aa2
+*color4: #5986B2
+*color12: #6699CC
 
 # DarkMagenta + Magenta
-*color5: #cf7c00
-*color13: #ff9800
+*color5: #B250B1
+*color13: #FF73FD
 
 # DarkCyan + Cyan
-*color6: #b4eeb4
-*color14: #71bebe
+*color6: #698FB2
+*color14: #96CBFE
 
 # LightGrey + White
 *color7: #8f8f8f
