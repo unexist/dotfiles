@@ -17,6 +17,7 @@ set nowrap
 set ts=2
 set bs=2
 set sw=2
+set ch=1
 set scrolloff=2
 set expandtab
 set showmatch
@@ -30,11 +31,16 @@ set number
 set lazyredraw
 set wildmode=list:longest,full
 set wildignore=*.o,*.swp
-set pastetoggle=<F12>
 set nobackup
+set noswapfile
 
 syntax on
 colorscheme merged
+
+" Nopaste
+nnoremap <F12> :set invpaste paste?<CR>
+imap <F12> <C-O><F12>
+set pastetoggle=<F12>
 
 " Commandline
 if has("cmdline_info")
