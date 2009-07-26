@@ -9,44 +9,53 @@
 # Options
 #
 OPTIONS = {
-  :border  => 2,               # Border size of the windows
-  :step    => 5,               # Window move/resize key step
-  :gravity => 5,               # Default gravity
-  :bottom  => false,           # Bar at bottom?
-  :stipple => true,            # Draw stipple on bar    
-  :padding => [ 0, 0, 0, 0 ]   # Screen padding (left, right, top, bottom)
+  :border  => 2,                                   # Border size of the windows
+  :step    => 5,                                   # Window move/resize key step
+  :snap    => 10,                                  # Window border snapping
+  :gravity => 5,                                   # Default gravity
+  :padding => [ 0, 0, 0, 0 ],                      # Screen padding (left, right, top, bottom)
+  :font    => "-*-snap-*-*-*-*-10-*-*-*-*-*-*-*"   # Font string
 }
 
 #
-# Font
+# Panel
 #
-FONT = { 
-  :family => "lucidatypewriter",   # Font family for the text
-  :style  => "medium",             # Font style (medium|bold|italic)
-  :size   => 11                    # Font size
+# Available panels: 
+# :views, :cation, :tray, :sublets
+# :spacer
+#
+PANEL = {
+  :top     => [ :tray, :caption, :spacer, :sublets, :spacer, :views ],
+  :bottom  => [ ],
+  :stipple => false
 }
 
 #
 # Colors
 # 
 COLORS = { 
-  :fg_bar        => "#e2e2e5",  # Foreground color of bar
-  :fg_views      => "#e2e2e5",  # Foreground color of view button
+  :fg_panel      => "#e2e2e5",  # Foreground color of panel
+  :fg_views      => "#6699CC",  # Foreground color of view button
+  :fg_sublets    => "#000000",  # foreground color of sublets
   :fg_focus      => "#000000",  # Foreground color of focus window title and view
 
-  :bg_bar        => "#444444",  # Background color of bar
+  :bg_panel      => "#444444",  # Background color of panel
   :bg_views      => "#3d3d3d",  # Background color of view button
-  :bg_focus      => "#b1d631",  # Background color of focus window title and view
+  :bg_sublets    => "#6699CC",  # Background color of sublets
+  :bg_focus      => "#6699CC",  # Background color of focus window title and view
 
-  :border_focus  => "#b1d631",  # Border color of focus windows
+  :border_focus  => "#6699CC",  # Border color of focus windows
   :border_normal => "#5d5d5d",  # Border color of normal windows
   
-  :background    => "#3d3d3d"   # Background color of root background  
+  :background    => "#3d3d3d"   # Background color of root background
 }
 
-@dmenu = "dmenu_run -fn '%s-%d' -nb '%s' -nf '%s' -sb '%s' -sf '%s' -p 'Select:'" % [
-  FONT[:family], FONT[:size],
-  COLORS[:bg_bar], COLORS[:fg_bar], 
+#
+# Dmenu settings
+#
+@dmenu = "dmenu_run -fn '%s' -nb '%s' -nf '%s' -sb '%s' -sf '%s' -p 'Select:'" % [
+  OPTIONS[:font],
+  COLORS[:bg_panel], COLORS[:fg_panel], 
   COLORS[:bg_focus], COLORS[:fg_focus]
 ]
 
@@ -90,6 +99,11 @@ GRABS = {
   "W-Up"     => :WindowUp,                  # Select window above
   "W-Right"  => :WindowRight,               # Select window right
   "W-k"      => :WindowKill,                # Kill window
+
+  "A-S-1"    => :WindowScreen1,             # Set screen 1
+  "A-S-2"    => :WindowScreen2,             # Set screen 2
+  "A-S-3"    => :WindowScreen3,             # Set screen 3
+  "A-S-4"    => :WindowScreen4,             # Set screen 4
 
   "W-KP_7"   => :GravityTopLeft,            # Set top left gravity
   "W-KP_8"   => :GravityTop,                # Set top gravity
