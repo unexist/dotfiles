@@ -35,7 +35,13 @@ set nobackup
 set noswapfile
 
 syntax on
-colorscheme merged
+
+" Colorscheme
+if &t_Co < 256
+  colorscheme default
+else
+  colorscheme merged
+endif
 
 " Nopaste
 nnoremap <F12> :set invpaste paste?<CR>
