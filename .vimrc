@@ -43,11 +43,6 @@ else
   colorscheme merged
 endif
 
-" Nopaste
-nnoremap <F12> :set invpaste paste?<CR>
-imap <F12> <C-O><F12>
-set pastetoggle=<F12>
-
 " Commandline
 if has("cmdline_info")
   set ruler
@@ -57,7 +52,16 @@ endif
 " Maps
 map <F2> :browse confirm e<CR>
 map <F3> :NERDTreeToggle<CR>
-map <F5> :FuzzyFinderBuffer<CR>
+
+" Qname
+let g:qname_hotkey = "<F4>"
+
+" Nopaste
+nnoremap <F12> :set invpaste paste?<CR>
+imap <F12> <C-O><F12>
+set pastetoggle=<F12>
+
+
 
 " Gui
 if has("gui_running")
