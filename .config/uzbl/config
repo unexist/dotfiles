@@ -40,7 +40,7 @@ set fifo_dir   = /tmp
 set socket_dir = /tmp
 
 # Network
-set proxy_url  = http://127.0.0.1:8080
+set proxy_url  = http://127.0.0.1:8118
 set useragent  = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ]
 
 # Handler
@@ -60,10 +60,10 @@ bind ;_ = runcmd bind %s
 bind :_ = runcmd %s
 
 # Page Navigation
-bind h  = scroll_horz -100
-bind j  = scroll_vert 100
-bind k  = scroll_vert -100
-bind l  = scroll_horz 100
+bind h  = scroll_horz -200
+bind j  = scroll_vert 200
+bind k  = scroll_vert -200
+bind l  = scroll_horz 200
 bind .* = search %s
 bind /  = search
 bind >  = scroll_end
@@ -76,6 +76,7 @@ bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
 bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
 bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
 bind g_ = uri http://www.google.com/search?q=%s
+bind G_ = spawn uri http://www.google.com/search?q=%s
 bind M  = uri http://mail.zoho.com
 bind o_ = uri %s
 bind O_ = spawn uzbl -u %s
