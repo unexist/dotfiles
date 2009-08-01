@@ -15,20 +15,27 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '\ee' edit-command-line
 
+# Completion
 compinit
+compdef -d hg # Disable slow completion for mercurial
+compdef -d grep
 
 # Options
 setopt correct
 setopt hist_ignore_all_dups
 setopt autocd
 setopt extended_glob
+setopt extended_history
 setopt append_history
 setopt auto_resume
 setopt auto_continue
+setopt auto_pushd
 setopt multios
 setopt short_loops
 setopt listpacked
 setopt completeinword
+setopt pushd_ignore_dups
+setopt share_history
 
 # History
 HISTSIZE=5000
