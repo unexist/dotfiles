@@ -92,7 +92,7 @@ bind G_ = spawn uzbl -u http://www.google.com/search?q=%s
 # Uri
 bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
 bind B  = uri http://delicious.com/tags/unixist
-bind d  = uri http://dict.cc
+bind d_ = uri http://www.dict.cc/?s=%s
 bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
 bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
 bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
