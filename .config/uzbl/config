@@ -38,6 +38,8 @@ set enable_private        = 0
 set resizeable_text_areas = 1
 set print_background      = 0
 set useragent             = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ]
+set uri                   = file:///home/unexist/.config/uzbl/home.html
+set stylesheet_uri        = file:///home/unexist/.config/uzbl/style.css
 
 # Interface
 set fifo_dir   = /tmp
@@ -47,49 +49,64 @@ set socket_dir = /tmp
 set proxy_url  = http://127.0.0.1:8118
 
 # Handler
-#set cookie_handler = spawn $XDG_DATA_HOME/uzbl/cookies.sh
+set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.sh
+set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
 
 # Browser Control
 bind b  = back
+bind i  = toggle_insert_mode
 bind m  = forward
 bind S  = stop
 bind r  = reload
 bind R  = reload_ign_cache
-bind +  = zoom_in
-bind -  = zoom_out
 bind T  = toggle_status
 bind ZZ = exit
-bind i  = toggle_insert_mode
+bind :q = exit
+
+# Scrolling
+bind gg = scroll_begin
+bind G  = scroll_end
+bind h  = scroll_horz -200
+bind j  = scroll_vert 200
+bind J  = scroll_vert 95%
+bind k  = scroll_vert -200
+bind K  = scroll_vert -95%
+bind l  = scroll_horz 200
+
+# Searching
+bind /_ = search %s
+bind ?_ = search_reverse %s
+bind n  = search
+bind N  = search_reverse
+
+# Miscellaneous
+bind +  = zoom_in
+bind -  = zoom_out
 bind ;_ = runcmd bind %s
 bind :_ = runcmd %s
 
-# Page Navigation
-bind h  = scroll_horz -200
-bind j  = scroll_vert 200
-bind k  = scroll_vert -200
-bind l  = scroll_horz 200
-bind /* = search %s
-bind ?* = search_reverse %s
-bind >  = scroll_end
-bind <  = scroll_begin
+# Spawn
+bind O_ = spawn uzbl -u %s
+bind G_ = spawn uzbl -u http://www.google.com/search?q=%s
 
-# Goto bindings
+# Uri
+bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
 bind B  = uri http://delicious.com/tags/unixist
 bind d  = uri http://dict.cc
 bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
 bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
 bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
 bind g_ = uri http://www.google.com/search?q=%s
-bind G_ = spawn uzbl -u http://www.google.com/search?q=%s
-bind M  = uri http://mail.zoho.com
+bind I_ = uri http://www.imdb.com/find?s=all&q=%s
 bind o_ = uri %s
-bind O_ = spawn uzbl -u %s
-bind p  = sh "echo uri `xclip -selection primary -o` > $4"
-bind P  = sh "echo uri `xclip -selection clipboard -o` > $4"
+bind M  = uri http://mail.zoho.com
 bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
 bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
 bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
 bind u  = uri http://unexist.scrapping.cc/
+bind U  = uri http://www.uzbl.org
 bind x  = uri http://tronche.com/gui/x/xlib/function-index.html
+
+# Shell
 bind y  = sh "echo -n $6 | xclip"
-bind Y  = sh "echo -n \"$6 [ $7 ]\" | xclip"
+bind Y  = sh "echo -n \"$7 ($6)\" | xclip"
