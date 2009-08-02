@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 echo $*
 
@@ -68,8 +68,8 @@ function save_cookie () {
 	fi
 }
 
-[ $action = "PUT" ] && save_cookie
-[ $action = "GET" ] && get_cookie && echo "$cookie"
+[ "x$action" = "xPUT" ] && save_cookie
+[ "x$action" = "xGET" ] && get_cookie && echo "$cookie"
 
 exit
 

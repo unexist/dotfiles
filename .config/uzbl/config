@@ -87,7 +87,6 @@ bind :_ = runcmd %s
 
 # Spawn
 bind O_ = spawn uzbl -u %s
-bind G_ = spawn uzbl -u http://www.google.com/search?q=%s
 
 # Uri
 bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go

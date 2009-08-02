@@ -1,5 +1,7 @@
-#!/bin/zsh
-WGET="/usr/bin/wget --user-agent=Firefox -c --load-cookies $XDG_DATA_HOME/cookies/rapidshare --limit 700k"
+#!/bin/sh
+WGET=/usr/bin/wget
+OPTIONS="-c --user-agent=Firefox --load-cookies $XDG_DATA_HOME/cookies/rapidshare --limit 700k"
 
 cd $HOME/downloads
-$WGET $8
+
+$WGET $OPTIONS $8
