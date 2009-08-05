@@ -49,8 +49,9 @@ set socket_dir = /tmp
 set proxy_url  = http://127.0.0.1:8118
 
 # Handler
-set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.sh
-set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
+#set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.sh
+#set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
+set download_handler = spawn $HOME/bin/download.rb
 
 # Browser Control
 bind b  = back
@@ -61,7 +62,6 @@ bind r  = reload
 bind R  = reload_ign_cache
 bind T  = toggle_status
 bind ZZ = exit
-bind :q = exit
 
 # Scrolling
 bind gg = scroll_begin
@@ -82,11 +82,11 @@ bind N  = search_reverse
 # Miscellaneous
 bind +  = zoom_in
 bind -  = zoom_out
-bind ;_ = runcmd bind %s
-bind :_ = runcmd %s
+bind ;_ = runcmd %s
 
 # Spawn
-bind O_ = spawn uzbl -u %s
+bind :o_ = spawn uzbl -u %s
+bind :g_ = spawn uzbl -u http://www.google.com/search?q=%s
 
 # Uri
 bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
