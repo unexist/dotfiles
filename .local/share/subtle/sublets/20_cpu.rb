@@ -10,11 +10,7 @@
 #
 
 class Cpu < Subtle::Sublet
-  @use   = 0
-  @sum   = 0
-  @last  = 0
-  @delta = 0
-  @load  = 0
+  attr_accessor :use, :sum, :last, :delta, :load
 
   def initialize
     self.interval = 30
