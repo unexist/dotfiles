@@ -3,18 +3,18 @@
 #
 # Author: Christoph Kappel
 # Contact: unexist@dorfelite.net
-# Description: Show the cpu usage
+# Description: Show download status
 # Version: 0.1
-# Date: Mon May 18 21:00 CET 2009
+# Date: Wed Aug 05 21:00 CET 2009
 # $Id$
 #
 
 class Uzbl < Subtle::Sublet
-
   def initialize
-    self.interval = 999
+    self.interval = 999 #< Sleeeeep
   end
 
   def run
+    # Just do nothing
   end
 end
