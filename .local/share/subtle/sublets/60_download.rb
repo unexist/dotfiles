@@ -1,5 +1,5 @@
 #
-# Cpu
+# Download
 #
 # Author: Christoph Kappel
 # Contact: unexist@dorfelite.net
@@ -9,7 +9,7 @@
 # $Id$
 #
 
-class Uzbl < Subtle::Sublet
+class Download < Subtle::Sublet
   def initialize
     self.interval = 999 #< Sleeeeep
   end
