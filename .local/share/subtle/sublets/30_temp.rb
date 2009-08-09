@@ -10,24 +10,25 @@
 #
 
 class Temp < Subtle::Sublet
-  @temp = ""
+  attr_accessor :path, :temp
 
   def initialize
-    self.interval = 120
+    self.interval = 60
+    @temp         = ""
+
+    begin
+      @path = Dir["/proc/acpi/thermal_zone/*"][0] #< Get temp slot
+    rescue => err
+      err
+    end
   end
 
   def run
     begin
-      file = ""
+      @temp = IO.readlines(@path + "/temperature").first
+      @temp = @temp.match(/temperature:\s+(\d+)/).captures
 
-      # Read tempt state file
-      File.open("/proc/acpi/thermal_zone/THRM/temperature", "r") do |f|
-        file = f.read
-      end
-
-      @temp = file.match(/temperature:\s+(\d+)/).captures
-
-      self.data = @temp.to_s + "C  |  "
+      self.data = icon("/home/unexist/.local/share/icons/temp.xbm") + @temp.to_s + "C | "
     rescue => err # Sanitize to prevent unloading
       self.data = "subtle"
       p err

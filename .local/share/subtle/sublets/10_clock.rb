@@ -15,6 +15,6 @@ class Clock < Subtle::Sublet
   end
 
   def run
-    self.data = Time.now().strftime("%d%m%y%H%M") + "  |  "
+    self.data = icon("/home/unexist/.local/share/icons/clock.xbm") + Time.now().strftime("%d%m%y%H%M") + " | "
   end
 end

@@ -42,7 +42,7 @@ class Cpu < Subtle::Sublet
       @sum   = sum
       @load  = (@use * 100.0).ceil % 100
 
-      self.data = @load.to_s + "%  |  "
+      self.data = icon("/home/unexist/.local/share/icons/cpu.xbm") + @load.to_s + "% | "
     rescue => err # Sanitize to prevent unloading
       self.data = "subtle"
       p err
