@@ -133,7 +133,7 @@ TAGS = {
   "skype"   => "skype",
   "browser" => { :regex => "swiftweasel|uzbl", :gravity => 5 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5 },
-  "stick"   => { :regex => "mplayer|apvlv|display|chrom", :stick => true, :float => true },
+  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true },
   "float"   => { :regex => "xephyr|gimp", :float => true },
   "top"     => { :regex => "urxvt1", :gravity => 8 },
   "bottom"  => { :regex => "urxvt2", :gravity => 2 }
