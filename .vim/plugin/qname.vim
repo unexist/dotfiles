@@ -76,15 +76,28 @@ function! s:build()
 	let s:s = []
 	let s:n = []
 	let s:blen = 0
+
+  let _same = 0
+  let _last = ''
+
 	let _cmp = tolower(tr(s:inp, '\', '/'))
 	for _line in s:ls
 		let _name = matchstr(_line, '^.\{-}\ze \+<')
 		if s:fmatch(tolower(_name), _cmp)
 			cal add(s:s, _line)
 			cal add(s:n, _name)
+
+      " Check if filename is always the same
+      if s:fmatch(_last, _name)
+        let _same = 1
+      else
+        let _same = 0
+      endif
+
+      let _last = _name
 		endif
 	endfor
-	if len(s:n) > s:colPrinter.trow
+	if 0 == _same && len(s:n) > s:colPrinter.trow
 		cal s:colPrinter.put(s:n)
 	else
 		cal s:colPrinter.put(s:s)
