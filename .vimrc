@@ -32,7 +32,7 @@ set lazyredraw
 set wildmode=list:longest,full
 set wildignore=*.o,*.swp
 set nobackup
-set noswapfile
+set autowrite
 
 syntax on
 
