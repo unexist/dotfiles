@@ -35,7 +35,7 @@ setopt short_loops
 setopt listpacked
 setopt completeinword
 setopt pushd_ignore_dups
-setopt share_history
+#setopt share_history
 
 # History
 HISTSIZE=5000
