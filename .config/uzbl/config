@@ -13,8 +13,8 @@ set status_pbar_done    = =
 set status_pbar_pending = -
 set status_pbar_width   = 8
 
-set title_format_short = TITLE + SELECTED_URI - uzbl
-set title_format_long = KEYCMD MODE TITLE - uzbl
+#set title_format_short = TITLE + SELECTED_URI - uzbl
+#set title_format_long = KEYCMD MODE TITLE - uzbl
 
 # Behaviour
 set show_status        = 0
@@ -86,6 +86,7 @@ bind ;_ = runcmd %s
 
 # Spawn
 bind :o_ = spawn uzbl -u %s
+bind :d_ = spawn uzbl -u http://www.dict.cc/?s=%s
 bind :g_ = spawn uzbl -u http://www.google.com/search?q=%s
 
 # Uri
@@ -102,6 +103,7 @@ bind M  = uri http://mail.zoho.com
 bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
 bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
 bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
+bind s  = uri http://www.sparkasse-duisburg.de
 bind u  = uri http://unexist.scrapping.cc/
 bind U  = uri http://www.uzbl.org
 bind x  = uri http://tronche.com/gui/x/xlib/function-index.html
