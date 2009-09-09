@@ -17,7 +17,7 @@
     end
 
     begin
-      File.rename(File.join(d, e), "%s/s%.2de%.2d.avi" % [ d, @season, @episode ])
+      File.rename(File.join(d, e), "%s/s%.2de%.2d%s" % [ d, @season, @episode, File.extname(e) ])
     rescue
       puts e
       puts $!
