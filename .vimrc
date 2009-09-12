@@ -33,6 +33,7 @@ set wildmode=list:longest,full
 set wildignore=*.o,*.swp
 set nobackup
 set autowriteall
+set noswapfile
 
 syntax on
 
