@@ -13,7 +13,7 @@ OPTIONS = {
   :step    => 5,                                   # Window move/resize key step
   :snap    => 10,                                  # Window border snapping
   :gravity => 5,                                   # Default gravity
-  :urgent  => true,                                # Make transient windows urgent
+  :urgent  => false,                               # Make transient windows urgent
   :padding => [ 0, 0, 0, 0 ],                      # Screen padding (left, right, top, bottom)
   :font    => "-*-snap-*-*-*-*-10-*-*-*-*-*-*-*"   # Font string
 }
@@ -26,27 +26,28 @@ OPTIONS = {
 # :spacer
 #
 PANEL = {
-  :top     => [ :tray, :caption, :spacer, :sublets, :spacer, :views ],
-  :bottom  => [ ],
-  :stipple => false
+  :top       => [ :tray, :caption, :spacer, :sublets, :spacer, :views ],
+  :bottom    => [ ],
+  :stipple   => false,
+  :separator => "|"
 }
 
 #
 # Colors
 # 
 COLORS = { 
-  :fg_panel      => "#e2e2e5",  # Foreground color of panel
-  :fg_views      => "#6699CC",  # Foreground color of view button
-  :fg_sublets    => "#000000",  # foreground color of sublets
-  :fg_focus      => "#000000",  # Foreground color of focus window title and view
+  :fg_panel      => "#5fd7ff",  # Foreground color of panel
+  :fg_views      => "#6c6c6c",  # Foreground color of view button
+  :fg_sublets    => "#6c6c6c",  # foreground color of sublets
+  :fg_focus      => "#5fd7ff",  # Foreground color of focus window title and view
 
-  :bg_panel      => "#444444",  # Background color of panel
-  :bg_views      => "#444444",  # Background color of view button
-  :bg_sublets    => "#6699CC",  # Background color of sublets
-  :bg_focus      => "#6699CC",  # Background color of focus window title and view
+  :bg_panel      => "#202020",  # Background color of panel
+  :bg_views      => "#202020",  # Background color of view button
+  :bg_sublets    => "#202020",  # Background color of sublets
+  :bg_focus      => "#202020",  # Background color of focus window title and view
 
-  :border_focus  => "#6699CC",  # Border color of focus windows
-  :border_normal => "#5d5d5d",  # Border color of normal windows
+  :border_focus  => "#5fd7ff",  # Border color of focus windows
+  :border_normal => "#202020",  # Border color of normal windows
   
   :background    => "#3d3d3d"   # Background color of root background
 }
@@ -106,19 +107,21 @@ GRABS = {
   "A-S-3"     => :WindowScreen3,             # Set screen 3
   "A-S-4"     => :WindowScreen4,             # Set screen 4
 
-  "W-q"       => :GravityTopLeft,            # Set top left gravity
-  "W-w"       => :GravityTop,                # Set top gravity
-  "W-e"       => :GravityTopRight,           # Set top right gravity
-  "W-a"       => :GravityLeft,               # Set left gravity
-  "W-s"       => :GravityCenter,             # Set center gravity
-  "W-d"       => :GravityRight,              # Set right gravity
-  "W-y"       => :GravityBottomLeft,         # Set bottom left gravity
-  "W-x"       => :GravityBottom,             # Set bottom gravity
-  "W-c"       => :GravityBottomRight,        # Set bottom right gravity
+  "W-KP_7"    => :GravityTopLeft,            # Set top left gravity
+  "W-KP_8"    => :GravityTop,                # Set top gravity
+  "W-KP_9"    => :GravityTopRight,           # Set top right gravity
+  "W-KP_4"    => :GravityLeft,               # Set left gravity
+  "W-KP_5"    => :GravityCenter,             # Set center gravity
+  "W-KP_6"    => :GravityRight,              # Set right gravity
+  "W-KP_1"    => :GravityBottomLeft,         # Set bottom left gravity
+  "W-KP_2"    => :GravityBottom,             # Set bottom gravity
+  "W-KP_3"    => :GravityBottomRight,        # Set bottom right gravity
 
   "W-u"       => "uzbl",                     # Exec uzbl
   "W-Return"  => "urxvt",                    # Exec a term
-  "W-m"       => @dmenu,                     # Exec dmenu
+  "W-m"       => "midori",                   # Exec midori
+  "W-g"       => "gvim",                     # Exec gvim
+  "W-o"       => @dmenu,                     # Exec dmenu
 
   "S-F2"      => lambda { |c| puts c.name }, # Print client name
   "S-F3"      => lambda {  puts version   }  # Print subtlext version
@@ -129,9 +132,9 @@ GRABS = {
 TAGS = {
   "terms"   => "urxvt|xterm",
   "test"    => "xephyr",
-  "gimp"    => "gimp",
+  "misc"    => "jd-main|gimp",
   "skype"   => "skype",
-  "browser" => { :regex => "swiftweasel|uzbl", :gravity => 5 },
+  "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5 },
   "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true },
   "float"   => { :regex => "xephyr|gimp", :float => true },
@@ -143,9 +146,11 @@ TAGS = {
 # Views
 #
 VIEWS = [
-  { "terms" => "terms" },
-  { "www"   => "default|skype|gimp|browser" },
-  { "dev"   => "editor" }
+  { "terms"  => "terms" },
+  { "www"    => "skype|browser" },
+  { "misc"   => "default|misc" },
+  { "test"   => "test" },
+  { "editor" => "editor" }
 ]
 
 #
