@@ -49,8 +49,7 @@ set socket_dir = /tmp
 set proxy_url  = http://127.0.0.1:8118
 
 # Handler
-#set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.sh
-#set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
+set cookie_handler = talk_to_socket $XDG_CACHE_HOME/uzbl/cookie_daemon_socket
 set download_handler = spawn $HOME/bin/download.rb
 
 # Browser Control
