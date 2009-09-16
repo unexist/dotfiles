@@ -117,6 +117,7 @@ GRABS = {
   "W-KP_2"    => :GravityBottom,             # Set bottom gravity
   "W-KP_3"    => :GravityBottomRight,        # Set bottom right gravity
 
+  "W-b"       => "bashrun",                  # Exec bashrun
   "W-u"       => "uzbl",                     # Exec uzbl
   "W-Return"  => "urxvt",                    # Exec a term
   "W-m"       => "midori",                   # Exec midori
@@ -134,12 +135,13 @@ TAGS = {
   "test"    => "xephyr",
   "misc"    => "jd-main|gimp",
   "skype"   => "skype",
-  "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5 },
+  "browser" => { :regex => "swiftweasel|uzbl|midori|shiretoko", :gravity => 5 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5 },
   "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true },
   "float"   => { :regex => "xephyr|gimp", :float => true },
   "top"     => { :regex => "urxvt1", :gravity => 8 },
-  "bottom"  => { :regex => "urxvt2", :gravity => 2 }
+  "bottom"  => { :regex => "urxvt2", :gravity => 2 },
+  "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true }
 }  
 
 #
