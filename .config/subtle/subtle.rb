@@ -128,31 +128,31 @@ GRABS = {
   "S-F3"      => lambda {  puts version   }  # Print subtlext version
 }
 
+#
 # Tags
 #
 TAGS = {
-  "terms"   => "urxvt|xterm",
-  "test"    => "xephyr",
-  "misc"    => "jd-main|gimp",
-  "skype"   => "skype",
-  "browser" => { :regex => "swiftweasel|uzbl|midori|shiretoko", :gravity => 5 },
-  "editor"  => { :regex => "[g]?vim", :gravity => 5 },
-  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true },
-  "float"   => { :regex => "xephyr|gimp", :float => true },
-  "top"     => { :regex => "urxvt1", :gravity => 8 },
-  "bottom"  => { :regex => "urxvt2", :gravity => 2 },
-  "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true }
+  "test"    => { :regex => "xephyr", :screen => 1 },
+  "misc"    => { :regex => "jd-main|gimp", :gravity => 5, :screen => 2 },
+  "terms"   => { :regex => "xterm", :gravity => 5, :screen => 2 },
+  "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5, :screen => 2 },
+  "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 2 },
+  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true, :screen => 2 },
+  "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 2 },
+  "top"     => { :regex => "top", :gravity => 8, :screen => 1 },
+  "bottom"  => { :regex => "bottom", :gravity => 2, :screen => 1 },
+  "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 1 }
 }  
 
 #
 # Views
 #
 VIEWS = [
-  { "terms"  => "terms" },
-  { "www"    => "skype|browser" },
-  { "misc"   => "default|misc" },
-  { "test"   => "test" },
-  { "editor" => "editor" }
+  { "terms"  => "top|bottom|terms" },
+  { "www"    => "top|bottom|browser" },
+  { "misc"   => "top|bottom|default|misc" },
+  { "test"   => "top|bottom|test|editor" },
+  { "editor" => "top|bottom|editor" }
 ]
 
 #
