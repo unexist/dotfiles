@@ -18,6 +18,7 @@ setxkbmap -layout 'de(nodeadkeys)'
   #/usr/bin/xrandr --output VGA --right-of LVDS
   #/usr/bin/xrandr --output LVDS --mode 1400x1050 --pos 0x0 --output VGA --mode 1680x1050 --pos 1400x0 --right-of LVDS
   #/usr/bin/xrandr --output LVDS --mode 1280x960 --output VGA --mode 1680x1050 --above LVDS
+  xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1
 #fi
 
 # Windowmanager
@@ -29,8 +30,8 @@ sleep 2
 
 # Term
 if [ -e /usr/bin/urxvt ] ; then
-  /usr/bin/urxvt -name urxvt1 --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
-  /usr/bin/urxvt -name urxvt2 --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
+  /usr/bin/urxvt -name top --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
+  /usr/bin/urxvt -name bottom --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
 fi
 
 # Numlockx
