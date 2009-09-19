@@ -38,8 +38,7 @@ set enable_private        = 0
 set resizeable_text_areas = 1
 set print_background      = 0
 set useragent             = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ]
-set uri                   = file:///home/unexist/.config/uzbl/home.html
-set stylesheet_uri        = file:///home/unexist/.config/uzbl/style.css
+set uri                   = file:///home/unexist/.local/share/uzbl/bookmarks.html
 
 # Interface
 set fifo_dir   = /tmp
@@ -81,12 +80,18 @@ bind N  = search_reverse
 # Miscellaneous
 bind +  = zoom_in
 bind -  = zoom_out
-bind ;_ = runcmd %s
+bind '_ = runcmd %s
 
 # Spawn
-bind :o_ = spawn uzbl -u %s
 bind :d_ = spawn uzbl -u http://www.dict.cc/?s=%s
 bind :g_ = spawn uzbl -u http://www.google.com/search?q=%s
+bind :o_ = spawn uzbl -u %s
+
+# Bookmarks
+bind ;a_ = spawn $HOME/bin/keywordBm.py add "%s"
+bind ;g_ = spawn $HOME/bin/keywordBm.py get "%s"
+bind ;o_ = spawn $HOME/bin/keywordBm.py open "%s"
+bind ;b  = uri file:///home/unexist/.local/share/uzbl/bookmarks.html
 
 # Uri
 bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
