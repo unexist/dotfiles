@@ -39,4 +39,9 @@ if [ -e /usr/bin/numlockx ] ; then
   /usr/bin/numlockx >/dev/null &
 fi
 
+# Cookie daemon
+if [ -e $HOME/bin/cookie_daemon.py ] ; then
+  $HOME/cookie_daemon.py &
+fi
+
 wait $pid
