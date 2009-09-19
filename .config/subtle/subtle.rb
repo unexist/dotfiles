@@ -80,6 +80,7 @@ GRABS = {
   "W-2"       => :ViewJump2,                 # Jump to view 2
   "W-3"       => :ViewJump3,                 # Jump to view 3
   "W-4"       => :ViewJump4,                 # Jump to view 4
+  "W-5"       => :ViewJump5,                 # Jump to view 4
 
   "W-S-1"     => :ScreenJump1,               # Jump to view 1
   "W-S-2"     => :ScreenJump2,               # Jump to view 2
