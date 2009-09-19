@@ -17,8 +17,7 @@ sf 						= "red"
 font 					= "monospace"
 
 file = os.path.join(os.environ['XDG_DATA_HOME'],'uzbl/bookmarks.txt')
-
-
+html = os.path.join(os.environ['XDG_DATA_HOME'],'uzbl/bookmarks.html')
 
 def addBookmark(url, keyword, title):
 	f = open(file, 'a')
@@ -33,6 +32,33 @@ def getBookmark(keyword):
 		words = line.split(" ", 2)
 		if(words[1] == keyword):
 			return words[0]
+
+def createBookmarkpage():
+  f = open(html, 'w')
+  htmlStart = """ <html>
+  <head>
+    <title>Bookmarks</title>
+    <style type="text/css">
+      BODY { background-color: #202020 }
+      h1 { color: #AF5F00 }
+      img { border: none }
+      a.link:link, a.link:visited, a.link:active { text-decoration: none; color: #5FD7FF }
+      a.link:hover { text-decoration: underline }
+      .keyword { color: #6C6C6C }
+    </style>    
+  </head>
+  <body>
+    <h1>Bookmarks</h1>
+  """
+  f.write(htmlStart);
+  bookmarks = open(file, 'r')
+  for line in bookmarks:
+    bmark = line.split(" ", 2);
+    base = bmark[0].split("/", 3);
+    print "http://%s/favicon.ico" % base[2]
+    f.write("\t\t<p><a class=\"link\" href=%s><img src=\"http://%s/favicon.ico\" width=\"16\" height=\"16\"> %s</a> <span class=\"keyword\">#%s</span></p>\n" % (bmark[0],base[2],bmark[2],bmark[1]))
+  f.write("</body>\n</html>")
+
 
 def removeBookmark():
 	xwin = subprocess.Popen(["xwininfo", "-id", sys.argv[3]], stdout=subprocess.PIPE)
