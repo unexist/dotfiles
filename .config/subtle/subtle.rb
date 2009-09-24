@@ -26,7 +26,7 @@ OPTIONS = {
 # :spacer
 #
 PANEL = {
-  :top       => [ :tray, :caption, :spacer, :sublets, :spacer, :views ],
+  :top       => [ :tray, :title, :spacer, :sublets, :spacer, :views ],
   :bottom    => [ ],
   :stipple   => false,
   :separator => "|"
@@ -82,11 +82,6 @@ GRABS = {
   "W-4"       => :ViewJump4,                 # Jump to view 4
   "W-5"       => :ViewJump5,                 # Jump to view 4
 
-  "W-S-1"     => :ScreenJump1,               # Jump to view 1
-  "W-S-2"     => :ScreenJump2,               # Jump to view 2
-  "W-S-3"     => :ScreenJump3,               # Jump to view 3
-  "W-S-4"     => :ScreenJump4,               # Jump to view 4
-
   "W-C-q"     => :SubtleQuit,                # Quit subtle
   "W-C-r"     => :SubtleReload,              # Reload subtle
 
@@ -103,10 +98,15 @@ GRABS = {
   "W-Right"   => :WindowRight,               # Select window right
   "W-k"       => :WindowKill,                # Kill window
 
-  "A-S-1"     => :WindowScreen1,             # Set screen 1
-  "A-S-2"     => :WindowScreen2,             # Set screen 2
-  "A-S-3"     => :WindowScreen3,             # Set screen 3
-  "A-S-4"     => :WindowScreen4,             # Set screen 4
+  "W-F1"     => :ScreenJump1,               # Jump to view 1
+  "W-F2"     => :ScreenJump2,               # Jump to view 2
+  "W-F3"     => :ScreenJump3,               # Jump to view 3
+  "W-F4"     => :ScreenJump4,               # Jump to view 4
+
+  "W-S-F1"     => :WindowScreen1,             # Set screen 1
+  "W-S-F2"     => :WindowScreen2,             # Set screen 2
+  "W-S-F3"     => :WindowScreen3,             # Set screen 3
+  "W-S-F4"     => :WindowScreen4,             # Set screen 4
 
   "W-KP_7"    => :GravityTopLeft,            # Set top left gravity
   "W-KP_8"    => :GravityTop,                # Set top gravity
@@ -134,7 +134,7 @@ GRABS = {
 #
 TAGS = {
   "test"    => { :regex => "xephyr", :screen => 0 },
-  "misc"    => { :regex => "jd-main|gimp", :gravity => 5, :screen => 1 },
+  "misc"    => { :regex => "jd-main|gimp|virtual", :gravity => 5, :screen => 1 },
   "terms"   => { :regex => "xterm", :gravity => 5, :screen => 1 },
   "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5, :screen => 1 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 1 },
