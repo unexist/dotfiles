@@ -1,0 +1,20 @@
+http://hardcoremetal.biz/news.html metal News & Updates - HMS - Your Hardcore Metal Source
+http://www.movie-blog.org/category/top-releases/ movie Movie-Blog.org – Movie Download and Stream source » +++Top Releases+++
+https://www.ohloh.net/ ohloh Ohloh, the open source network
+http://sur.scrapping.cc/ sur SUR - Subtle User Repository
+http://www.archlinux.org/ arch Arch Linux
+http://yard.soen.ca/ yard YARD - Yay! A Ruby Documentation Tool (Milkshakes: 0.2.3.5)
+http://www.sinatrarb.com/api/index.html sinatra Sinatra API Documentation
+http://curb.rubyforge.org/ curb Curb - libcurl bindings for ruby
+http://bit-struct.rubyforge.org/ bitstruct bit-struct-0.13.6 Documentation
+http://rubiojr.netcorex.org/blog/?p=14 ioctl Getting network interface addresses using ioctl: pure ruby « il biondo
+http://omploader.org/ omp omploader
+http://serienjunkies.org/ serien Serienjunkies » Mehr als 1000 Serien zum Download
+http://stackoverflow.com/ stack Stack Overflow
+http://elementsthegame.com/ element Elements. Free online fantasy card game
+http://www.vanemery.com/Linux/VNC/vnc-over-ssh.html vnc VNC over SSH2 - A TightVNC Tutorial
+http://wiki.github.com/ffi/ffi ffi Home - ffi - GitHub
+http://www.ruby-doc.org/core/classes/String.html#M000760 string Class: String
+http://www.ruby-doc.org/core/classes/Array.html#M002222 array Class: Array
+http://rapid4me.com/ rapid Rapidshare Search Engine - Rapid4me
+http://kember.net/articles/231/reisub-the-gentle-linux-restart reisub REISUB - the gentle Linux restart [Kember.net]
