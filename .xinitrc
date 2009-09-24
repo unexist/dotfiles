@@ -41,7 +41,7 @@ fi
 
 # Cookie daemon
 if [ -e $HOME/bin/cookie_daemon.py ] ; then
-  $HOME/cookie_daemon.py &
+  $HOME/bin/cookie_daemon.py &
 fi
 
 wait $pid
