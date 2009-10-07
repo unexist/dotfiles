@@ -18,3 +18,19 @@ http://www.ruby-doc.org/core/classes/String.html#M000760 string Class: String
 http://www.ruby-doc.org/core/classes/Array.html#M002222 array Class: Array
 http://rapid4me.com/ rapid Rapidshare Search Engine - Rapid4me
 http://kember.net/articles/231/reisub-the-gentle-linux-restart reisub REISUB - the gentle Linux restart [Kember.net]
+http://www.linuxjournal.com/article/2121 threads Thread-Specific Data and Signal Handling in Multi-Threaded Applications
+http://www.metal-archives.com/ archive Encyclopaedia Metallum: The Metal Archives
+http://en.kioskea.net/faq/sujet-629-graphical-interfaces-for-sqlite design Graphical interfaces for SQLite - The solution
+http://www.eqqon.com/index.php/Ruby/Ruby_V1.9_C_Extension extension Ruby/Ruby V1.9 C Extension - eqqon
+http://www.c-sharpcorner.com/UploadFile/apundit/DrawingCurves11182005012515AM/DrawingCurves.aspx spline Drawing B-Spline Curves
+http://codase.com/search/display?file=L2dlbnRvbzIvdmFyL3RtcC9yZXBvcy9jb2Rhc2UuYy94ZXBoZW0tMy42LjItcjEvd29yay94ZXBoZW0tMy42LjIvR1VJL3hlcGhlbS94bWlzYy5j&lang=c&off=20261+20307+ xput Source Code, Sample Code or Example Code: xmisc.c
+http://xaimaster.wordpress.com/ anime Dodol Duren’s Blog
+http://trollop.rubyforge.org/ trollop Trollop
+http://board.yourwire.net/showthread.php?p=361917 wimmel Wimmelbild Spiele Sammelthread - Seite 6 - YourWire.Net
+http://rubyspec.org/ spec RubySpec - The Standard You Trust
+http://www.youtube.com/ yt YouTube - unex1st's YouTube
+http://mail.zoho.com/mail/home.do sheet Zoho Mail (5 - Unread)
+http://standards.freedesktop.org/wm-spec/wm-spec-1.3.html ewmh Extended Window Manager Hints
+http://tronche.com/gui/x/icccm/ icccm Inter-Client Communication Conventions Manual
+http://www.hsnr.de/ hsnr HS Niederrhein: HS Niederrhein
+http://hd-world.org/ hd HD-World.org – Only High Definition Movies
