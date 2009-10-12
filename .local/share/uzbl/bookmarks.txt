@@ -34,3 +34,8 @@ http://standards.freedesktop.org/wm-spec/wm-spec-1.3.html ewmh Extended Window M
 http://tronche.com/gui/x/icccm/ icccm Inter-Client Communication Conventions Manual
 http://www.hsnr.de/ hsnr HS Niederrhein: HS Niederrhein
 http://hd-world.org/ hd HD-World.org – Only High Definition Movies
+http://www.lukullusrestaurant.de/ grieche Restaurant Lukullus, Krefeld
+http://www.studivz.net/Start vz studiVZ | Meine Startseite
+http://www.vladstudio.com/home/ vlad Vladstudio.com - free desktop wallpapers, widescreen, dual monitors, iPhone wallpapers, backgrounds for mobile phones, wallpaper clocks, e-cards
+http://coderack.org/ rack CodeRack
+http://aur.archlinux.org/ aur AUR (en) - Home
