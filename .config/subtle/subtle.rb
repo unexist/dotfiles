@@ -61,6 +61,12 @@ COLORS = {
   COLORS[:bg_focus], COLORS[:fg_focus]
 ]
 
+def swap_screen(s1, s2)
+  current_view.clients.each do |c|
+    c.screen = (c.screen == s1) ? s2 : s1
+  end
+end
+
 #
 # Grabs
 #
@@ -125,23 +131,24 @@ GRABS = {
   "W-g"       => "gvim",                     # Exec gvim
   "W-o"       => @dmenu,                     # Exec dmenu
 
-  "S-F2"      => lambda { |c| puts c.name }, # Print client name
-  "S-F3"      => lambda {  puts version   }  # Print subtlext version
+  "W-C-s"     => lambda { swap_screen(0, 1) }
 }
 
 #
 # Tags
 #
 TAGS = {
-  "test"    => { :regex => "xephyr", :screen => 0 },
-  "misc"    => { :regex => "jd-main|gimp|virtual", :gravity => 5, :screen => 1 },
+  "test"    => { :regex => "xephyr", :screen => 0, :size => [ 857, 96, 800, 800 ] },
+  "void"    => { :regex => "jd-main|gimp|virtual", :gravity => 5, :screen => 1 },
   "terms"   => { :regex => "xterm", :gravity => 5, :screen => 1 },
   "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5, :screen => 1 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 1 },
-  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype", :stick => true, :float => true, :screen => 1 },
+  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
   "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
-  "top"     => { :regex => "top", :gravity => 8, :screen => 0 },
-  "bottom"  => { :regex => "bottom", :gravity => 2, :screen => 0 },
+  "eight"   => { :regex => "urxvt1", :gravity => 8, :screen => 0 },
+  "two"     => { :regex => "urxvt2", :gravity => 2, :screen => 0 },
+  "seven"   => { :regex => "urxvt1", :gravity => 7, :screen => 0 },
+  "one"     => { :regex => "urxvt2", :gravity => 1, :screen => 0 },
   "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 }
 }  
 
@@ -149,11 +156,10 @@ TAGS = {
 # Views
 #
 VIEWS = [
-  { "terms"  => "top|bottom|terms" },
-  { "www"    => "top|bottom|browser" },
-  { "misc"   => "top|bottom|default|misc" },
-  { "test"   => "top|bottom|test|editor" },
-  { "editor" => "top|bottom|editor" }
+  { "terms"  => "eight|two|terms" },
+  { "www"    => "eight|two|browser" },
+  { "void"   => "eight|two|default|void" },
+  { "editor" => "seven|one|test|editor" }
 ]
 
 #
