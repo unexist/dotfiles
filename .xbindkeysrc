@@ -1,0 +1,26 @@
+"amixer set PCM 2dB-"
+XF86AudioLowerVolume
+
+"amixer set Master toggle"
+XF86AudioMute
+
+"amixer set PCM 2dB+"
+XF86AudioRaiseVolume
+
+"mpc prev"
+XF86AudioPrev
+
+"mpc toggle"
+XF86AudioPlay
+
+"mpc next"
+XF86AudioNext
+
+"urxvt"
+XF86Go
+
+"uzbl"
+XF86HomePage
+
+"uzbl --uri mail.zoho.com"
+XF86Mail
