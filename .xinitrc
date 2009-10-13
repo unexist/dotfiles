@@ -19,7 +19,7 @@ if [ -e $HOME/.Xmodmap ] ; then
 fi
 
 # Xbindkeys
-if [ -e /usr/bin/xbindkeys && -e $HOME/.xbindkeysrc ] ; then
+if [ -e /usr/bin/xbindkeys ] && [ -e $HOME/.xbindkeysrc ] ; then
   xbindkeys
 fi
 
