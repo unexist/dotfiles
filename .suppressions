@@ -1,0 +1,209 @@
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+   fun:rb_parser_compile_file
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:gc_mark
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+   fun:rb_parser_compile_file
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+   fun:rb_parser_compile_file
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:gc_mark
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark_children
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark_children
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:gc_mark_children
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:node_newnode
+   fun:gettable_gen
+   fun:ruby_yyparse
+   fun:yycompile0
+   fun:ruby_suppress_tracing
+   fun:yycompile
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:iseq_setup
+   fun:rb_iseq_compile_node
+   fun:rb_iseq_new_with_bopt_and_opt
+   fun:new_child_iseq
+   fun:iseq_compile_each
+   fun:rb_iseq_compile_node
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Value4
+   fun:gc_mark_children
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:iseq_setup
+   fun:rb_iseq_compile_node
+   fun:rb_iseq_new_with_bopt_and_opt
+   fun:new_child_iseq
+   fun:iseq_compile_each
+   fun:rb_iseq_compile_node
+}
+{
+   Ruby 1.9.1 GC
+   Memcheck:Cond
+   fun:gc_mark_children
+   fun:mark_locations_array
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   fun:rb_newobj
+   fun:rb_node_newnode
+   fun:iseq_setup
+   fun:rb_iseq_compile_node
+   fun:rb_iseq_new_with_bopt_and_opt
+   fun:new_child_iseq
+   fun:iseq_compile_each
+   fun:rb_iseq_compile_node
+}
+
