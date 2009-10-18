@@ -41,7 +41,7 @@ syntax on
 if &t_Co < 256
   colorscheme default
 else
-  colorscheme merged
+  colorscheme hornet
 endif
 
 " Commandline
