@@ -15,7 +15,7 @@ OPTIONS = {
   :gravity => 5,                                   # Default gravity
   :urgent  => false,                               # Make transient windows urgent
   :padding => [ 0, 0, 0, 0 ],                      # Screen padding (left, right, top, bottom)
-  :font    => "-*-snap-*-*-*-*-10-*-*-*-*-*-*-*"   # Font string
+  :font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"  # Font string
 }
 
 #
@@ -35,20 +35,31 @@ PANEL = {
 #
 # Colors
 # 
-COLORS = { 
-  :fg_panel      => "#5fd7ff",  # Foreground color of panel
-  :fg_views      => "#6c6c6c",  # Foreground color of view button
-  :fg_sublets    => "#6c6c6c",  # foreground color of sublets
-  :fg_focus      => "#5fd7ff",  # Foreground color of focus window title and view
+COLORS = {
+  # Merged 
+  #:fg_panel      => "#5fd7ff",  # Foreground color of panel
+  #:fg_views      => "#6c6c6c",  # Foreground color of view button
+  #:fg_sublets    => "#6c6c6c",  # foreground color of sublets
+  #:fg_focus      => "#5fd7ff",  # Foreground color of focus window title and view
+  #:bg_panel      => "#202020",  # Background color of panel
+  #:bg_views      => "#202020",  # Background color of view button
+  #:bg_sublets    => "#202020",  # Background color of sublets
+  #:bg_focus      => "#202020",  # Background color of focus window title and view
+  #:border_focus  => "#5fd7ff",  # Border color of focus windows
+  #:border_normal => "#202020",  # Border color of normal windows
+  #:background    => "#3d3d3d"   # Background color of root background
 
-  :bg_panel      => "#202020",  # Background color of panel
+  # Hornet
+  :fg_panel      => "#757575",  # Foreground color of bar
+  :fg_views      => "#757575",  # Foreground color of view button
+  :fg_sublets    => "#757575",  # foreground color of sublets
+  :fg_focus      => "#fecf35",  # Foreground color of focus window title and view
+  :bg_panel      => "#202020",  # Background color of bar
   :bg_views      => "#202020",  # Background color of view button
   :bg_sublets    => "#202020",  # Background color of sublets
   :bg_focus      => "#202020",  # Background color of focus window title and view
-
-  :border_focus  => "#5fd7ff",  # Border color of focus windows
+  :border_focus  => "#757575",  # Border color of focus windows
   :border_normal => "#202020",  # Border color of normal windows
-  
   :background    => "#3d3d3d"   # Background color of root background
 }
 
@@ -156,7 +167,7 @@ TAGS = {
   "test"    => { :regex => "xephyr", :screen => 0, :size => [ 857, 96, 800, 800 ] },
   "void"    => { :regex => "jd-main|gimp|virtual", :gravity => 5, :screen => 1 },
   "terms"   => { :regex => "xterm", :gravity => 5, :screen => 1 },
-  "browser" => { :regex => "swiftweasel|uzbl|midori", :gravity => 5, :screen => 1 },
+  "browser" => { :regex => "navigator|uzbl|midori", :gravity => 5, :screen => 1 },
   "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 1 },
   "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
   "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
@@ -171,10 +182,14 @@ TAGS = {
 # Views
 #
 VIEWS = [
-  { "terms"  => "eight|two|terms" },
-  { "www"    => "eight|two|browser" },
-  { "void"   => "eight|two|default|void" },
-  { "editor" => "seven|one|test|editor" }
+#  { "terms"  => "eight|two|terms" },
+#  { "www"    => "eight|two|browser" },
+#  { "void"   => "eight|two|default|void" },
+#  { "editor" => "seven|one|test|editor" }
+  { "terms"  => "seven|one|terms|test" },
+  { "www"    => "browser" },
+  { "void"   => "default|void" },
+  { "editor" => "editor" }
 ]
 
 #
