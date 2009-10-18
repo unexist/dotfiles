@@ -1,7 +1,3 @@
-remove lock = 66
-keycode 66 = Multi_key 
-keycode 47 = semicolon colon dead_diaeresis
-
 keycode 174 = XF86AudioLowerVolume
 keycode 160 = XF86AudioMute
 keycode 176 = XF86AudioRaiseVolume
