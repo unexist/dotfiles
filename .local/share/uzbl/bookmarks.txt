@@ -39,3 +39,11 @@ http://www.studivz.net/Start vz studiVZ | Meine Startseite
 http://www.vladstudio.com/home/ vlad Vladstudio.com - free desktop wallpapers, widescreen, dual monitors, iPhone wallpapers, backgrounds for mobile phones, wallpaper clocks, e-cards
 http://coderack.org/ rack CodeRack
 http://aur.archlinux.org/ aur AUR (en) - Home
+http://www.ruby-doc.org/core/classes/Hash.html hash Class: Hash
+http://opencv.willowgarage.com/documentation/index.html opencv OpenCV 1.1 C Reference — OpenCV 1.1 C Reference
+http://moodle.kr.hsnr.de/login/index.php moodle eLearningplatform des Gemeinschaftslabor Informatik (GLI): Login
+http://www.ebay.de/ ebaay eBay: Neue und gebrauchte Elektronikartikel, Autos, Kleidung, Sammlerstücke, Sportartikel und mehr – alles zu günstigen Preisen
+http://www.sparkasse-duisburg.de/sonlineplus/proc/docs/index.html spar Willkommen bei der Sparkasse Duisburg
+http://www.irisvista.com/tech/laptops/Toshiba-Satellite-M70/remove-laptop-motherboard-1.htm m70 How to take apart Toshiba Satellite M70 laptop and remove motherboard
+http://www.searchftps.com/indexer/search.aspx ftp NAPALM FTP Indexer
+http://www.studivz.net/ studi studiVZ | Bist Du schon drin?
