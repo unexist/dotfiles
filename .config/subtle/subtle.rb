@@ -58,7 +58,7 @@ COLORS = {
   :bg_views      => "#202020",  # Background color of view button
   :bg_sublets    => "#202020",  # Background color of sublets
   :bg_focus      => "#202020",  # Background color of focus window title and view
-  :border_focus  => "#757575",  # Border color of focus windows
+  :border_focus  => "#303030",  # Border color of focus windows
   :border_normal => "#202020",  # Border color of normal windows
   :background    => "#3d3d3d"   # Background color of root background
 }
@@ -157,7 +157,8 @@ GRABS = {
   "W-g"       => "gvim",                     # Exec gvim
   "W-o"       => @dmenu,                     # Exec dmenu
 
-  "W-C-s"     => lambda { swap_screen(0, 1) }
+  "W-C-s"     => lambda { swap_screen(0, 1) },
+  "W-y"       => "~/farmville/cnee --replay -f ~/farmville/sell.xns"
 }
 
 #
@@ -167,15 +168,16 @@ TAGS = {
   "test"    => { :regex => "xephyr", :screen => 0, :size => [ 857, 96, 800, 800 ] },
   "void"    => { :regex => "jd-main|gimp|virtual", :gravity => 5, :screen => 1 },
   "terms"   => { :regex => "xterm", :gravity => 5, :screen => 1 },
-  "browser" => { :regex => "navigator|uzbl|midori", :gravity => 5, :screen => 1 },
-  "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 1 },
+  "browser" => { :regex => "navigator|shiretoko|uzbl|midori", :gravity => 5, :screen => 1 },
+  "editor"  => { :regex => "[g]?vim", :gravity => 5, :screen => 1, :resize => true },
   "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
   "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
   "eight"   => { :regex => "urxvt1", :gravity => 8, :screen => 0 },
   "two"     => { :regex => "urxvt2", :gravity => 2, :screen => 0 },
   "seven"   => { :regex => "urxvt1", :gravity => 7, :screen => 0 },
   "one"     => { :regex => "urxvt2", :gravity => 1, :screen => 0 },
-  "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 }
+  "bashrun" => { :regex => "bashrun", :size => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 },
+  "sakura"  => { :regex => "sakura", :resize => true }
 }  
 
 #
