@@ -5,4 +5,4 @@
 " @version $Id$
 "
 
-colorscheme merged
+colorscheme hornet
