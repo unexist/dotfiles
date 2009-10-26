@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2008, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -64,6 +64,11 @@ fi
 # Swiftweasel
 if [ -e /usr/bin/swiftweasel ] ; then
   alias swp="swiftweasel -no-remote -ProfileManager &>/dev/null &!"
+fi
+
+# Firefox
+if [ -e /usr/bin/firefox ] ; then
+  alias ff="firefox -no-remote -ProfileManager &>/dev/null &!"
 fi
 
 # Xephyr
