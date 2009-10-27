@@ -49,6 +49,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 # Keys
 bindkey '^f' forward-word
 bindkey '^b' backward-word
+bindkey "^R" history-incremental-search-backward
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[7~" beginning-of-line
