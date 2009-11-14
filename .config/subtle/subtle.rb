@@ -14,6 +14,7 @@ OPTIONS = {
   :snap    => 10,
   :gravity => :center,
   :urgent  => false,
+  :resize  => false,
   :padding => [ 0, 0, 0, 0 ],
   :font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
 }
@@ -188,14 +189,14 @@ TAGS = {
 # Views
 #
 VIEWS = [
-#  { "terms"  => "eight|two|terms" },
-#  { "www"    => "eight|two|browser" },
-#  { "void"   => "eight|two|default|void" },
-#  { "editor" => "seven|one|test|editor" }
-  { "terms"  => "seven|one|terms|test" },
-  { "www"    => "browser" },
-  { "void"   => "default|void" },
-  { "editor" => "editor" }
+  { "terms"  => "eight|two|terms" },
+  { "www"    => "eight|two|browser" },
+  { "void"   => "eight|two|default|void" },
+  { "editor" => "seven|one|test|editor" }
+#  { "terms"  => "seven|one|terms|test" },
+#  { "www"    => "browser" },
+#  { "void"   => "default|void" },
+#  { "editor" => "editor" }
 ]
 
 #
