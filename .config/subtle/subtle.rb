@@ -33,6 +33,31 @@ PANEL = {
 # Colors
 # 
 COLORS = {
+  # Green
+  #:fg_panel      => "#e2e2e5",
+  #:fg_views      => "#ffffff",                                                                                    
+  #:fg_sublets    => "#000000",
+  #:fg_focus      => "#000000",                                                                                     
+  #:bg_panel      => "#444444",
+  #:bg_views      => "#3d3d3d",
+  #:bg_sublets    => "#b1d631",                                                                                     
+  #:bg_focus      => "#b1d631",
+  #:border_focus  => "#b1d631",
+  #:border_normal => "#5d5d5d",                                                                                     
+  #:background    => "#3d3d3d"
+
+  # Blue
+  #:fg_panel      => "#e2e2e5",
+  #:fg_views      => "#e2e2e5",                                                                                    
+  #:fg_sublets    => "#000000",                                                                                     
+  #:fg_focus      => "#000000",
+  #:bg_panel      => "#444444",
+  #:bg_views      => "#3d3d3d",                                                                                     57   :bg_sublets    => "#6699CC",                                                                                    
+  #:bg_focus      => "#6699CC",                                                                                     60   #:border_focus  => "#b1d631",                                                                                   
+  #:border_focus  => "#6699CC",
+  #:border_normal => "#5d5d5d",                                                                                     
+  #:background    => "#3d3d3d"  
+
   # Merged 
   #:fg_panel      => "#5fd7ff",
   #:fg_views      => "#6c6c6c",
