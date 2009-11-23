@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+import pygtk
+pygtk.require('2.0')
+import gtk
+
+class Chrom:
+
+  def delete_event(self, widget, event, data=None):
+    return False
+
+  def destroy(self, widget, data=None):
+    gtk.main_quit()
+
+
+  def __init__(self):
+    self.colorseldlg = gtk.ColorSelectionDialog('Chrom')
+    self.colorseldlg.colorsel.set_has_palette(True)
+
+    self.statusicon=gtk.status_icon_new_from_stock(gtk.STOCK_COLOR_PICKER)
+    self.statusicon.connect('activate',self.show)
+    self.statusicon.connect('popup-menu',self.context_menu)
+
+    self.menu = gtk.Menu()
+
+    self.quit = gtk.MenuItem("Quit")
+    self.menu.append(self.quit)
+    self.quit.connect('activate',self.destroy)
+    self.quit.show()
+
+  def context_menu(self,data, event_button, event_time,*args):
+    self.menu.popup(None, None, None, event_button,event_time)
+
+  def show(self,whatever=None):
+    if self.colorseldlg == None:
+      self.colorseldlg = gtk.ColorSelectionDialog()
+    response = self.colorseldlg.run()
+    self.colorseldlg.hide()
+
+  def main(self):
+    gtk.main()
+
+if __name__ == "__main__":
+  pad = Chrom()
+  pad.main()
