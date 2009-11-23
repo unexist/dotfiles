@@ -13,7 +13,6 @@ autoload complist
 autoload -U compinit
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '\ee' edit-command-line
 
 # Completion
 compinit
@@ -47,15 +46,21 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
 
 # Keys
+bindkey '\ee' edit-command-line
 bindkey '^f' forward-word
 bindkey '^b' backward-word
-bindkey "^R" history-incremental-search-backward
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
 bindkey "\e[4~" end-of-line
 bindkey "\e[3~" delete-char
+
+# History search
+#function search-backwords; { zle history-incremental-search-backward $BUFFER }
+#zle -N search-backwords
+#bindkey "^R" search-backwords
+bindkey "^R" history-incremental-search-backward
 
 # Prompt
 if [ "$USER" = "root" ] ; then

@@ -96,3 +96,14 @@ fi
 if [ -f /usr/bin/uzbl ] ; then
   alias uzbl="uzbl &>/dev/null &!"
 fi
+
+# Mplayer
+if [ -f /usr/bin/mplayer ] ; then
+  alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
+fi
+
+# xrandr
+ if [ -f /usr/bin/xrandr ] ; then
+  alias xrtv='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --primary --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1'
+  alias xrnm='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1'
+fi
