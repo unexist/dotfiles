@@ -62,8 +62,6 @@ nnoremap <F12> :set invpaste paste?<CR>
 imap <F12> <C-O><F12>
 set pastetoggle=<F12>
 
-
-
 " Gui
 if has("gui_running")
   set guioptions=a
@@ -75,3 +73,9 @@ if has("autocmd")
   filetype plugin on
   filetype indent off
 endif
+
+" Syntax
+syntax match Tab /\t/                                                                                           
+syntax match WS /[ ]+$/                                                                                  
+hi Tab guibg=green ctermbg=green                                                                                
+hi WS  guibg=yellow ctermbg=yellow
