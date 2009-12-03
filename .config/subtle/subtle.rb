@@ -52,8 +52,9 @@ COLORS = {
   #:fg_sublets    => "#000000",                                                                                     
   #:fg_focus      => "#000000",
   #:bg_panel      => "#444444",
-  #:bg_views      => "#3d3d3d",                                                                                     57   :bg_sublets    => "#6699CC",                                                                                    
-  #:bg_focus      => "#6699CC",                                                                                     60   #:border_focus  => "#b1d631",                                                                                   
+  #:bg_views      => "#3d3d3d",
+  #:bg_sublets    => "#6699CC",                                                                                    
+  #:bg_focus      => "#6699CC",
   #:border_focus  => "#6699CC",
   #:border_normal => "#5d5d5d",                                                                                     
   #:background    => "#3d3d3d"  
@@ -210,6 +211,7 @@ TAGS = {
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
   "bashrun" => { :regex => "bashrun", :geometry => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 },
   "sakura"  => { :regex => "sakura", :resize => true },
+  "python"  => { :regex => "python", :float => true, :stick => true }
 }  
 
 #
