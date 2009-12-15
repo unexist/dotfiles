@@ -51,8 +51,9 @@ if has("cmdline_info")
 endif
 
 " Maps
-map <F2> :browse confirm e<CR>
-map <F3> :NERDTreeToggle<CR>
+map <F2> <Esc>:browse confirm e<CR>
+map <F3> <Esc>:NERDTreeToggle<CR>
+map <F11> <Esc>:syntax sync fromstart<CR>
 
 " Qname
 let g:qname_hotkey = "<F4>"
@@ -65,7 +66,7 @@ set pastetoggle=<F12>
 " Gui
 if has("gui_running")
   set guioptions=a
-  set guifont=lucidatypewriter\ 10
+  "set guifont=lucidatypewriter\ 10
 endif
 
 " Filetype
@@ -73,9 +74,3 @@ if has("autocmd")
   filetype plugin on
   filetype indent off
 endif
-
-" Syntax
-syntax match Tab /\t/                                                                                           
-syntax match WS /[ ]+$/                                                                                  
-hi Tab guibg=green ctermbg=green                                                                                
-hi WS  guibg=yellow ctermbg=yellow
