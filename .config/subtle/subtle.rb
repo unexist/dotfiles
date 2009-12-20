@@ -5,6 +5,8 @@
 # $Id$
 # 
 
+require "socket"
+
 #
 # Options
 #
@@ -30,63 +32,69 @@ PANEL = {
 }
 
 #
-# Colors
+# Themes
 # 
-COLORS = {
-  # Green
-  #:fg_panel      => "#e2e2e5",
-  #:fg_views      => "#ffffff",                                                                                    
-  #:fg_sublets    => "#000000",
-  #:fg_focus      => "#000000",                                                                                     
-  #:bg_panel      => "#444444",
-  #:bg_views      => "#3d3d3d",
-  #:bg_sublets    => "#b1d631",                                                                                     
-  #:bg_focus      => "#b1d631",
-  #:border_focus  => "#b1d631",
-  #:border_normal => "#5d5d5d",                                                                                     
-  #:background    => "#3d3d3d"
-
-  # Blue
-  #:fg_panel      => "#e2e2e5",
-  #:fg_views      => "#e2e2e5",                                                                                    
-  #:fg_sublets    => "#000000",                                                                                     
-  #:fg_focus      => "#000000",
-  #:bg_panel      => "#444444",
-  #:bg_views      => "#3d3d3d",
-  #:bg_sublets    => "#6699CC",                                                                                    
-  #:bg_focus      => "#6699CC",
-  #:border_focus  => "#6699CC",
-  #:border_normal => "#5d5d5d",                                                                                     
-  #:background    => "#3d3d3d"  
-
-  # Merged 
-  #:fg_panel      => "#5fd7ff",
-  #:fg_views      => "#6c6c6c",
-  #:fg_sublets    => "#6c6c6c",
-  #:fg_focus      => "#5fd7ff",
-  #:bg_panel      => "#202020",
-  #:bg_views      => "#202020",
-  #:bg_sublets    => "#202020",
-  #:bg_focus      => "#202020",
-  #:border_focus  => "#5fd7ff",
-  #:border_normal => "#202020",
-  #:background    => "#3d3d3d"
-
-  # Hornet
-  :fg_panel      => "#757575",
-  :fg_views      => "#757575",
-  :fg_sublets    => "#757575",
-  :fg_focus      => "#fecf35",
-  :fg_urgent     => "#FF9800",
-  :bg_panel      => "#202020",
-  :bg_views      => "#202020",
-  :bg_sublets    => "#202020",
-  :bg_focus      => "#202020",
-  :bg_urgent     => "#202020",
-  :border_focus  => "#303030",
-  :border_normal => "#202020",
-  :background    => "#3d3d3d"
+THEMES = {
+  :green => {
+    :fg_panel      => "#e2e2e5",
+    :fg_views      => "#ffffff",                                                                                    
+    :fg_sublets    => "#000000",
+    :fg_focus      => "#000000",                                                                                     
+    :bg_panel      => "#444444",
+    :bg_views      => "#3d3d3d",
+    :bg_sublets    => "#b1d631",                                                                                     
+    :bg_focus      => "#b1d631",
+    :border_focus  => "#b1d631",
+    :border_normal => "#5d5d5d",                                                                                     
+    :background    => "#3d3d3d"
+  },
+  :blue => {
+    :fg_panel      => "#e2e2e5",
+    :fg_views      => "#e2e2e5",                                                                                    
+    :fg_sublets    => "#000000",                                                                                     
+    :fg_focus      => "#000000",
+    :bg_panel      => "#444444",
+    :bg_views      => "#3d3d3d",
+    :bg_sublets    => "#6699CC",                                                                                    
+    :bg_focus      => "#6699CC",
+    :border_focus  => "#6699CC",
+    :border_normal => "#5d5d5d",                                                                                     
+    :background    => "#3d3d3d"  
+  },
+  :merged => {
+    :fg_panel      => "#5fd7ff",
+    :fg_views      => "#6c6c6c",
+    :fg_sublets    => "#6c6c6c",
+    :fg_focus      => "#5fd7ff",
+    :bg_panel      => "#202020",
+    :bg_views      => "#202020",
+    :bg_sublets    => "#202020",
+    :bg_focus      => "#202020",
+    :border_focus  => "#5fd7ff",
+    :border_normal => "#202020",
+    :background    => "#3d3d3d"
+  },
+  :hornet => {
+    :fg_panel      => "#757575",
+    :fg_views      => "#757575",
+    :fg_sublets    => "#757575",
+    :fg_focus      => "#fecf35",
+    :fg_urgent     => "#FF9800",
+    :bg_panel      => "#202020",
+    :bg_views      => "#202020",
+    :bg_sublets    => "#202020",
+    :bg_focus      => "#202020",
+    :bg_urgent     => "#202020",
+    :border_focus  => "#303030",
+    :border_normal => "#202020",
+    :background    => "#3d3d3d"
+  }
 }
+
+#
+# Colors
+#
+COLORS = THEMES[:hornet]
 
 #
 # Gravities
@@ -121,25 +129,25 @@ GRAVITIES = {
   :bottom_right33 => [ 100, 100,  50,  33 ]
 }  
 
-#
 # Dmenu settings
-#
 @dmenu = "dmenu_run -fn '%s' -nb '%s' -nf '%s' -sb '%s' -sf '%s' -p 'Select:'" % [
   OPTIONS[:font],
   COLORS[:bg_panel], COLORS[:fg_panel], 
   COLORS[:bg_focus], COLORS[:fg_focus]
 ]
 
-def swap_screen(s1, s2)
-  current_view.clients.each do |c|
-    c.screen = (c.screen == s1) ? s2 : s1
-  end
+# Host specific
+host = Socket.gethostname
+
+if("telas" == host)
+  gravkeys = [ "W-q", "W-w", "W-e", "W-a", "W-s", "W-d", "W-y", "W-x", "W-c" ]
+else
+  gravkeys = [ "W-KP_7", "W-KP_8", "W-KP_9", "W-KP_4", "W-KP_5", "W-KP_6", "W-KP_1", "W-KP_2", "W-KP_3" ]
 end
 
 #
 # Grabs
 #
-
 GRABS = {
   "W-1"       => :ViewJump1,
   "W-2"       => :ViewJump2,
@@ -152,13 +160,23 @@ GRABS = {
   "W-F3"      => :ScreenJump3,
   "W-F4"      => :ScreenJump4,
 
+  "W-B1"      => :WindowMove,
+  "W-B2"      => :WindowResize,
+  "W-S-f"     => :WindowFloat,
+  "W-S-space" => :WindowFull,
+  "W-S-s"     => :WindowStick,
+  "W-r"       => :WindowRaise,
+  "W-l"       => :WindowLower,
+  "W-Left"    => :WindowLeft,
+  "W-Down"    => :WindowDown,
+  "W-Up"      => :WindowUp,
+  "W-Right"   => :WindowRight,
+  "W-k"       => :WindowKill,
+
   "W-S-F1"    => :WindowScreen1,
   "W-S-F2"    => :WindowScreen2,
   "W-S-F3"    => :WindowScreen3,
   "W-S-F4"    => :WindowScreen4,
-
-  "W-C-q"     => :SubtleQuit,
-  "W-C-r"     => :SubtleReload,
 
   "W-B1"      => :WindowMove,
   "W-B3"      => :WindowResize,
@@ -173,15 +191,18 @@ GRABS = {
   "W-Right"   => :WindowRight,
   "W-k"       => :WindowKill,
 
-  "W-KP_7"    => [ :top_left,     :top_left66,     :top_left33     ],
-  "W-KP_8"    => [ :top,          :top66,          :top33          ],
-  "W-KP_9"    => [ :top_right,    :top_right66,    :top_right33    ],
-  "W-KP_4"    => [ :left,         :left66,         :left33         ],
-  "W-KP_5"    => [ :center,       :center66,       :center33       ],
-  "W-KP_6"    => [ :right,        :right66,        :right33        ],
-  "W-KP_1"    => [ :bottom_left,  :bottom_left66,  :bottom_left33  ],
-  "W-KP_2"    => [ :bottom,       :bottom66,       :bottom33       ],
-  "W-KP_3"    => [ :bottom_right, :bottom_right66, :bottom_right33 ],
+  gravkeys[0] => [ :top_left,     :top_left66,     :top_left33     ],
+  gravkeys[1] => [ :top,          :top66,          :top33          ],
+  gravkeys[2] => [ :top_right,    :top_right66,    :top_right33    ],
+  gravkeys[3] => [ :left,         :left66,         :left33         ],
+  gravkeys[4] => [ :center,       :center66,       :center33       ],
+  gravkeys[5] => [ :right,        :right66,        :right33        ],
+  gravkeys[6] => [ :bottom_left,  :bottom_left66,  :bottom_left33  ],
+  gravkeys[7] => [ :bottom,       :bottom66,       :bottom33       ],
+  gravkeys[8] => [ :bottom_right, :bottom_right66, :bottom_right33 ],
+
+  "W-C-q"     => :SubtleQuit,
+  "W-C-r"     => :SubtleReload,
 
   "W-b"       => "bashrun",
   "W-u"       => "uzbl",
@@ -189,9 +210,6 @@ GRABS = {
   "W-m"       => "midori",
   "W-g"       => "gvim",
   "W-o"       => @dmenu,
-
-  "W-C-s"     => lambda { swap_screen(0, 1) },
-  "W-y"       => "~/farmville/cnee --replay -f ~/farmville/sell.xns"
 }
 
 #
