@@ -1,209 +1,105 @@
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
-   fun:rb_parser_compile_file
+  Ruby 19 GC
+  Memcheck:Cond
+  fun:mark_locations_array
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:gc_mark
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 GC
+  Memcheck:Cond
+  fun:gc_mark
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 GC
+  Memcheck:Value4
+  fun:gc_mark
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
-   fun:rb_parser_compile_file
+  Ruby 19 GC
+  Memcheck:Value4
+  fun:gc_mark_children
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
-   fun:rb_parser_compile_file
+  Ruby 19 GC
+  Memcheck:Cond
+  fun:gc_mark_children
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:gc_mark
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:onig_compile
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:T.279
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark_children
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:onig_bbuf_init
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark_children
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:realloc
+  fun:ruby_xrealloc
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:gc_mark_children
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:node_newnode
-   fun:gettable_gen
-   fun:ruby_yyparse
-   fun:yycompile0
-   fun:ruby_suppress_tracing
-   fun:yycompile
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:realloc
+  fun:add_bytes
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:iseq_setup
-   fun:rb_iseq_compile_node
-   fun:rb_iseq_new_with_bopt_and_opt
-   fun:new_child_iseq
-   fun:iseq_compile_each
-   fun:rb_iseq_compile_node
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:onig_region_resize
+  ...
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Value4
-   fun:gc_mark_children
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:iseq_setup
-   fun:rb_iseq_compile_node
-   fun:rb_iseq_new_with_bopt_and_opt
-   fun:new_child_iseq
-   fun:iseq_compile_each
-   fun:rb_iseq_compile_node
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:realloc
+  fun:add_bitset
 }
 {
-   Ruby 1.9.1 GC
-   Memcheck:Cond
-   fun:gc_mark_children
-   fun:mark_locations_array
-   fun:mark_current_machine_context
-   fun:garbage_collect
-   fun:rb_newobj
-   fun:rb_node_newnode
-   fun:iseq_setup
-   fun:rb_iseq_compile_node
-   fun:rb_iseq_new_with_bopt_and_opt
-   fun:new_child_iseq
-   fun:iseq_compile_each
-   fun:rb_iseq_compile_node
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:realloc
+  fun:add_opcode
+  ...
 }
-
+{
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:calloc
+  fun:_dl_allocate_tls
+}
+{  
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:onig_alloc_init
+}
+{
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:realloc
+  ...
+  fun:compile_tree
+  ...
+}
