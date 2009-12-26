@@ -45,10 +45,14 @@ SAVEHIST=5000
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u' 
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
 
-# Keys
-bindkey '\ee' edit-command-line
-bindkey '^f' forward-word
-bindkey '^b' backward-word
+# Keys bindings
+bindkey "^e" edit-command-line
+bindkey "^f" forward-word
+bindkey "^b" backward-word
+bindkey "^t" transpose-chars
+bindkey "^q" quote-line
+bindkey "^k" kill-line
+bindkey "^w" delete-word
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[7~" beginning-of-line
@@ -91,6 +95,16 @@ if [ -f /usr/bin/psql ] ; then
 	export PGDATABASE=unexist
 fi
 
+# XDG dirs
+export XDG_DESKTOP_DIR=$HOME
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_TEMPLATES_DIR=$HOME
+export XDG_PUBLICSHARE_DIR=$HOME
+export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_MUSIC_DIR="$HOME/media/music"
+export XDG_PICTURES_DIR="$HOME/images"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
+
 # Update title
 case $TERM in
   xterm*|urxvt*|screen*)
@@ -105,7 +119,12 @@ fi
 
 # Keychain
 if [ -f /usr/bin/keychain ] ; then
-  if [ -f $HOME/.keychain/$HOST-sh ] ; then
-    source $HOME/.keychain/$HOST-sh
+  if ! [ -f $HOME/.keychain/$HOST-sh ] ; then
+    keychain -q --nocolor --nogui id_rsa
   fi
+
+  source $HOME/.keychain/$HOST-sh
 fi
+
+# rvm-install added line:
+if [[ -s /usr/local/rvm/scripts/rvm ]] ; then source /usr/local/rvm/scripts/rvm ; fi
