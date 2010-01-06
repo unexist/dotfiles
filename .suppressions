@@ -29,6 +29,12 @@
   ...
 }
 {
+  Ruby 19 GC
+  Memcheck:Cond
+  fun:st_lookup
+  ...
+}
+{
   Ruby 19 Leak
   Memcheck:Leak
   fun:malloc
@@ -101,5 +107,12 @@
   fun:realloc
   ...
   fun:compile_tree
+  ...
+}
+{
+  Ruby 19 Leak
+  Memcheck:Leak
+  fun:malloc
+  fun:node_new
   ...
 }
