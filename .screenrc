@@ -21,7 +21,7 @@ term screen-256color
 # Keybindings
 bind ~ activity "Activity in %n (%t) [%w:%s]~"
 bind * activity "Activity in %n (%t) [%w:%s]"
-bind s screen -t "su" sudo zsh -l
+bind s screen -t "su" su -
 bind ^h screen -t "ssh:asta" ssh asta.hsnr.de
 bind ^i screen -t "ssh:ingame" ssh portal.ingame.de
 bind ^s screen -t "ssh:stock" ssh stockholm.scrapping.cc
