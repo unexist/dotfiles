@@ -66,7 +66,7 @@ set pastetoggle=<F12>
 " Gui
 if has("gui_running")
   set guioptions=a
-  "set guifont=lucidatypewriter\ 10
+  set guifont=lucidatypewriter\ 10
 endif
 
 " Filetype
