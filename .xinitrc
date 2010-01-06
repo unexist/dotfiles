@@ -26,7 +26,7 @@ fi
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
   xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1
-  #xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1 --primary
+  #xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1
 fi
 
 # Windowmanager
@@ -48,8 +48,8 @@ if [ -e /usr/bin/numlockx ] ; then
 fi
 
 # Cookie daemon
-if [ -e $HOME/bin/cookie_daemon.py ] ; then
-  $HOME/bin/cookie_daemon.py &
-fi
+#if [ -e $HOME/bin/cookie_daemon.py ] ; then
+#  $HOME/bin/cookie_daemon.py &
+#fi
 
 wait $pid

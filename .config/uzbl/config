@@ -1,117 +1,290 @@
-#
-# @file Uzbl config
-#
-# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
-# @version $Id$
-#
+# example uzbl config.
+# all settings are optional.  you can use uzbl without any config at all (but it won't do much)
 
-# Appearence
-set status_format       = <span font="Snap 10"><span background="#6699CC" foreground="#000000">MODE</span> <span foreground="#6699CC">KEYCMD</span> <span foreground="#6699CC"> LOAD_PROGRESSBAR </span><span foreground="#6699CC">URI</span></span>
-set status_background   = #3d3d3d
-set status_top          = 0
-set status_pbar_done    = =
-set status_pbar_pending = -
-set status_pbar_width   = 8
+# === Shortcuts ==============================================================
 
-#set title_format_short = TITLE + SELECTED_URI - uzbl
-#set title_format_long = KEYCMD MODE TITLE - uzbl
+# request BIND <keycmd> = <command>
+set bind           = request BIND
+# request MODE_CONFIG <mode> <key> = <value
+set mode_config    = request MODE_CONFIG
+# request TOGGLE_MODES <mode1> <mode2> ... <moden>
+set toggle_modes   = request TOGGLE_MODES
+# request ON_EVENT <EVENT_NAME> <command>
+set on_event       = request ON_EVENT
+# request PROGRESS_CONFIG <key> = <value>
+set progress       = request PROGRESS_CONFIG
+# request MODMAP From To
+set modmap         = request MODMAP
 
-# Behaviour
-set show_status        = 0
-set always_insert_mode = 0
-set modkey             = Mod1
-set shell_cmd          = zsh -c
-set reset_command_mode = 1
+set set_mode       = set mode =
+set set_status     = set status_message =
+set shell_cmd      = sh -c
 
-# Webkit
-set autoload_images       = 1
-set autoshrink_images     = 1
-set minimum_font_size     = 6
-set font_size             = 12
-set monospace_size        = 12
-set default_encoding      = utf-8
-set enforce_96_dpi        = 0
-set disable_plugins       = 0
-set disable_scripts       = 0
-set enable_spellchecker   = 1
-set enable_private        = 0
-set resizeable_text_areas = 1
-set print_background      = 0
-set useragent             = Uzbl [ Webkit WEBKIT_MAJOR.WEBKIT_MINOR.WEBKIT_MICRO ]
-set uri                   = file:///home/unexist/.local/share/uzbl/bookmarks.html
+# Spawn path shortcuts. In spawn the first dir+path match is used in "dir1:dir2:dir3:executable"
+set scripts_dir    = $XDG_DATA_HOME/uzbl:/usr/local/share/uzbl/examples/data/uzbl:scripts
 
-# Interface
-set fifo_dir   = /tmp
-set socket_dir = /tmp
 
-# Network
-set proxy_url  = http://127.0.0.1:8118
+# === Handlers ===============================================================
 
-# Handler
-set cookie_handler = talk_to_socket $XDG_CACHE_HOME/uzbl/cookie_daemon_socket
-set download_handler = spawn $HOME/bin/download.rb
+set download_handler   = spawn @scripts_dir/download.sh
+set cookie_handler     = talk_to_socket $XDG_CACHE_HOME/uzbl/cookie_daemon_socket
+set scheme_handler     = sync_spawn @scripts_dir/scheme.py
 
-# Browser Control
-bind b  = back
-bind i  = toggle_insert_mode
-bind m  = forward
-bind S  = stop
-bind r  = reload
-bind R  = reload_ign_cache
-bind T  = toggle_status
-bind ZZ = exit
+# New window handler options
+#set new_window        = sh 'echo uri "$8" > $4' # open in same window
+set new_window         = sh 'uzbl-browser -u $8' # equivalent to the default behaviour
 
-# Scrolling
-bind gg = scroll_begin
-bind G  = scroll_end
-bind h  = scroll_horz -200
-bind j  = scroll_vert 200
-bind J  = scroll_vert 95%
-bind k  = scroll_vert -200
-bind K  = scroll_vert -95%
-bind l  = scroll_horz 200
+# Load start handlers
+@on_event   LOAD_START     @set_status <span foreground="khaki">wait</span>
 
-# Searching
-bind /_ = search %s
-bind ?_ = search_reverse %s
-bind n  = search
-bind N  = search_reverse
+# Load commit handler
+@on_event   LOAD_COMMIT    @set_status <span foreground="green">recv</span>
 
-# Miscellaneous
-bind +  = zoom_in
-bind -  = zoom_out
-bind '_ = runcmd %s
+# Load finish handlers
+@on_event   LOAD_FINISH    @set_status <span foreground="gold">done</span>
+@on_event   LOAD_FINISH    spawn @scripts_dir/history.sh
 
-# Spawn
-bind :d_ = spawn uzbl -u http://www.dict.cc/?s=%s
-bind :g_ = spawn uzbl -u http://www.google.com/search?q=%s
-bind :o_ = spawn uzbl -u %s
+# Generate a FORM_ACTIVE event if an editable
+# element on the loaded site has initial focus
+@on_event   LOAD_FINISH    js if(document.activeElement.type == 'text') {Uzbl.run("event FORM_ACTIVE");}
 
-# Bookmarks
-bind ;a_ = spawn $HOME/bin/keywordBm.py add "%s"
-bind ;g_ = spawn $HOME/bin/keywordBm.py get "%s"
-bind ;o_ = spawn $HOME/bin/keywordBm.py open "%s"
-bind ;b  = uri file:///home/unexist/.local/share/uzbl/bookmarks.html
+# Switch to insert mode if a (editable) html form is clicked
+@on_event   FORM_ACTIVE    @set_mode insert
+# Switch to command mode if anything else is clicked
+@on_event   ROOT_ACTIVE    @set_mode command
 
-# Uri
-bind a  = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
-bind B  = uri http://delicious.com/tags/unixist
-bind d_ = uri http://www.dict.cc/?s=%s
-bind D_ = uri http://de.wikipedia.org/wiki/Special:Search?search=%s
-bind e  = uri http://www.eqqon.com/index.php/Ruby_C_Extension
-bind E_ = uri http://en.wikipedia.org/wiki/Special:Search?search=%s
-bind g_ = uri http://www.google.com/search?q=%s
-bind I_ = uri http://www.imdb.com/find?s=all&q=%s
-bind o_ = uri %s
-bind M  = uri http://mail.zoho.com
-bind q  = uri http://www.zenspider.com/Languages/Ruby/QuickRef.html
-bind r_ = uri http://apidock.com/rails/search?query=%s&commit=Search
-bind R_ = uri http://apidock.com/ruby/search?query=%s&commit=Search
-bind s  = uri http://www.sparkasse-duisburg.de
-bind u  = uri http://unexist.scrapping.cc/
-bind U  = uri http://www.uzbl.org
-bind x  = uri http://tronche.com/gui/x/xlib/function-index.html
+# Misc on_event handlers
+#@on_event  CONFIG_CHANGED print Config changed: %1 = %2
 
-# Shell
-bind y  = sh "echo -n $6 | xclip"
-bind Y  = sh "echo -n \"$7 ($6)\" | xclip"
+
+# === Behaviour and appearance ===============================================
+
+set show_status       = 1
+set status_top        = 0
+set status_background = #303030
+
+set modcmd_style      = weight="bold" foreground="red"
+set keycmd_style      = weight="light" foreground="red"
+set prompt_style      = foreground="grey"
+set cursor_style      = underline="single"
+
+set mode_section      = <span background="khaki" foreground="black">[\@[\@mode_indicator]\@]</span>
+set keycmd_section    = [<span \@prompt_style>\@[\@keycmd_prompt]\@</span><span \@modcmd_style>\@modcmd</span><span \@keycmd_style>\@keycmd</span>]
+set progress_section  = <span foreground="#606060">\@[\@progress_format]\@</span>
+set uri_section       = <span foreground="#99FF66">\@[\@uri]\@</span>
+set name_section      = <span foreground="khaki">\@[\@NAME]\@</span>
+set status_section    = <span foreground="orange">\@status_message</span>
+set selected_section  = <span foreground="#606060">\@[\@SELECTED_URI]\@</span>
+
+set status_format     = <span font_family="monospace">@mode_section @keycmd_section @progress_section @uri_section @name_section @status_section @selected_section</span>
+
+# Progress bar config
+@progress width    = 8
+# %d = done, %p = pending %c = percent done, %i = int done, %s = spinner,
+# %t = percent pending, %o = int pending, %r = sprite scroll
+@progress format   = [%d>%p]%c
+@progress done     = =
+@progress pending  =
+
+# Or ride those spinnas'
+#@progress format   = [%d%s%p]
+#@progress spinner  = -\\|/
+#@progress done     = -
+#@progress pending  =
+
+
+# === Core settings ==========================================================
+
+set useragent         = Uzbl (Webkit @WEBKIT_MAJOR.@WEBKIT_MINOR.@WEBKIT_MICRO) (@(uname -o)@ @(uname -m)@ [@ARCH_UZBL]) (Commit @COMMIT)
+set fifo_dir          = /tmp
+set socket_dir        = /tmp
+
+
+# === Binding modmaps ========================================================
+
+#modmap from           to
+@modmap Control        Ctrl
+@modmap ISO_Left_Tab   Shift-Tab
+@modmap space          Space
+
+
+# === Keyboard bindings ======================================================
+
+# With this command you can enter in any command at runtime when prefixed with
+# a colon.
+@bind    :_        = chain '%s'
+
+@bind    j         = scroll_vert 20
+@bind    k         = scroll_vert -20
+@bind    h         = scroll_horz -20
+@bind    l         = scroll_horz 20
+@bind    <<        = scroll_begin
+@bind    >>        = scroll_end
+@bind    b         = back
+@bind    m         = forward
+@bind    S         = stop
+@bind    r         = reload
+@bind    R         = reload_ign_cache
+@bind    +         = zoom_in
+@bind    -         = zoom_out
+@bind    T         = toggle_zoom_type
+@bind    1         = sh "echo set zoom_level = 1.0 > $4"
+@bind    2         = sh "echo set zoom_level = 2.0 > $4"
+@bind    t         = toggle_status
+@bind    /*        = search %s
+@bind    ?*        = search_reverse %s
+#jump to next
+@bind    n         = search
+@bind    N         = search_reverse
+@bind    gh        = uri http://www.uzbl.org
+# shortcut to set variables
+@bind    s _       = set %s
+@bind    \wiki _   = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
+@bind    gg _      = uri http://www.google.com/search?q=%s
+# Enclose the executable in quotes if it has spaces.  Any additional parameters you use will
+# appear AFTER the default parameters
+# use a script to insert bookmarks. or use the EM/keycmd technique a bit further down
+@bind    B         = spawn @scripts_dir/insert_bookmark.sh
+@bind    U         = spawn @scripts_dir/load_url_from_history.sh
+@bind    u         = spawn @scripts_dir/load_url_from_bookmarks.sh
+# with the sample yank script, you can yank one of the arguments into clipboard/selection
+@bind    yurl      = spawn @scripts_dir/yank.sh 6 primary
+@bind    ytitle    = spawn @scripts_dir/yank.sh 7 clipboard
+# does the same as yurl but without needing a script
+@bind    y2url     = sh 'echo -n $6 | xclip'
+# go the page from primary selection
+@bind    p         = sh 'echo "uri `xclip -selection primary -o`" > $4'
+# go to the page in clipboard
+@bind    P         = sh 'echo "uri `xclip -selection clipboard -o`" > $4'
+# start a new uzbl instance from the page in primary selection
+@bind    'p        = sh 'exec uzbl --uri $(xclip -o)'
+@bind    ZZ        = exit
+@bind    Xs        = js alert("hi");
+# example showing how to use sh
+# it sends a command to the fifo, whose path is told via a positional param
+# if fifo_dir is not set, it'll echo to a file named (null) somewhere >:) remember to delete it
+# The body of the shell command should be one parameter, so if it has spaces like here,
+# you must enclose it in quotes.  Remember to escape (and double-escape) quotes and backslashes
+# in the body.  Any additional parameters you use will appear AFTER the default parameters (cfg file
+# path, fifo & socket dirs, etc.)
+@bind    XS        = sh 'echo "js alert (\\"This is sent by the shell via a fifo\\")" > "$4"'
+
+@bind    !dump     = sh "echo dump_config > $4"
+@bind    !reload   = sh "sed '/^# === Post-load misc commands/,$d' $1 > $4"
+
+# this script allows you to configure (per domain) values to fill in form fields (eg login information) and to fill in these values automatically
+set formfiller = spawn @scripts_dir/formfiller
+@bind    za        = @{formfiller}.sh
+@bind    ze        = @{formfiller}.sh edit
+@bind    zn        = @{formfiller}.sh new
+@bind    zl        = @{formfiller}.sh load
+
+# Or the more advanced implementation using perl: (could not get this to run - Dieter)
+@bind    LL        = @{formfiller}.pl load
+@bind    LN        = @{formfiller}.pl new
+@bind    LE        = @{formfiller}.pl edit
+
+# we ship some javascripts to do keyboard based link hinting/following.  (webkit does not have C DOM bindings yet)
+# this is similar to how it works in vimperator (and konqueror)
+# TODO: did we resolve: "no click() event for hyperlinks so no referrer set" ?
+#hit F to toggle the Hints (now in form of link numbering)
+@bind    F         = script @scripts_dir/hint.js
+# the most stable version:
+@bind    fl*       = script @scripts_dir/follow_Numbers.js %s
+# using strings, not polished yet:
+@bind    fL*       = script @scripts_dir/follow_Numbers_Strings.js %s
+
+
+# Examples using multi-stage-bindings with text prompts.
+@bind o<uri:>_ = uri %s
+@bind O<uri:\@uri>_ = uri %s
+
+# multi-stage binding way to write bookmarks to file from inside uzbl.
+@bind <Ctrl>b<tags:>_ = sh 'echo -e "$6 %s" >> $XDG_DATA_HOME/uzbl/bookmarks'
+
+# Multi-stage bindings with blank prompts (similar behaviour to emacs M-c M-s bindings?)
+@bind <Ctrl>a<:><Ctrl>q = exit
+@bind <Ctrl>a<:><Ctrl>h = uri http://uzbl.org/
+
+# Inject handy values into the keycmd.
+@bind <Ctrl>su = event INJECT_KEYCMD \@uri
+@bind <Ctrl>st = event INJECT_KEYCMD \@TITLE
+# Or append.
+@bind <Ctrl>du = event APPEND_KEYCMD \@uri
+@bind <Ctrl>dt = event APPEND_KEYCMD \@TITLE
+
+
+# === command editing configuration ==========================================
+
+# you'll want this at the very least
+@bind <Return>       = event KEYCMD_EXEC_CURRENT
+@bind <Escape>       = @set_mode
+
+# basic searching
+@bind <Home>         = event SET_CURSOR_POS 0
+@bind <End>          = event SET_CURSOR_POS -1
+@bind <Left>         = event SET_CURSOR_POS -
+@bind <Right>        = event SET_CURSOR_POS +
+@bind <BackSpace>    = event KEYCMD_BACKSPACE
+@bind <Delete>       = event KEYCMD_DELETE
+
+# readline-ish bindings
+@bind <Ctrl>w      = event KEYCMD_STRIP_WORD
+@bind <Ctrl>u      = event SET_KEYCMD
+@bind <Ctrl>a      = event SET_CURSOR_POS 0
+@bind <Ctrl>e      = event SET_CURSOR_POS -1
+
+
+# === Context menu items =====================================================
+
+# Default context menu
+menu_add Google = set uri = http://google.com
+menu_add Go Home = set uri = http://uzbl.org
+menu_separator separator_1
+menu_add Quit uzbl = exit
+
+# Link context menu
+menu_link_add Print Link = print \@SELECTED_URI
+
+
+# === Mode configuration =====================================================
+
+# Define some mode specific uzbl configurations.
+set command  = @mode_config command
+set insert   = @mode_config insert
+set stack    = @mode_config stack
+
+# Command mode config.
+@command  keycmd_style        = foreground="red"
+@command  status_background   = #202020
+@command  mode_indicator      = Cmd
+
+# Insert mode config.
+@insert   status_background   = #303030
+@insert   mode_indicator      = Ins
+
+# Multi-stage-binding mode config.
+@stack    keycmd_events       = 1
+@stack    modcmd_updates      = 1
+@stack    keycmd_style        = foreground="red"
+@stack    prompt_style        = foreground="#888" weight="light"
+@stack    status_background   = #202020
+@stack    mode_indicator      = Bnd
+
+set default_mode = command
+
+# Mode bindings:
+# Changing mode method via set.
+@bind I = @set_mode insert
+
+# Or toggle between modes by rasing request events.
+set toggle_cmd_ins = @toggle_modes command insert
+
+@bind i        = @toggle_cmd_ins
+@bind <Ctrl><i>  = @toggle_cmd_ins
+
+
+# === Post-load misc commands  ===============================================
+
+# Set the "home" page.
+set uri = uzbl.org

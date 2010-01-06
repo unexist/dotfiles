@@ -203,6 +203,7 @@ GRABS = {
 
   "W-C-q"     => :SubtleQuit,
   "W-C-r"     => :SubtleReload,
+  "W-C-s"     => :SubletsReload,
 
   "W-b"       => "bashrun",
   "W-u"       => "uzbl",
