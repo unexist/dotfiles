@@ -99,7 +99,7 @@ fi
 
 # Mplayer
 if [ -f /usr/bin/mplayer ] ; then
-  alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif -autosync"
+  alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
 fi
 
 # xrandr
