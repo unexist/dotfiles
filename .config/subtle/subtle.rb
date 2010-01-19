@@ -139,7 +139,7 @@ GRAVITIES = {
 # Host specific
 host = Socket.gethostname
 
-if("telas" == host)
+if("telas" == host || "mockra" == host)
   gravkeys = [ "W-q", "W-w", "W-e", "W-a", "W-s", "W-d", "W-y", "W-x", "W-c" ]
 else
   gravkeys = [ "W-KP_7", "W-KP_8", "W-KP_9", "W-KP_4", "W-KP_5", "W-KP_6", "W-KP_1", "W-KP_2", "W-KP_3" ]
@@ -221,8 +221,9 @@ TAGS = {
   "void"    => { :regex => "jd-main|gimp|virtual", :gravity => :center, :screen => 1 },
   "terms"   => { :regex => "xterm", :gravity => :center, :screen => 1 },
   "browser" => { :regex => "navigator|shiretoko|uzbl|midori", :gravity => :center, :screen => 1 },
+  "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
-  "stick"   => { :regex => "mplayer|apvlv|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
+  "stick"   => { :regex => "mplayer|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
   "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
   "eight"   => { :regex => "urxvt1", :gravity => :top, :screen => 0 },
   "two"     => { :regex => "urxvt2", :gravity => :bottom, :screen => 0 },
