@@ -151,29 +151,29 @@ syn match cFoldSpec	'}}}\d\+'
 " highlighting: {{{1
 hi link cCurlyError		cError
 hi link cBracketError	cError
-if &bg == "dark"
- hi default   hlLevel0 ctermfg=red         guifg=red1
- hi default   hlLevel1 ctermfg=yellow      guifg=orange1      
- hi default   hlLevel2 ctermfg=green       guifg=yellow1      
- hi default   hlLevel3 ctermfg=cyan        guifg=gold
- hi default   hlLevel4 ctermfg=magenta     guifg=hotpink
- hi default   hlLevel5 ctermfg=red         guifg=PeachPuff1
- hi default   hlLevel6 ctermfg=yellow      guifg=cyan1        
- hi default   hlLevel7 ctermfg=green       guifg=slateblue1   
- hi default   hlLevel8 ctermfg=cyan        guifg=magenta1     
- hi default   hlLevel9 ctermfg=magenta     guifg=purple1
-else
- hi default   hlLevel0 ctermfg=red         guifg=red3
- hi default   hlLevel1 ctermfg=darkyellow  guifg=orangered3
- hi default   hlLevel2 ctermfg=darkgreen   guifg=orange2
- hi default   hlLevel3 ctermfg=blue        guifg=yellow3
- hi default   hlLevel4 ctermfg=darkmagenta guifg=olivedrab4
- hi default   hlLevel5 ctermfg=red         guifg=green4
- hi default   hlLevel6 ctermfg=darkyellow  guifg=paleturquoise3
- hi default   hlLevel7 ctermfg=darkgreen   guifg=deepskyblue4
- hi default   hlLevel8 ctermfg=blue        guifg=darkslateblue
- hi default   hlLevel9 ctermfg=darkmagenta guifg=darkviolet
-endif
+"if &bg == "dark"
+" hi default   hlLevel0 ctermfg=red         guifg=red1
+" hi default   hlLevel1 ctermfg=yellow      guifg=orange1      
+" hi default   hlLevel2 ctermfg=green       guifg=yellow1      
+" hi default   hlLevel3 ctermfg=cyan        guifg=gold
+" hi default   hlLevel4 ctermfg=magenta     guifg=hotpink
+" hi default   hlLevel5 ctermfg=red         guifg=PeachPuff1
+" hi default   hlLevel6 ctermfg=yellow      guifg=cyan1        
+" hi default   hlLevel7 ctermfg=green       guifg=slateblue1   
+" hi default   hlLevel8 ctermfg=cyan        guifg=magenta1     
+" hi default   hlLevel9 ctermfg=magenta     guifg=purple1
+"else
+" hi default   hlLevel0 ctermfg=red         guifg=red3
+" hi default   hlLevel1 ctermfg=darkyellow  guifg=orangered3
+" hi default   hlLevel2 ctermfg=darkgreen   guifg=orange2
+" hi default   hlLevel3 ctermfg=blue        guifg=yellow3
+" hi default   hlLevel4 ctermfg=darkmagenta guifg=olivedrab4
+" hi default   hlLevel5 ctermfg=red         guifg=green4
+" hi default   hlLevel6 ctermfg=darkyellow  guifg=paleturquoise3
+" hi default   hlLevel7 ctermfg=darkgreen   guifg=deepskyblue4
+" hi default   hlLevel8 ctermfg=blue        guifg=darkslateblue
+" hi default   hlLevel9 ctermfg=darkmagenta guifg=darkviolet
+"endif
 
 " ---------------------------------------------------------------------
 "  Modelines: {{{1
