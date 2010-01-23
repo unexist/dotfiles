@@ -88,13 +88,28 @@ THEMES = {
     :border_focus  => "#303030",
     :border_normal => "#202020",
     :background    => "#3d3d3d"
+  },
+  :digerati => {
+    :fg_panel      => "#757575",
+    :fg_views      => "#757575",
+    :fg_sublets    => "#757575",
+    :fg_focus      => "#cdff00",
+    :fg_urgent     => "#ff3b77",
+    :bg_panel      => "#202020",
+    :bg_views      => "#202020",
+    :bg_sublets    => "#202020",
+    :bg_focus      => "#202020",
+    :bg_urgent     => "#202020",
+    :border_focus  => "#303030",
+    :border_normal => "#202020",
+    :background    => "#3d3d3d"
   }
 }
 
 #
 # Colors
 #
-COLORS = THEMES[:hornet]
+COLORS = THEMES[:digerati]
 
 #
 # Gravities
@@ -231,7 +246,7 @@ TAGS = {
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
   "bashrun" => { :regex => "bashrun", :geometry => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 },
   "sakura"  => { :regex => "sakura", :resize => true },
-  "python"  => { :regex => "python", :float => true, :stick => true }
+  "misc"    => { :regex => "subtly|python", :float => true, :stick => true }
 }  
 
 #

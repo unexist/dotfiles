@@ -16,24 +16,41 @@
 # DarkCyan    = color6 + Cyan     = color14
 # LightGrey   = color7 + White    = color15
 
-# Hornet
+# Digerati
 *color0:  #303030
 *color1:  #c03000
 *color2:  #b1d631
 *color3:  #fecf35
-*color4:  #4b5661
-*color5:  #7e8aa2
+*color4:  #426870
+*color5:  #6D506D
 *color6:  #4bb5c1
 *color7:  #e2e2e5
-*color8:  #303030
-*color8:  #c03000
-*color10: #b1d631
-*color11: #fecf35
-*color12: #4b5661
-*color13: #7e8aa2
+*color8:  #5F5F5F
+*color9:  #FF3A78
+*color10: #A6CD07
+*color11: #B5C865
+*color12: #4A7781
+*color13: #FF3B77
 *color14: #4bb5c1
 *color15: #e2e2e5
 
+# Hornet
+#*color0:  #303030
+#*color1:  #c03000
+#*color2:  #b1d631
+#*color3:  #fecf35
+#*color4:  #4b5661
+#*color5:  #7e8aa2
+#*color6:  #4bb5c1
+#*color7:  #e2e2e5
+#*color8:  #303030
+#*color9:  #c03000
+#*color10: #b1d631
+#*color11: #fecf35
+#*color12: #4b5661
+#*color13: #7e8aa2
+#*color14: #4bb5c1
+#*color15: #e2e2e5
 
 # Merged
 #*color0:  #000000
@@ -45,7 +62,6 @@
 #*color6:  #698FB2
 #*color7:  #8f8f8f
 #*color8:  #3c414c
-
 #*color9:  #CF6171
 #*color10: #A8FF60
 #*color11: #FFFFB6
