@@ -1,7 +1,6 @@
 #
 # @file ncmpcpp config
-#
-# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -58,7 +57,7 @@
 #song_window_title_format = "{%a - }{%t}|{%f}"
 
 ##### columns settings #####
-song_columns_list_format = "(6)[green]{l} (6)[magenta]{y} (20)[red]{a} (34)[yellow]{b} (34)[red]{t}"
+song_columns_list_format = "(6)[green]{l} (10)[blue]{y} (20)[blue]{a} (34)[red]{b} (34)[magenta]{t}"
 
 ##### various settings #####
 #execute_on_song_change = ""
