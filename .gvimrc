@@ -1,8 +1,8 @@
 "
 " @file Vim config
 "
-" @copyright (c) 2008-2009, Christoph Kappel <unexist@dorfelite.net>
+" @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>
 " @version $Id$
 "
 
-colorscheme hornet
+colorscheme digerati

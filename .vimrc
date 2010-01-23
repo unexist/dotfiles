@@ -1,7 +1,7 @@
 "
 " @file Vim config
 "
-" @copyright (c) 2008-2009, Christoph Kappel <unexist@dorfelite.net>
+" @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>
 " @version $Id$
 "
 
@@ -39,10 +39,10 @@ syntax on
 
 " Colorscheme
 if &t_Co < 256
-  colorscheme default
+ colorscheme default
 else
-  colorscheme hornet
-endif
+ colorscheme hornet
+endif 
 
 " Commandline
 if has("cmdline_info")
@@ -53,6 +53,10 @@ endif
 " Maps
 map <F2> <Esc>:browse confirm e<CR>
 map <F3> <Esc>:NERDTreeToggle<CR>
+map <F9> <ESC>:so $VIMRUNTIME/syntax/hitest.vim<CR>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 map <F11> <Esc>:syntax sync fromstart<CR>
 
 " Qname
