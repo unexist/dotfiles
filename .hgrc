@@ -5,6 +5,7 @@ username = unexist
 [extensions]
 hgext.keyword =
 hgext.mq =
+hgext.graphlog =
 
 [keyword]
 **.* =
