@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2010, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -18,6 +18,8 @@ zle -N edit-command-line
 compinit
 compdef -d hg # Disable slow completion for mercurial
 compdef -d grep
+compdef -d mplayer
+compdef -d chmod
 
 # Options
 setopt correct
@@ -32,7 +34,6 @@ setopt auto_pushd
 setopt multios
 setopt short_loops
 setopt listpacked
-setopt completeinword
 setopt pushd_ignore_dups
 #setopt share_history
 
@@ -65,6 +66,9 @@ bindkey "\e[3~" delete-char
 #zle -N search-backwords
 #bindkey "^R" search-backwords
 bindkey "^R" history-incremental-search-backward
+
+# Man
+vman() { /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' - }
 
 # Prompt
 if [ "$USER" = "root" ] ; then
