@@ -48,7 +48,7 @@ termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
 
 # Status
 #caption always "%{= .w}%?%-Lw%?%{+b .c}%n*%t%f %?(%u)%?%{= .w}%?%+Lw%?"
-hardstatus alwayslastline "%{= w}%-w%{= y} %n %t %{-}%+w %-="
+hardstatus alwayslastline "%{= w}%-w%{= g} %n %t %{-}%+w %-="
 
 # all termcap entries are now duplicated as terminfo entries.
 # only difference should be the slightly modified syntax, and check for
