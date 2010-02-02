@@ -234,7 +234,7 @@ GRABS = {
 TAGS = {
   "test"    => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
   "void"    => { :regex => "jd-main|gimp|virtual", :gravity => :center, :screen => 1 },
-  "terms"   => { :regex => "xterm", :gravity => :center, :screen => 1 },
+  "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
   "browser" => { :regex => "navigator|shiretoko|uzbl|midori", :gravity => :center, :screen => 1 },
   "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
