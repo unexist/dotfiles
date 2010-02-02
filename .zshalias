@@ -28,6 +28,7 @@ alias mv='mv -i'
 alias ssh_blade="ssh -X kappel@194.94.121.187"
 alias ssh_head="ssh -X -p 11000 root@194.94.121.187"
 alias ssh_front="ssh -X kappel@194.94.121.248"
+alias ssh_work="ssh -X kappel@194.94.121.112"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
