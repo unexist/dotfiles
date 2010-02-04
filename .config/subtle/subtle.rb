@@ -154,7 +154,7 @@ GRAVITIES = {
 # Host specific
 host = Socket.gethostname
 
-if("telas" == host || "mockra" == host)
+if("telas" == host || "mockra" == host || "test" == host)
   gravkeys = [ "W-q", "W-w", "W-e", "W-a", "W-s", "W-d", "W-y", "W-x", "W-c" ]
 else
   gravkeys = [ "W-KP_7", "W-KP_8", "W-KP_9", "W-KP_4", "W-KP_5", "W-KP_6", "W-KP_1", "W-KP_2", "W-KP_3" ]
