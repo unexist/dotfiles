@@ -152,59 +152,63 @@ GRAVITIES = {
 ]
 
 # Host specific
-host = Socket.gethostname
+host     = Socket.gethostname
+modkey   = "W"
+gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if("telas" == host || "mockra" == host || "test" == host)
-  gravkeys = [ "W-q", "W-w", "W-e", "W-a", "W-s", "W-d", "W-y", "W-x", "W-c" ]
-else
-  gravkeys = [ "W-KP_7", "W-KP_8", "W-KP_9", "W-KP_4", "W-KP_5", "W-KP_6", "W-KP_1", "W-KP_2", "W-KP_3" ]
+if("telas" == host || "mockra" == host)
+  gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
+elsif("test" == host)
+  modkey = "A"
 end
+
+gravkeys.map! { |g| "#{modkey}-#{g}" }
 
 #
 # Grabs
 #
 GRABS = {
-  "W-1"       => :ViewJump1,
-  "W-2"       => :ViewJump2,
-  "W-3"       => :ViewJump3,
-  "W-4"       => :ViewJump4,
-  "W-5"       => :ViewJump5,
+  "1"       => :ViewJump1,
+  "2"       => :ViewJump2,
+  "3"       => :ViewJump3,
+  "4"       => :ViewJump4,
+  "5"       => :ViewJump5,
 
-  "W-F1"      => :ScreenJump1,
-  "W-F2"      => :ScreenJump2,
-  "W-F3"      => :ScreenJump3,
-  "W-F4"      => :ScreenJump4,
+  "F1"      => :ScreenJump1,
+  "F2"      => :ScreenJump2,
+  "F3"      => :ScreenJump3,
+  "F4"      => :ScreenJump4,
 
-  "W-B1"      => :WindowMove,
-  "W-B2"      => :WindowResize,
-  "W-S-f"     => :WindowFloat,
-  "W-S-space" => :WindowFull,
-  "W-S-s"     => :WindowStick,
-  "W-r"       => :WindowRaise,
-  "W-l"       => :WindowLower,
-  "W-Left"    => :WindowLeft,
-  "W-Down"    => :WindowDown,
-  "W-Up"      => :WindowUp,
-  "W-Right"   => :WindowRight,
-  "W-k"       => :WindowKill,
+  "B1"      => :WindowMove,
+  "B2"      => :WindowResize,
+  "S-f"     => :WindowFloat,
+  "S-space" => :WindowFull,
+  "S-s"     => :WindowStick,
+  "r"       => :WindowRaise,
+  "l"       => :WindowLower,
+  "Left"    => :WindowLeft,
+  "Down"    => :WindowDown,
+  "Up"      => :WindowUp,
+  "Right"   => :WindowRight,
+  "k"       => :WindowKill,
 
-  "W-S-F1"    => :WindowScreen1,
-  "W-S-F2"    => :WindowScreen2,
-  "W-S-F3"    => :WindowScreen3,
-  "W-S-F4"    => :WindowScreen4,
+  "S-F1"    => :WindowScreen1,
+  "S-F2"    => :WindowScreen2,
+  "S-F3"    => :WindowScreen3,
+  "S-F4"    => :WindowScreen4,
 
-  "W-B1"      => :WindowMove,
-  "W-B3"      => :WindowResize,
-  "W-S-f"     => :WindowFloat,
-  "W-S-space" => :WindowFull,
-  "W-S-s"     => :WindowStick,
-  "W-r"       => :WindowRaise,
-  "W-l"       => :WindowLower,
-  "W-Left"    => :WindowLeft,
-  "W-Down"    => :WindowDown,
-  "W-Up"      => :WindowUp,
-  "W-Right"   => :WindowRight,
-  "W-k"       => :WindowKill,
+  "B1"      => :WindowMove,
+  "B3"      => :WindowResize,
+  "S-f"     => :WindowFloat,
+  "S-space" => :WindowFull,
+  "S-s"     => :WindowStick,
+  "r"       => :WindowRaise,
+  "l"       => :WindowLower,
+  "Left"    => :WindowLeft,
+  "Down"    => :WindowDown,
+  "Up"      => :WindowUp,
+  "Right"   => :WindowRight,
+  "k"       => :WindowKill,
 
   gravkeys[0] => [ :top_left,     :top_left66,     :top_left33     ],
   gravkeys[1] => [ :top,          :top66,          :top33          ],
@@ -216,17 +220,17 @@ GRABS = {
   gravkeys[7] => [ :bottom,       :bottom66,       :bottom33       ],
   gravkeys[8] => [ :bottom_right, :bottom_right66, :bottom_right33 ],
 
-  "W-C-q"     => :SubtleQuit,
-  "W-C-r"     => :SubtleReload,
-  "W-C-s"     => :SubletsReload,
+  "C-q"     => :SubtleQuit,
+  "C-r"     => :SubtleReload,
+  "C-s"     => :SubletsReload,
 
-  "W-b"       => "bashrun",
-  "W-u"       => "uzbl",
-  "W-Return"  => "urxvt",
-  "W-m"       => "midori",
-  "W-g"       => "gvim",
-  "W-o"       => @dmenu,
-}
+  "b"       => "bashrun",
+  "u"       => "uzbl",
+  "Return"  => "urxvt",
+  "m"       => "midori",
+  "g"       => "gvim",
+  "o"       => @dmenu,
+}.inject({}) { |h, (k,v)| h["#{modkey}-#{k}"] = v; h }
 
 #
 # Tags
