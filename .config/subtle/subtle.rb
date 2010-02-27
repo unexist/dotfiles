@@ -14,6 +14,7 @@ OPTIONS = {
   :border  => 2,
   :step    => 5,
   :snap    => 10,
+  :limit   => 1,
   :gravity => :center,
   :urgent  => false,
   :resize  => false,
@@ -244,13 +245,13 @@ TAGS = {
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
   "stick"   => { :regex => "mplayer|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
   "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
-  "eight"   => { :regex => "urxvt1", :gravity => :top, :screen => 0 },
-  "two"     => { :regex => "urxvt2", :gravity => :bottom, :screen => 0 },
-  "seven"   => { :regex => "urxvt1", :gravity => :top_left, :screen => 0 },
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
+  "two"     => { :regex => "urxvt2", :gravity => :bottom, :screen => 0 },
+  "six"     => { :regex => "navigator", :gravity => :right, :screen => 0 },
+  "seven"   => { :regex => "urxvt1", :gravity => :top_left, :screen => 0 },
+  "eight"   => { :regex => "urxvt1", :gravity => :top, :screen => 0 },
   "bashrun" => { :regex => "bashrun", :geometry => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 },
-  "sakura"  => { :regex => "sakura", :resize => true },
-  "misc"    => { :regex => "subtly|python", :float => true, :stick => true }
+  "misc"    => { :regex => "subtly|python|gtk.rb", :float => true, :stick => true }
 }  
 
 #
@@ -260,7 +261,7 @@ VIEWS = [
   { "terms"  => "eight|two|terms" },
   { "www"    => "eight|two|browser" },
   { "void"   => "eight|two|default|void" },
-  { "editor" => "seven|one|test|editor" }
+  { "editor" => "seven|one|six|test|editor" }
 #  { "terms"  => "seven|one|terms|test" },
 #  { "www"    => "browser" },
 #  { "void"   => "default|void" },
