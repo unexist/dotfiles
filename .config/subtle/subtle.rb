@@ -19,7 +19,8 @@ OPTIONS = {
   :urgent  => false,
   :resize  => false,
   :padding => [ 0, 0, 0, 0 ],
-  :font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
+  #:font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
+  :font    => "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 }
 
 #
@@ -240,7 +241,7 @@ TAGS = {
   "test"    => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
   "void"    => { :regex => "jd-main|gimp|virtual", :gravity => :center, :screen => 1 },
   "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
-  "browser" => { :regex => "navigator|shiretoko|uzbl|midori", :gravity => :center, :screen => 1 },
+  "browser" => { :regex => "navigator|shiretoko|namoroka|midori", :gravity => :center, :screen => 1 },
   "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
   "stick"   => { :regex => "mplayer|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
