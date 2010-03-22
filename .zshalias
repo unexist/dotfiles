@@ -16,7 +16,6 @@ alias q='clear && logout'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias rsget='wget -c --load-cookies /home/unexist/.cookies/rapidshare --limit 700k'
 alias grep='grep -n'
 
 # Security
@@ -37,12 +36,13 @@ if [ -e /usr/bin/sudo ] ; then
   alias susp='sudo s2ram -f -p -m'
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
+  alias pp="sudo powerpill"
 fi
 
 # Valgrind
 if [ -e /usr/bin/valgrind ] ; then
-  alias memcheck='valgrind --tool=memcheck --leak-check=full'
-  alias addrcheck='valgrind --tool=addrcheck --leak-check=full'
+  alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppression"
+  alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppression"
 fi
 
 # Calc
@@ -62,11 +62,6 @@ if [ -e /usr/bin/mpc ] ; then
   alias mpc="nocorrect mpc"
 fi
 
-# Swiftweasel
-if [ -e /usr/bin/swiftweasel ] ; then
-  alias swp="swiftweasel -no-remote -ProfileManager &>/dev/null &!"
-fi
-
 # Firefox
 if [ -e /usr/bin/firefox ] ; then
   alias ff="firefox -no-remote -ProfileManager &>/dev/null &!"
@@ -80,7 +75,7 @@ fi
 
 # urxvt
 if [ -e /usr/bin/urxvt ] ; then
-  alias urxvt="urxvt --perl-lib ${HOME}/.urxvt/ -pe mark-yank-urls"
+  alias urxvt="urxvt --perl-lib ${HOME}/.urxvt/ -pe mark-yank-urls &!"
 fi
 
 # GVim
