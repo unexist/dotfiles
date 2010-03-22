@@ -62,13 +62,28 @@ bindkey "\e[4~" end-of-line
 bindkey "\e[3~" delete-char
 
 # History search
-#function search-backwords; { zle history-incremental-search-backward $BUFFER }
 #zle -N search-backwords
 #bindkey "^R" search-backwords
 bindkey "^R" history-incremental-search-backward
 
 # Man
 vman() { /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' - }
+
+# Functions
+function pastie {
+  url=$(curl http://pastie.caboo.se/pastes/create \
+    -H "Expect:" \
+    -F "paste[parser]=plain_text" \
+    -F "paste[body]=<-" \
+    -F "paste[authorization]=burger" \
+    -s -L -o /dev/null -w "%{url_effective}")
+  echo -n "$url" | xclip
+  echo "$url"
+}
+
+function search-backwords {
+   zle history-incremental-search-backward $BUFFER
+}
 
 # Prompt
 if [ "$USER" = "root" ] ; then
