@@ -33,7 +33,7 @@ function! QNameRun()
 		let _sel = s:colPrinter.sel
 		if _key != "\<ESC>" && _sel < len(s:n) && _sel >= 0
 			if _key == "\<S-CR>"
-				:split
+				:vsp
 			endif
 			call s:swb(str2nr(matchstr(s:s[_sel], '<\zs\d\+\ze>')))
 		endif
