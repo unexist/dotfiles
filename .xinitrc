@@ -30,7 +30,7 @@ if [ -e /usr/bin/xrandr ] ; then
 fi
 
 # Windowmanager
-#valgrind --tool=memcheck subtle &> ~/subtle.log &
+#valgrind --tool=memcheck --suppressions=/home/unexist/.suppressions subtle &> ~/subtle.log &
 subtle &
 pid=$!
 
