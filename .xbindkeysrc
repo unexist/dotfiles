@@ -1,10 +1,10 @@
-"amixer set PCM 2dB-"
+"amixer set Master 2dB-"
 XF86AudioLowerVolume
 
 "amixer set Master toggle"
 XF86AudioMute
 
-"amixer set PCM 2dB+"
+"amixer set Master 2dB+"
 XF86AudioRaiseVolume
 
 "mpc prev"
