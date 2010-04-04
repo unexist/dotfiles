@@ -66,11 +66,14 @@ bindkey "\e[3~" delete-char
 #bindkey "^R" search-backwords
 bindkey "^R" history-incremental-search-backward
 
-# Man
-vman() { /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' - }
-
 # Functions
-function pastie {
+function vman
+{ 
+  /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' - 
+}
+
+function pastie
+{
   url=$(curl http://pastie.caboo.se/pastes/create \
     -H "Expect:" \
     -F "paste[parser]=plain_text" \
@@ -83,6 +86,16 @@ function pastie {
 
 function search-backwords {
    zle history-incremental-search-backward $BUFFER
+}
+
+function rc
+{
+  sudo /etc/rc.d/$*
+}
+
+function wd
+{
+  curl dict://dict.org/d:${1}:web1913;
 }
 
 # Prompt
