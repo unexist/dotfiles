@@ -20,7 +20,7 @@ OPTIONS = {
   :resize  => false,
   :padding => [ 0, 0, 0, 0 ],
   #:font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
-  :font    => "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+  :font    => "-*-*-medium-*-*-*-12-*-*-*-*-*-*-*"
 }
 
 #
@@ -30,7 +30,8 @@ PANEL = {
   :top       => [ :tray, :title, :spacer, :sublets, :spacer, :views ],
   :bottom    => [ ],
   :stipple   => false,
-  :separator => "|"
+  :separator => "",
+  :border    => 1
 }
 
 #
@@ -105,13 +106,29 @@ THEMES = {
     :border_focus  => "#303030",
     :border_normal => "#202020",
     :background    => "#3d3d3d"
+  },
+  :white => {
+    :fg_panel      => "#777777",
+    :fg_views      => "#777777",
+    :fg_sublets    => "#777777",
+    :fg_focus      => "#0066ff",
+    :fg_urgent     => "#ff3b77",
+    :bg_panel      => "#eeeeec",
+    :bg_views      => "#eeeeec",
+    :bg_sublets    => "#eeeeec",
+    :bg_focus      => "#ffffff",
+    :bg_urgent     => "#eeeeec",
+    :border_focus  => "#303030",
+    :border_normal => "#202020",
+    :border_panel  => "#dddddc",
+    :background    => "#3d3d3d"  
   }
 }
 
 #
 # Colors
 #
-COLORS = THEMES[:digerati]
+COLORS = THEMES[:white]
 
 #
 # Gravities
@@ -226,6 +243,8 @@ GRABS = {
   "C-r"     => :SubtleReload,
   "C-s"     => :SubletsReload,
 
+  "p" => lambda { Subtlext::Tray["pidgin"].click(1); Subtlext::Client["pidgin"].focus },
+
   "b"       => "bashrun",
   "u"       => "uzbl",
   "Return"  => "urxvt",
@@ -272,4 +291,6 @@ VIEWS = [
 #
 # Hooks
 #
-HOOKS = { }
+HOOKS = {
+  :HookClientCreate => lambda { |c| c.focus if("pidgin" == c.klass) }
+}
