@@ -34,6 +34,8 @@ set wildignore=*.o,*.swp
 set nobackup
 set autowriteall
 set noswapfile
+set list!
+set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:<
 
 syntax on
 
