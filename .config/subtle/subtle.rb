@@ -1,9 +1,9 @@
-# 
+#
 # This program can be distributed under the terms of the GNU GPL.
 # See the file COPYING.
-# 
+#
 # $Id$
-# 
+#
 
 require "socket"
 
@@ -27,7 +27,7 @@ OPTIONS = {
 # Panel
 #
 PANEL = {
-  :top       => [ :tray, :title, :spacer, :sublets, :spacer, :views ],
+  :top       => [ :tray, :title, :spacer, :sublets, :spacer, :scratchpad, :views ],
   :bottom    => [ ],
   :stipple   => false,
   :separator => "",
@@ -36,33 +36,33 @@ PANEL = {
 
 #
 # Themes
-# 
+#
 THEMES = {
   :green => {
     :fg_panel      => "#e2e2e5",
-    :fg_views      => "#ffffff",                                                                                    
+    :fg_views      => "#ffffff",
     :fg_sublets    => "#000000",
-    :fg_focus      => "#000000",                                                                                     
+    :fg_focus      => "#000000",
     :bg_panel      => "#444444",
     :bg_views      => "#3d3d3d",
-    :bg_sublets    => "#b1d631",                                                                                     
+    :bg_sublets    => "#b1d631",
     :bg_focus      => "#b1d631",
     :border_focus  => "#b1d631",
-    :border_normal => "#5d5d5d",                                                                                     
+    :border_normal => "#5d5d5d",
     :background    => "#3d3d3d"
   },
   :blue => {
     :fg_panel      => "#e2e2e5",
-    :fg_views      => "#e2e2e5",                                                                                    
-    :fg_sublets    => "#000000",                                                                                     
+    :fg_views      => "#e2e2e5",
+    :fg_sublets    => "#000000",
     :fg_focus      => "#000000",
     :bg_panel      => "#444444",
     :bg_views      => "#3d3d3d",
-    :bg_sublets    => "#6699CC",                                                                                    
+    :bg_sublets    => "#6699CC",
     :bg_focus      => "#6699CC",
     :border_focus  => "#6699CC",
-    :border_normal => "#5d5d5d",                                                                                     
-    :background    => "#3d3d3d"  
+    :border_normal => "#5d5d5d",
+    :background    => "#3d3d3d"
   },
   :merged => {
     :fg_panel      => "#5fd7ff",
@@ -121,7 +121,7 @@ THEMES = {
     :border_focus  => "#303030",
     :border_normal => "#202020",
     :border_panel  => "#dddddc",
-    :background    => "#3d3d3d"  
+    :background    => "#3d3d3d"
   }
 }
 
@@ -132,9 +132,9 @@ COLORS = THEMES[:white]
 
 #
 # Gravities
-# 
+#
 GRAVITIES = {
-  :top_left       => [   0,   0,  50,  50 ], 
+  :top_left       => [   0,   0,  50,  50 ],
   :top_left66     => [   0,   0,  50,  66 ],
   :top_left33     => [   0,   0,  50,  33 ],
   :top            => [   0,   0, 100,  50 ],
@@ -160,13 +160,18 @@ GRAVITIES = {
   :bottom33       => [   0, 100, 100,  33 ],
   :bottom_right   => [ 100, 100,  50,  50 ],
   :bottom_right66 => [ 100, 100,  50,  66 ],
-  :bottom_right33 => [ 100, 100,  50,  33 ]
-}  
+  :bottom_right33 => [ 100, 100,  50,  33 ],
+
+  # Gimp
+  :gimp_image     => [   0,   0,  80, 100 ],
+  :gimp_toolbox   => [   0,   0,  10, 100 ],
+  :gimp_dock      => [ 100,   0,  10, 100 ]
+}
 
 # Dmenu settings
 @dmenu = "dmenu_run -fn '%s' -nb '%s' -nf '%s' -sb '%s' -sf '%s' -p 'Select:'" % [
   OPTIONS[:font],
-  COLORS[:bg_panel], COLORS[:fg_panel], 
+  COLORS[:bg_panel], COLORS[:fg_panel],
   COLORS[:bg_focus], COLORS[:fg_focus]
 ]
 
@@ -175,9 +180,9 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if("telas" == host || "mockra" == host)
+if("telas" == host || "mockra" == host) #< Netbooks
   gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
-elsif("test" == host)
+elsif("test" == host) #< Usually VMs
   modkey = "A"
 end
 
@@ -241,9 +246,8 @@ GRABS = {
 
   "C-q"     => :SubtleQuit,
   "C-r"     => :SubtleReload,
+  "C-A-r"   => :SubtleRestart,
   "C-s"     => :SubletsReload,
-
-  "p" => lambda { Subtlext::Tray["pidgin"].click(1); Subtlext::Client["pidgin"].focus },
 
   "b"       => "bashrun",
   "u"       => "uzbl",
@@ -257,22 +261,28 @@ GRABS = {
 # Tags
 #
 TAGS = {
-  "test"    => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
-  "void"    => { :regex => "jd-main|gimp|virtual", :gravity => :center, :screen => 1 },
+  # Apps
   "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
-  "browser" => { :regex => "navigator|shiretoko|namoroka|midori", :gravity => :center, :screen => 1 },
+  "browser" => { :regex => "navigator|midori", :gravity => :center, :screen => 1 },
   "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
-  "stick"   => { :regex => "mplayer|display|chrom|skype|xev", :stick => true, :float => true, :screen => 1 },
-  "float"   => { :regex => "xephyr|gimp", :float => true, :screen => 1 },
+  "xephyr"  => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
+  "mplayer" => { :regex => "mplayer", :stick => true, :flaot => true, :urgent => true, :screen => 1 },
+  "stick"   => { :regex => "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev", :stick => true, :float => true },
+  "void"    => { :regex => "jd-Main", :screen => 1 },
+
+  # Positions
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
   "two"     => { :regex => "urxvt2", :gravity => :bottom, :screen => 0 },
   "six"     => { :regex => "navigator", :gravity => :right, :screen => 0 },
   "seven"   => { :regex => "urxvt1", :gravity => :top_left, :screen => 0 },
   "eight"   => { :regex => "urxvt1", :gravity => :top, :screen => 0 },
-  "bashrun" => { :regex => "bashrun", :geometry => [ 50, 1000, 200, 28 ], :stick => true, :float => true, :urgent => true, :screen => 0 },
-  "misc"    => { :regex => "subtly|python|gtk.rb", :float => true, :stick => true }
-}  
+
+  # Gimp
+  "gimp_image"   => { :regex => "gimp-image-window", :match => [ :role ], :gravity => :gimp_image, :screen => 1 },
+  "gimp_toolbox" => { :regex => "gimp-toolbox", :match => [ :role ], :gravity => :gimp_toolbox, :screen => 1 },
+  "gimp_dock"    => { :regex => "gimp-dock", :match => [ :role ], :gravity => :gimp_dock, :screen => 1 },
+}
 
 #
 # Views
@@ -280,17 +290,12 @@ TAGS = {
 VIEWS = [
   { "terms"  => "eight|two|terms" },
   { "www"    => "eight|two|browser" },
-  { "void"   => "eight|two|default|void" },
-  { "editor" => "seven|one|six|test|editor" }
-#  { "terms"  => "seven|one|terms|test" },
-#  { "www"    => "browser" },
-#  { "void"   => "default|void" },
-#  { "editor" => "editor" }
+  { "void"   => "eight|two|default|void|gimp_.*" },
+  { "editor" => "seven|one|six|xephyr|editor" }
 ]
 
 #
 # Hooks
 #
 HOOKS = {
-  :HookClientCreate => lambda { |c| c.focus if("pidgin" == c.klass) }
 }
