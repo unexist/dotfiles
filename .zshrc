@@ -12,6 +12,7 @@ export ZLS_COLORS=`dircolors | sed s/LS/ZLS/ | head -n 1`
 autoload complist
 autoload -U compinit
 autoload edit-command-line
+autoload -U colors
 zle -N edit-command-line
 
 # Completion
@@ -20,6 +21,7 @@ compdef -d hg # Disable slow completion for mercurial
 compdef -d grep
 compdef -d mplayer
 compdef -d chmod
+colors
 
 # Options
 setopt correct
@@ -35,7 +37,6 @@ setopt multios
 setopt short_loops
 setopt listpacked
 setopt pushd_ignore_dups
-#setopt share_history
 
 # History
 HISTSIZE=5000
@@ -126,9 +127,9 @@ function toggle-asound
 
 # Prompt
 if [ "$USER" = "root" ] ; then
-  PS1='%m:%(1j.%%%j:.)%1~%# '
+  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%}> %{\e[0m%}'
 else
-  PS1='%m:%(1j.%%%j:.)%1~%%%  '
+  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%}> %{\e[0m%}'
 fi
 
 umask 022
