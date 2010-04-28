@@ -98,6 +98,32 @@ function wd
   curl dict://dict.org/d:${1}:web1913;
 }
 
+function ansi-colors
+{
+  typeset esc="\033[" line1 line2
+  echo " _ _ _40 _ _ _41_ _ _ _42 _ _ 43_ _ _ 44_ _ _45 _ _ _ 46_ _ _ 47_ _ _ 49_ _"
+  for fore in 30 31 32 33 34 35 36 37; do
+    line1="$fore "
+    line2="   "
+    for back in 40 41 42 43 44 45 46 47 49; do
+      line1="${line1}${esc}${back};${fore}m Normal ${esc}0m"
+      line2="${line2}${esc}${back};${fore};1m Bold   ${esc}0m"
+    done
+    echo -e "$line1\n$line2"
+  done
+}
+
+function toggle-asound
+{
+  if [ -e /etc/asound.conf ] ; then
+    echo "asound.conf -> asound_conf"
+    sudo mv /etc/asound.conf /etc/asound_conf
+  elif [ -e /etc/asound_conf ] ; then
+    echo "asound_conf -> asound.conf"
+    sudo mv /etc/asound_conf /etc/asound.conf
+  fi
+}
+
 # Prompt
 if [ "$USER" = "root" ] ; then
   PS1='%m:%(1j.%%%j:.)%1~%# '
