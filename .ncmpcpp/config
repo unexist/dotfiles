@@ -1,42 +1,51 @@
-#                                                                                                                                                                                                                                         
-# @file ncmpcpp config                                                                                                                                                                                                                    
-# @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>                                                                                                                                                                      
-# @version $Id$                                                                                                                                                                       
-# 
+#
+# @file ncmpcpp config
+# @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>
+# @version $Id$
+#
 
+# Mpd options
 mpd_host = "localhost"
 mpd_port = "6600"
 mpd_music_dir = "/home/unexist/media/music"
 #mpd_crossfade_time = "5"
 #mpd_communication_mode = "polling" (polling/notifications)
-playlist_disable_highlight_delay = "1"
-message_delay_time = "4"
-song_list_format = "{$3[%l]$9} {$5%a$9}|{$5<unknown>$9} {$6%t$9}|{$6<untitled>$9} {%y}|{2010} %r {$5%b$9}{$5<unknown>$9}"
+
+# Format
+song_columns_list_format = "(6)[blue]{l} (30)[green]{t} (30)[magenta]{a} (10)[blue]{b}" 
+#song_list_format = "{$3[%l]$9} {$5%a$9}|{$5<unknown>$9} {$6%t$9}|{$6<untitled>$9} {%y}|{2010} %r {$5%b$9}{$5<unknown>$9}"
 #song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
 #song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
 #song_library_format = "{%n - }{%t}|{%f}"
 #tag_editor_album_format = "{(%y) }%b"
+
+# Options
+playlist_disable_highlight_delay = "1"
+message_delay_time = "4"
 discard_colors_if_item_is_selected = "yes"
-#progressbar_look = "=>"
+progressbar_look = "=>"
 user_interface = "classic" (classic/alternative)
+playlist_display_mode = "columns" (classic/columns)
 header_visibility = "yes"
 statusbar_visibility = "yes"
 #header_text_scrolling = "yes"
 #fancy_scrolling = "yes"
 #cyclic_scrolling = "no"
 colors_enabled = "yes"
-empty_tag_color = "cyan"
-header_window_color = "default"
-volume_color = "default"
-state_line_color = "default"
-state_flags_color = "default"
-main_window_color = "yellow"
+
+# Colors
 color1 = "white"
 color2 = "green"
-main_window_highlight_color = "yellow"
+main_window_color = "white"
+main_window_highlight_color = "default"
 progressbar_color = "default"
 statusbar_color = "default"
 alternative_ui_separator_color = "black"
 active_column_color = "red"
 window_border_color = "green"
 active_window_border = "red"
+empty_tag_color = "cyan"
+header_window_color = "default"
+volume_color = "default"
+state_line_color = "default"
+state_flags_color = "default"
