@@ -37,12 +37,14 @@ if [ -e /usr/bin/sudo ] ; then
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
   alias pp="sudo powerpill"
+  alias ya="sudo yaourt"
+  alias s="sudo"
 fi
 
 # Valgrind
 if [ -e /usr/bin/valgrind ] ; then
-  alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppression"
-  alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppression"
+  alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions"
+  alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppressions"
 fi
 
 # Calc
