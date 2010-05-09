@@ -40,11 +40,7 @@ set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:<
 syntax on
 
 " Colorscheme
-if &t_Co < 256
- colorscheme default
-else
- colorscheme hornet
-endif 
+colorscheme digerati
 
 " Commandline
 if has("cmdline_info")
