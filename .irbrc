@@ -8,7 +8,8 @@
 
 require "rubygems" rescue nil
 require "wirble" rescue nil
-require "irb/completion"
+require "bond" rescue nil
+#require "irb/completion"
 require "irb/ext/save-history"
 
 # Irb config 
@@ -20,3 +21,6 @@ IRB.conf[:AUTO_INDENT] = true
 # Load wirble
 Wirble.init
 Wirble.colorize
+
+# Load bond
+Bond.start
