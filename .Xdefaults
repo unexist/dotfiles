@@ -2,7 +2,7 @@
 *scrollBar: false
 *loginShell: true
 *font: -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
-*termName: rxvt-256color
+urxvt*termName: rxvt-256color
 
 *background: #202020
 *foreground: #e2e2e5
@@ -33,6 +33,24 @@
 *color13: #FF3B77
 *color14: #4bb5c1
 *color15: #e2e2e5
+
+# Green
+#*color0: #000000
+#*color1: #963C59
+#*color2: #76B243
+#*color3: #B2B27F
+#*color4: #5986B2
+#*color5: #B250B1
+#*color6: #698FB2
+#*color7: #8f8f8f
+#*color8: #3c414c
+#*color9: #CF6171
+#*color10: #A8FF60
+#*color11: #FFFFB6
+#*color12: #6699CC
+#*color13: #FF73FD
+#*color14: #96CBFE
+#*color15: #F6F3E8 
 
 # Hornet
 #*color0:  #303030
