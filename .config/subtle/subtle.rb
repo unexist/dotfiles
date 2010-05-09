@@ -163,7 +163,7 @@ GRAVITIES = {
   :bottom_right33 => [ 100, 100,  50,  33 ],
 
   # Gimp
-  :gimp_image     => [   0,   0,  80, 100 ],
+  :gimp_image     => [  50,  50,  80, 100 ],
   :gimp_toolbox   => [   0,   0,  10, 100 ],
   :gimp_dock      => [ 100,   0,  10, 100 ]
 }
@@ -249,6 +249,19 @@ GRABS = {
   "C-A-r"   => :SubtleRestart,
   "C-s"     => :SubletsReload,
 
+  "Tab" => lambda { |c|
+    sel     = 0
+    clients = Subtlext::View[:current].clients
+
+    clients.each_index do |idx|
+      if(clients[idx].id == c.id)
+        sel = idx + 1 if(idx + 1 <= clients.size)
+      end
+    end
+
+    clients[sel].focus
+  },
+
   "b"       => "bashrun",
   "u"       => "uzbl",
   "Return"  => "urxvt",
@@ -263,13 +276,13 @@ GRABS = {
 TAGS = {
   # Apps
   "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
-  "browser" => { :regex => "navigator|midori", :gravity => :center, :screen => 1 },
+  "browser" => { :regex => "browser|navigator|midori", :gravity => :center, :screen => 1 },
   "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
   "xephyr"  => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
-  "mplayer" => { :regex => "mplayer", :stick => true, :flaot => true, :urgent => true, :screen => 1 },
+  "mplayer" => { :regex => "mplayer", :stick => true, :float => true, :urgent => true, :screen => 1 },
   "stick"   => { :regex => "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev", :stick => true, :float => true },
-  "void"    => { :regex => "jd-Main", :screen => 1 },
+  "void"    => { :regex => "jd-Main|Virtualbox", :screen => 1 },
 
   # Positions
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
@@ -287,12 +300,12 @@ TAGS = {
 #
 # Views
 #
-VIEWS = [
-  { "terms"  => "eight|two|terms" },
-  { "www"    => "eight|two|browser" },
-  { "void"   => "eight|two|default|void|gimp_.*" },
-  { "editor" => "seven|one|six|xephyr|editor" }
-]
+VIEWS = {
+  "terms"  => "eight|two|terms",
+  "www"    => "eight|two|browser",
+  "void"   => "eight|two|default|void|gimp_.*",
+  "editor" => "seven|one|six|xephyr|editor"
+}
 
 #
 # Hooks
