@@ -262,13 +262,31 @@ GRABS = {
     clients[sel].focus
   },
 
+  # Special keys
+  "XF86AudioMute"        => "amixer set Master toggle",
+  "XF86AudioRaiseVolume" => "amixer set Master 2dB+",
+  "XF86AudioLowerVolume" => "amixer set Master 2dB-",
+
+  "XF86AudioPlay"        => "mpc toggle",
+  "XF86AudioPrev"        => "mpc prev",
+  "XF86AudioNext"        => "mpc next",
+
   "b"       => "bashrun",
   "u"       => "uzbl",
   "Return"  => "urxvt",
   "m"       => "midori",
   "g"       => "gvim",
   "o"       => @dmenu,
-}.inject({}) { |h, (k,v)| h["#{modkey}-#{k}"] = v; h }
+}.inject({}) { |h, (k,v)|
+  # Apply modifier to all but special keys
+  if(k.start_with?("XF86"))
+    h[k] = v
+  else
+    h["#{modkey}-#{k}"] = v
+  end
+
+  h
+}
 
 #
 # Tags
