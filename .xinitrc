@@ -1,7 +1,7 @@
 #
 # Xinitrc script
 #
-# Copyright (c) 2004-2009, Christoph Kappel <unexist@dorfelite.net>
+# Copyright (c) 2004-2010, Christoph Kappel <unexist@dorfelite.net>
 #
 
 # Host
@@ -18,15 +18,14 @@ if [ -e $HOME/.Xmodmap ] ; then
   xmodmap $HOME/.Xmodmap
 fi
 
-# Xbindkeys
-if [ -e /usr/bin/xbindkeys ] && [ -e $HOME/.xbindkeysrc ] ; then
-  xbindkeys
-fi
+# Xflux
+#if [ -e /usr/bin/xflux ] ; then
+#  xflux -l 51.32
+#fi
 
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
-  xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1
-  #xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1
+  xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1 --dpi 96
 fi
 
 # Windowmanager
@@ -46,10 +45,5 @@ fi
 if [ -e /usr/bin/numlockx ] ; then
   /usr/bin/numlockx >/dev/null &
 fi
-
-# Cookie daemon
-#if [ -e $HOME/bin/cookie_daemon.py ] ; then
-#  $HOME/bin/cookie_daemon.py &
-#fi
 
 wait $pid
