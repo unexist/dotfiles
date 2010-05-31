@@ -85,6 +85,13 @@ function pastie
   echo "$url"
 }
 
+function imgur
+{
+  for i in "$@";do
+    curl -s -F "image=@$1" -F "key=d159f6eac3eaf0205acbdb5a85ca3659" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+  done
+}
+
 function search-backwords {
    zle history-incremental-search-backward $BUFFER
 }
