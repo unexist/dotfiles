@@ -20,7 +20,8 @@ OPTIONS = {
   :resize  => false,
   :padding => [ 0, 0, 0, 0 ],
   #:font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
-  :font    => "-*-*-medium-*-*-*-12-*-*-*-*-*-*-*"
+  #:font    => "-*-*-medium-*-*-*-12-*-*-*-*-*-*-*"
+  :font    => "xft:Envy Code R:pixelsize=13"
 }
 
 #
@@ -295,12 +296,13 @@ TAGS = {
   # Apps
   "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
   "browser" => { :regex => "browser|navigator|midori", :gravity => :center, :screen => 1 },
-  "pdf"     => { :regex => "apvlv|evince", :float => true, :stick => true, :screen => 0 },
+  "pdf"     => { :regex => "apvlv|evince", :stick => true, :screen => 0 },
   "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
   "xephyr"  => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
   "mplayer" => { :regex => "mplayer", :stick => true, :float => true, :urgent => true, :screen => 1 },
   "stick"   => { :regex => "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev", :stick => true, :float => true },
   "void"    => { :regex => "jd-Main|Virtualbox", :screen => 1 },
+  "test"    => { :regex => "test", :float => true, :resize => false },
 
   # Positions
   "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
@@ -313,6 +315,7 @@ TAGS = {
   "gimp_image"   => { :regex => "gimp-image-window", :match => [ :role ], :gravity => :gimp_image, :screen => 1 },
   "gimp_toolbox" => { :regex => "gimp-toolbox", :match => [ :role ], :gravity => :gimp_toolbox, :screen => 1 },
   "gimp_dock"    => { :regex => "gimp-dock", :match => [ :role ], :gravity => :gimp_dock, :screen => 1 },
+  "gimp_scum"    => { :regex => "gimp-.*", :match => [ :role ], :screen => 1},
 }
 
 #
