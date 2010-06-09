@@ -1,7 +1,16 @@
+# Xft
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hinstyle: hintslight
+
 # urxvt
 *scrollBar: false
 *loginShell: true
-*font: -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
+#*font: -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
+URxvt.font: xft:envy code r:medium:pixelsize=13
+URxvt.boldFont: xft:envy code r:medium:pixelsize=13
 urxvt*termName: rxvt-256color
 
 *background: #202020
