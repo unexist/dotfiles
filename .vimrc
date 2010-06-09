@@ -65,12 +65,6 @@ nnoremap <F12> :set invpaste paste?<CR>
 imap <F12> <C-O><F12>
 set pastetoggle=<F12>
 
-" Gui
-if has("gui_running")
-  set guioptions=a
-  set guifont=lucidatypewriter\ 9
-endif
-
 " Filetype
 if has("autocmd")
   filetype plugin on
