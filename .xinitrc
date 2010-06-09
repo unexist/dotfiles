@@ -13,6 +13,11 @@ xset m 7/1
 xsetroot -bg "#666666"
 setxkbmap -layout 'de(nodeadkeys)'
 
+# Xdefaults
+if [ -e $HOME/.Xdefaults ] ; then
+  xrdb ~/.Xdefaults
+fi
+
 # Xmodmap
 if [ -e $HOME/.Xmodmap ] ; then
   xmodmap $HOME/.Xmodmap
