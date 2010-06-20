@@ -36,100 +36,24 @@ PANEL = {
 }
 
 #
-# Themes
-#
-THEMES = {
-  :green => {
-    :fg_panel      => "#e2e2e5",
-    :fg_views      => "#ffffff",
-    :fg_sublets    => "#000000",
-    :fg_focus      => "#000000",
-    :bg_panel      => "#444444",
-    :bg_views      => "#3d3d3d",
-    :bg_sublets    => "#b1d631",
-    :bg_focus      => "#b1d631",
-    :border_focus  => "#b1d631",
-    :border_normal => "#5d5d5d",
-    :background    => "#3d3d3d"
-  },
-  :blue => {
-    :fg_panel      => "#e2e2e5",
-    :fg_views      => "#e2e2e5",
-    :fg_sublets    => "#000000",
-    :fg_focus      => "#000000",
-    :bg_panel      => "#444444",
-    :bg_views      => "#3d3d3d",
-    :bg_sublets    => "#6699CC",
-    :bg_focus      => "#6699CC",
-    :border_focus  => "#6699CC",
-    :border_normal => "#5d5d5d",
-    :background    => "#3d3d3d"
-  },
-  :merged => {
-    :fg_panel      => "#5fd7ff",
-    :fg_views      => "#6c6c6c",
-    :fg_sublets    => "#6c6c6c",
-    :fg_focus      => "#5fd7ff",
-    :bg_panel      => "#202020",
-    :bg_views      => "#202020",
-    :bg_sublets    => "#202020",
-    :bg_focus      => "#202020",
-    :border_focus  => "#5fd7ff",
-    :border_normal => "#202020",
-    :background    => "#3d3d3d"
-  },
-  :hornet => {
-    :fg_panel      => "#757575",
-    :fg_views      => "#757575",
-    :fg_sublets    => "#757575",
-    :fg_focus      => "#fecf35",
-    :fg_urgent     => "#FF9800",
-    :bg_panel      => "#202020",
-    :bg_views      => "#202020",
-    :bg_sublets    => "#202020",
-    :bg_focus      => "#202020",
-    :bg_urgent     => "#202020",
-    :border_focus  => "#303030",
-    :border_normal => "#202020",
-    :background    => "#3d3d3d"
-  },
-  :digerati => {
-    :fg_panel      => "#757575",
-    :fg_views      => "#757575",
-    :fg_sublets    => "#757575",
-    :fg_focus      => "#cdff00",
-    :fg_urgent     => "#ff3b77",
-    :bg_panel      => "#202020",
-    :bg_views      => "#202020",
-    :bg_sublets    => "#202020",
-    :bg_focus      => "#202020",
-    :bg_urgent     => "#202020",
-    :border_focus  => "#303030",
-    :border_normal => "#202020",
-    :background    => "#3d3d3d"
-  },
-  :white => {
-    :fg_panel      => "#777777",
-    :fg_views      => "#777777",
-    :fg_sublets    => "#777777",
-    :fg_focus      => "#0066ff",
-    :fg_urgent     => "#ff3b77",
-    :bg_panel      => "#eeeeec",
-    :bg_views      => "#eeeeec",
-    :bg_sublets    => "#eeeeec",
-    :bg_focus      => "#ffffff",
-    :bg_urgent     => "#eeeeec",
-    :border_focus  => "#303030",
-    :border_normal => "#202020",
-    :border_panel  => "#dddddc",
-    :background    => "#3d3d3d"
-  }
-}
-
-#
 # Colors
 #
-COLORS = THEMES[:white]
+COLORS = {
+  :fg_panel      => "#777777",
+  :fg_views      => "#777777",
+  :fg_sublets    => "#777777",
+  :fg_focus      => "#0066ff",
+  :fg_urgent     => "#ff3b77",
+  :bg_panel      => "#eeeeec",
+  :bg_views      => "#eeeeec",
+  :bg_sublets    => "#eeeeec",
+  :bg_focus      => "#ffffff",
+  :bg_urgent     => "#eeeeec",
+  :border_focus  => "#303030",
+  :border_normal => "#202020",
+  :border_panel  => "#dddddc",
+  :background    => "#3d3d3d"
+}
 
 #
 # Gravities
