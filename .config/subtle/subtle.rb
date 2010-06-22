@@ -10,95 +10,72 @@ require "socket"
 #
 # Options
 #
-OPTIONS = {
-  :border  => 2,
-  :step    => 5,
-  :snap    => 10,
-  :limit   => 1,
-  :gravity => :center,
-  :urgent  => false,
-  :resize  => false,
-  :padding => [ 0, 0, 0, 0 ],
-  #:font    => "-*-cure-*-*-*-*-11-*-*-*-*-*-*-*"
-  #:font    => "-*-*-medium-*-*-*-12-*-*-*-*-*-*-*"
-  :font    => "xft:Envy Code R:pixelsize=13"
-}
-
-#
-# Panel
-#
-PANEL = {
-  :top       => [ :tray, :title, :spacer, :sublets, :spacer, :scratchpad, :views ],
-  :bottom    => [ ],
-  :stipple   => false,
-  :separator => "",
-  :border    => 1
-}
+set :border,     2
+set :step,       5
+set :snap,       10
+set :limit,      1
+set :gravity,    :center
+set :urgent,     false
+set :resize,     false
+set :padding,    [0, 0, 0, 0]
+set :font,       "xft:Envy Code R:pixelsize=13"
+set :top,        [:tray, :title, :spacer, :sublets, :spacer, :scratchpad, :views]
+set :bottom,     []
+set :stipple,    false
+set :separator,  ""
+set :outline,    1
 
 #
 # Colors
 #
-COLORS = {
-  :fg_panel      => "#777777",
-  :fg_views      => "#777777",
-  :fg_sublets    => "#777777",
-  :fg_focus      => "#0066ff",
-  :fg_urgent     => "#ff3b77",
-  :bg_panel      => "#eeeeec",
-  :bg_views      => "#eeeeec",
-  :bg_sublets    => "#eeeeec",
-  :bg_focus      => "#ffffff",
-  :bg_urgent     => "#eeeeec",
-  :border_focus  => "#303030",
-  :border_normal => "#202020",
-  :border_panel  => "#dddddc",
-  :background    => "#3d3d3d"
-}
+color :fg_panel,      "#777777"
+color :fg_views,      "#777777"
+color :fg_sublets,    "#777777"
+color :fg_focus,      "#0066ff"
+color :fg_urgent,     "#ff3b77"
+color :bg_panel,      "#eeeeec"
+color :bg_views,      "#eeeeec"
+color :bg_sublets,    "#eeeeec"
+color :bg_focus,      "#ffffff"
+color :bg_urgent,     "#eeeeec"
+color :border_focus,  "#303030"
+color :border_normal, "#202020"
+color :border_panel,  "#dddddc"
+color :background,    "#3d3d3d"
 
 #
 # Gravities
 #
-GRAVITIES = {
-  :top_left       => [   0,   0,  50,  50 ],
-  :top_left66     => [   0,   0,  50,  66 ],
-  :top_left33     => [   0,   0,  50,  33 ],
-  :top            => [   0,   0, 100,  50 ],
-  :top66          => [   0,   0, 100,  66 ],
-  :top33          => [   0,   0, 100,  33 ],
-  :top_right      => [ 100,   0,  50,  50 ],
-  :top_right66    => [ 100,   0,  50,  66 ],
-  :top_right33    => [ 100,   0,  50,  33 ],
-  :left           => [   0,   0,  50, 100 ],
-  :left66         => [   0,  50,  50,  33 ],
-  :left33         => [   0,  50,  25,  33 ],
-  :center         => [   0,   0, 100, 100 ],
-  :center66       => [   0,  50, 100,  33 ],
-  :center33       => [  50,  50,  50,  33 ],
-  :right          => [ 100,   0,  50, 100 ],
-  :right66        => [ 100,  50,  50,  33 ],
-  :right33        => [ 100,  50,  25,  33 ],
-  :bottom_left    => [   0, 100,  50,  50 ],
-  :bottom_left66  => [   0, 100,  50,  66 ],
-  :bottom_left33  => [   0, 100,  50,  33 ],
-  :bottom         => [   0, 100, 100,  50 ],
-  :bottom66       => [   0, 100, 100,  66 ],
-  :bottom33       => [   0, 100, 100,  33 ],
-  :bottom_right   => [ 100, 100,  50,  50 ],
-  :bottom_right66 => [ 100, 100,  50,  66 ],
-  :bottom_right33 => [ 100, 100,  50,  33 ],
-
-  # Gimp
-  :gimp_image     => [  50,  50,  80, 100 ],
-  :gimp_toolbox   => [   0,   0,  10, 100 ],
-  :gimp_dock      => [ 100,   0,  10, 100 ]
-}
-
-# Dmenu settings
-@dmenu = "dmenu_run -fn '%s' -nb '%s' -nf '%s' -sb '%s' -sf '%s' -p 'Select:'" % [
-  OPTIONS[:font],
-  COLORS[:bg_panel], COLORS[:fg_panel],
-  COLORS[:bg_focus], COLORS[:fg_focus]
-]
+gravity :top_left,      [0, 0, 50, 50]
+gravity :top_left66,    [0, 0, 50, 66]
+gravity :top_left33,    [0, 0, 50, 33]
+gravity :top,           [0, 0, 100, 50]
+gravity :top66,         [0, 0, 100, 66]
+gravity :top33,         [0, 0, 100, 33]
+gravity :top_right,     [100, 0, 50, 50]
+gravity :top_right66,   [100, 0, 50, 66]
+gravity :top_right33,   [100, 0, 50, 33]
+gravity :left,          [0, 0, 50, 100]
+gravity :left66,        [0, 50, 50, 33]
+gravity :left33,        [0, 50, 25, 33]
+gravity :center,        [0, 0, 100, 100]
+gravity :center66,      [0, 50, 100, 33]
+gravity :center33,      [50, 50, 50, 33]
+gravity :right,         [100, 0, 50, 100]
+gravity :right66,       [100, 50, 50, 33]
+gravity :right33,       [100, 50, 25, 33]
+gravity :bottom_left,   [0, 100, 50, 50]
+gravity :bottom_left66, [0, 100, 50, 66]
+gravity :bottom_left33, [0, 100, 50, 33]
+gravity :bottom,        [0, 100, 100, 50]
+gravity :bottom66,      [0, 100, 100, 66]
+gravity :bottom33,      [0, 100, 100, 33]
+gravity :bottom_right,  [100, 100, 50, 50]
+gravity :bottom_right66, [100, 100, 50, 66]
+gravity :bottom_right33, [100, 100, 50, 33]
+gravity :gimp_image,    [50, 50, 80, 100]
+gravity :gimp_toolbox,  [0, 0, 10, 100]
+gravity :gimp_dock,     [100, 0, 10, 100]
 
 # Host specific
 host     = Socket.gethostname
@@ -116,65 +93,58 @@ gravkeys.map! { |g| "#{modkey}-#{g}" }
 #
 # Grabs
 #
-GRABS = {
-  "1"       => :ViewJump1,
-  "2"       => :ViewJump2,
-  "3"       => :ViewJump3,
-  "4"       => :ViewJump4,
-  "5"       => :ViewJump5,
+grab modkey + "-1",       :ViewJump1
+grab modkey + "-2",       :ViewJump2
+grab modkey + "-3",       :ViewJump3
+grab modkey + "-4",       :ViewJump4
+grab modkey + "-5",       :ViewJump5
 
-  "F1"      => :ScreenJump1,
-  "F2"      => :ScreenJump2,
-  "F3"      => :ScreenJump3,
-  "F4"      => :ScreenJump4,
+# Screens
+grab modkey + "-F1",      :ScreenJump1
+grab modkey + "-F2",      :ScreenJump2
+grab modkey + "-F3",      :ScreenJump3
+grab modkey + "-F4",      :ScreenJump4
 
-  "B1"      => :WindowMove,
-  "B2"      => :WindowResize,
-  "S-f"     => :WindowFloat,
-  "S-space" => :WindowFull,
-  "S-s"     => :WindowStick,
-  "r"       => :WindowRaise,
-  "l"       => :WindowLower,
-  "Left"    => :WindowLeft,
-  "Down"    => :WindowDown,
-  "Up"      => :WindowUp,
-  "Right"   => :WindowRight,
-  "k"       => :WindowKill,
+grab modkey + "-S-F1",    :WindowScreen1
+grab modkey + "-S-F2",    :WindowScreen2
+grab modkey + "-S-F3",    :WindowScreen3
+grab modkey + "-S-F4",    :WindowScreen4
 
-  "S-F1"    => :WindowScreen1,
-  "S-F2"    => :WindowScreen2,
-  "S-F3"    => :WindowScreen3,
-  "S-F4"    => :WindowScreen4,
+# Windows
+grab modkey + "-B1",      :WindowMove
+grab modkey + "-B2",      :WindowResize
+grab modkey + "-S-f",     :WindowFloat
+grab modkey + "-S-space", :WindowFull
+grab modkey + "-S-s",     :WindowStick
+grab modkey + "-r",       :WindowRaise
+grab modkey + "-l",       :WindowLower
+grab modkey + "-Left",    :WindowLeft
+grab modkey + "-Down",    :WindowDown
+grab modkey + "-Up",      :WindowUp
+grab modkey + "-Right",   :WindowRight
+grab modkey + "-k",       :WindowKill
+grab modkey + "-B3",      :WindowResize
 
-  "B1"      => :WindowMove,
-  "B3"      => :WindowResize,
-  "S-f"     => :WindowFloat,
-  "S-space" => :WindowFull,
-  "S-s"     => :WindowStick,
-  "r"       => :WindowRaise,
-  "l"       => :WindowLower,
-  "Left"    => :WindowLeft,
-  "Down"    => :WindowDown,
-  "Up"      => :WindowUp,
-  "Right"   => :WindowRight,
-  "k"       => :WindowKill,
+# Reload/restart
+grab modkey + "-C-q",     :SubtleQuit
+grab modkey + "-C-r",     :SubtleReload
+grab modkey + "-C-A-r",   :SubtleRestart
+grab modkey + "-C-s",     :SubletsReload
 
-  gravkeys[0] => [ :top_left,     :top_left66,     :top_left33     ],
-  gravkeys[1] => [ :top,          :top66,          :top33          ],
-  gravkeys[2] => [ :top_right,    :top_right66,    :top_right33    ],
-  gravkeys[3] => [ :left,         :left66,         :left33         ],
-  gravkeys[4] => [ :center,       :center66,       :center33       ],
-  gravkeys[5] => [ :right,        :right66,        :right33        ],
-  gravkeys[6] => [ :bottom_left,  :bottom_left66,  :bottom_left33  ],
-  gravkeys[7] => [ :bottom,       :bottom66,       :bottom33       ],
-  gravkeys[8] => [ :bottom_right, :bottom_right66, :bottom_right33 ],
+# Gravity keys
+grab gravkeys[0], [:top_left, :top_left66, :top_left33]
+grab gravkeys[1], [:top, :top66, :top33]
+grab gravkeys[2], [:top_right, :top_right66, :top_right33]
+grab gravkeys[3], [:left, :left66, :left33]
+grab gravkeys[4], [:center, :center66, :center33]
+grab gravkeys[5], [:right, :right66, :right33]
+grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33]
+grab gravkeys[7], [:bottom, :bottom66, :bottom33]
+grab gravkeys[8], [:bottom_right, :bottom_right66, :bottom_right33]
 
-  "C-q"     => :SubtleQuit,
-  "C-r"     => :SubtleReload,
-  "C-A-r"   => :SubtleRestart,
-  "C-s"     => :SubletsReload,
-
-  "Tab" => lambda { |c|
+# Alt-tab
+grab modkey + "-Tab" do |c|
+  # Extracted from line #177
     sel     = 0
     clients = Subtlext::View[:current].clients
 
@@ -185,75 +155,147 @@ GRABS = {
     end
 
     clients[sel].focus
-  },
+end
 
-  # Special keys
-  "XF86AudioMute"        => "amixer set Master toggle",
-  "XF86AudioRaiseVolume" => "amixer set Master 2dB+",
-  "XF86AudioLowerVolume" => "amixer set Master 2dB-",
+# Multimedia keys
+grab "XF86AudioMute", "amixer set Master toggle"
+grab "XF86AudioRaiseVolume", "amixer set Master 2dB+"
+grab "XF86AudioLowerVolume", "amixer set Master 2dB-"
+grab "XF86AudioPlay", "mpc toggle"
+grab "XF86AudioPrev", "mpc prev"
+grab "XF86AudioNext", "mpc next"
 
-  "XF86AudioPlay"        => "mpc toggle",
-  "XF86AudioPrev"        => "mpc prev",
-  "XF86AudioNext"        => "mpc next",
-
-  "b"       => "bashrun",
-  "u"       => "uzbl",
-  "Return"  => "urxvt",
-  "m"       => "midori",
-  "g"       => "gvim",
-  "o"       => @dmenu,
-}.inject({}) { |h, (k,v)|
-  # Apply modifier to all but special keys
-  if(k.start_with?("XF86"))
-    h[k] = v
-  else
-    h["#{modkey}-#{k}"] = v
-  end
-
-  h
-}
+# Programs
+grab modkey + "-b", "bashrun"
+grab modkey + "-u", "uzbl"
+grab modkey + "-Return", "urxvt"
+grab modkey + "-m", "midori"
+grab modkey + "-g", "gvim"
 
 #
 # Tags
 #
-TAGS = {
-  # Apps
-  "terms"   => { :regex => "xterm|urxvt", :gravity => :center, :screen => 1 },
-  "browser" => { :regex => "browser|navigator|midori", :gravity => :center, :screen => 1 },
-  "pdf"     => { :regex => "apvlv|evince", :stick => true, :screen => 0 },
-  "editor"  => { :regex => "[g]?vim", :gravity => :center, :screen => 1, :resize => true },
-  "xephyr"  => { :regex => "xephyr", :screen => 0, :geometry => [ 857, 96, 800, 800 ] },
-  "mplayer" => { :regex => "mplayer", :stick => true, :float => true, :urgent => true, :screen => 1 },
-  "stick"   => { :regex => "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev", :stick => true, :float => true },
-  "void"    => { :regex => "jd-Main|Virtualbox", :screen => 1 },
-  "test"    => { :regex => "test", :float => true, :resize => false },
+tag "terms" do
+  regex    "xterm|urxvt"
+  gravity  :center
+  screen   1
+end
 
-  # Positions
-  "one"     => { :regex => "urxvt2", :gravity => :bottom_left, :screen => 0 },
-  "two"     => { :regex => "urxvt2", :gravity => :bottom, :screen => 0 },
-  "six"     => { :regex => "navigator", :gravity => :right, :screen => 0 },
-  "seven"   => { :regex => "urxvt1", :gravity => :top_left, :screen => 0 },
-  "eight"   => { :regex => "urxvt1", :gravity => :top, :screen => 0 },
+tag "browser" do
+  regex    "browser|navigator|midori"
+  gravity  :center
+  screen   1
+end
 
-  # Gimp
-  "gimp_image"   => { :regex => "gimp-image-window", :match => [ :role ], :gravity => :gimp_image, :screen => 1 },
-  "gimp_toolbox" => { :regex => "gimp-toolbox", :match => [ :role ], :gravity => :gimp_toolbox, :screen => 1 },
-  "gimp_dock"    => { :regex => "gimp-dock", :match => [ :role ], :gravity => :gimp_dock, :screen => 1 },
-  "gimp_scum"    => { :regex => "gimp-.*", :match => [ :role ], :screen => 1},
-}
+tag "pdf" do
+  regex    "apvlv|evince"
+  stick    true
+  screen   0
+end
+
+tag "editor" do
+  regex    "[g]?vim"
+  gravity  :center
+  screen   1
+  resize   true
+end
+
+tag "xephyr" do
+  regex    "xephyr"
+  screen   0
+  geometry [857, 96, 800, 800]
+end
+
+tag "mplayer" do
+  regex    "mplayer"
+  stick    true
+  float    true
+  urgent   true
+  screen   1
+end
+
+tag "stick" do
+  regex    "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
+  stick    true
+  float    true
+end
+
+tag "void" do
+  regex    "jd-Main|Virtualbox"
+  screen   1
+end
+
+tag "test" do
+  regex    "test"
+  float    true
+  resize   false
+end
+
+tag "one" do
+  regex    "urxvt2"
+  gravity  :bottom_left
+  screen   0
+end
+
+tag "two" do
+  regex    "urxvt2"
+  gravity  :bottom
+  screen   0
+end
+
+tag "six" do
+  regex    "navigator"
+  gravity  :right
+  screen   0
+end
+
+tag "seven" do
+  regex    "urxvt1"
+  gravity  :top_left
+  screen   0
+end
+
+tag "eight" do
+  regex    "urxvt1"
+  gravity  :top
+  screen   0
+end
+
+tag "gimp_image" do
+  regex    "gimp-image-window"
+  match    [:role]
+  gravity  :gimp_image
+  screen   1
+end
+
+tag "gimp_toolbox" do
+  regex    "gimp-toolbox"
+  match    [:role]
+  gravity  :gimp_toolbox
+  screen   1
+end
+
+tag "gimp_dock" do
+  regex    "gimp-dock"
+  match    [:role]
+  gravity  :gimp_dock
+  screen   1
+end
+
+tag "gimp_scum" do
+  regex    "gimp-.*"
+  match    [:role]
+  screen   1
+end
 
 #
 # Views
 #
-VIEWS = {
-  "terms"  => "eight|two|terms",
-  "www"    => "eight|two|browser",
-  "void"   => "eight|two|default|void|gimp_.*",
-  "editor" => "seven|one|six|xephyr|editor"
-}
+view "terms", "eight|two|terms"
+view "www", "eight|two|browser"
+view "void", "eight|two|default|void|gimp_.*"
+view "editor", "seven|one|six|xephyr|editor"
 
 #
 # Hooks
 #
-HOOKS = {
-}
