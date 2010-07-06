@@ -1,12 +1,61 @@
-keycode 174 = XF86AudioLowerVolume
-keycode 160 = XF86AudioMute
-keycode 176 = XF86AudioRaiseVolume
+keycode 121 = XF86AudioMute
+keycode 122 = XF86AudioLowerVolume
+keycode 123 = XF86AudioRaiseVolume
+keycode 165 = XF86AudioPrev
+keycode 171 = XF86AudioNext
+keycode 172 = XF86AudioPlay
+keycode 174 = XF86AudioStop
 
-keycode 144 = XF86AudioPrev
-keycode 162 = XF86AudioPlay
-keycode 153 = XF86AudioNext
-
-keycode 161 = XF86Go
-keycode 236 = XF86Mail
-keycode 178 = XF86HomePage
-keycode 223 = XF86Sleep
+!Supported events:
+! Event type 0 (Reset)
+!   Event code 0 (Reset)
+!   Event code 1 (Key)
+!   Event code 4 (?)
+! Event type 1 (Key)
+!   Event code 113 (Mute)
+!   Event code 114 (VolumeDown)
+!   Event code 115 (VolumeUp)
+!   Event code 140 (Calc)
+!   Event code 142 (Sleep)
+!   Event code 155 (Mail)
+!   Event code 163 (NextSong)
+!   Event code 164 (PlayPause)
+!   Event code 165 (PreviousSong)
+!   Event code 166 (StopCD)
+!   Event code 171 (Config)
+!   Event code 172 (HomePage)
+!   Event code 256 (Btn0)
+!   Event code 257 (Btn1)
+!   Event code 258 (Btn2)
+!   Event code 259 (Btn3)
+!   Event code 260 (Btn4)
+!   Event code 261 (Btn5)
+!   Event code 262 (Btn6)
+!   Event code 263 (Btn7)
+!   Event code 264 (Btn8)
+!   Event code 266 (?)
+!   Event code 267 (?)
+!   Event code 268 (?)
+!   Event code 269 (?)
+!   Event code 270 (?)
+!   Event code 271 (?)
+!   Event code 272 (LeftBtn)
+!   Event code 273 (RightBtn)
+!Mappings:
+!   256 (Btn0)      "Word"
+!   257 (Btn1)      "Spreadsheet"
+!   258 (Btn2)      "Calendar"
+!   259 (Btn3)      "custom key a"
+!   260 (Btn4)      "Photos"
+!   261 (Btn5)      "custom key b"
+!   262 (Btn6)      "custom key c"
+!   263 (Btn7)      "Media center"
+!   264 (Btn8)      "Messenger"
+!   266 (?)         "local search"
+!   267 (?)         "Vista Flip 3D" (go through windows, "alt-tab")
+!   268 (?)         "Vista Gadget" (
+!   269 (?)         "internet search"
+!   270 (?)         "zoom -"
+!   271 (?)         "zoom +"
+!   272 (LeftBtn)   "eject"
+!   273 (RightBtn)  "Function key, used for most of the above"
