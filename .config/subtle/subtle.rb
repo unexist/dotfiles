@@ -13,10 +13,10 @@ require "socket"
 set :border,     2
 set :step,       5
 set :snap,       10
-set :limit,      1
 set :gravity,    :center
 set :urgent,     false
 set :resize,     false
+set :randr,      true
 set :padding,    [0, 0, 0, 0]
 set :font,       "xft:Envy Code R:pixelsize=13"
 set :top,        [:tray, :title, :spacer, :sublets, :spacer, :scratchpad, :views]
@@ -162,12 +162,11 @@ grab "XF86AudioMute", "amixer set Master toggle"
 grab "XF86AudioRaiseVolume", "amixer set Master 2dB+"
 grab "XF86AudioLowerVolume", "amixer set Master 2dB-"
 grab "XF86AudioPlay", "mpc toggle"
+grab "XF86AudioStop", "mpc stop"
 grab "XF86AudioPrev", "mpc prev"
 grab "XF86AudioNext", "mpc next"
 
 # Programs
-grab modkey + "-b", "bashrun"
-grab modkey + "-u", "uzbl"
 grab modkey + "-Return", "urxvt"
 grab modkey + "-m", "midori"
 grab modkey + "-g", "gvim"
@@ -197,7 +196,7 @@ tag "editor" do
   regex    "[g]?vim"
   gravity  :center
   screen   1
-  resize   true
+  resize   false
 end
 
 tag "xephyr" do
@@ -286,6 +285,20 @@ tag "gimp_scum" do
   regex    "gimp-.*"
   match    [:role]
   screen   1
+end
+
+tag "xev" do
+  regex    "Event Tester"
+  match    [:name]
+  geometry [ 1000, 100, 80, 80 ]
+  float    true
+  stick    true
+end
+
+tag "chrome-opts" do
+  regex "chromium options"
+  match [:name]
+  stick true
 end
 
 #
