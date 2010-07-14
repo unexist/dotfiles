@@ -1,108 +1,108 @@
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Cond
   fun:mark_locations_array
   ...
 }
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Cond
   fun:gc_mark
   ...
 }
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Value4
   fun:gc_mark
   ...
 }
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Value4
   fun:gc_mark_children
   ...
 }
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Cond
   fun:gc_mark_children
   ...
 }
 {
-  Ruby 19 GC
+  Ruby 19 GC p378
   Memcheck:Cond
   fun:st_lookup
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:onig_compile
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:T.279
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:onig_bbuf_init
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:realloc
   fun:ruby_xrealloc
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:realloc
   fun:add_bytes
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:onig_region_resize
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:realloc
   fun:add_bitset
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:realloc
   fun:add_opcode
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:calloc
   fun:_dl_allocate_tls
 }
 {  
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:onig_alloc_init
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:realloc
   ...
@@ -110,9 +110,49 @@
   ...
 }
 {
-  Ruby 19 Leak
+  Ruby 19 Leak p378
   Memcheck:Leak
   fun:malloc
   fun:node_new
+  ...
+}
+{
+  Ruby 19 Leak p378
+  Memcheck:Leak
+  fun:malloc
+  fun:T.298
+  ...
+}
+{
+  Ruby 19 p429
+  Memcheck:Cond
+  obj:/usr/lib/libruby.so.1.9.1
+  ...
+}
+{
+  Ruby 19 Leak p429
+  Memcheck:Value4
+  obj:/usr/lib/libruby.so.1.9.1
+  ...
+}
+{
+  Ruby 19 Leak p429
+  Memcheck:Leak
+  fun:malloc
+  obj:/usr/lib/libruby.so.1.9.1
+  ...
+}
+{
+  Ruby 10 Leak p429
+  Memcheck:Leak
+  fun:realloc
+  obj:/usr/lib/libruby.so.1.9.1
+  ...
+}
+{
+  Xft
+  Memcheck:Leak
+  fun:malloc
+  fun:FcStrStaticName
   ...
 }
