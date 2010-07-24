@@ -101,7 +101,12 @@ if [ -f /usr/bin/mplayer ] ; then
 fi
 
 # xrandr
- if [ -f /usr/bin/xrandr ] ; then
+if [ -f /usr/bin/xrandr ] ; then
   alias xrtv='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --primary --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1'
   alias xrnm='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1'
+fi
+
+# subtle
+if [ -f /usr/bin/subtle ] ; then
+  alias sirb='irb -r"subtle/subtlext"'
 fi
