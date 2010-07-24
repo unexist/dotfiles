@@ -181,7 +181,7 @@ tag "terms" do
 end
 
 tag "browser" do
-  regex    "browser|navigator|midori"
+  regex    "browser|navigator|midori|namoroka"
   gravity  :center
   screen   1
 end
@@ -203,6 +203,13 @@ tag "xephyr" do
   regex    "xephyr"
   screen   0
   geometry [857, 96, 800, 800]
+end
+
+tag "android" do
+  regex    "5554:AVD"
+  match    [:name]
+  screen   0
+  geometry [ 873, 47, 791, 534 ]
 end
 
 tag "mplayer" do
@@ -307,7 +314,7 @@ end
 view "terms", "eight|two|terms"
 view "www", "eight|two|browser"
 view "void", "eight|two|default|void|gimp_.*"
-view "editor", "seven|one|six|xephyr|editor"
+view "editor", "seven|one|six|xephyr|android|editor"
 
 #
 # Hooks
