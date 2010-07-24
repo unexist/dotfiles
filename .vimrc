@@ -70,3 +70,6 @@ if has("autocmd")
   filetype plugin on
   filetype indent off
 endif
+
+" Match
+match ErrorMsg '\%>80v.\+'
