@@ -156,3 +156,32 @@
   fun:FcStrStaticName
   ...
 }
+{
+  Xorg
+  Memcheck:Leak
+  fun:malloc
+  fun:PutEntry
+  fun:GetDatabase
+  fun:XrmGetFileDatabase
+  fun:XGetErrorDatabaseText
+  fun:XGetErrorText
+  fun:subSharedLogXError
+  fun:_XError
+  fun:handle_error
+  fun:handle_response
+  fun:_XReply
+  fun:XSync
+}
+{
+  Ruby 10 Leak p429
+  Memcheck:Leak
+  fun:calloc
+  fun:allocate_dtv
+  fun:_dl_allocate_tls
+  fun:pthread_create@@GLIBC_2.1
+  obj:/usr/lib/libruby.so.1.9.1
+  fun:rb_call_inits
+  fun:ruby_init
+  fun:subRubyInit
+  fun:main
+}
