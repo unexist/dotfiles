@@ -310,11 +310,25 @@ end
 
 #
 # Views
-#
-view "terms", "eight|two|terms"
-view "www", "eight|two|browser"
-view "void", "eight|two|default|void|gimp_.*"
-view "editor", "seven|one|six|xephyr|android|editor"
+terms  = "terms"
+www    = "browser"
+void   = "default|void|gimp_.*"
+editor = "xephyr|android|editor"
+
+# Host specific
+if("telas" == host) #< Multihead
+  terms   << "|eight|two"
+  www     << "|eight|two"
+  void    << "|eight|two"
+  editor  << "|seven|one|six"
+else
+  terms   << "|eight|two"
+end
+
+view "terms",  terms
+view "www",    www
+view "void",   void
+view "editor", editor
 
 #
 # Hooks
