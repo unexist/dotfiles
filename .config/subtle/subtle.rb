@@ -199,10 +199,18 @@ tag "editor" do
   resize   false
 end
 
-tag "xephyr" do
-  regex    "xephyr"
-  screen   0
-  geometry [857, 96, 800, 800]
+# Host specific
+if("mockra" == host)
+  tag "xephyr" do
+    regex    "xephyr"
+    screen   0
+  end
+else
+  tag "xephyr" do
+    regex    "xephyr"
+    screen   0
+    geometry [857, 96, 800, 800]
+  end
 end
 
 tag "android" do
@@ -321,8 +329,9 @@ if("telas" == host) #< Multihead
   www     << "|eight|two"
   void    << "|eight|two"
   editor  << "|seven|one|six"
-else
+elsif("mockra" == host)
   terms   << "|eight|two"
+  void    << "|xephyr"
 end
 
 view "terms",  terms
