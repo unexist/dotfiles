@@ -181,7 +181,7 @@ tag "terms" do
 end
 
 tag "browser" do
-  regex    "browser|navigator|midori|namoroka"
+  regex    "browser|navigator|midori|namoroka|firefox|chrome|chromium"
   gravity  :center
   screen   1
 end
