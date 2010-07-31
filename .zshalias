@@ -69,9 +69,16 @@ if [ -e /usr/bin/firefox ] ; then
   alias ff="firefox -no-remote -ProfileManager &>/dev/null &!"
 fi
 
+# Chrome/chromium
+if [ -e /usr/bin/chrome ] ; then
+  alias chrome="chrome -remote-shell-port=9222 &!"
+elif [ -e /usr/bin/chromium ] ; then
+  alias chrome="chromium -remote-shell-port=9222 &!"
+fi
+
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  alias xeph="Xephyr -ac -noreset -screen 800x600 :2 &>/dev/null &!"
+  alias xeph="Xephyr -ac -noreset -screen 1024x580 :2 &>/dev/null &!"
   alias xephxin="Xephyr -ac -noreset +xinerama -screen 800x800 :2 &>/dev/null &!"
 fi
 
