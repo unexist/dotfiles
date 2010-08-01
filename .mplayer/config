@@ -1,5 +1,6 @@
 # Write your default config options here!
-#softvol=1
-mixer-channel=Master
+softvol=1
+softvol-max=200
+mixer-channel="Master,0"
 
 
