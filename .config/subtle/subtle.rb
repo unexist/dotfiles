@@ -6,6 +6,7 @@
 #
 
 require "socket"
+require "/home/unexist/subtle-contrib/ruby/gleebox.rb"
 
 #
 # Options
@@ -49,8 +50,9 @@ color :background,    "#3d3d3d"
 gravity :top_left,      [0, 0, 50, 50]
 gravity :top_left66,    [0, 0, 50, 66]
 gravity :top_left33,    [0, 0, 50, 33]
+gravity :top_left75,    [0, 0, 75, 50]
 gravity :top,           [0, 0, 100, 50]
-gravity :top66,         [0, 0, 100, 66]
+gravity :top66,         [0, 0, 100, 67]
 gravity :top33,         [0, 0, 100, 33]
 gravity :top_right,     [100, 0, 50, 50]
 gravity :top_right66,   [100, 0, 50, 66]
@@ -63,10 +65,11 @@ gravity :center66,      [0, 50, 100, 33]
 gravity :center33,      [50, 50, 50, 33]
 gravity :right,         [100, 0, 50, 100]
 gravity :right66,       [100, 50, 50, 33]
-gravity :right33,       [100, 50, 25, 33]
+gravity :right33,       [100, 50, 25, 100]
 gravity :bottom_left,   [0, 100, 50, 50]
 gravity :bottom_left66, [0, 100, 50, 66]
 gravity :bottom_left33, [0, 100, 50, 33]
+gravity :bottom_left75, [0, 100, 75, 50]
 gravity :bottom,        [0, 100, 100, 50]
 gravity :bottom66,      [0, 100, 100, 66]
 gravity :bottom33,      [0, 100, 100, 33]
@@ -132,13 +135,13 @@ grab modkey + "-C-A-r",   :SubtleRestart
 grab modkey + "-C-s",     :SubletsReload
 
 # Gravity keys
-grab gravkeys[0], [:top_left, :top_left66, :top_left33]
+grab gravkeys[0], [:top_left, :top_left66, :top_left33, :top_left75]
 grab gravkeys[1], [:top, :top66, :top33]
 grab gravkeys[2], [:top_right, :top_right66, :top_right33]
 grab gravkeys[3], [:left, :left66, :left33]
 grab gravkeys[4], [:center, :center66, :center33]
 grab gravkeys[5], [:right, :right66, :right33]
-grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33]
+grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left75]
 grab gravkeys[7], [:bottom, :bottom66, :bottom33]
 grab gravkeys[8], [:bottom_right, :bottom_right66, :bottom_right33]
 
@@ -171,6 +174,11 @@ grab modkey + "-Return", "urxvt"
 grab modkey + "-m", "midori"
 grab modkey + "-g", "gvim"
 
+# Gleebox
+grab "A-g" do
+  Gleebox::Gleebox.instance.run
+end
+
 #
 # Tags
 #
@@ -194,7 +202,13 @@ end
 
 tag "editor" do
   regex    "[g]?vim"
-  gravity  :center
+
+  if("mockra" == host)
+    gravity :top66
+  else
+    gravity :center
+  end
+
   screen   1
   resize   false
 end
@@ -203,6 +217,7 @@ end
 if("mockra" == host)
   tag "xephyr" do
     regex    "xephyr"
+    gravity  :center
     screen   0
   end
 else
@@ -275,6 +290,18 @@ tag "eight" do
   screen   0
 end
 
+tag "one33" do
+  regex    "urxvt2"
+  gravity  :bottom_left33
+  screen   0
+end
+
+tag "three33" do
+  regex    "urxvt1"
+  gravity  :bottom_right33
+  screen   0
+end
+
 tag "gimp_image" do
   regex    "gimp-image-window"
   match    [:role]
@@ -321,17 +348,18 @@ end
 terms  = "terms"
 www    = "browser"
 void   = "default|void|gimp_.*"
-editor = "xephyr|android|editor"
+editor = "android|editor"
 
 # Host specific
 if("telas" == host) #< Multihead
-  terms   << "|eight|two"
-  www     << "|eight|two"
-  void    << "|eight|two"
-  editor  << "|seven|one|six"
+  terms  << "|eight|two"
+  www    << "|eight|two"
+  void   << "|eight|two"
+  editor << "|seven|one|six|xephyr"
 elsif("mockra" == host)
-  terms   << "|eight|two"
-  void    << "|xephyr"
+  terms  << "|eight|two"
+  void   << "|xephyr"
+  editor << "|one33|three33"
 end
 
 view "terms",  terms
