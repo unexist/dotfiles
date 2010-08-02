@@ -367,6 +367,16 @@ view "www",    www
 view "void",   void
 view "editor", editor
 
+
 #
 # Hooks
 #
+
+on :start do
+# Gleebox
+  if("proteus" == host)
+    Gleebox::Gleebox.instance.set_browser("chrome")
+  else
+    Gleebox::Gleebox.instance.set_browser("chromium")
+  end
+end
