@@ -183,25 +183,25 @@ end
 # Tags
 #
 tag "terms" do
-  regex    "xterm|urxvt"
+  match    "xterm|urxvt"
   gravity  :center
   screen   1
 end
 
 tag "browser" do
-  regex    "browser|navigator|midori|namoroka|firefox|chrome|chromium"
+  match    "browser|navigator|midori|namoroka|firefox|chrome|chromium"
   gravity  :center
   screen   1
 end
 
 tag "pdf" do
-  regex    "apvlv|evince"
+  match    "apvlv|evince"
   stick    true
   screen   0
 end
 
 tag "editor" do
-  regex    "[g]?vim"
+  match    "[g]?vim"
 
   if("mockra" == host)
     gravity :top66
@@ -216,27 +216,26 @@ end
 # Host specific
 if("mockra" == host)
   tag "xephyr" do
-    regex    "xephyr"
+    match    "xephyr"
     gravity  :center
     screen   0
   end
 else
   tag "xephyr" do
-    regex    "xephyr"
+    match    "xephyr"
     screen   0
     geometry [857, 96, 800, 800]
   end
 end
 
 tag "android" do
-  regex    "5554:AVD"
-  match    [:name]
+  match    :name => "5554:AVD"
   screen   0
   geometry [ 873, 47, 791, 534 ]
 end
 
 tag "mplayer" do
-  regex    "mplayer"
+  match    "mplayer"
   stick    true
   float    true
   urgent   true
@@ -244,102 +243,96 @@ tag "mplayer" do
 end
 
 tag "stick" do
-  regex    "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
+  match    "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
   stick    true
   float    true
 end
 
 tag "void" do
-  regex    "jd-Main|Virtualbox"
+  match    "jd-Main|Virtualbox"
   screen   1
 end
 
 tag "test" do
-  regex    "test"
+  match    "test"
   float    true
   resize   false
 end
 
 tag "one" do
-  regex    "urxvt2"
+  match    "urxvt2"
   gravity  :bottom_left
   screen   0
 end
 
 tag "two" do
-  regex    "urxvt2"
+  match    "urxvt2"
   gravity  :bottom
   screen   0
 end
 
 tag "six" do
-  regex    "navigator"
+  match    "navigator"
   gravity  :right
   screen   0
 end
 
 tag "seven" do
-  regex    "urxvt1"
+  match    "urxvt1"
   gravity  :top_left
   screen   0
 end
 
 tag "eight" do
-  regex    "urxvt1"
+  match    "urxvt1"
   gravity  :top
   screen   0
 end
 
 tag "one33" do
-  regex    "urxvt2"
+  match    "urxvt2"
   gravity  :bottom_left33
   screen   0
 end
 
 tag "three33" do
-  regex    "urxvt1"
+  match    "urxvt1"
   gravity  :bottom_right33
   screen   0
 end
 
 tag "gimp_image" do
-  regex    "gimp-image-window"
-  match    [:role]
+  match    :role => "gimp-image-window"
   gravity  :gimp_image
   screen   1
 end
 
 tag "gimp_toolbox" do
-  regex    "gimp-toolbox"
-  match    [:role]
+  match    :role => "gimp-toolbox"
   gravity  :gimp_toolbox
   screen   1
 end
 
 tag "gimp_dock" do
-  regex    "gimp-dock"
-  match    [:role]
+  match    :role => "gimp-dock"
   gravity  :gimp_dock
   screen   1
 end
 
 tag "gimp_scum" do
-  regex    "gimp-.*"
-  match    [:role]
+  match    :role => "gimp-.*"
   screen   1
 end
 
 tag "xev" do
-  regex    "Event Tester"
-  match    [:name]
+  match    :name => "Event Tester"
   geometry [ 1000, 100, 80, 80 ]
   float    true
   stick    true
 end
 
 tag "chrome-opts" do
-  regex "chromium options"
-  match [:name]
+  match :name => "chromium options"
   stick true
 end
 
