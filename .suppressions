@@ -143,12 +143,17 @@
   ...
 }
 {
-  Ruby 10 Leak p429
+  Ruby 19 Leak p429
   Memcheck:Leak
   fun:realloc
   obj:/usr/lib/libruby.so.1.9.1
   ...
 }
+{
+  Ruby 19 Leak p429
+  Memcheck:Value8
+  obj:/usr/lib/libruby.so.1.9.1
+  ...
 {
   Xft
   Memcheck:Leak
@@ -173,7 +178,7 @@
   fun:XSync
 }
 {
-  Ruby 10 Leak p429
+  Ruby 19 Leak p429
   Memcheck:Leak
   fun:calloc
   fun:allocate_dtv
