@@ -6,7 +6,7 @@
 #
 
 require "socket"
-require "/home/unexist/subtle-contrib/ruby/launcher.rb"
+require "/home/unexist/projects/subtle-contrib/ruby/launcher.rb"
 
 #
 # Options
@@ -25,6 +25,7 @@ set :bottom,     []
 set :stipple,    false
 set :separator,  ""
 set :outline,    1
+set :gap,        0
 
 #
 # Colors
@@ -176,7 +177,7 @@ grab modkey + "-Return", "urxvt"
 grab modkey + "-m", "midori"
 grab modkey + "-g", "gvim"
 
-# Gleebox
+# Launcher
 grab "A-g" do
   Launcher::Launcher.instance.run
 end
@@ -349,6 +350,7 @@ end
 terms  = "terms"
 www    = "browser"
 void   = "default|void|gimp_.*"
+test   = ""
 editor = "android|editor"
 
 # Host specific
@@ -367,6 +369,7 @@ end
 view "terms",  terms
 view "www",    www
 view "void",   void
+view "test",   test
 view "editor", editor
 
 
