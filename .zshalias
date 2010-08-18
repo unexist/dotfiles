@@ -6,7 +6,7 @@
 #
 
 # ls
-alias ls='ls --color -phF --group-directories-first'
+alias ls='ls --color -phF'
 alias la='ls --color -aphF'
 alias ll='ls --color -lphF'
 alias l='ls --color -lphAF'
@@ -28,6 +28,7 @@ alias ssh_blade="ssh -X kappel@194.94.121.187"
 alias ssh_head="ssh -X -p 11000 root@194.94.121.187"
 alias ssh_front="ssh -X kappel@194.94.121.248"
 alias ssh_work="ssh -X kappel@194.94.121.112"
+alias ssh_vserver="ssh -X unexist@80.190.156.238"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
@@ -71,9 +72,9 @@ fi
 
 # Chrome/chromium
 if [ -e /usr/bin/chrome ] ; then
-  alias chrome="chrome -remote-shell-port=9222 &!"
+  alias chrome="chrome -remote-shell-port=9222 &>/dev/null &!"
 elif [ -e /usr/bin/chromium ] ; then
-  alias chrome="chromium -remote-shell-port=9222 &!"
+  alias chrome="chromium -remote-shell-port=9222 &>/dev/null &!"
 fi
 
 # Xephyr
