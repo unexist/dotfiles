@@ -6,7 +6,7 @@
 #
 
 require "socket"
-require "/home/unexist/subtle-contrib/ruby/gleebox.rb"
+require "/home/unexist/subtle-contrib/ruby/launcher.rb"
 
 #
 # Options
@@ -47,38 +47,40 @@ color :background,    "#3d3d3d"
 #
 # Gravities
 #
-gravity :top_left,      [0, 0, 50, 50]
-gravity :top_left66,    [0, 0, 50, 66]
-gravity :top_left33,    [0, 0, 50, 33]
-gravity :top_left75,    [0, 0, 75, 50]
-gravity :top,           [0, 0, 100, 50]
-gravity :top66,         [0, 0, 100, 67]
-gravity :top33,         [0, 0, 100, 33]
-gravity :top_right,     [100, 0, 50, 50]
-gravity :top_right66,   [100, 0, 50, 66]
-gravity :top_right33,   [100, 0, 50, 33]
-gravity :left,          [0, 0, 50, 100]
-gravity :left66,        [0, 50, 50, 33]
-gravity :left33,        [0, 50, 25, 33]
-gravity :center,        [0, 0, 100, 100]
-gravity :center66,      [0, 50, 100, 33]
-gravity :center33,      [50, 50, 50, 33]
-gravity :right,         [100, 0, 50, 100]
-gravity :right66,       [100, 50, 50, 33]
-gravity :right33,       [100, 50, 25, 100]
-gravity :bottom_left,   [0, 100, 50, 50]
-gravity :bottom_left66, [0, 100, 50, 66]
-gravity :bottom_left33, [0, 100, 50, 33]
-gravity :bottom_left75, [0, 100, 75, 50]
-gravity :bottom,        [0, 100, 100, 50]
-gravity :bottom66,      [0, 100, 100, 66]
-gravity :bottom33,      [0, 100, 100, 33]
-gravity :bottom_right,  [100, 100, 50, 50]
+gravity :top_left,       [0, 0, 50, 50]
+gravity :top_left66,     [0, 0, 50, 66]
+gravity :top_left33,     [0, 0, 50, 33]
+gravity :top_left75,     [0, 0, 75, 50]
+gravity :top,            [0, 0, 100, 50]
+gravity :top66,          [0, 0, 100, 67]
+gravity :top33,          [0, 0, 100, 33]
+gravity :top75,          [0, 0, 100, 75]
+gravity :top_right,      [100, 0, 50, 50]
+gravity :top_right66,    [100, 0, 50, 66]
+gravity :top_right33,    [100, 0, 50, 33]
+gravity :left,           [0, 0, 50, 100]
+gravity :left66,         [0, 50, 50, 33]
+gravity :left33,         [0, 50, 25, 33]
+gravity :center,         [0, 0, 100, 100]
+gravity :center66,       [0, 50, 100, 33]
+gravity :center33,       [50, 50, 50, 33]
+gravity :right,          [100, 0, 50, 100]
+gravity :right66,        [100, 50, 50, 33]
+gravity :right33,        [100, 50, 25, 100]
+gravity :bottom_left,    [0, 100, 50, 50]
+gravity :bottom_left66,  [0, 100, 50, 66]
+gravity :bottom_left33,  [0, 100, 50, 33]
+gravity :bottom_left25,  [0, 100, 50, 25]
+gravity :bottom,         [0, 100, 100, 50]
+gravity :bottom66,       [0, 100, 100, 66]
+gravity :bottom33,       [0, 100, 100, 33]
+gravity :bottom_right,   [100, 100, 50, 50]
 gravity :bottom_right66, [100, 100, 50, 66]
 gravity :bottom_right33, [100, 100, 50, 33]
-gravity :gimp_image,    [50, 50, 80, 100]
-gravity :gimp_toolbox,  [0, 0, 10, 100]
-gravity :gimp_dock,     [100, 0, 10, 100]
+gravity :bottom_right25, [100, 100, 50, 25]
+gravity :gimp_image,     [50, 50, 80, 100]
+gravity :gimp_toolbox,   [0, 0, 10, 100]
+gravity :gimp_dock,      [100, 0, 10, 100]
 
 # Host specific
 host     = Socket.gethostname
@@ -136,14 +138,14 @@ grab modkey + "-C-s",     :SubletsReload
 
 # Gravity keys
 grab gravkeys[0], [:top_left, :top_left66, :top_left33, :top_left75]
-grab gravkeys[1], [:top, :top66, :top33]
+grab gravkeys[1], [:top, :top66, :top33, :top75]
 grab gravkeys[2], [:top_right, :top_right66, :top_right33]
 grab gravkeys[3], [:left, :left66, :left33]
 grab gravkeys[4], [:center, :center66, :center33]
 grab gravkeys[5], [:right, :right66, :right33]
-grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left75]
+grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left25]
 grab gravkeys[7], [:bottom, :bottom66, :bottom33]
-grab gravkeys[8], [:bottom_right, :bottom_right66, :bottom_right33]
+grab gravkeys[8], [:bottom_right, :bottom_right66, :bottom_right33, :bottom_right25]
 
 # Alt-tab
 grab modkey + "-Tab" do |c|
@@ -176,7 +178,7 @@ grab modkey + "-g", "gvim"
 
 # Gleebox
 grab "A-g" do
-  Gleebox::Gleebox.instance.run
+  Launcher::Launcher.instance.run
 end
 
 #
@@ -189,9 +191,15 @@ tag "terms" do
 end
 
 tag "browser" do
-  match    "browser|navigator|midori|namoroka|firefox|chrome|chromium"
-  gravity  :center
-  screen   1
+  match "browser|navigator|midori|namoroka|firefox|chrome|chromium"
+
+  if("proteus" == host)
+    gravity :top75
+  else
+    gravity :center
+  end
+
+  screen 1
 end
 
 tag "pdf" do
@@ -203,8 +211,8 @@ end
 tag "editor" do
   match    "[g]?vim"
 
-  if("mockra" == host)
-    gravity :top66
+  if("mockra" == host or "proteus" == host)
+    gravity :top75
   else
     gravity :center
   end
@@ -289,15 +297,15 @@ tag "eight" do
   screen   0
 end
 
-tag "one33" do
+tag "one25" do
   match    "urxvt2"
-  gravity  :bottom_left33
+  gravity  :bottom_left25
   screen   0
 end
 
-tag "three33" do
+tag "three25" do
   match    "urxvt1"
-  gravity  :bottom_right33
+  gravity  :bottom_right25
   screen   0
 end
 
@@ -349,10 +357,11 @@ if("telas" == host) #< Multihead
   www    << "|eight|two"
   void   << "|eight|two"
   editor << "|seven|one|six|xephyr"
-elsif("mockra" == host)
+elsif("mockra" == host or "proteus" == host)
   terms  << "|eight|two"
   void   << "|xephyr"
-  editor << "|one33|three33"
+  www    << "|one25|three25"
+  editor << "|one25|three25"
 end
 
 view "terms",  terms
@@ -364,12 +373,3 @@ view "editor", editor
 #
 # Hooks
 #
-
-on :start do
-# Gleebox
-  if("proteus" == host)
-    Gleebox::Gleebox.instance.set_browser("chrome")
-  else
-    Gleebox::Gleebox.instance.set_browser("chromium")
-  end
-end
