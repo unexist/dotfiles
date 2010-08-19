@@ -192,15 +192,14 @@ tag "terms" do
 end
 
 tag "browser" do
-  match "browser|navigator|midori|namoroka|firefox|chrome|chromium"
+  match  "browser|navigator|midori|namoroka|firefox|chrome|chromium"
+  screen 1
 
   if("proteus" == host)
     gravity :top75
   else
     gravity :center
   end
-
-  screen 1
 end
 
 tag "pdf" do
@@ -210,29 +209,24 @@ tag "pdf" do
 end
 
 tag "editor" do
-  match    "[g]?vim"
+  match   "[g]?vim"
+  screen  1
+  resize  false
 
   if("mockra" == host or "proteus" == host)
     gravity :top75
   else
     gravity :center
   end
-
-  screen   1
-  resize   false
 end
 
-# Host specific
-if("mockra" == host)
-  tag "xephyr" do
-    match    "xephyr"
+tag "xephyr" do
+  match    "xephyr"
+  screen   0
+
+  if("mockra" == host)
     gravity  :center
-    screen   0
-  end
-else
-  tag "xephyr" do
-    match    "xephyr"
-    screen   0
+  else
     geometry [857, 96, 800, 800]
   end
 end
@@ -244,28 +238,28 @@ tag "android" do
 end
 
 tag "mplayer" do
-  match    "mplayer"
-  stick    true
-  float    true
-  urgent   true
-  screen   1
+  match   "mplayer"
+  stick   true
+  float   true
+  urgent  true
+  screen  1
 end
 
 tag "stick" do
-  match    "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
-  stick    true
-  float    true
+  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
+  stick  true
+  float  true
 end
 
 tag "void" do
-  match    "jd-Main|Virtualbox"
-  screen   1
+  match   "jd-Main|Virtualbox"
+  screen  1
 end
 
 tag "test" do
-  match    "test"
-  float    true
-  resize   false
+  match   "test"
+  float   true
+  resize  false
 end
 
 tag "one" do
@@ -350,7 +344,7 @@ end
 terms  = "terms"
 www    = "browser"
 void   = "default|void|gimp_.*"
-test   = ""
+test   = "xephyr"
 editor = "android|editor"
 
 # Host specific
@@ -361,7 +355,6 @@ if("telas" == host) #< Multihead
   editor << "|seven|one|six|xephyr"
 elsif("mockra" == host or "proteus" == host)
   terms  << "|eight|two"
-  void   << "|xephyr"
   www    << "|one25|three25"
   editor << "|one25|three25"
 end
@@ -371,7 +364,6 @@ view "www",    www
 view "void",   void
 view "test",   test
 view "editor", editor
-
 
 #
 # Hooks
