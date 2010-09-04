@@ -88,13 +88,13 @@
 !*color15: #F6F3E8
 ! }}}
 
-!! Xft
+! Xft
 Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
 Xft.hinstyle: hintslight
-!
+
 ! URxvt
 URxvt.scrollBar: false
 URxvt.loginShell: true
@@ -104,10 +104,9 @@ URxvt.boldFont: xft:envy code r:medium:pixelsize=13
 URxvt.termName: rxvt-256color
 URxvt.background: #202020
 URxvt.foreground: #e2e2e5
-
-! Urls
-*keysym.M-u: perl:mark-yank-urls:activate_mark_mode
-*underlineURLs: true
-*perl-lib: /home/unexist/.URxvt/
-*perl-ext: selection,mark-yank-urls
-*urlLauncher: uzbl --uri 
+URxvt.underlineURLs: true
+URxvt.urlLauncher: uzbl --uri 
+URxvt.perl-lib: /home/unexist/.urxvt/
+URxvt.perl-ext: selection,mark-yank-urls,font
+URxvt.keysym.M-plus: perl:font:increase
+URxvt.keysym.M-minus: perl:font:decrease

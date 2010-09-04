@@ -42,8 +42,8 @@ sleep 2
 
 # Term
 if [ -e /usr/bin/urxvt ] ; then
-  /usr/bin/urxvt -name urxvt1 --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
-  /usr/bin/urxvt -name urxvt2 --perl-lib /home/unexist/.urxvt/ -pe mark-yank-urls &
+  /usr/bin/urxvt -name urxvt1 &
+  /usr/bin/urxvt -name urxvt2 &
 fi
 
 # Numlockx
