@@ -275,7 +275,7 @@ tag "two" do
 end
 
 tag "six" do
-  match    "navigator"
+  match    "navigator|chrom[ium|e]"
   gravity  :right
   screen   0
 end
@@ -348,11 +348,11 @@ test   = "xephyr"
 editor = "android|editor"
 
 # Host specific
-if("telas" == host) #< Multihead
+if("telas" == host or "aral" == host) #< Multihead
   terms  << "|eight|two"
   www    << "|eight|two"
   void   << "|eight|two"
-  editor << "|seven|one|six|xephyr"
+  editor << "|seven|one$|six|xephyr"
 elsif("mockra" == host or "proteus" == host)
   terms  << "|eight|two"
   www    << "|one25|three25"
