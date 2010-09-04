@@ -38,7 +38,7 @@ if [ -e /usr/bin/sudo ] ; then
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
   alias pp="sudo powerpill"
-  alias ya="sudo yaourt"
+  alias y="sudo yaourt"
   alias s="sudo"
 fi
 
