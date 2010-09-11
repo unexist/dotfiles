@@ -154,6 +154,7 @@
   Memcheck:Value8
   obj:/usr/lib/libruby.so.1.9.1
   ...
+}
 {
   Xft
   Memcheck:Leak
