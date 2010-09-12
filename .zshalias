@@ -37,8 +37,9 @@ if [ -e /usr/bin/sudo ] ; then
   alias susp='sudo s2ram -f -p -m'
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
-  alias pp="sudo powerpill"
+  alias p="sudo powerpill"
   alias y="sudo yaourt"
+  alias g="sudo gem"
   alias s="sudo"
 fi
 
