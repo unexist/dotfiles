@@ -16,7 +16,7 @@ alias q='clear && logout'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias grep='grep -n'
+alias grep='grep -nI'
 
 # Security
 alias rm='rm -i'
@@ -37,6 +37,7 @@ if [ -e /usr/bin/sudo ] ; then
   alias susp='sudo s2ram -f -p -m'
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
+  alias killjobs="sudo lprm -"
   alias p="sudo powerpill"
   alias y="sudo yaourt"
   alias g="sudo gem"
@@ -82,11 +83,6 @@ fi
 if [ -e /usr/bin/Xephyr ] ; then
   alias xeph="Xephyr -ac -noreset -screen 1024x580 :2 &>/dev/null &!"
   alias xephxin="Xephyr -ac -noreset +xinerama -screen 800x800 :2 &>/dev/null &!"
-fi
-
-# urxvt
-if [ -e /usr/bin/urxvt ] ; then
-  alias urxvt="urxvt --perl-lib ${HOME}/.urxvt/ -pe mark-yank-urls &!"
 fi
 
 # GVim
