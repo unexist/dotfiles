@@ -146,19 +146,19 @@ export MANSECT="2:3:3p:1:1p:8:4:5:6:7:9:0p:tcl:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x"
 
 # Extending the path var
 if [ -e $HOME/bin ] ; then
-	export PATH=$HOME/bin:$PATH
+  export PATH=$HOME/bin:$PATH
 fi
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
-	export EDITOR=/usr/bin/vim
+  export EDITOR=/usr/bin/vim
 fi
 
 # PostgreSQL
 if [ -f /usr/bin/psql ] ; then
-	export PGDATA=/home/unexist/misc/postgres
-	export PGUSER=unexist
-	export PGDATABASE=unexist
+  export PGDATA=/home/unexist/misc/postgres
+  export PGUSER=unexist
+  export PGDATABASE=unexist
 fi
 
 # XDG dirs
@@ -191,6 +191,3 @@ if [ -f /usr/bin/keychain ] ; then
 
   source $HOME/.keychain/$HOST-sh
 fi
-
-# rvm-install added line:
-if [[ -s /usr/local/rvm/scripts/rvm ]] ; then source /usr/local/rvm/scripts/rvm ; fi
