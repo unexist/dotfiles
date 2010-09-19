@@ -94,8 +94,6 @@ elsif("test" == host) #< Usually VMs
   modkey = "A"
 end
 
-gravkeys.map! { |g| "#{modkey}-#{g}" }
-
 #
 # Grabs
 #
@@ -137,30 +135,31 @@ grab modkey + "-C-r",     :SubtleReload
 grab modkey + "-C-A-r",   :SubtleRestart
 grab modkey + "-C-s",     :SubletsReload
 
-# Gravity keys
-grab gravkeys[0], [:top_left, :top_left66, :top_left33, :top_left75]
-grab gravkeys[1], [:top, :top66, :top33, :top75]
-grab gravkeys[2], [:top_right, :top_right66, :top_right33]
-grab gravkeys[3], [:left, :left66, :left33]
-grab gravkeys[4], [:center, :center66, :center33]
-grab gravkeys[5], [:right, :right66, :right33]
-grab gravkeys[6], [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left25]
-grab gravkeys[7], [:bottom, :bottom66, :bottom33]
-grab gravkeys[8], [:bottom_right, :bottom_right66, :bottom_right33, :bottom_right25]
+# gravkeys.map! { |g| "#{modkey}-#{g}" }
 
-# Alt-tab
-grab modkey + "-Tab" do |c|
-  # Extracted from line #177
-    sel     = 0
-    clients = Subtlext::View[:current].clients
+# Gravity keys and focus
+gravities = [
+  [:top_left, :top_left66, :top_left33, :top_left75],
+  [:top, :top66, :top33, :top75],
+  [:top_right, :top_right66, :top_right33],
+  [:left, :left66, :left33],
+  [:center, :center66, :center33],
+  [:right, :right66, :right33],
+  [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left25],
+  [:bottom, :bottom66, :bottom33],
+  [:bottom_right, :bottom_right66, :bottom_right33, :bottom_right25]
+]
 
-    clients.each_index do |idx|
-      if(clients[idx].id == c.id)
-        sel = idx + 1 if(idx + 1 <= clients.size)
-      end
-    end
+gravities.each_index do |i|
+  grab "%s-%s" % [ modkey, gravkeys[i] ], gravities[i]
 
-    clients[sel].focus
+  grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda {
+    c = Subtlext::View.current.clients.select { |c|
+      gravities[i].include?(c.gravity.name.to_sym)
+    }
+
+    c.first.focus unless(c.empty?)
+  }
 end
 
 # Multimedia keys
@@ -311,7 +310,7 @@ tag "gimp_image" do
 end
 
 tag "gimp_toolbox" do
-  match    :role => "gimp-toolbox"
+  match    :role => "gimp-toolbox$"
   gravity  :gimp_toolbox
   screen   1
 end
@@ -352,7 +351,8 @@ if("telas" == host or "aral" == host) #< Multihead
   terms  << "|eight|two"
   www    << "|eight|two"
   void   << "|eight|two"
-  editor << "|seven|one$|six|xephyr"
+  test   << "|seven|one$|editor"
+  editor << "|seven|one$|six"
 elsif("mockra" == host or "proteus" == host)
   terms  << "|eight|two"
   www    << "|one25|three25"
