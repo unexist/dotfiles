@@ -117,6 +117,7 @@ grab modkey + "-S-F4",    :WindowScreen4
 # Windows
 grab modkey + "-B1",      :WindowMove
 grab modkey + "-B2",      :WindowResize
+grab modkey + "-KP_Divide",      :WindowResize
 grab modkey + "-S-f",     :WindowFloat
 grab modkey + "-S-space", :WindowFull
 grab modkey + "-S-s",     :WindowStick
@@ -134,8 +135,6 @@ grab modkey + "-C-q",     :SubtleQuit
 grab modkey + "-C-r",     :SubtleReload
 grab modkey + "-C-A-r",   :SubtleRestart
 grab modkey + "-C-s",     :SubletsReload
-
-# gravkeys.map! { |g| "#{modkey}-#{g}" }
 
 # Gravity keys and focus
 gravities = [
@@ -170,10 +169,10 @@ grab "XF86AudioPlay", "mpc toggle"
 grab "XF86AudioStop", "mpc stop"
 grab "XF86AudioPrev", "mpc prev"
 grab "XF86AudioNext", "mpc next"
+grab modkey + "-m", "mpc | head -n1 | tr -d '\n' | xclip"
 
 # Programs
 grab modkey + "-Return", "urxvt"
-grab modkey + "-m", "midori"
 grab modkey + "-g", "gvim"
 
 # Launcher
