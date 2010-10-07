@@ -191,7 +191,7 @@ end
 
 tag "browser" do
   match  "browser|navigator|midori|namoroka|firefox|chrome|chromium"
-  screen 1
+  screen 0
 
   if("proteus" == host)
     gravity :top75
@@ -208,7 +208,7 @@ end
 
 tag "editor" do
   match   "[g]?vim"
-  screen  1
+  screen  0
   resize  false
 
   if("mockra" == host or "proteus" == host)
@@ -251,7 +251,7 @@ end
 
 tag "void" do
   match   "jd-Main|Virtualbox"
-  screen  1
+  screen  0
 end
 
 tag "test" do
@@ -263,66 +263,66 @@ end
 tag "one" do
   match    "urxvt2"
   gravity  :bottom_left
-  screen   0
+  screen   1
 end
 
 tag "two" do
   match    "urxvt2"
   gravity  :bottom
-  screen   0
+  screen   1
 end
 
 tag "six" do
   match    "navigator|chrom[ium|e]"
   gravity  :right
-  screen   0
+  screen   1
 end
 
 tag "seven" do
   match    "urxvt1"
   gravity  :top_left
-  screen   0
+  screen   1
 end
 
 tag "eight" do
   match    "urxvt1"
   gravity  :top
-  screen   0
+  screen   1
 end
 
 tag "one25" do
   match    "urxvt2"
   gravity  :bottom_left25
-  screen   0
+  screen   1
 end
 
 tag "three25" do
   match    "urxvt1"
   gravity  :bottom_right25
-  screen   0
+  screen   1
 end
 
 tag "gimp_image" do
   match    :role => "gimp-image-window"
   gravity  :gimp_image
-  screen   1
+  screen   0
 end
 
 tag "gimp_toolbox" do
   match    :role => "gimp-toolbox$"
   gravity  :gimp_toolbox
-  screen   1
+  screen   0
 end
 
 tag "gimp_dock" do
   match    :role => "gimp-dock"
   gravity  :gimp_dock
-  screen   1
+  screen   0
 end
 
 tag "gimp_scum" do
   match    :role => "gimp-.*"
-  screen   1
+  screen   0
 end
 
 tag "xev" do
