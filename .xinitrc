@@ -30,12 +30,15 @@ fi
 
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
-  xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1 --dpi 96
+  #xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP2 --mode 1680x1050 --pos 1680x0 --right-of DFP1 --dpi 96
+  xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --right-of DVI-0 --dpi 96
+  #xrandr --output udlfb --mode 1680x1050 --pos 0x0 --dpi 96
 fi
 
 # Windowmanager
 #valgrind --tool=memcheck --suppressions=/home/unexist/.suppressions subtle &> ~/subtle.log &
 subtle &
+#$HOME/projects/subtle/subtle -c $HOME/projects/subtle/unexist.rb &
 pid=$!
 
 sleep 2
