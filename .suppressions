@@ -191,3 +191,10 @@
   fun:subRubyInit
   fun:main
 }
+{
+   Ruby 192 GC
+   Memcheck:Cond
+   fun:mark_current_machine_context
+   fun:garbage_collect
+   ...
+}
