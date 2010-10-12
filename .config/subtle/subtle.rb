@@ -8,28 +8,35 @@
 require "socket"
 require "/home/unexist/projects/subtle-contrib/ruby/launcher.rb"
 
-#
-# Options
-#
+# Options {{{
 set :border,     2
 set :step,       5
 set :snap,       10
 set :gravity,    :center
 set :urgent,     false
 set :resize,     false
-set :randr,      true
 set :padding,    [0, 0, 0, 0]
 set :font,       "xft:Envy Code R:pixelsize=13"
-set :top,        [:tray, :title, :spacer, :sublets, :spacer, :scratchpad, :views]
-set :bottom,     []
-set :stipple,    false
 set :separator,  ""
 set :outline,    1
 set :gap,        0
+# }}}
 
-#
-# Colors
-#
+# Screens {{{
+screen 1 do
+  stipple false
+  top     [:tray, :title, :spacer, :sublets, :spacer, :views]
+  bottom  []
+end
+
+screen 2 do
+  stipple false
+  top     [:views, :spacer, :mpd, :volume, :spacer, :title]
+  bottom  []
+end
+# }}}
+
+# Colors {{{
 color :fg_panel,      "#777777"
 color :fg_views,      "#777777"
 color :fg_sublets,    "#777777"
@@ -44,10 +51,9 @@ color :border_focus,  "#303030"
 color :border_normal, "#202020"
 color :border_panel,  "#dddddc"
 color :background,    "#3d3d3d"
+# }}}
 
-#
-# Gravities
-#
+# Gravities {{{
 gravity :top_left,       [0, 0, 50, 50]
 gravity :top_left66,     [0, 0, 50, 66]
 gravity :top_left33,     [0, 0, 50, 33]
@@ -82,7 +88,9 @@ gravity :bottom_right25, [100, 100, 50, 25]
 gravity :gimp_image,     [50, 50, 80, 100]
 gravity :gimp_toolbox,   [0, 0, 10, 100]
 gravity :gimp_dock,      [100, 0, 10, 100]
+# }}}
 
+# Grabs {{{
 # Host specific
 host     = Socket.gethostname
 modkey   = "W"
@@ -94,25 +102,24 @@ elsif("test" == host) #< Usually VMs
   modkey = "A"
 end
 
-#
-# Grabs
-#
-grab modkey + "-1",       :ViewJump1
-grab modkey + "-2",       :ViewJump2
-grab modkey + "-3",       :ViewJump3
-grab modkey + "-4",       :ViewJump4
-grab modkey + "-5",       :ViewJump5
+# View
+grab modkey + "-1",       :ViewSwitch1
+grab modkey + "-2",       :ViewSwitch2
+grab modkey + "-3",       :ViewSwitch3
+grab modkey + "-4",       :ViewSwitch4
+grab modkey + "-5",       :ViewSwitch5
+
+grab modkey + "-S-1",     :ViewJump1
+grab modkey + "-S-2",     :ViewJump2
+grab modkey + "-S-3",     :ViewJump3
+grab modkey + "-S-4",     :ViewJump4
+grab modkey + "-S-5",     :ViewJump5
 
 # Screens
 grab modkey + "-F1",      :ScreenJump1
 grab modkey + "-F2",      :ScreenJump2
 grab modkey + "-F3",      :ScreenJump3
 grab modkey + "-F4",      :ScreenJump4
-
-grab modkey + "-S-F1",    :WindowScreen1
-grab modkey + "-S-F2",    :WindowScreen2
-grab modkey + "-S-F3",    :WindowScreen3
-grab modkey + "-S-F4",    :WindowScreen4
 
 # Windows
 grab modkey + "-B1",      :WindowMove
@@ -179,19 +186,16 @@ grab modkey + "-g", "gvim"
 grab "A-g" do
   Launcher::Launcher.instance.run
 end
+# }}}
 
-#
-# Tags
-#
+# Tags {{{
 tag "terms" do
   match    "xterm|urxvt"
   gravity  :center
-  screen   1
 end
 
 tag "browser" do
   match  "browser|navigator|midori|namoroka|firefox|chrome|chromium"
-  screen 0
 
   if("proteus" == host)
     gravity :top75
@@ -203,12 +207,10 @@ end
 tag "pdf" do
   match    "apvlv|evince"
   stick    true
-  screen   0
 end
 
 tag "editor" do
   match   "[g]?vim"
-  screen  0
   resize  false
 
   if("mockra" == host or "proteus" == host)
@@ -220,7 +222,6 @@ end
 
 tag "xephyr" do
   match    "xephyr"
-  screen   0
 
   if("mockra" == host)
     gravity  :center
@@ -231,16 +232,12 @@ end
 
 tag "android" do
   match    :name => "5554:AVD"
-  screen   0
   geometry [ 873, 47, 791, 534 ]
 end
 
 tag "mplayer" do
   match   "mplayer"
-  stick   true
-  float   true
   urgent  true
-  screen  1
 end
 
 tag "stick" do
@@ -251,7 +248,6 @@ end
 
 tag "void" do
   match   "jd-Main|Virtualbox"
-  screen  0
 end
 
 tag "test" do
@@ -263,71 +259,60 @@ end
 tag "one" do
   match    "urxvt2"
   gravity  :bottom_left
-  screen   1
 end
 
 tag "two" do
   match    "urxvt2"
   gravity  :bottom
-  screen   1
 end
 
 tag "six" do
   match    "navigator|chrom[ium|e]"
   gravity  :right
-  screen   1
 end
 
 tag "seven" do
   match    "urxvt1"
   gravity  :top_left
-  screen   1
 end
 
 tag "eight" do
   match    "urxvt1"
   gravity  :top
-  screen   1
 end
 
 tag "one25" do
   match    "urxvt2"
   gravity  :bottom_left25
-  screen   1
 end
 
 tag "three25" do
   match    "urxvt1"
   gravity  :bottom_right25
-  screen   1
 end
 
 tag "gimp_image" do
   match    :role => "gimp-image-window"
   gravity  :gimp_image
-  screen   0
 end
 
 tag "gimp_toolbox" do
   match    :role => "gimp-toolbox$"
   gravity  :gimp_toolbox
-  screen   0
 end
 
 tag "gimp_dock" do
   match    :role => "gimp-dock"
   gravity  :gimp_dock
-  screen   0
 end
 
 tag "gimp_scum" do
   match    :role => "gimp-.*"
-  screen   0
 end
 
 tag "xev" do
   match    :name => "Event Tester"
-  geometry [ 1000, 100, 80, 80 ]
+  gravity  :top_right
   float    true
   stick    true
 end
@@ -336,34 +321,12 @@ tag "chrome-opts" do
   match :name => "chromium options"
   stick true
 end
+# }}}
 
-#
-# Views
-terms  = "terms"
-www    = "browser"
-void   = "default|void|gimp_.*"
-test   = "xephyr"
-editor = "android|editor"
-
-# Host specific
-if("telas" == host or "aral" == host) #< Multihead
-  terms  << "|eight|two"
-  www    << "|eight|two"
-  void   << "|eight|two"
-  test   << "|seven|one$|editor"
-  editor << "|seven|one$|six"
-elsif("mockra" == host or "proteus" == host)
-  terms  << "|eight|two"
-  www    << "|one25|three25"
-  editor << "|one25|three25"
-end
-
-view "terms",  terms
-view "www",    www
-view "void",   void
-view "test",   test
-view "editor", editor
-
-#
-# Hooks
-#
+# Views {{{
+view "terms",  "terms|eight|two|mplayer"
+view "www",    "browser"
+view "void",   "default|void|gimp_.*"
+view "test",   "seven$|one$|xephyr"
+view "editor", "android|editor"
+# }}}
