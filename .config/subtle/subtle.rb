@@ -6,7 +6,11 @@
 #
 
 require "socket"
-require "/home/unexist/projects/subtle-contrib/ruby/launcher.rb"
+
+begin
+  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
+rescue LoadError
+end
 
 # Options {{{
 set :border,     2
@@ -55,36 +59,37 @@ color :background,    "#3d3d3d"
 
 # Gravities {{{
 gravity :top_left,       [0, 0, 50, 50]
-gravity :top_left66,     [0, 0, 50, 66]
 gravity :top_left33,     [0, 0, 50, 33]
-gravity :top_left75,     [0, 0, 75, 50]
+gravity :top_left66,     [0, 0, 50, 66]
+gravity :top_left75,     [0, 0, 50, 75]
 gravity :top,            [0, 0, 100, 50]
 gravity :top66,          [0, 0, 100, 67]
 gravity :top33,          [0, 0, 100, 33]
 gravity :top75,          [0, 0, 100, 75]
 gravity :top_right,      [100, 0, 50, 50]
-gravity :top_right66,    [100, 0, 50, 66]
 gravity :top_right33,    [100, 0, 50, 33]
+gravity :top_right66,    [100, 0, 50, 66]
+gravity :top_right75,    [100, 0, 50, 75]
 gravity :left,           [0, 0, 50, 100]
-gravity :left66,         [0, 50, 50, 33]
 gravity :left33,         [0, 50, 25, 33]
+gravity :left66,         [0, 50, 50, 33]
 gravity :center,         [0, 0, 100, 100]
-gravity :center66,       [0, 50, 100, 33]
 gravity :center33,       [50, 50, 50, 33]
+gravity :center66,       [0, 50, 100, 33]
 gravity :right,          [100, 0, 50, 100]
-gravity :right66,        [100, 50, 50, 33]
 gravity :right33,        [100, 50, 25, 100]
+gravity :right66,        [100, 50, 50, 33]
 gravity :bottom_left,    [0, 100, 50, 50]
-gravity :bottom_left66,  [0, 100, 50, 66]
-gravity :bottom_left33,  [0, 100, 50, 33]
 gravity :bottom_left25,  [0, 100, 50, 25]
+gravity :bottom_left33,  [0, 100, 50, 33]
+gravity :bottom_left66,  [0, 100, 50, 66]
 gravity :bottom,         [0, 100, 100, 50]
 gravity :bottom66,       [0, 100, 100, 66]
 gravity :bottom33,       [0, 100, 100, 33]
 gravity :bottom_right,   [100, 100, 50, 50]
-gravity :bottom_right66, [100, 100, 50, 66]
-gravity :bottom_right33, [100, 100, 50, 33]
 gravity :bottom_right25, [100, 100, 50, 25]
+gravity :bottom_right33, [100, 100, 50, 33]
+gravity :bottom_right66, [100, 100, 50, 66]
 gravity :gimp_image,     [50, 50, 80, 100]
 gravity :gimp_toolbox,   [0, 0, 10, 100]
 gravity :gimp_dock,      [100, 0, 10, 100]
@@ -124,7 +129,6 @@ grab modkey + "-F4",      :ScreenJump4
 # Windows
 grab modkey + "-B1",      :WindowMove
 grab modkey + "-B2",      :WindowResize
-grab modkey + "-KP_Divide",      :WindowResize
 grab modkey + "-S-f",     :WindowFloat
 grab modkey + "-S-space", :WindowFull
 grab modkey + "-S-s",     :WindowStick
@@ -136,24 +140,24 @@ grab modkey + "-Up",      :WindowUp
 grab modkey + "-Right",   :WindowRight
 grab modkey + "-k",       :WindowKill
 grab modkey + "-B3",      :WindowResize
+grab modkey + "-h", lambda { |c| c.retag }
 
 # Reload/restart
 grab modkey + "-C-q",     :SubtleQuit
 grab modkey + "-C-r",     :SubtleReload
 grab modkey + "-C-A-r",   :SubtleRestart
-grab modkey + "-C-s",     :SubletsReload
 
 # Gravity keys and focus
 gravities = [
-  [:top_left, :top_left66, :top_left33, :top_left75],
-  [:top, :top66, :top33, :top75],
-  [:top_right, :top_right66, :top_right33],
-  [:left, :left66, :left33],
-  [:center, :center66, :center33],
-  [:right, :right66, :right33],
-  [:bottom_left, :bottom_left66, :bottom_left33, :bottom_left25],
-  [:bottom, :bottom66, :bottom33],
-  [:bottom_right, :bottom_right66, :bottom_right33, :bottom_right25]
+  [:top_left, :top_left33, :top_left66, :top_left75],
+  [:top, :top33, :top66, :top75],
+  [:top_right, :top_right33, :top_right66, :top_right75],
+  [:left, :left33, :left66],
+  [:center, :center33, :center66],
+  [:right, :right33, :right66],
+  [:bottom_left, :bottom_left25, :bottom_left33, :bottom_left66],
+  [:bottom, :bottom33, :bottom66],
+  [:bottom_right, :bottom_right25, :bottom_right33, :bottom_right66]
 ]
 
 gravities.each_index do |i|
@@ -195,9 +199,9 @@ tag "terms" do
 end
 
 tag "browser" do
-  match  "browser|navigator|midori|namoroka|firefox|chrome|chromium"
+  match "navigator|[google-]?chrom[ium|e]"
 
-  if("proteus" == host)
+  if("proteus" == host or "pc03112" == host)
     gravity :top75
   else
     gravity :center
@@ -213,7 +217,7 @@ tag "editor" do
   match   "[g]?vim"
   resize  false
 
-  if("mockra" == host or "proteus" == host)
+  if("mockra" == host or "proteus" == host or "pc03112" == host)
     gravity :top75
   else
     gravity :center
@@ -261,14 +265,19 @@ tag "one" do
   gravity  :bottom_left
 end
 
+tag "one25" do
+  match    "urxvt2"
+  gravity  :bottom_left25
+end
+
 tag "two" do
   match    "urxvt2"
   gravity  :bottom
 end
 
-tag "six" do
-  match    "navigator|chrom[ium|e]"
-  gravity  :right
+tag "three25" do
+  match    "urxvt1"
+  gravity  :bottom_right25
 end
 
 tag "seven" do
@@ -279,16 +288,6 @@ end
 tag "eight" do
   match    "urxvt1"
   gravity  :top
-end
-
-tag "one25" do
-  match    "urxvt2"
-  gravity  :bottom_left25
-end
-
-tag "three25" do
-  match    "urxvt1"
-  gravity  :bottom_right25
 end
 
 tag "gimp_image" do
@@ -327,6 +326,12 @@ end
 view "terms",  "terms|eight|two|mplayer"
 view "www",    "browser"
 view "void",   "default|void|gimp_.*"
-view "test",   "seven$|one$|xephyr"
-view "editor", "android|editor"
+
+if("mockra" == host or "proteus" == host or "pc03112" == host)
+  view "test",   "xephyr|android|one25|three25"
+  view "editor", "android|editor|one25|three25"
+else
+  view "test",   "android|xephyr"
+  view "editor", "editor"
+end
 # }}}
