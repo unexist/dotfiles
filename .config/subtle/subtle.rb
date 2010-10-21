@@ -263,8 +263,9 @@ tag "void" do
   match   "jd-Main|Virtualbox"
 end
 
-tag "dialog" do
+tag "dialogs" do
   match :type => :dialog
+  match :type => :splash
   stick true
 end
 
