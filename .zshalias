@@ -38,7 +38,7 @@ if [ -e /usr/bin/sudo ] ; then
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
   alias killjobs="sudo lprm -"
-  alias p="sudo powerpill"
+  alias p="sudo pacman"
   alias y="sudo yaourt"
   alias g="sudo gem"
   alias s="sudo"
@@ -83,8 +83,8 @@ fi
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  alias xeph="Xephyr -ac -noreset -screen 1024x580 :2 &>/dev/null &!"
-  alias xephxin="Xephyr -ac -noreset +xinerama -screen 800x800 :2 &>/dev/null &!"
+  alias xeph="Xephyr -ac -noreset -nodri -screen 1024x580 :2 &>/dev/null &!"
+  alias xephxin="Xephyr -ac -noreset -nodri +xinerama -screen 800x800 :2 &>/dev/null &!"
 fi
 
 # GVim
