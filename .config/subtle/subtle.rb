@@ -21,6 +21,7 @@ set :urgent,     false
 set :resize,     false
 set :padding,    [0, 0, 0, 0]
 set :font,       "xft:Envy Code R:pixelsize=13"
+#set :font,       "xft:Ubuntu R:pixelsize=13"
 set :separator,  ""
 set :outline,    1
 set :gap,        0
@@ -241,6 +242,8 @@ end
 
 tag "mplayer" do
   match   "mplayer"
+  float   true
+  stick   true
   urgent  true
 end
 
@@ -250,8 +253,24 @@ tag "stick" do
   float  true
 end
 
+tag "urgent" do
+  match  "sun-awt-X11-XDialogPeer"
+  type   :dialog
+  urgent true
+end
+
 tag "void" do
   match   "jd-Main|Virtualbox"
+end
+
+tag "dialog" do
+  match :type => :dialog
+  stick true
+end
+
+tag "flash" do
+  match "exe|<unknown>"
+  stick true
 end
 
 tag "test" do
@@ -331,7 +350,7 @@ if("mockra" == host or "proteus" == host or "pc03112" == host)
   view "test",   "xephyr|android|one25|three25"
   view "editor", "android|editor|one25|three25"
 else
-  view "test",   "android|xephyr"
+  view "test",   "android|xephyr|seven$|one$"
   view "editor", "editor"
 end
 # }}}
