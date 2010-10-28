@@ -38,8 +38,10 @@ set list!
 set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:<
 set dy+=lastline
 set dy+=uhex
+"set spell spelllang=de_DE
 
 syntax on
+
 
 " Colorscheme
 colorscheme digerati
@@ -53,6 +55,7 @@ endif
 " Maps
 map <F2> <Esc>:browse confirm e<CR>
 map <F3> <Esc>:NERDTreeToggle<CR>
+map <F7> <Esc>:setlocal spell! spelllang=de<CR>
 map <F9> <ESC>:so $VIMRUNTIME/syntax/hitest.vim<CR>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
