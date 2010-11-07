@@ -42,20 +42,33 @@ end
 # }}}
 
 # Colors {{{
-color :fg_panel,      "#777777"
-color :fg_views,      "#777777"
-color :fg_sublets,    "#777777"
-color :fg_focus,      "#0066ff"
-color :fg_urgent,     "#ff3b77"
-color :bg_panel,      "#eeeeec"
-color :bg_views,      "#eeeeec"
-color :bg_sublets,    "#eeeeec"
-color :bg_focus,      "#ffffff"
-color :bg_urgent,     "#eeeeec"
-color :border_focus,  "#303030"
-color :border_normal, "#202020"
-color :border_panel,  "#dddddc"
-color :background,    "#3d3d3d"
+color :focus_fg,        "#0066ff"
+color :focus_bg,        "#ffffff"
+color :focus_border,    "#dddddc"
+
+color :occupied_fg,     "#777777"
+color :occupied_bg,     "#eeeeec"
+color :occupied_border, "#eeeeec"
+
+color :urgent_fg,       "#ff3b77"
+color :urgent_bg,       "#eeeeec"
+color :urgent_border,   "#dddddc"
+
+color :views_fg,        "#777777"
+color :views_bg,        "#eeeeec"
+color :views_border,    "#dddddc"
+
+color :sublets_fg,      "#777777"
+color :sublets_bg,      "#eeeeec"
+color :sublets_border,  "#eeeeec"
+
+color :panel_fg,        "#777777"
+color :panel_bg,        "#eeeeec"
+
+color :client_active,   "#303030"
+color :client_inactive, "#202020"
+
+color :background,      "#3d3d3d"
 # }}}
 
 # Gravities {{{
@@ -186,6 +199,7 @@ grab modkey + "-m", "mpc | head -n1 | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
+grab modkey + "-c", "chrome"
 
 # Launcher
 grab "A-g" do
