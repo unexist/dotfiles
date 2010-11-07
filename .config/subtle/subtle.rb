@@ -46,7 +46,7 @@ color :focus_fg,        "#0066ff"
 color :focus_bg,        "#ffffff"
 color :focus_border,    "#dddddc"
 
-color :occupied_fg,     "#777777"
+color :occupied_fg,     "#555555"
 color :occupied_bg,     "#eeeeec"
 color :occupied_border, "#eeeeec"
 
@@ -56,7 +56,7 @@ color :urgent_border,   "#dddddc"
 
 color :views_fg,        "#777777"
 color :views_bg,        "#eeeeec"
-color :views_border,    "#dddddc"
+color :views_border,    "#eeeeec"
 
 color :sublets_fg,      "#777777"
 color :sublets_bg,      "#eeeeec"
