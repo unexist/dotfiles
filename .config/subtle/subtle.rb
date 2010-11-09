@@ -51,10 +51,10 @@ color :occupied_bg,     "#eeeeec"
 color :occupied_border, "#eeeeec"
 
 color :urgent_fg,       "#ff3b77"
-color :urgent_bg,       "#eeeeec"
+color :urgent_bg,       "#ffffff"
 color :urgent_border,   "#dddddc"
 
-color :views_fg,        "#777777"
+color :views_fg,        "#aebbd0"
 color :views_bg,        "#eeeeec"
 color :views_border,    "#dddddc"
 
@@ -215,6 +215,7 @@ end
 
 tag "browser" do
   match "navigator|[google-]?chrom[ium|e]"
+  match "google-chrome"
 
   if("proteus" == host or "pc03112" == host)
     gravity :top75
@@ -331,6 +332,7 @@ end
 
 tag "gimp_toolbox" do
   match    :role => "gimp-toolbox$"
+  match    :role => "gimp-toolbox$"
   gravity  :gimp_toolbox
 end
 
@@ -357,9 +359,15 @@ end
 # }}}
 
 # Views {{{
-view "terms",  "terms|eight|two|mplayer"
-view "www",    "browser"
-view "void",   "default|void|gimp_.*"
+view "terms", "terms|eight|two|mplayer"
+
+if("mockra" == host or "proteus" == host or "pc03112" == host)
+  view "www", "browser|one25|three25"
+else
+  view "www", "browser|one25|three25"
+end
+
+view "void", "default|void|gimp_.*"
 
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   view "test",   "xephyr|android|one25|three25"
@@ -368,4 +376,5 @@ else
   view "test",   "android|xephyr|seven$|one$"
   view "editor", "editor"
 end
+
 # }}}
