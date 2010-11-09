@@ -46,7 +46,7 @@ color :focus_fg,        "#0066ff"
 color :focus_bg,        "#ffffff"
 color :focus_border,    "#dddddc"
 
-color :occupied_fg,     "#a8a8a8"
+color :occupied_fg,     "#777777"
 color :occupied_bg,     "#eeeeec"
 color :occupied_border, "#eeeeec"
 
@@ -54,7 +54,7 @@ color :urgent_fg,       "#ff3b77"
 color :urgent_bg,       "#ffffff"
 color :urgent_border,   "#dddddc"
 
-color :views_fg,        "#777777"
+color :views_fg,        "#a8a8a8"
 color :views_bg,        "#eeeeec"
 color :views_border,    "#eeeeec"
 
@@ -214,8 +214,7 @@ tag "terms" do
 end
 
 tag "browser" do
-  match "navigator|[google-]?chrom[ium|e]"
-  match "google-chrome"
+  match "navigator|(google\-)?chrom[e|ium]"
 
   if("proteus" == host or "pc03112" == host)
     gravity :top75
@@ -364,7 +363,7 @@ view "terms", "terms|eight|two|mplayer"
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   view "www", "browser|one25|three25"
 else
-  view "www", "browser|one25|three25"
+  view "www", "browser"
 end
 
 view "void", "default|void|gimp_.*"
