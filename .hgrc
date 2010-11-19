@@ -3,9 +3,10 @@ editor = vim
 username = unexist
 
 [extensions]
-hgext.keyword =
-hgext.mq =
+hgext.keyword  =
+hgext.record   =
 hgext.graphlog =
+hgext.color    =
 
 [keyword]
 **.* =
@@ -18,3 +19,6 @@ Source = {file}
 Date = {date|utcdate}
 Id = {file},v {rev} {date|utcdate} {author|user}
 Rev = {rev}
+
+[color]
+mode = auto
