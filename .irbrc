@@ -7,20 +7,24 @@
 #
 
 require "rubygems" rescue nil
-require "wirble" rescue nil
-require "bond" rescue nil
-#require "irb/completion"
-require "irb/ext/save-history"
 
 # Irb config 
-IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-IRB.conf[:AUTO_INDENT] = true
- 
-# Load wirble
-Wirble.init
-Wirble.colorize
+if defined? IRB
+  require "wirble" rescue nil
+  require "bond" rescue nil
+  require "irb/ext/save-history"
 
-# Load bond
-Bond.start
+  IRB.conf[:SAVE_HISTORY] = 1000
+  IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+  IRB.conf[:PROMPT_MODE] = :SIMPLE
+  IRB.conf[:AUTO_INDENT] = true
+
+  # Load wirble
+  Wirble.init
+  Wirble.colorize
+
+  # Load bond
+  Bond.start
+else #< Ripl config
+  require "ripl/color_result" rescue nil
+end
