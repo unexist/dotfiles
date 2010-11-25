@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2009, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2010, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -116,5 +116,5 @@ fi
 
 # subtle
 if [ -f /usr/bin/subtle ] ; then
-  alias sirb='irb -r"subtle/subtlext"'
+  alias sirb='ripl -r"subtle/subtlext"'
 fi
