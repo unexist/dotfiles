@@ -32,12 +32,14 @@ screen 1 do
   stipple false
   top     [:tray, :title, :spacer, :sublets, :spacer, :views]
   bottom  []
+  view    1
 end
 
 screen 2 do
   stipple false
   top     [:views, :spacer, :mpd, :volume, :spacer, :title]
   bottom  []
+  view    0
 end
 # }}}
 
@@ -178,7 +180,7 @@ gravities.each_index do |i|
   grab "%s-%s" % [ modkey, gravkeys[i] ], gravities[i]
 
   grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda {
-    c = Subtlext::View.current.clients.select { |c|
+    c = Subtlext::Client.visible.select { |c|
       gravities[i].include?(c.gravity.name.to_sym)
     }
 
@@ -201,8 +203,21 @@ grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
 grab modkey + "-c", "chrome"
 
+grab "A-Tab" do
+  #clients = Subtlext::Client.find(:all).sort { |a, b| a.name <=> b.name }
+  clients = Subtlext::Client.visible
+  selected = clients.select { |c| c.has_focus? }.first
+
+  index = clients.index(selected)
+
+  index += 1
+  index = 0 if index >= clients.size
+
+  clients[index].focus
+end
+
 # Launcher
-grab "A-g" do
+grab "W-x" do
   Launcher::Launcher.instance.run
 end
 # }}}
@@ -358,7 +373,7 @@ end
 # }}}
 
 # Views {{{
-view "terms", "terms|eight|two|mplayer"
+view "terms", "terms|eight|two"
 
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   view "www", "browser|one25|three25"
