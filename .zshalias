@@ -75,11 +75,11 @@ fi
 
 # Chrome/chromium
 if [ -e /usr/bin/chrome ] ; then
-  alias chrome="chrome -remote-shell-port=9222 &>/dev/null &!"
+  alias chrome="chrome &>/dev/null &!"
 elif [ -e /usr/bin/chromium ] ; then
-  alias chrome="chromium -remote-shell-port=9222 &>/dev/null &!"
+  alias chrome="chromium &>/dev/null &!"
 elif [ -e /usr/bin/google-chrome ] ; then
-  alias chrome="google-chrome -remote-shell-port=9222 &>/dev/null &!"
+  alias chrome="google-chrome &>/dev/null &!"
 fi
 
 # Xephyr
@@ -117,4 +117,8 @@ fi
 # subtle
 if [ -f /usr/bin/subtle ] ; then
   alias sirb='ripl -r"subtle/subtlext"'
+fi
+
+if [ -f $HOME/projects/subtle-contrib/ruby/vitag.rb ] ; then
+  alias vitag="ruby $HOME/projects/subtle-contrib/ruby/vitag.rb"
 fi
