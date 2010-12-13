@@ -109,6 +109,8 @@ gravity :bottom_right66, [100, 100, 50, 66]
 gravity :gimp_image,     [50, 50, 80, 100]
 gravity :gimp_toolbox,   [0, 0, 10, 100]
 gravity :gimp_dock,      [100, 0, 10, 100]
+gravity :dia_toolbox,    [0, 0, 100, 15]
+gravity :dia_window,     [0, 18, 100, 84]
 # }}}
 
 # Grabs {{{
@@ -123,24 +125,12 @@ elsif("test" == host) #< Usually VMs
   modkey = "A"
 end
 
-# View
-grab modkey + "-1",       :ViewSwitch1
-grab modkey + "-2",       :ViewSwitch2
-grab modkey + "-3",       :ViewSwitch3
-grab modkey + "-4",       :ViewSwitch4
-grab modkey + "-5",       :ViewSwitch5
-
-grab modkey + "-S-1",     :ViewJump1
-grab modkey + "-S-2",     :ViewJump2
-grab modkey + "-S-3",     :ViewJump3
-grab modkey + "-S-4",     :ViewJump4
-grab modkey + "-S-5",     :ViewJump5
-
-# Screens
-grab modkey + "-F1",      :ScreenJump1
-grab modkey + "-F2",      :ScreenJump2
-grab modkey + "-F3",      :ScreenJump3
-grab modkey + "-F4",      :ScreenJump4
+# Views and screens
+(1..6).each do |i|
+  grab modkey + "-#{i}",   "ViewSwitch#{i}".to_sym
+  grab modkey + "-S-#{i}", "ViewJump#{i}".to_sym
+  grab modkey + "-F#{i}",  "ScreenJump#{i}".to_sym
+end
 
 # Windows
 grab modkey + "-B1",      :WindowMove
@@ -196,7 +186,7 @@ grab "XF86AudioPlay", "mpc toggle"
 grab "XF86AudioStop", "mpc stop"
 grab "XF86AudioPrev", "mpc prev"
 grab "XF86AudioNext", "mpc next"
-grab modkey + "-m", "mpc | head -n1 | tr -d '\n' | xclip"
+grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 
 # Programs
 grab modkey + "-Return", "urxvt"
@@ -285,6 +275,7 @@ end
 tag "urgent" do
   match  "sun-awt-X11-XDialogPeer"
   type   :dialog
+  stick  true
   urgent true
 end
 
@@ -346,7 +337,6 @@ end
 
 tag "gimp_toolbox" do
   match    :role => "gimp-toolbox$"
-  match    :role => "gimp-toolbox$"
   gravity  :gimp_toolbox
 end
 
@@ -357,6 +347,16 @@ end
 
 tag "gimp_scum" do
   match    :role => "gimp-.*"
+end
+
+tag "dia_window" do
+  match   :role => "diagram_window"
+  gravity :dia_window
+end
+
+tag "dia_toolbox" do
+  match   :role => "toolbox_window"
+  gravity :dia_toolbox
 end
 
 tag "xev" do
@@ -381,7 +381,7 @@ else
   view "www", "browser"
 end
 
-view "void", "default|void|gimp_.*"
+view "void", "default|void|dia_.*|gimp_.*"
 
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   view "test",   "xephyr|android|one25|three25"
