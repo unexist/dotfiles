@@ -144,4 +144,29 @@ snippet doc
 snippet par
 	@param[${1:in}]  ${2:variable}  ${3:description}
 snippet ret
-	@return {1:return}
+	@return ${1:return}
+################################################
+# Ruby
+################################################
+snippet i2f
+	INT2FIX(${1:value})
+snippet f2i
+	FIX2INT(${1:value})
+snippet s2p
+	RSTRING_PTR(${1:string})
+snippet n2l
+	NUM2LONG(${1:value})
+snippet l2n
+	LONG2NUM(${1:value})
+snippet funcall
+	rb_funcall(${1:klass}, rb_intern("${2:method}"), ${3:n}, ${4:NULL});
+snippet ivget
+	rb_iv_get(${1:object}, "@${2:attribute}");
+snippet ivset
+	rb_iv_set(${1:object}, "@${2:attribute}", ${3:value});
+snippet conget
+	rb_const_get(${1:rb_mKernel}, rb_intern("${2:klass}"));
+snippet rbint
+	rb_intern("${1:name}")
+snippet puts
+	rb_p(${1:text});
