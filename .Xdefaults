@@ -100,12 +100,13 @@ URxvt.scrollBar: false
 URxvt.loginShell: true
 !*font: -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
 URxvt.font: xft:envy code r:medium:pixelsize=13
-URxvt.boldFont: xft:envy code r:medium:pixelsize=13
+!URxvt.boldFont: xft:envy code r:medium:pixelsize=13
 URxvt.termName: rxvt-256color
-URxvt.background: #202020
+URxvt.background: #1a1a1a
+!URxvt.foreground: #a8a8a8
 URxvt.foreground: #e2e2e5
 URxvt.underlineURLs: true
-URxvt.urlLauncher: uzbl --uri 
+URxvt.urlLauncher: chromium
 URxvt.perl-lib: /home/unexist/.urxvt/
 URxvt.perl-ext: selection,mark-yank-urls,font
 URxvt.keysym.M-plus: perl:font:increase
