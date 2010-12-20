@@ -11,9 +11,9 @@ music_directory     "/home/unexist/media/music/"
 playlist_directory  "/home/unexist/.mpd/playlists"
 db_file             "/home/unexist/.mpd/mpd.db"
 log_file            "/home/unexist/.mpd/logs/mpd.log"
-error_file          "/home/unexist/.mpd/logs/mpd.error"
 state_file          "/home/unexist/.mpd/state"
 pid_file            "/home/unexist/.mpd/mpd.pid"
+bind_to_address     "127.0.0.1"
 
 #audio_output {
 #  type              "shoutmp3"
