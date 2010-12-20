@@ -40,6 +40,7 @@ if [ -e /usr/bin/sudo ] ; then
   alias killjobs="sudo lprm -"
   alias p="sudo packer --noconfirm --noedit"
   alias S="sudo pacman -S"
+  alias R="sudo pacman -R"
   alias y="sudo yaourt"
   alias g="sudo gem"
   alias s="sudo"
@@ -80,6 +81,8 @@ elif [ -e /usr/bin/chromium ] ; then
   alias chrome="chromium &>/dev/null &!"
 elif [ -e /usr/bin/google-chrome ] ; then
   alias chrome="google-chrome &>/dev/null &!"
+elif [ -e /usr/bin/chromium-browser ] ; then
+  alias chrome="chromium-browser &>/dev/null &!"
 fi
 
 # Xephyr
