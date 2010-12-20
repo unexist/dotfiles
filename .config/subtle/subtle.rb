@@ -19,58 +19,65 @@ set :snap,       10
 set :gravity,    :center
 set :urgent,     false
 set :resize,     false
-set :padding,    [0, 0, 0, 0]
-set :font,       "xft:Envy Code R:pixelsize=13"
+set :strut,      [0, 0, 0, 0]
+set :padding,    [4, 4, 2, 2]
+#set :font,       "xft:Envy Code R:pixelsize=13"
+set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 #set :font,       "xft:Ubuntu R:pixelsize=13"
-set :separator,  ""
-set :outline,    1
+set :separator,  "_"
+set :outline,    0
 set :gap,        0
 # }}}
 
 # Screens {{{
 screen 1 do
   stipple false
-  top     [:tray, :title, :spacer, :sublets, :spacer, :views]
+  top     [:tray, :title, :spacer, :views, :center, :sublets, :center]
   bottom  []
   view    1
 end
 
 screen 2 do
   stipple false
-  top     [:views, :spacer, :mpd, :volume, :spacer, :title]
+  top     [:views, :spacer, :title, :center, :mpd, :separator, :volume, :center]
   bottom  []
   view    0
 end
 # }}}
 
 # Colors {{{
-color :focus_fg,        "#0066ff"
-color :focus_bg,        "#ffffff"
-color :focus_border,    "#dddddc"
+color :title_fg,        "#ffffff"
+color :title_bg,        "#1a1a1a"
+color :title_border,    "#1a1a1a"
+
+color :focus_fg,        "#ffffff"
+color :focus_bg,        "#595959"
+color :focus_border,    "#1a1a1a"
+
+color :urgent_fg,       "#850000"
+color :urgent_bg,       "#404040"
+color :urgent_border,   "#1a1a1a"
 
 color :occupied_fg,     "#777777"
-color :occupied_bg,     "#eeeeec"
-color :occupied_border, "#eeeeec"
-
-color :urgent_fg,       "#ff3b77"
-color :urgent_bg,       "#ffffff"
-color :urgent_border,   "#dddddc"
+color :occupied_bg,     "#404040"
+color :occupied_border, "#1a1a1a"
 
 color :views_fg,        "#a8a8a8"
-color :views_bg,        "#eeeeec"
-color :views_border,    "#eeeeec"
+color :views_bg,        "#1a1a1a"
+color :views_border,    "#1a1a1a"
 
-color :sublets_fg,      "#777777"
-color :sublets_bg,      "#eeeeec"
-color :sublets_border,  "#eeeeec"
+color :sublets_fg,      "#595959"
+color :sublets_bg,      "#1a1a1a"
+color :sublets_border,  "#1a1a1a"
 
-color :panel_fg,        "#777777"
-color :panel_bg,        "#eeeeec"
+color :client_active,   "#595959"
+color :client_inactive, "#404040"
 
-color :client_active,   "#303030"
-color :client_inactive, "#202020"
+color :panel,           "#1a1a1a"
+#color :background,     "#404040"
 
-color :background,      "#3d3d3d"
+color :stipple,        "#595959"
+color :separator,       "#850000"
 # }}}
 
 # Gravities {{{
@@ -191,7 +198,7 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
-grab modkey + "-c", "chrome"
+grab modkey + "-c", "chromium"
 
 grab "A-Tab" do
   #clients = Subtlext::Client.find(:all).sort { |a, b| a.name <=> b.name }
@@ -359,9 +366,13 @@ tag "dia_toolbox" do
   gravity :dia_toolbox
 end
 
+tag "inkscape" do
+  match "inkscape"
+end
+
 tag "xev" do
-  match    :name => "Event Tester"
-  gravity  :top_right
+  match    :name => "Event[ ]Tester"
+  geometry [1213, 98, 377, 321]
   float    true
   stick    true
 end
@@ -373,22 +384,45 @@ end
 # }}}
 
 # Views {{{
-view "terms", "terms|eight|two"
-
 if("mockra" == host or "proteus" == host or "pc03112" == host)
-  view "www", "browser|one25|three25"
+  www_re    = "browser|one25|three25"
+  test_re   = "xephyr|android|one25|three25"
+  editor_re = "android|editor|one25|three25"
 else
-  view "www", "browser"
+  www_re    = "browser"
+  test_re   = "android|xephyr|seven$|one$"
+  editor_re = "editor"
 end
 
-view "void", "default|void|dia_.*|gimp_.*"
+iconpath = "#{ENV["HOME"]}/.local/share/icons"
 
-if("mockra" == host or "proteus" == host or "pc03112" == host)
-  view "test",   "xephyr|android|one25|three25"
-  view "editor", "android|editor|one25|three25"
-else
-  view "test",   "android|xephyr|seven$|one$"
-  view "editor", "editor"
+view "terms" do
+  match "terms|eight|two"
+  icon  "#{iconpath}/terminal.xbm"
 end
 
+view "www" do
+  match www_re
+  icon  "#{iconpath}/world.xbm"
+end
+
+view "void" do
+  match "default|void"
+  icon  "#{iconpath}/quote.xbm"
+end
+
+view "sketch" do
+  match "inkscape|dia_*|gimp_.*"
+  icon  "#{iconpath}/paint.xbm"
+end
+
+view "test" do
+  match test_re
+  icon  "#{iconpath}/bug.xbm"
+end
+
+view "editor" do
+  match editor_re
+  icon  "#{iconpath}/pencil.xbm"
+end
 # }}}
