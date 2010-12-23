@@ -118,7 +118,7 @@ snippet st
 			${2:/* data */}
 		}${3: /* optional variable list */};${4}
 # Typedef struct
-snippet tds
+snippet tdef
 	typedef struct ${2:$1 }{
 		${3:/* data */}
 	} ${1:`Filename('$1_t', 'name')`};
@@ -149,15 +149,15 @@ snippet ret
 # Ruby
 ################################################
 snippet i2f
-	INT2FIX(${1:value})
+	INT2FIX(${1:value})${2]
 snippet f2i
-	FIX2INT(${1:value})
+	FIX2INT(${1:value})${2}
 snippet s2p
-	RSTRING_PTR(${1:string})
+	RSTRING_PTR(${1:string})${2}
 snippet n2l
-	NUM2LONG(${1:value})
+	NUM2LONG(${1:value})${2}
 snippet l2n
-	LONG2NUM(${1:value})
+	LONG2NUM(${1:value})${2}
 snippet funcall
 	rb_funcall(${1:klass}, rb_intern("${2:method}"), ${3:n}, ${4:NULL});
 snippet ivget
@@ -167,6 +167,19 @@ snippet ivset
 snippet conget
 	rb_const_get(${1:rb_mKernel}, rb_intern("${2:klass}"));
 snippet rbint
-	rb_intern("${1:name}")
+	rb_intern("${1:name}")${2}
 snippet puts
 	rb_p(${1:text});
+################################################
+# Flags
+################################################
+snippet flag
+	${1:value}->flags${2}
+snippet ifflag
+	if(${1:value}->flags & ${2:flag})
+		{
+			${3:/* code */}
+		}
+snippet ifflag-
+	if(${1:value}->flags & ${2:flag})
+		${3:/* code */}
