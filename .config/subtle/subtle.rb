@@ -55,8 +55,8 @@ color :focus_bg,        "#595959"
 color :focus_border,    "#1a1a1a"
 
 color :urgent_fg,       "#850000"
-color :urgent_bg,       "#404040"
-color :urgent_border,   "#1a1a1a"
+#color :urgent_bg,       "#404040"
+#color :urgent_border,   "#1a1a1a"
 
 color :occupied_fg,     "#777777"
 color :occupied_bg,     "#404040"
@@ -242,7 +242,7 @@ end
 
 tag "editor" do
   match   "[g]?vim"
-  resize  false
+  resize  true
 
   if("mockra" == host or "proteus" == host or "pc03112" == host)
     gravity :top75
@@ -253,6 +253,7 @@ end
 
 tag "xephyr" do
   match    "xephyr"
+  urgent   false
 
   if("mockra" == host)
     gravity  :center
@@ -271,6 +272,7 @@ tag "mplayer" do
   float   true
   stick   true
   urgent  true
+  #full    true
 end
 
 tag "stick" do
@@ -299,12 +301,6 @@ end
 tag "flash" do
   match "exe|<unknown>"
   stick true
-end
-
-tag "test" do
-  match   "test"
-  float   true
-  resize  false
 end
 
 tag "one" do
@@ -370,16 +366,17 @@ tag "inkscape" do
   match "inkscape"
 end
 
+tag "xfontsel" do
+  match    "xfontsel"
+  geometry [464, 433, 676, 113]
+  stick    true
+end
+
 tag "xev" do
   match    :name => "Event[ ]Tester"
   geometry [1213, 98, 377, 321]
   float    true
   stick    true
-end
-
-tag "chrome-opts" do
-  match :name => "chromium options"
-  stick true
 end
 # }}}
 
