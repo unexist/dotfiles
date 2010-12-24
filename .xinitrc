@@ -35,8 +35,16 @@ if [ -e /usr/bin/xrandr ] ; then
   #xrandr --output udlfb --mode 1680x1050 --pos 0x0 --dpi 96
 fi
 
+# Wallpaper
+if [ -e /usr/bin/feh ] ; then
+  if [ -e $HOME/.fehbg ] ; then
+    sh ~/.fehbg &
+  fi
+fi
+
 # Windowmanager
-#valgrind --tool=memcheck --suppressions=$HOME/.suppressions subtle &> ~/subtle.log &
+#valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions subtle &> ~/subtle.log &
+#subtle &> ~/subtle.log &
 subtle &
 #$HOME/projects/subtle/subtle -c $HOME/projects/subtle/unexist.rb &
 pid=$!
@@ -45,7 +53,7 @@ sleep 2
 
 # Term
 if [ -e /usr/bin/urxvt ] ; then
-  /usr/bin/urxvt -name urxvt1 &
+  /usr/bin/urxvt -name urxvt1 -urgentOnBell &
   /usr/bin/urxvt -name urxvt2 &
 fi
 
