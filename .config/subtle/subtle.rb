@@ -349,7 +349,7 @@ tag "gimp_dock" do
 end
 
 tag "gimp_scum" do
-  match    :role => "gimp-.*"
+  match :role => "gimp-.*|screenshot"
 end
 
 tag "dia_window" do
@@ -385,41 +385,49 @@ if("mockra" == host or "proteus" == host or "pc03112" == host)
   www_re    = "browser|one25|three25"
   test_re   = "xephyr|android|one25|three25"
   editor_re = "android|editor|one25|three25"
+  icons     = true
 else
   www_re    = "browser"
   test_re   = "android|xephyr|seven$|one$"
   editor_re = "editor"
+  icons     = false
 end
 
 iconpath = "#{ENV["HOME"]}/.local/share/icons"
 
 view "terms" do
-  match "terms|eight|two"
-  icon  "#{iconpath}/terminal.xbm"
+  match     "terms|eight|two"
+  icon      "#{iconpath}/terminal.xbm"
+  icon_only icons
 end
 
 view "www" do
-  match www_re
-  icon  "#{iconpath}/world.xbm"
+  match     www_re
+  icon      "#{iconpath}/world.xbm"
+  icon_only icons
 end
 
 view "void" do
-  match "default|void"
-  icon  "#{iconpath}/quote.xbm"
+  match     "default|void"
+  icon      "#{iconpath}/quote.xbm"
+  icon_only icons
 end
 
 view "sketch" do
-  match "inkscape|dia_*|gimp_.*"
-  icon  "#{iconpath}/paint.xbm"
+  match     "inkscape|dia_*|gimp_.*"
+  icon      "#{iconpath}/paint.xbm"
+  icon_only icons
 end
 
 view "test" do
-  match test_re
-  icon  "#{iconpath}/bug.xbm"
+  match     test_re
+  icon      "#{iconpath}/bug.xbm"
+  icon_only icons
 end
 
 view "editor" do
-  match editor_re
-  icon  "#{iconpath}/pencil.xbm"
+  match     editor_re
+  icon      "#{iconpath}/pencil.xbm"
+  icon_only icons
 end
 # }}}
