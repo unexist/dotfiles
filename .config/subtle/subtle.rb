@@ -9,6 +9,11 @@ require "socket"
 
 begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
+
+  Subtle::Contrib::Launcher.fonts = [
+    "xft:DejaVu Sans Mono:pixelsize=80:antialias=true",
+    "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
+  ]
 rescue LoadError
 end
 
@@ -22,8 +27,8 @@ set :resize,     false
 set :strut,      [0, 0, 0, 0]
 set :padding,    [4, 4, 2, 2]
 #set :font,       "xft:Envy Code R:pixelsize=13"
-set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 #set :font,       "xft:Ubuntu R:pixelsize=13"
+set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator,  "_"
 set :outline,    0
 set :gap,        0
@@ -215,7 +220,7 @@ end
 
 # Launcher
 grab "W-x" do
-  Launcher::Launcher.instance.run
+  Subtle::Contrib::Launcher.run
 end
 # }}}
 
