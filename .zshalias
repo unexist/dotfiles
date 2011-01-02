@@ -6,10 +6,10 @@
 #
 
 # ls
-alias ls='ls --color -phF'
-alias la='ls --color -aphF'
-alias ll='ls --color -lphF'
-alias l='ls --color -lphAF'
+alias ls='ls --color -phFX --group-directories-first'
+alias la='ls -a'
+alias ll='ls -l'
+alias l='ls -l'
 
 # Miscellaneous
 alias q='clear && logout'
@@ -87,7 +87,7 @@ fi
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  alias xeph="Xephyr -ac -noreset -nodri -screen 1024x580 :2 &>/dev/null &!"
+  alias xeph="Xephyr -ac -noreset -nodri -screen 1024x600 :2 &>/dev/null &!"
   alias xephxin="Xephyr -ac -noreset -nodri +xinerama -screen 800x800 :2 &>/dev/null &!"
 fi
 
