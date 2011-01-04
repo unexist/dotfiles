@@ -11,8 +11,10 @@ begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
 
   Subtle::Contrib::Launcher.fonts = [
-    "xft:DejaVu Sans Mono:pixelsize=80:antialias=true",
-    "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
+    #"xft:DejaVu Sans Mono:pixelsize=80:antialias=true",
+    #"xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
+    "xft:Envy Code R:pixelsize=80",
+    "xft:Envy Code R:pixelsize=13"
   ]
 rescue LoadError
 end
@@ -26,9 +28,9 @@ set :urgent,     false
 set :resize,     false
 set :strut,      [0, 0, 0, 0]
 set :padding,    [4, 4, 2, 2]
-#set :font,       "xft:Envy Code R:pixelsize=13"
+set :font,       "xft:Envy Code R:pixelsize=13"
 #set :font,       "xft:Ubuntu R:pixelsize=13"
-set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
+#set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator,  "_"
 set :outline,    0
 set :gap,        0
@@ -395,7 +397,7 @@ else
   www_re    = "browser"
   test_re   = "android|xephyr|seven$|one$"
   editor_re = "editor"
-  icons     = false
+  icons     = true
 end
 
 iconpath = "#{ENV["HOME"]}/.local/share/icons"
