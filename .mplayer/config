@@ -5,3 +5,5 @@ mixer-channel="Master,0"
 autoq=100
 #vf=pp=de,hqdn3d
 alang=de
+msgcolor=1
+msgmodule=1
