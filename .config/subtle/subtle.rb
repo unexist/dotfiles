@@ -34,19 +34,20 @@ set :font,       "xft:Envy Code R:pixelsize=13"
 set :separator,  "_"
 set :outline,    0
 set :gap,        0
+set :wmname,     "LG3D"
 # }}}
 
 # Screens {{{
 screen 1 do
   stipple false
-  top     [:tray, :title, :spacer, :views, :center, :sublets, :center]
+  top     [:title, :spacer, :views, :center, :sublets, :center]
   bottom  []
   view    1
 end
 
 screen 2 do
   stipple false
-  top     [:views, :spacer, :title, :center, :mpd, :separator, :volume, :center]
+  top     [:views, :spacer, :title, :tray, :center, :mpd, :separator, :volume, :center]
   bottom  []
   view    0
 end
@@ -148,7 +149,7 @@ end
 
 # Windows
 grab modkey + "-B1",      :WindowMove
-grab modkey + "-B2",      :WindowResize
+grab modkey + "-B3",      :WindowResize
 grab modkey + "-S-f",     :WindowFloat
 grab modkey + "-S-space", :WindowFull
 grab modkey + "-S-s",     :WindowStick
@@ -159,7 +160,6 @@ grab modkey + "-Down",    :WindowDown
 grab modkey + "-Up",      :WindowUp
 grab modkey + "-Right",   :WindowRight
 grab modkey + "-k",       :WindowKill
-grab modkey + "-B3",      :WindowResize
 grab modkey + "-h", lambda { |c| c.retag }
 
 # Reload/restart
@@ -436,5 +436,14 @@ view "editor" do
   match     editor_re
   icon      "#{iconpath}/pencil.xbm"
   icon_only icons
+end
+# }}}
+
+col_sep = Subtlext::Color.new("#850000")
+col_nor = Subtlext::Color.new("#595959")
+
+# Sublets {{{
+sublet :mpd do
+  format_string "%note%%artist% #{col_sep}_ #{col_nor}%album% #{col_sep}(#{col_nor}%track%#{col_sep}) _ #{col_nor}%title%"
 end
 # }}}
