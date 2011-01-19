@@ -7,21 +7,78 @@
 
 # Servers {{{
 servers = (
-  { address = "im.bitlbee.org"; chatnet = "bee"; port = "6667"; autoconnect = "yes" },
-  { address = "irc.fu-berlin.de"; chatnet = "irc"; port = "6667"; autoconnect = "yes" },
-  { address = "irc.hackint.org"; chatnet = "hai"; use_ssl = "yes"; autoconnect = "yes" },
-  { address = "irc.freenode.org"; chatnet = "frn"; port = "6667"; autoconnect = "yes" },
-  { address = "clanserver4u.de.quakenet.org"; chatnet = "qun"; port = "6667"; autoconnect = "yes" },
-);# }}}
+  {
+    address = "im.bitlbee.org";
+    chatnet = "bee";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.fu-berlin.de";
+    chatnet = "irc";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.hackint.org";
+    chatnet = "hai";
+    use_ssl = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.freenode.org";
+    chatnet = "frn";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "clanserver4u.de.quakenet.org";
+    chatnet = "qun";
+    port = "6667";
+    autoconnect = "yes";
+  }
+);
+# }}}
 
 # Chatnets {{{
 chatnets = {
-  bee = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  irc = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  hai = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  frn = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  qun = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-}; # }}}
+  bee = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  irc = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  hai = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  frn = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  qun = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+};
+# }}}
 
 # Channels {{{
 channels = (
@@ -32,7 +89,8 @@ channels = (
   { name = "#xlib"; chatnet = "frn"; autojoin = "yes"; },
   { name = "#ruby-pro"; chatnet = "frn"; autojoin = "yes"; },
   { name = "#the.c.club"; chatnet = "qun"; autojoin = "yes"; }
-); # }}}
+);
+# }}}
 
 # Aliases {{{
 aliases = {
@@ -83,7 +141,8 @@ aliases = {
   ATAG = "WINDOW SERVER";
   UNSET = "set -clear";
   RESET = "set -default";
-}; # }}}
+};
+# }}}
 
 # Statusbar {{{
 statusbar = {
@@ -196,7 +255,8 @@ statusbar = {
       };
     };
   };
-}; # }}}
+};
+# }}}
 
 # Settings {{{
 settings = {
@@ -217,22 +277,41 @@ settings = {
     beep_when_away = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     bell_beeps = "yes";
+    use_msgs_window = "yes";
+    use_status_window = "no";
+    autocreate_query_level = "DCCMSGS";
   };
   "perl/core/scripts" = {
     chanact_display = "$N:$M$H$C$S";
     chanact_sort = "level+activity";
     chanact_filter = "1";
+    screen_away_message = "Detached from screen.";
   };
 };
+# }}}
+
+# Ignores {{{
 ignores = (
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "&bitlbee" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#archlinux" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "&bitlbee" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#archlinux" ); },
   { 
-    level = "JOINS PARTS QUITS MODES";
+    level = "JOINS PARTS QUITS MODES NICKS";
     channels = ( "#archlinux.de" );
   },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#dokuleser" ); }
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#dokuleser" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#xlib" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#ruby-pro" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#the.c.club" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#dorfelite" ); },
+  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#cinch" ); }
 );
+# }}}
+
+# Logs {{{
+logs = { };
+# }}}
+
+# Windows {{{
 windows = {
   1 = {
     items = (
@@ -240,18 +319,22 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "&bitlbee";
-        tag = "im";
+        tag = "bee";
       }
     );
   };
-  2 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = { 
+    immortal = "yes";
+    name = "(msgs)";
+    level = "MSGS ACTIONS DCCMSGS";
+  };
   3 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#twitter_unixist";
-        tag = "im";
+        tag = "bee";
       }
     );
   };
@@ -261,7 +344,7 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#identi.ca_unexist";
-        tag = "im";
+        tag = "bee";
       }
     );
   };
@@ -270,8 +353,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#dorfelite";
-        tag = "fu-berlin";
+        name = "#dokuleser";
+        tag = "hai";
       }
     );
   };
@@ -281,7 +364,7 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#subtle";
-        tag = "freenode";
+        tag = "frn";
       }
     );
   };
@@ -290,8 +373,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#dokuleser";
-        tag = "hackint";
+        name = "#archlinux.de";
+        tag = "frn";
       }
     );
   };
@@ -300,31 +383,41 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#archlinux.de";
-        tag = "freenode";
+        name = "#archlinux";
+        tag = "frn";
       }
     );
   };
   9 = {
     items = (
-      {
+      { 
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#archlinux";
-        tag = "freenode";
+        name = "#xlib";
+        tag = "frn";
       }
     );
   };
   10 = {
     items = (
       {
-        type = "QUERY";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name = "bw";
-        tag = "fu-berlin";
+        name = "#ruby-pro";
+        tag = "frn";
       }
     );
   };
-}; # }}}
-
-mainwindows = { 2 = { first_line = "1"; lines = "27"; }; };
+  11 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#the.c.club";
+        tag = "qun";
+      }
+    );
+  };
+};
+mainwindows = { 5 = { first_line = "1"; lines = "27"; }; };
+# }}}
