@@ -70,7 +70,7 @@ bindkey "^R" history-incremental-search-backward
 # Functions
 function vman
 { 
-  /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' - 
+  /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' -
 }
 
 function pastie
@@ -99,11 +99,6 @@ function search-backwords {
 function rc
 {
   sudo /etc/rc.d/$*
-}
-
-function wd
-{
-  curl dict://dict.org/d:${1}:web1913;
 }
 
 function ansi-colors
@@ -138,6 +133,8 @@ if [ "$USER" = "root" ] ; then
 else
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%}> %{\e[0m%}'
 fi
+
+RPROMPT=$RUBY_VERSION
 
 umask 022
 
