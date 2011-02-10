@@ -9,13 +9,16 @@ require "socket"
 
 begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
+  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
+  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/merger.rb"
 
   Subtle::Contrib::Launcher.fonts = [
-    #"xft:DejaVu Sans Mono:pixelsize=80:antialias=true",
-    #"xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
     "xft:Envy Code R:pixelsize=80",
     "xft:Envy Code R:pixelsize=13"
   ]
+
+  Subtle::Contrib::Selector.font = "xft:Envy Code R:pixelsize=13"
+  Subtle::Contrib::Merger.font   = "xft:Envy Code R:pixelsize=13"
 rescue LoadError
 end
 
@@ -34,7 +37,7 @@ set :font,       "xft:Envy Code R:pixelsize=13"
 set :separator,  "_"
 set :outline,    0
 set :gap,        0
-set :wmname,     "LG3D"
+#set :wmname,     "LG3D"
 # }}}
 
 # Screens {{{
@@ -205,25 +208,30 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
-grab modkey + "-c", "chromium"
 
-grab "A-Tab" do
-  #clients = Subtlext::Client.find(:all).sort { |a, b| a.name <=> b.name }
-  clients = Subtlext::Client.visible
-  selected = clients.select { |c| c.has_focus? }.first
-
-  index = clients.index(selected)
-
-  index += 1
-  index = 0 if index >= clients.size
-
-  clients[index].focus
-end
-
-# Launcher
+# Contrib
 grab "W-x" do
   Subtle::Contrib::Launcher.run
 end
+
+grab "W-z" do
+  Subtle::Contrib::Selector.run
+end
+
+grab "W-u" do
+  Subtle::Contrib::Merger.run
+end
+
+# Scratchpad
+grab "W-y" do
+  if((c = Subtlext::Client["scratch"]))
+    c.toggle_stick
+    c.focus
+  elsif((c = Subtlext::Subtle.spawn("urxvt -name scratch")))
+    c.tags  = [] 
+    c.flags = [ :stick ]
+  end
+end 
 # }}}
 
 # Tags {{{
@@ -439,11 +447,15 @@ view "editor" do
 end
 # }}}
 
+# Sublets {{{
 col_sep = Subtlext::Color.new("#850000")
 col_nor = Subtlext::Color.new("#595959")
 
-# Sublets {{{
 sublet :mpd do
   format_string "%note%%artist% #{col_sep}_ #{col_nor}%album% #{col_sep}(#{col_nor}%track%#{col_sep}) _ #{col_nor}%title%"
+end
+
+sublet :clock do
+  format_string "%d. %B, %Y"
 end
 # }}}
