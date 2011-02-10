@@ -32,18 +32,23 @@ alias ssh_vserver="ssh -X unexist@80.190.156.238"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
-  alias halt='sudo /sbin/halt'
-  alias reboot='sudo /sbin/reboot' 
-  alias susp='sudo s2ram -f -p -m'
+  alias halt="sudo /sbin/halt"
+  alias reboot="sudo /sbin/reboot"
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias ncfg="sudo netcfg-menu"
   alias killjobs="sudo lprm -"
-  alias p="sudo packer --noconfirm --noedit"
-  alias S="sudo pacman -S"
-  alias R="sudo pacman -R"
-  alias y="sudo yaourt"
-  alias g="sudo gem"
   alias s="sudo"
+
+  # Based on dist
+  if [ -e /usr/bin/pacman ] ; then
+    alias p="sudo packer --noconfirm --noedit"
+    alias S="sudo pacman -S"
+    alias R="sudo pacman -R"
+  elif [ -e /usr/bin/apt-get ] ; then
+    alias p="sudo apt-get"
+    alias S="sudo apt-get install"
+    alias R="sudo apt-get remove"
+  fi
 fi
 
 # Valgrind
@@ -87,8 +92,10 @@ fi
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  alias xeph="Xephyr -ac -noreset -nodri -screen 1024x600 :2 &>/dev/null &!"
-  alias xephxin="Xephyr -ac -noreset -nodri +xinerama -screen 800x800 :2 &>/dev/null &!"
+  XEPHYR_OPTS="-ac -noreset -nodri +extension RANDR"
+    #-keybd ephyr,,,xkbmodel=evdev,xkblayout=de"
+  alias xeph="Xephyr $XEPHYR_OPTS -screen 1024x600 :2 &>/dev/null &!"
+  alias xephxin="Xephyr $XEPHYR_OPTS +xinerama -screen 800x800 :2 &!"
 fi
 
 # GVim
