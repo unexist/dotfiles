@@ -5,6 +5,8 @@ keycode 173 = XF86AudioPrev
 keycode 171 = XF86AudioNext
 keycode 172 = XF86AudioPlay
 keycode 174 = XF86AudioStop
+keycode 419 = XF86ZoomOut
+keycode 418 = XF86ZoomIn
 
 !Supported events:
 ! Event type 0 (Reset)
