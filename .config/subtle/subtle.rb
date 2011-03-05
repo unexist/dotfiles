@@ -83,7 +83,7 @@ color :sublets_fg,      "#a8a8a8"
 color :sublets_bg,      "#1a1a1a"
 color :sublets_border,  "#1a1a1a"
 
-color :client_active,   "#595959"
+color :client_active,   "#a8a8a8"
 color :client_inactive, "#404040"
 
 color :panel,           "#1a1a1a"
