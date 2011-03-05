@@ -10,7 +10,7 @@ xhost +$HOST
 
 # X options
 xset m 7/1
-xsetroot -bg "#666666"
+xsetroot -solid "#595959"
 setxkbmap -layout 'de(nodeadkeys)'
 
 # Xdefaults
@@ -23,9 +23,9 @@ if [ -e $HOME/.Xmodmap ] ; then
   xmodmap $HOME/.Xmodmap
 fi
 
-# Xflux
-#if [ -e /usr/bin/xflux ] ; then
-#  xflux -l 51.32
+# Redshift
+#if [ -e /usr/bin/redshift ] ; then
+#  redshift -l 51.31:6.55 &
 #fi
 
 # xrandr
@@ -36,17 +36,17 @@ if [ -e /usr/bin/xrandr ] ; then
 fi
 
 # Wallpaper
-if [ -e /usr/bin/feh ] ; then
-  if [ -e $HOME/.fehbg ] ; then
-    sh ~/.fehbg &
-  fi
-fi
+#if [ -e /usr/bin/feh ] ; then
+#  if [ -e $HOME/.fehbg ] ; then
+#    sh ~/.fehbg &
+#  fi
+#fi
 
 # Windowmanager
 #valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions subtle &> ~/subtle.log &
 #subtle &> ~/subtle.log &
 subtle &
-#$HOME/projects/subtle/subtle -c $HOME/projects/subtle/unexist.rb &
+#$HOME/projects/subtle/subtle &
 pid=$!
 
 sleep 2
