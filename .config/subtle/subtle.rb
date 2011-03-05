@@ -7,6 +7,7 @@
 
 require "socket"
 
+# Contrib {{{
 begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
@@ -20,7 +21,7 @@ begin
   Subtle::Contrib::Selector.font = "xft:Envy Code R:pixelsize=13"
   Subtle::Contrib::Merger.font   = "xft:Envy Code R:pixelsize=13"
 rescue LoadError
-end
+end # }}}
 
 # Options {{{
 set :border,     2
@@ -34,16 +35,16 @@ set :padding,    [4, 4, 2, 2]
 set :font,       "xft:Envy Code R:pixelsize=13"
 #set :font,       "xft:Ubuntu R:pixelsize=13"
 #set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
-set :separator,  "_"
+set :separator,  "·"
 set :outline,    0
-set :gap,        0
+set :gap,        3
 #set :wmname,     "LG3D"
 # }}}
 
 # Screens {{{
 screen 1 do
   stipple false
-  top     [:title, :spacer, :views, :center, :sublets, :center]
+  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :sublets, :center]
   bottom  []
   view    1
 end
@@ -77,7 +78,8 @@ color :views_fg,        "#a8a8a8"
 color :views_bg,        "#1a1a1a"
 color :views_border,    "#1a1a1a"
 
-color :sublets_fg,      "#595959"
+#color :sublets_fg,      "#595959"
+color :sublets_fg,      "#a8a8a8"
 color :sublets_bg,      "#1a1a1a"
 color :sublets_border,  "#1a1a1a"
 
@@ -89,6 +91,43 @@ color :panel,           "#1a1a1a"
 
 color :stipple,        "#595959"
 color :separator,       "#850000"
+
+=begin
+color :title_fg,        "#e9e9e9"
+color :title_bg,        "#424242"
+color :title_border,    "#424242"
+
+color :focus_fg,        "#e9e9e9"
+color :focus_bg,        "#424242"
+color :focus_border,    "#424242"
+
+color :urgent_fg,       "#ff9900"
+#color :urgent_bg,       "#424242"
+#color :urgent_border,   "#424242"
+
+color :occupied_fg,     "#3299bb"
+color :occupied_bg,     "#424242"
+color :occupied_border, "#424242"
+
+color :views_fg,        "#bcbcbc"
+color :views_bg,        "#424242"
+color :views_border,    "#424242"
+
+color :sublets_fg,      "#bcbcbc"
+color :sublets_bg,      "#424242"
+color :sublets_border,  "#424242"
+
+color :client_active,   "#bcbcbc"
+color :client_inactive, "#424242"
+
+color :panel,           "#424242"
+
+color :background,      "#424242"
+
+color :stipple,         "#595959"
+
+color :separator,       "#ff9900"
+=end
 # }}}
 
 # Gravities {{{
@@ -232,6 +271,31 @@ grab "W-y" do
     c.flags = [ :stick ]
   end
 end 
+
+# Switch views
+{
+  "S-F1" => [ :www,    :terms ],
+  "S-F2" => [ :editor, :terms ],
+  "S-F3" => [ :www,    :test  ],
+  "S-F4" => [ :editor, :test  ]
+}.each do |k, v|
+  grab k do
+    screens = Subtlext::Screen.all
+
+    v.each_with_index do |view, i|
+      screens[i].view = view
+    end
+  end
+end
+
+# Pychrom
+grab modkey + "-p" do
+  if((t = Subtlext::Tray[:pychrom]))
+    t.click(1)
+  else
+    Subtlext::Subtle.spawn("pychrom")
+  end
+end
 # }}}
 
 # Tags {{{
@@ -448,14 +512,7 @@ end
 # }}}
 
 # Sublets {{{
-col_sep = Subtlext::Color.new("#850000")
-col_nor = Subtlext::Color.new("#595959")
-
-sublet :mpd do
-  format_string "%note%%artist% #{col_sep}_ #{col_nor}%album% #{col_sep}(#{col_nor}%track%#{col_sep}) _ #{col_nor}%title%"
-end
-
 sublet :clock do
-  format_string "%d. %B, %Y"
+  format_string "%a %b %d,"
 end
 # }}}
