@@ -1,7 +1,7 @@
 !
 ! Xdefaults
 !
-! Copyright (c) 2004-2010, Christopk Kappel <unexist@dorfelite.net>
+! Copyright (c) 2004-2011, Christopk Kappel <unexist@dorfelite.net>
 !
 ! Black       = color0 + DarkGray = color8
 ! DarkRed     = color1 + Red      = color9
@@ -12,23 +12,52 @@
 ! DarkCyan    = color6 + Cyan     = color14
 ! LightGrey   = color7 + White    = color15
 
+! Xoria256 {{{
+*foreground: #d0d0d0
+*background: #1a1a1a
+!black
+*color0:     #1a1a1a
+*color8:     #808080
+!red
+*color1:     #df8787
+*color9:     #B56E6E
+!green
+*color2:     #afdf87
+*color10:    #8EB56E
+!yellow
+*color3:     #ffffaf
+*color11:    #D6D693
+!blue
+*color4:     #87afdf
+*color12:    #6E8EB5
+!magenta
+*color5:     #dfaf87
+*color13:    #B58E6E
+!cyan
+*color6:     #afafdf
+*color14:    #8E8EB5
+!white
+*color7:     #d0d0d0
+*color15:    #e2e2e5
+! }}}
+
 ! Digerati {{{
-*color0:  #303030
-*color1:  #c03000
-*color2:  #b1d631
-*color3:  #fecf35
-*color4:  #426870
-*color5:  #6D506D
-*color6:  #4bb5c1
-*color7:  #e2e2e5
-*color8:  #5F5F5F
-*color9:  #FF3A78
-*color10: #A6CD07
-*color11: #B5C865
-*color12: #4A7781
-*color13: #FF3B77
-*color14: #4bb5c1
-*color15: #e2e2e5
+!*color0:  #303030
+!*color1:  #c03000
+!*color2:  #b1d631
+!*color3:  #fecf35
+!*color4:  #426870
+!*color5:  #6D506D
+!*color6:  #4bb5c1
+!*color7:  #e2e2e5
+!*color8:  #5F5F5F
+!*color9:  #FF3A78
+!*color10: #A6CD07
+!*color11: #B5C865
+!*color12: #4A7781
+!*color13: #FF3B77
+!*color14: #4bb5c1
+!*color15: #e2e2e5
 ! }}}
 
 ! Green {{{
@@ -102,9 +131,8 @@ URxvt.loginShell: true
 URxvt.font: xft:envy code r:medium:pixelsize=13
 !URxvt.boldFont: xft:envy code r:medium:pixelsize=13
 URxvt.termName: rxvt-256color
-URxvt.background: #1a1a1a
-!URxvt.foreground: #a8a8a8
-URxvt.foreground: #e2e2e5
+!URxvt.background: #1a1a1a
+!URxvt.foreground: #e2e2e5
 URxvt.underlineURLs: true
 URxvt.urlLauncher: chromium
 URxvt.perl-lib: /home/unexist/.urxvt/
