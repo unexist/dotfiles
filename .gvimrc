@@ -5,7 +5,7 @@
 " @version $Id$
 "
 
-colorscheme digerati
+colorscheme xoria256
 set guioptions=a
 "set guifont=lucidatypewriter\ 9
 set guifont=envy\ code\ r
