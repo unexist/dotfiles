@@ -66,7 +66,7 @@ color :focus_fg,        "#ffffff"
 color :focus_bg,        "#595959"
 color :focus_border,    "#1a1a1a"
 
-color :urgent_fg,       "#850000"
+color :urgent_fg,       "#DF8787"
 #color :urgent_bg,       "#404040"
 #color :urgent_border,   "#1a1a1a"
 
@@ -89,8 +89,8 @@ color :client_inactive, "#404040"
 color :panel,           "#1a1a1a"
 #color :background,     "#404040"
 
-color :stipple,        "#595959"
-color :separator,       "#850000"
+color :stipple,         "#595959"
+color :separator,       "#DF8787"
 
 =begin
 color :title_fg,        "#e9e9e9"
@@ -514,5 +514,12 @@ end
 # Sublets {{{
 sublet :clock do
   format_string "%a %b %d,"
+  icon_fg "#777777"
+end
+
+[ :cpu, :jdownloader, :wifi, :mpd, :volume ].each do |sublet|
+  sublet sublet do
+    icon_fg "#777777"
+  end
 end
 # }}}
