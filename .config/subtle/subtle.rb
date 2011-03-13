@@ -331,13 +331,13 @@ tag "editor" do
 end
 
 tag "xephyr" do
-  match    "xephyr"
+  match    "xeph640"
   urgent   false
 
   if("mockra" == host)
     gravity  :center
   else
-    geometry [857, 96, 800, 800]
+    geometry [ 943, 548, 640, 480 ]
   end
 end
 
@@ -369,6 +369,11 @@ end
 
 tag "void" do
   match   "jd-Main|Virtualbox"
+end
+
+tag "powerfolder" do
+  match "de-dal33t-powerfolder-PowerFolder"
+  float true
 end
 
 tag "dialogs" do
@@ -487,7 +492,7 @@ view "www" do
 end
 
 view "void" do
-  match     "default|void"
+  match     "default|void|powerfolder"
   icon      "#{iconpath}/quote.xbm"
   icon_only icons
 end
