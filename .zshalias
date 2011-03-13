@@ -138,3 +138,8 @@ fi
 if [ -d $HOME/projects/shreds ] ; then
   alias tv="ruby $HOME/projects/shreds/ruby/tv.rb"
 fi
+
+# ImageMagick
+if [ -f /usr/bin/import ] ; then
+  alias import="import +repage"
+fi
