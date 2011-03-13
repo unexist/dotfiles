@@ -92,10 +92,11 @@ fi
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  XEPHYR_OPTS="-ac -noreset -nodri +extension RANDR"
+  XEPHYR_OPTS="-ac -noreset -nodri +extension RANDR +xinerama"
     #-keybd ephyr,,,xkbmodel=evdev,xkblayout=de"
-  alias xeph="Xephyr $XEPHYR_OPTS -screen 1024x600 :2 &>/dev/null &!"
-  alias xephxin="Xephyr $XEPHYR_OPTS +xinerama -screen 800x800 :2 &!"
+  alias xeph1024="Xephyr $XEPHYR_OPTS -name xeph1024 -screen 1024x600 :2 &>/dev/null &!"
+  alias xeph800="Xephyr $XEPHYR_OPTS -name xeph800 -screen 800x800 :2 &!"
+  alias xeph640="Xephyr $XEPHYR_OPTS -name xeph640 -screen 640x480 :2 &!"
 fi
 
 # GVim
@@ -131,4 +132,9 @@ fi
 
 if [ -f $HOME/projects/subtle-contrib/ruby/vitag.rb ] ; then
   alias vitag="ruby $HOME/projects/subtle-contrib/ruby/vitag.rb"
+fi
+
+# Ruby
+if [ -d $HOME/projects/shreds ] ; then
+  alias tv="ruby $HOME/projects/shreds/ruby/tv.rb"
 fi
