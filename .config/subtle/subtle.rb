@@ -235,9 +235,12 @@ gravities.each_index do |i|
 end
 
 # Multimedia keys
-grab "XF86AudioMute", "amixer set Master toggle"
-grab "XF86AudioRaiseVolume", "amixer set Master 2dB+"
-grab "XF86AudioLowerVolume", "amixer set Master 2dB-"
+#grab "XF86AudioMute", "amixer set Master toggle"
+#grab "XF86AudioRaiseVolume", "amixer set Master 2dB+"
+#grab "XF86AudioLowerVolume", "amixer set Master 2dB-"
+grab "XF86AudioMute", :VolumeToggle
+grab "XF86AudioRaiseVolume", :VolumeRaise
+grab "XF86AudioLowerVolume", :VolumeLower
 grab "XF86AudioPlay", "mpc toggle"
 grab "XF86AudioStop", "mpc stop"
 grab "XF86AudioPrev", "mpc prev"
