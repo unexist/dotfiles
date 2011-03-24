@@ -9,43 +9,48 @@ mpd_host = "localhost"
 mpd_port = "6600"
 mpd_music_dir = "/home/unexist/media/music"
 #mpd_crossfade_time = "5"
-#mpd_communication_mode = "polling" (polling/notifications)
+mpd_communication_mode = "notifications" (polling/notifications)
 
 # Format
-song_columns_list_format = "(6)[blue]{l} (30)[green]{t} (30)[magenta]{a} (10)[blue]{b}" 
-#song_list_format = "{$3[%l]$9} {$5%a$9}|{$5<unknown>$9} {$6%t$9}|{$6<untitled>$9} {%y}|{2010} %r {$5%b$9}{$5<unknown>$9}"
-#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
-#song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
+#song_columns_list_format = "(6)[blue]{l} (30)[green]{t} (30)[magenta]{a} (10)[blue]{b}{%N}"
+song_list_format = "$5{%n}|{00}$9 $2·$9 $2{%A}|{%a}$9 $2·$9 $3{%t}|{%f}$9 {$2($9$5%l$2)$9} {$R $4%b$9}"
+song_status_format = "$2{%A}|{%a}$9 $3\"{%t}|{%f}\"$9 {$4%b$9}"
 #song_library_format = "{%n - }{%t}|{%f}"
 #tag_editor_album_format = "{(%y) }%b"
 
 # Options
-playlist_disable_highlight_delay = "1"
 message_delay_time = "4"
 discard_colors_if_item_is_selected = "yes"
-progressbar_look = "=>"
 user_interface = "classic" (classic/alternative)
-playlist_display_mode = "columns" (classic/columns)
-header_visibility = "yes"
+display_screens_numbers_on_start = "no"
+header_visibility = "no"
 statusbar_visibility = "yes"
-#header_text_scrolling = "yes"
-#fancy_scrolling = "yes"
-#cyclic_scrolling = "no"
 colors_enabled = "yes"
+autocenter_mode    = "yes"
+centered_cursor    = "yes"
+jump_to_now_playing_song_at_start = "yes"
+
+# Playlist
+playlist_display_mode = "classic" (classic/columns)
+playlist_disable_highlight_delay = "1"
+
+# Bars
+progressbar_look = "■▶·"
+titles_visibility = "no"
 
 # Colors
 color1 = "white"
 color2 = "green"
 main_window_color = "white"
 main_window_highlight_color = "default"
-progressbar_color = "default"
-statusbar_color = "default"
+progressbar_color = "black"
+statusbar_color = "black"
 alternative_ui_separator_color = "black"
 active_column_color = "red"
 window_border_color = "green"
 active_window_border = "red"
 empty_tag_color = "cyan"
-header_window_color = "default"
+header_window_color = "gray"
 volume_color = "default"
 state_line_color = "default"
 state_flags_color = "default"
