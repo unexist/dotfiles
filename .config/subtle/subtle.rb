@@ -305,6 +305,7 @@ end
 tag "terms" do
   match    "xterm|urxvt"
   gravity  :center
+  resize   true
 end
 
 tag "browser" do
@@ -354,7 +355,6 @@ tag "mplayer" do
   float   true
   stick   true
   urgent  true
-  #full    true
 end
 
 tag "stick" do
@@ -380,8 +380,7 @@ tag "powerfolder" do
 end
 
 tag "dialogs" do
-  match :type => :dialog
-  match :type => :splash
+  match :type => [ :dialog, :splash ]
   stick true
 end
 
