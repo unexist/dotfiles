@@ -24,11 +24,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Bookmarks
-alias ssh_blade="ssh -X kappel@194.94.121.187"
-alias ssh_head="ssh -X -p 11000 root@194.94.121.187"
-alias ssh_front="ssh -X kappel@194.94.121.248"
-alias ssh_work="ssh -X kappel@194.94.121.112"
-alias ssh_vserver="ssh -X unexist@80.190.156.238"
+alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
+alias ssh_freebsd="ssh -X unexist@78.47.240.165 -p 2031"
+alias ssh_gentoo="ssh -X unexist@80.190.156.238"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
