@@ -38,13 +38,13 @@ set list!
 set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:<
 set dy+=lastline
 set dy+=uhex
+set t_Co=256
 "set spell spelllang=de_DE
 
 syntax on
 
-
 " Colorscheme
-colorscheme digerati
+colorscheme xoria256
 
 " Commandline
 if has("cmdline_info")
@@ -52,10 +52,23 @@ if has("cmdline_info")
   set showcmd
 endif
 
+" Functions
+function! ToggleCopy()
+  if exists("&number")
+    set number!
+    set listchars=
+  else
+    set number
+    set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:< 
+    syntax sync fromstart
+  endif
+endfunction
+
 " Maps
 map <F2> <Esc>:browse confirm e<CR>
 map <F3> <Esc>:NERDTreeToggle<CR>
 map <F7> <Esc>:setlocal spell! spelllang=de<CR>
+map <F8> <Esc>:call ToggleCopy()<CR>
 map <F9> <ESC>:so $VIMRUNTIME/syntax/hitest.vim<CR>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
