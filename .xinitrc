@@ -12,6 +12,7 @@ xhost +$HOST
 xset m 7/1
 xsetroot -solid "#595959"
 setxkbmap -layout 'de(nodeadkeys)'
+setxkbmap -option compose:caps
 
 # Xdefaults
 if [ -e $HOME/.Xdefaults ] ; then
