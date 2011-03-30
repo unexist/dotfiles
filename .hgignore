@@ -1,9 +1,12 @@
 syntax: glob
 
 bin/*
-docs/*
 build/*
+docs/*
 downloads/*
 images/*
+media/*
 misc/*
 projects/*
+university/*
+work/*
