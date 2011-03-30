@@ -186,10 +186,7 @@
   fun:_dl_allocate_tls
   fun:pthread_create@@GLIBC_2.1
   obj:/usr/lib/libruby.so.1.9.1
-  fun:rb_call_inits
-  fun:ruby_init
-  fun:subRubyInit
-  fun:main
+  ...
 }
 {
    Ruby 192 GC
@@ -207,5 +204,15 @@
    fun:pthread_create@@GLIBC_2.1
    fun:Init_Thread
    fun:rb_call_inits
+   ...
+}
+{
+   Ruby 192
+   Memcheck:Leak
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create@@GLIBC_2.1
+   fun:rb_thread_create_timer_thread
    ...
 }
