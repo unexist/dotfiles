@@ -37,6 +37,7 @@ setopt multios
 setopt short_loops
 setopt listpacked
 setopt pushd_ignore_dups
+setopt prompt_subst
 
 # History
 HISTSIZE=5000
@@ -127,6 +128,11 @@ function toggle-asound
   fi
 }
 
+function chpwd
+{
+  RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
+}
+
 # Prompt
 if [ "$USER" = "root" ] ; then
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%}> %{\e[0m%}'
@@ -134,7 +140,7 @@ else
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%}> %{\e[0m%}'
 fi
 
-RPROMPT=$RUBY_VERSION
+#RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
 
 umask 022
 
