@@ -1,12 +1,13 @@
 #
 # @file Mpd config
 #
-# @copyright (c) 2006-2008, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2009-2011, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
 user                "unexist"
 port                "6600"
+#password            "test@read,add,control,admin"
 music_directory     "/home/unexist/media/music/"
 playlist_directory  "/home/unexist/.mpd/playlists"
 db_file             "/home/unexist/.mpd/mpd.db"
