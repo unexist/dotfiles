@@ -174,12 +174,16 @@ export XDG_MUSIC_DIR="$HOME/media/music"
 export XDG_PICTURES_DIR="$HOME/images"
 export XDG_VIDEOS_DIR="$HOME/media/videos"
 
+# Git
 if [ -e /usr/bin/git ] ; then
   export GIT_AUTHOR_NAME="unexist"
   export GIT_AUTHOR_EMAIL="unexist@dorfelite.net"
   export GIT_COMMITTER_NAME="unexist"
   export GIT_COMMITTER_EMAIL="unexist@dorfelite.net"
 fi
+
+# Browser
+export BROWSER="/usr/bin/chromium-browser"
 
 # Update title
 case $TERM in
