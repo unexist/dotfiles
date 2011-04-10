@@ -9,7 +9,7 @@ xhost +localhost
 xhost +$HOST
 
 # X options
-xset m 7/1
+xset m 7 1
 xsetroot -solid "#595959"
 setxkbmap -layout 'de(nodeadkeys)'
 setxkbmap -option compose:caps
