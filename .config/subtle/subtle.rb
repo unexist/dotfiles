@@ -24,21 +24,16 @@ rescue LoadError
 end # }}}
 
 # Options {{{
-set :border,     2
 set :step,       5
 set :snap,       10
 set :gravity,    :center
 set :urgent,     false
 set :resize,     false
-set :strut,      [0, 0, 0, 0]
-set :padding,    [4, 4, 2, 2]
 set :font,       "xft:Envy Code R:pixelsize=13"
 #set :font,       "xft:Ubuntu R:pixelsize=13"
 #set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator,  "·"
-set :outline,    0
-set :gap,        3
-#set :wmname,     "LG3D"
+set :wmname,     "LG3D"
 # }}}
 
 # Screens {{{
@@ -58,39 +53,78 @@ end
 # }}}
 
 # Colors {{{
-color :title_fg,        "#ffffff"
-color :title_bg,        "#1a1a1a"
-color :title_border,    "#1a1a1a"
+style :title do
+  padding     4, 4, 2, 2
+  border      "#1a1a1a", 0
+  foreground  "#ffffff"
+  background  "#1a1a1a"
+end
 
-color :focus_fg,        "#ffffff"
-color :focus_bg,        "#595959"
-color :focus_border,    "#1a1a1a"
+style :focus do
+  padding     4, 4, 2, 2
+  border      "#1a1a1a", 0
+  foreground  "#ffffff"
+  background  "#595959"
+end
 
-color :urgent_fg,       "#DF8787"
+style :urgent do
+  padding     4, 4, 2, 2
+  border      0
+  foreground  "#DF8787"
+end
+
+style :occupied do
+  padding     4, 4, 2, 2
+  border      "#1a1a1a", 0
+  foreground  "#777777"
+  background  "#404040"
+end
+
+style :views do
+  padding     4, 4, 2, 2
+  border      "#1a1a1a", 0
+  foreground  "#a8a8a8"
+  background  "#1a1a1a"
+end
+
+style :sublets do
+  padding     4, 4, 2, 2
+  border      "#1a1a1a", 0
+  foreground  "#a8a8a8"
+  background  "#1a1a1a"
+end
+
+style :separator do
+  padding     4, 4, 2, 2
+  border      0
+  background  "#1a1a1a"
+  foreground  "#DF8787"
+end
+
+style :clients do
+  active      "#a8a8a8", 2
+  inactive    "#404040", 2
+  margin      3
+end
+
+style :subtle do
+  padding     0, 0, 0, 0
+  panel       "#1a1a1a"
+  background  "#595959"
+  stipple     "#595959"
+end
+
+
+
 #color :urgent_bg,       "#404040"
 #color :urgent_border,   "#1a1a1a"
 
-color :occupied_fg,     "#777777"
-color :occupied_bg,     "#404040"
-color :occupied_border, "#1a1a1a"
 
-color :views_fg,        "#a8a8a8"
-color :views_bg,        "#1a1a1a"
-color :views_border,    "#1a1a1a"
 
 #color :sublets_fg,      "#595959"
-color :sublets_fg,      "#a8a8a8"
-color :sublets_bg,      "#1a1a1a"
-color :sublets_border,  "#1a1a1a"
 
-color :client_active,   "#a8a8a8"
-color :client_inactive, "#404040"
 
-color :panel,           "#1a1a1a"
-#color :background,     "#404040"
 
-color :stipple,         "#595959"
-color :separator,       "#DF8787"
 
 =begin
 color :title_fg,        "#e9e9e9"
@@ -299,6 +333,15 @@ grab modkey + "-p" do
     Subtlext::Subtle.spawn("pychrom")
   end
 end
+
+# Swap views
+grab modkey + "-Tab" do
+  screens = Subtlext::Screen.all
+  views   = screens.map(&:view).reverse
+  screens.each do |s|
+    s.view = views.shift
+  end
+end
 # }}}
 
 # Tags {{{
@@ -354,7 +397,8 @@ tag "mplayer" do
   match   "mplayer"
   float   true
   stick   true
-  urgent  true
+  #urgent  true
+  position [ 2650, 50 ]
 end
 
 tag "stick" do
@@ -368,6 +412,7 @@ tag "urgent" do
   type   :dialog
   stick  true
   urgent true
+  float  true
 end
 
 tag "void" do
@@ -377,6 +422,7 @@ end
 tag "powerfolder" do
   match "de-dal33t-powerfolder-PowerFolder"
   float true
+  stick true
 end
 
 tag "dialogs" do
