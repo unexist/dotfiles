@@ -52,50 +52,50 @@ screen 2 do
 end
 # }}}
 
-# Colors {{{
+# Styles {{{
 style :title do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      "#1a1a1a", 0
   foreground  "#ffffff"
   background  "#1a1a1a"
 end
 
 style :focus do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      "#1a1a1a", 0
   foreground  "#ffffff"
   background  "#595959"
 end
 
 style :urgent do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      0
   foreground  "#DF8787"
 end
 
 style :occupied do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      "#1a1a1a", 0
   foreground  "#777777"
   background  "#404040"
 end
 
 style :views do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      "#1a1a1a", 0
   foreground  "#a8a8a8"
   background  "#1a1a1a"
 end
 
 style :sublets do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      "#1a1a1a", 0
   foreground  "#a8a8a8"
   background  "#1a1a1a"
 end
 
 style :separator do
-  padding     4, 4, 2, 2
+  padding     2, 4
   border      0
   background  "#1a1a1a"
   foreground  "#DF8787"
@@ -108,7 +108,7 @@ style :clients do
 end
 
 style :subtle do
-  padding     0, 0, 0, 0
+  padding     0
   panel       "#1a1a1a"
   background  "#595959"
   stipple     "#595959"
