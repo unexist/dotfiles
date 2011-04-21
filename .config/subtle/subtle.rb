@@ -334,13 +334,9 @@ grab modkey + "-p" do
   end
 end
 
-# Swap views
+# Tabbing
 grab modkey + "-Tab" do
-  screens = Subtlext::Screen.all
-  views   = screens.map(&:view).reverse
-  screens.each do |s|
-    s.view = views.shift
-  end
+  Subtlext::Client.recent[1].focus
 end
 # }}}
 
