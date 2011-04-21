@@ -54,48 +54,50 @@ end
 
 # Styles {{{
 style :title do
-  padding     2, 4
+  padding     2, 8
   border      "#1a1a1a", 0
   foreground  "#ffffff"
   background  "#1a1a1a"
 end
 
 style :focus do
-  padding     2, 4
-  border      "#1a1a1a", 0
+  padding     2, 8, 0, 8
   foreground  "#ffffff"
-  background  "#595959"
+  background  "#1a1a1a"
+  border_bottom  "#595959", 2
 end
 
 style :urgent do
-  padding     2, 4
+  padding     2, 8, 0, 8
   border      0
-  foreground  "#DF8787"
+  foreground  "#a8a8a8"
+  background  "#1a1a1a"
+  border_bottom  "#DF8787", 2
 end
 
 style :occupied do
-  padding     2, 4
-  border      "#1a1a1a", 0
+  padding     2, 8, 0, 8
   foreground  "#777777"
-  background  "#404040"
+  background  "#1a1a1a"
+  border_bottom  "#404040", 2
 end
 
 style :views do
-  padding     2, 4
+  padding     2, 8
   border      "#1a1a1a", 0
   foreground  "#a8a8a8"
   background  "#1a1a1a"
 end
 
 style :sublets do
-  padding     2, 4
+  padding     2, 8
   border      "#1a1a1a", 0
   foreground  "#a8a8a8"
   background  "#1a1a1a"
 end
 
 style :separator do
-  padding     2, 4
+  padding     2, 0
   border      0
   background  "#1a1a1a"
   foreground  "#DF8787"
@@ -113,55 +115,6 @@ style :subtle do
   background  "#595959"
   stipple     "#595959"
 end
-
-
-
-#color :urgent_bg,       "#404040"
-#color :urgent_border,   "#1a1a1a"
-
-
-
-#color :sublets_fg,      "#595959"
-
-
-
-
-=begin
-color :title_fg,        "#e9e9e9"
-color :title_bg,        "#424242"
-color :title_border,    "#424242"
-
-color :focus_fg,        "#e9e9e9"
-color :focus_bg,        "#424242"
-color :focus_border,    "#424242"
-
-color :urgent_fg,       "#ff9900"
-#color :urgent_bg,       "#424242"
-#color :urgent_border,   "#424242"
-
-color :occupied_fg,     "#3299bb"
-color :occupied_bg,     "#424242"
-color :occupied_border, "#424242"
-
-color :views_fg,        "#bcbcbc"
-color :views_bg,        "#424242"
-color :views_border,    "#424242"
-
-color :sublets_fg,      "#bcbcbc"
-color :sublets_bg,      "#424242"
-color :sublets_border,  "#424242"
-
-color :client_active,   "#bcbcbc"
-color :client_inactive, "#424242"
-
-color :panel,           "#424242"
-
-color :background,      "#424242"
-
-color :stipple,         "#595959"
-
-color :separator,       "#ff9900"
-=end
 # }}}
 
 # Gravities {{{
