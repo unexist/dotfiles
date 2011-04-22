@@ -77,7 +77,7 @@ end
 
 style :occupied do
   padding     2, 8, 0, 8
-  foreground  "#777777"
+  foreground  "#a8a8a8"
   background  "#1a1a1a"
   border_bottom  "#404040", 2
 end
@@ -85,7 +85,7 @@ end
 style :views do
   padding     2, 8
   border      "#1a1a1a", 0
-  foreground  "#a8a8a8"
+  foreground  "#777777"
   background  "#1a1a1a"
 end
 
