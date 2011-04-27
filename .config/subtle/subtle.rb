@@ -61,46 +61,49 @@ style :title do
 end
 
 style :focus do
-  padding     2, 8, 0, 8
-  foreground  "#ffffff"
-  background  "#1a1a1a"
-  border_bottom  "#595959", 2
+  padding        1, 8, 0, 8
+  foreground     "#ffffff"
+  background     "#1a1a1a"
+  border_bottom  "#595959", 3
 end
 
 style :urgent do
-  padding     2, 8, 0, 8
-  border      0
-  foreground  "#a8a8a8"
-  background  "#1a1a1a"
-  border_bottom  "#DF8787", 2
+  padding        1, 8, 0, 8
+  border         0
+  foreground     "#a8a8a8"
+  background     "#1a1a1a"
+  border_bottom  "#DF8787", 3
 end
 
 style :occupied do
-  padding     2, 8, 0, 8
-  foreground  "#a8a8a8"
-  background  "#1a1a1a"
-  border_bottom  "#404040", 2
+  padding        1, 8, 0, 8
+  foreground     "#a8a8a8"
+  background     "#1a1a1a"
+  border_bottom  "#404040", 3
 end
 
 style :views do
-  padding     2, 8
+  padding     1, 8, 2, 8
   border      "#1a1a1a", 0
   foreground  "#777777"
   background  "#1a1a1a"
+  margin_bottom  1
 end
 
 style :sublets do
-  padding     2, 8
-  border      "#1a1a1a", 0
-  foreground  "#a8a8a8"
-  background  "#1a1a1a"
+  padding        1, 8, 2, 8
+  border         "#1a1a1a", 0
+  foreground     "#a8a8a8"
+  background     "#1a1a1a"
+  margin_bottom  1
 end
 
 style :separator do
-  padding     2, 0
-  border      0
-  background  "#1a1a1a"
-  foreground  "#DF8787"
+  padding        1, 0, 2, 0
+  border         0
+  background     "#1a1a1a"
+  foreground     "#DF8787"
+  margin_bottom  1
 end
 
 style :clients do
@@ -359,6 +362,7 @@ end
 tag "urgent" do
   match  "sun-awt-X11-XDialogPeer"
   type   :dialog
+  resize false
   stick  true
   urgent true
   float  true
