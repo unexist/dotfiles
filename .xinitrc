@@ -9,7 +9,7 @@ xhost +localhost
 xhost +$HOST
 
 # X options
-xset m 7 1
+xset m 4 2
 xsetroot -solid "#595959"
 setxkbmap -layout 'de(nodeadkeys)'
 setxkbmap -option compose:caps
@@ -31,9 +31,11 @@ fi
 
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
-  #xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP2 --mode 1680x1050 --pos 1680x0 --right-of DFP1 --dpi 96
-  xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --right-of DVI-0 --dpi 96
-  #xrandr --output udlfb --mode 1680x1050 --pos 0x0 --dpi 96
+  if [ "xsubtle" = "x$1" ] ; then
+    xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --right-of DVI-0 --dpi 96
+  elif [ "xxbmc" = "x$1" ] ; then
+    xrandr --output DVI-0 --off --output HDMI-0 --mode 1920x1080
+  fi
 fi
 
 # Wallpaper
@@ -44,16 +46,13 @@ fi
 #fi
 
 # Windowmanager
-#valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions subtle &> ~/subtle.log &
-#subtle &> ~/subtle.log &
-subtle &
-#$HOME/projects/subtle/subtle &
+exec $1 &
 pid=$!
 
 sleep 2
 
 # Term
-if [ -e /usr/bin/urxvt ] ; then
+if [ -e /usr/bin/urxvt ] && [ "xxbmc" != "x$1" ] ; then
   /usr/bin/urxvt -name urxvt1 -urgentOnBell &
   /usr/bin/urxvt -name urxvt2 &
 fi
