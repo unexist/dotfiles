@@ -24,16 +24,17 @@ rescue LoadError
 end # }}}
 
 # Options {{{
-set :step,       5
-set :snap,       10
-set :gravity,    :center
-set :urgent,     false
-set :resize,     false
-set :font,       "xft:Envy Code R:pixelsize=13"
-#set :font,       "xft:Ubuntu R:pixelsize=13"
-#set :font,       "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
-set :separator,  "·"
-set :wmname,     "LG3D"
+set :step,      5
+set :snap,      10
+set :gravity,   :center
+set :urgent,    false
+set :resize,    false
+set :tiling,    false
+set :font,      "xft:Envy Code R:pixelsize=13"
+#set :font,     "xft:Ubuntu R:pixelsize=13"
+#set :font,     "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
+set :separator, "·"
+set :wmname,    "LG3D"
 # }}}
 
 # Screens {{{
@@ -329,16 +330,18 @@ tag "editor" do
   end
 end
 
-tag "xephyr" do
+tag "xeph640" do
   match    "xeph640"
   urgent   false
-
-  if("mockra" == host)
-    gravity  :center
-  else
-    geometry [ 943, 548, 640, 480 ]
-  end
+  geometry [ 943, 548, 640, 480 ]
 end
+
+tag "xeph800" do
+  match    "xeph800"
+  urgent   false
+  geometry [ 855, 172, 800, 800 ]
+end
+
 
 tag "android" do
   match    :name => "5554:AVD"
@@ -468,12 +471,12 @@ end
 # Views {{{
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   www_re    = "browser|one25|three25"
-  test_re   = "xephyr|android|one25|three25"
+  test_re   = "xeph[0-9]+|android|one25|three25"
   editor_re = "android|editor|one25|three25"
   icons     = true
 else
   www_re    = "browser"
-  test_re   = "android|xephyr|seven$|one$"
+  test_re   = "android|xeph[0-9]+|seven$|one$"
   editor_re = "editor"
   icons     = true
 end
