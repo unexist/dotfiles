@@ -92,11 +92,10 @@ style :views do
 end
 
 style :sublets do
-  padding        1, 8, 2, 8
+  padding        2, 8
   border         "#1a1a1a", 0
   foreground     "#a8a8a8"
   background     "#1a1a1a"
-  margin_bottom  1
 end
 
 style :separator do
