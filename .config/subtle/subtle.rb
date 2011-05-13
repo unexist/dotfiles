@@ -61,19 +61,19 @@ style :title do
   background  "#1a1a1a"
 end
 
+style :views do
+  padding     1, 8, 2, 8
+  border      "#1a1a1a", 0
+  foreground  "#777777"
+  background  "#1a1a1a"
+  margin_bottom  1
+end
+
 style :focus do
   padding        1, 8, 0, 8
   foreground     "#ffffff"
   background     "#1a1a1a"
   border_bottom  "#595959", 3
-end
-
-style :urgent do
-  padding        1, 8, 0, 8
-  border         0
-  foreground     "#a8a8a8"
-  background     "#1a1a1a"
-  border_bottom  "#DF8787", 3
 end
 
 style :occupied do
@@ -83,12 +83,12 @@ style :occupied do
   border_bottom  "#404040", 3
 end
 
-style :views do
-  padding     1, 8, 2, 8
-  border      "#1a1a1a", 0
-  foreground  "#777777"
-  background  "#1a1a1a"
-  margin_bottom  1
+style :urgent do
+  padding        1, 8, 0, 8
+  border         0
+  foreground     "#a8a8a8"
+  background     "#1a1a1a"
+  border_bottom  "#DF8787", 3
 end
 
 style :sublets do
@@ -121,43 +121,48 @@ end
 # }}}
 
 # Gravities {{{
-gravity :top_left,       [0, 0, 50, 50]
-gravity :top_left33,     [0, 0, 50, 33]
-gravity :top_left66,     [0, 0, 50, 66]
-gravity :top_left75,     [0, 0, 50, 75]
-gravity :top,            [0, 0, 100, 50]
-gravity :top66,          [0, 0, 100, 67]
-gravity :top33,          [0, 0, 100, 33]
-gravity :top75,          [0, 0, 100, 75]
-gravity :top_right,      [100, 0, 50, 50]
-gravity :top_right33,    [100, 0, 50, 33]
-gravity :top_right66,    [100, 0, 50, 66]
-gravity :top_right75,    [100, 0, 50, 75]
-gravity :left,           [0, 0, 50, 100]
-gravity :left33,         [0, 50, 25, 33]
-gravity :left66,         [0, 50, 50, 33]
-gravity :center,         [0, 0, 100, 100]
-gravity :center33,       [50, 50, 50, 33]
-gravity :center66,       [0, 50, 100, 33]
-gravity :right,          [100, 0, 50, 100]
-gravity :right33,        [100, 50, 25, 100]
-gravity :right66,        [100, 50, 50, 33]
-gravity :bottom_left,    [0, 100, 50, 50]
-gravity :bottom_left25,  [0, 100, 50, 25]
-gravity :bottom_left33,  [0, 100, 50, 33]
-gravity :bottom_left66,  [0, 100, 50, 66]
-gravity :bottom,         [0, 100, 100, 50]
-gravity :bottom66,       [0, 100, 100, 66]
-gravity :bottom33,       [0, 100, 100, 33]
-gravity :bottom_right,   [100, 100, 50, 50]
-gravity :bottom_right25, [100, 100, 50, 25]
-gravity :bottom_right33, [100, 100, 50, 33]
-gravity :bottom_right66, [100, 100, 50, 66]
-gravity :gimp_image,     [50, 50, 80, 100]
-gravity :gimp_toolbox,   [0, 0, 10, 100]
-gravity :gimp_dock,      [100, 0, 10, 100]
-gravity :dia_toolbox,    [0, 0, 100, 15]
-gravity :dia_window,     [0, 18, 100, 84]
+gravity :top_left,       [   0,   0,  50,  50 ]
+gravity :top_left66,     [   0,   0,  50,  66 ]
+gravity :top_left33,     [   0,   0,  50,  34 ]
+
+gravity :top,            [   0,   0, 100,  50 ]
+gravity :top66,          [   0,   0, 100,  66 ]
+gravity :top33,          [   0,   0, 100,  34 ]
+
+gravity :top_right,      [  50,   0,  50,  50 ]
+gravity :top_right66,    [  50,   0,  50,  66 ]
+gravity :top_right33,    [  50,   0,  50,  33 ]
+
+gravity :left,           [   0,   0,  50, 100 ]
+gravity :left66,         [   0,   0,  66, 100 ]
+gravity :left33,         [   0,   0,  33, 100 ]
+
+gravity :center,         [   0,   0, 100, 100 ]
+gravity :center66,       [  17,  17,  66,  66 ]
+gravity :center33,       [  33,  33,  33,  33 ]
+
+gravity :right,          [  50,   0,  50, 100 ]
+gravity :right66,        [  34,   0,  66, 100 ]
+gravity :right33,        [  67,  50,  33, 100 ]
+
+gravity :bottom_left,    [   0,  50,  50,  50 ]
+gravity :bottom_left66,  [   0,  34,  50,  66 ]
+gravity :bottom_left33,  [   0,  67,  50,  33 ]
+
+gravity :bottom,         [   0,  50, 100,  50 ]
+gravity :bottom66,       [   0,  34, 100,  66 ]
+gravity :bottom33,       [   0,  67, 100,  33 ]
+
+gravity :bottom_right,   [  50,  50,  50,  50 ]
+gravity :bottom_right66, [  50,  34,  50,  66 ]
+gravity :bottom_right33, [  50,  67,  50,  33 ]
+
+gravity :gimp_image,     [  10,   0,  80, 100 ]
+gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
+gravity :gimp_dock,      [  90,   0,  10, 100 ]
+
+gravity :dia_toolbox,    [   0,   0, 100,  15 ]
+gravity :dia_window,     [   0,  15, 100,  85 ]
 # }}}
 
 # Grabs {{{
