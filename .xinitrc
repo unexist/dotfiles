@@ -54,7 +54,7 @@ sleep 2
 # Term
 if [ -e /usr/bin/urxvt ] && [ "xxbmc" != "x$1" ] ; then
   /usr/bin/urxvt -name urxvt1 -urgentOnBell &
-  /usr/bin/urxvt -name urxvt2 &
+  /usr/bin/urxvt -name urxvt2 -e tmux &
 fi
 
 # Numlockx
