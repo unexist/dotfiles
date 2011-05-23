@@ -126,6 +126,7 @@ gravity :top_left66,     [   0,   0,  50,  66 ]
 gravity :top_left33,     [   0,   0,  50,  34 ]
 
 gravity :top,            [   0,   0, 100,  50 ]
+gravity :top75,          [   0,   0, 100,  75 ]
 gravity :top66,          [   0,   0, 100,  66 ]
 gravity :top33,          [   0,   0, 100,  34 ]
 
@@ -148,6 +149,7 @@ gravity :right33,        [  67,  50,  33, 100 ]
 gravity :bottom_left,    [   0,  50,  50,  50 ]
 gravity :bottom_left66,  [   0,  34,  50,  66 ]
 gravity :bottom_left33,  [   0,  67,  50,  33 ]
+gravity :bottom_left25,  [   0,  75,  50,  25 ]
 
 gravity :bottom,         [   0,  50, 100,  50 ]
 gravity :bottom66,       [   0,  34, 100,  66 ]
@@ -156,6 +158,7 @@ gravity :bottom33,       [   0,  67, 100,  33 ]
 gravity :bottom_right,   [  50,  50,  50,  50 ]
 gravity :bottom_right66, [  50,  34,  50,  66 ]
 gravity :bottom_right33, [  50,  67,  50,  33 ]
+gravity :bottom_right25, [  50,  75,  50,  25 ]
 
 gravity :gimp_image,     [  10,   0,  80, 100 ]
 gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
@@ -268,22 +271,6 @@ grab "W-y" do
     c.tags  = [] 
     c.flags = [ :stick ]
   end
-end 
-
-# Switch views
-{
-  "S-F1" => [ :www,    :terms ],
-  "S-F2" => [ :editor, :terms ],
-  "S-F3" => [ :www,    :test  ],
-  "S-F4" => [ :editor, :test  ]
-}.each do |k, v|
-  grab k do
-    screens = Subtlext::Screen.all
-
-    v.each_with_index do |view, i|
-      screens[i].view = view
-    end
-  end
 end
 
 # Pychrom
@@ -298,6 +285,25 @@ end
 # Tabbing
 grab modkey + "-Tab" do
   Subtlext::Client.recent[1].focus
+end
+
+# Set layout
+grab modkey + "-numbersign" do
+  # Find stuff
+  tag            = Subtlext::Tag["editor"]
+  urxvt1, urxvt2, editor =
+    [ "urxvt1", "urxvt2", "editor" ].map { |name| Subtlext::Client[name] }
+
+  # Add tags
+  urxvt1 + tag
+  urxvt2 + tag
+
+  # Set gravities
+  urxvt1.gravity = { :editor => :bottom_right25 }
+  urxvt2.gravity = { :editor => :bottom_left25 }
+  editor.gravity = { :editor => :top75 }
+
+  Subtlext::Screen[1].view = Subtlext::View["editor"]
 end
 # }}}
 
@@ -475,7 +481,7 @@ end
 # Views {{{
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   www_re    = "browser|one25|three25"
-  test_re   = "xeph[0-9]+|android|one25|three25"
+  test_re   = "xeph[0-9]+|android|three25"
   editor_re = "android|editor|one25|three25"
   icons     = true
 else
@@ -519,7 +525,7 @@ end
 
 view "editor" do
   match     editor_re
-  icon      "#{iconpath}/pencil.xbm"
+  icon      "#{iconpath}/ruby.xbm"
   icon_only icons
 end
 # }}}
