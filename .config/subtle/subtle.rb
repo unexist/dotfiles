@@ -276,7 +276,7 @@ end
 # Pychrom
 grab modkey + "-p" do
   if((t = Subtlext::Tray[:pychrom]))
-    t.click(1)
+    t.click
   else
     Subtlext::Subtle.spawn("pychrom")
   end
@@ -486,7 +486,7 @@ if("mockra" == host or "proteus" == host or "pc03112" == host)
   icons     = true
 else
   www_re    = "browser"
-  test_re   = "android|xeph[0-9]+|seven$|one$"
+  test_re   = "android|xeph[0-9]+|eight|one$"
   editor_re = "editor"
   icons     = true
 end
