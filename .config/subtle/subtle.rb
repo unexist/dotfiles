@@ -34,7 +34,7 @@ set :font,      "xft:Envy Code R:pixelsize=13"
 #set :font,     "xft:Ubuntu R:pixelsize=13"
 #set :font,     "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator, "·"
-set :wmname,    "LG3D"
+#set :wmname,    "LG3D"
 # }}}
 
 # Screens {{{
@@ -542,3 +542,10 @@ end
   end
 end
 # }}}
+
+def xbmc
+  Subtlext::Screen[0].view = :terms
+  Subtlext::Screen[1].view = :browser
+
+  Subtlext::Subtle.spawn("xinit xbmc -- :3")
+end
