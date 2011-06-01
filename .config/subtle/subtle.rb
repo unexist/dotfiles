@@ -18,6 +18,8 @@ begin
     "xft:Envy Code R:pixelsize=13"
   ]
 
+  Subtle::Contrib::Launcher.browser_screen_num = 0
+
   Subtle::Contrib::Selector.font = "xft:Envy Code R:pixelsize=13"
   Subtle::Contrib::Merger.font   = "xft:Envy Code R:pixelsize=13"
 rescue LoadError
