@@ -36,7 +36,7 @@ set :font,      "xft:Envy Code R:pixelsize=13"
 #set :font,     "xft:Ubuntu R:pixelsize=13"
 #set :font,     "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator, "·"
-#set :wmname,    "LG3D"
+set :wmname,    "LG3D"
 # }}}
 
 # Screens {{{
@@ -166,8 +166,8 @@ gravity :gimp_image,     [  10,   0,  80, 100 ]
 gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
 gravity :gimp_dock,      [  90,   0,  10, 100 ]
 
-gravity :dia_toolbox,    [   0,   0, 100,  15 ]
-gravity :dia_window,     [   0,  15, 100,  85 ]
+gravity :dia_toolbox,    [   0,   0,  15, 100 ]
+gravity :dia_window,     [  15,   0,  85, 100 ]
 # }}}
 
 # Grabs {{{
@@ -294,7 +294,7 @@ grab modkey + "-numbersign" do
   # Find stuff
   tag            = Subtlext::Tag["editor"]
   urxvt1, urxvt2, editor =
-    [ "urxvt1", "urxvt2", "editor" ].map { |name| Subtlext::Client[name] }
+    [ "urxvt1", "urxvt2", "gvim" ].map { |name| Subtlext::Client[name] }
 
   # Add tags
   urxvt1 + tag
@@ -391,6 +391,11 @@ tag "powerfolder" do
   match "de-dal33t-powerfolder-PowerFolder"
   float true
   stick true
+end
+
+tag "pms" do
+  match "net-pms-PMS"
+  resize true
 end
 
 tag "dialogs" do
@@ -508,7 +513,7 @@ view "www" do
 end
 
 view "void" do
-  match     "default|void|powerfolder"
+  match     "default|void|powerfolder|pms"
   icon      "#{iconpath}/quote.xbm"
   icon_only icons
 end
@@ -545,9 +550,10 @@ end
 end
 # }}}
 
+# Commands {{{
 def xbmc
   Subtlext::Screen[0].view = :terms
   Subtlext::Screen[1].view = :browser
 
   Subtlext::Subtle.spawn("xinit xbmc -- :3")
-end
+end # }}}
