@@ -33,10 +33,7 @@ set :urgent,    false
 set :resize,    false
 set :tiling,    false
 set :font,      "xft:Envy Code R:pixelsize=13"
-#set :font,     "xft:Ubuntu R:pixelsize=13"
-#set :font,     "xft:DejaVu Sans Mono:pixelsize=12:antialias=true"
 set :separator, "·"
-set :wmname,    "LG3D"
 # }}}
 
 # Screens {{{
@@ -195,6 +192,7 @@ grab modkey + "-B3",      :WindowResize
 grab modkey + "-S-f",     :WindowFloat
 grab modkey + "-S-space", :WindowFull
 grab modkey + "-S-s",     :WindowStick
+grab modkey + "-S-equal", :WindowZaphod
 grab modkey + "-r",       :WindowRaise
 grab modkey + "-l",       :WindowLower
 grab modkey + "-Left",    :WindowLeft
@@ -235,16 +233,14 @@ gravities.each_index do |i|
 end
 
 # Multimedia keys
-#grab "XF86AudioMute", "amixer set Master toggle"
-#grab "XF86AudioRaiseVolume", "amixer set Master 2dB+"
-#grab "XF86AudioLowerVolume", "amixer set Master 2dB-"
-grab "XF86AudioMute", :VolumeToggle
+grab "XF86AudioMute",        :VolumeToggle
 grab "XF86AudioRaiseVolume", :VolumeRaise
 grab "XF86AudioLowerVolume", :VolumeLower
-grab "XF86AudioPlay", "mpc toggle"
-grab "XF86AudioStop", "mpc stop"
-grab "XF86AudioPrev", "mpc prev"
-grab "XF86AudioNext", "mpc next"
+grab "XF86AudioPlay",        :MpdToggle
+grab "XF86AudioStop",        :MpdStop
+grab "XF86AudioNext",        :MpdNext
+grab "XF86AudioPrev",        :MpdPrevious
+
 grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 
 # Programs
@@ -311,9 +307,14 @@ end
 
 # Tags {{{
 tag "terms" do
-  match    "xterm|urxvt"
+  match    instance: "xterm|urxvt"
   gravity  :center
   resize   true
+end
+
+tag "test" do
+  match instance: "test", class: "urxvt"
+  geometry [ 943, 548, 640, 480 ]
 end
 
 tag "browser" do
@@ -327,13 +328,13 @@ tag "browser" do
 end
 
 tag "pdf" do
-  match    "apvlv|evince"
-  stick    true
+  match "apvlv|evince"
+  stick true
 end
 
 tag "editor" do
-  match   "[g]?vim"
-  resize  true
+  match  "[g]?vim"
+  resize true
 
   if("mockra" == host or "proteus" == host or "pc03112" == host)
     gravity :top75
@@ -344,13 +345,11 @@ end
 
 tag "xeph640" do
   match    "xeph640"
-  urgent   false
   geometry [ 943, 548, 640, 480 ]
 end
 
 tag "xeph800" do
   match    "xeph800"
-  urgent   false
   geometry [ 855, 172, 800, 800 ]
 end
 
@@ -377,14 +376,13 @@ end
 tag "urgent" do
   match  "sun-awt-X11-XDialogPeer"
   type   :dialog
-  resize false
   stick  true
   urgent true
   float  true
 end
 
 tag "void" do
-  match   "jd-Main|Virtualbox"
+  match "jd-Main|Virtualbox"
 end
 
 tag "powerfolder" do
@@ -493,7 +491,7 @@ if("mockra" == host or "proteus" == host or "pc03112" == host)
   icons     = true
 else
   www_re    = "browser"
-  test_re   = "android|xeph[0-9]+|eight|one$"
+  test_re   = "android|xeph[0-9]+|eight|one$|test"
   editor_re = "editor"
   icons     = true
 end
@@ -535,7 +533,7 @@ view "editor" do
   icon      "#{iconpath}/ruby.xbm"
   icon_only icons
 end
-# }}}
+# }^}}
 
 # Sublets {{{
 sublet :clock do
@@ -555,5 +553,5 @@ def xbmc
   Subtlext::Screen[0].view = :terms
   Subtlext::Screen[1].view = :browser
 
-  Subtlext::Subtle.spawn("xinit xbmc -- :3")
+  Subtlext::Subtle.spawn("xinit xbmc -- :#{rand(10)}")
 end # }}}
