@@ -288,20 +288,21 @@ end
 # Set layout
 grab modkey + "-numbersign" do
   # Find stuff
-  tag            = Subtlext::Tag["editor"]
-  urxvt1, urxvt2, editor =
-    [ "urxvt1", "urxvt2", "gvim" ].map { |name| Subtlext::Client[name] }
+  view   = Subtlext::View.current
+  tag    = view.tags.first
+  client = view.clients.first
+  urxvt1 = Subtlext::Client['urxvt1']
+  urxvt2 = Subtlext::Client['urxvt2']
 
-  # Add tags
+  # Update tags
   urxvt1 + tag
   urxvt2 + tag
 
-  # Set gravities
-  urxvt1.gravity = { :editor => :bottom_right25 }
-  urxvt2.gravity = { :editor => :bottom_left25 }
-  editor.gravity = { :editor => :top75 }
-
-  Subtlext::Screen[1].view = Subtlext::View["editor"]
+  # Update gravities
+  sym = view.name.to_sym
+  client.gravity = { sym => :top75 }
+  urxvt1.gravity = { sym => :bottom_right25 }
+  urxvt2.gravity = { sym => :bottom_left25 }
 end
 # }}}
 
@@ -333,7 +334,7 @@ tag "pdf" do
 end
 
 tag "editor" do
-  match  "[g]?vim"
+  match  "[g]?vim|eclipse"
   resize true
 
   if("mockra" == host or "proteus" == host or "pc03112" == host)
@@ -355,8 +356,7 @@ end
 
 
 tag "android" do
-  match    :name => "5554:AVD"
-  geometry [ 873, 47, 791, 534 ]
+  match "SDL_App"
 end
 
 tag "mplayer" do
@@ -397,7 +397,7 @@ tag "pms" do
 end
 
 tag "dialogs" do
-  match :type => [ :dialog, :splash ]
+  match type: [ :dialog, :splash ]
   stick true
 end
 
@@ -437,31 +437,31 @@ tag "eight" do
 end
 
 tag "gimp_image" do
-  match    :role => "gimp-image-window"
+  match    role: "gimp-image-window"
   gravity  :gimp_image
 end
 
 tag "gimp_toolbox" do
-  match    :role => "gimp-toolbox$"
+  match    role: "gimp-toolbox$"
   gravity  :gimp_toolbox
 end
 
 tag "gimp_dock" do
-  match    :role => "gimp-dock"
+  match    role: "gimp-dock"
   gravity  :gimp_dock
 end
 
 tag "gimp_scum" do
-  match :role => "gimp-.*|screenshot"
+  match role: "gimp-.*|screenshot"
 end
 
 tag "dia_window" do
-  match   :role => "diagram_window"
+  match   role: "diagram_window"
   gravity :dia_window
 end
 
 tag "dia_toolbox" do
-  match   :role => "toolbox_window"
+  match   role: "toolbox_window"
   gravity :dia_toolbox
 end
 
@@ -476,7 +476,7 @@ tag "xfontsel" do
 end
 
 tag "xev" do
-  match    :name => "Event[ ]Tester"
+  match    name: "Event[ ]Tester"
   geometry [1213, 98, 377, 321]
   float    true
   stick    true
@@ -487,7 +487,7 @@ end
 if("mockra" == host or "proteus" == host or "pc03112" == host)
   www_re    = "browser|one25|three25"
   test_re   = "xeph[0-9]+|android|three25"
-  editor_re = "android|editor|one25|three25"
+  editor_re = "editor|one25|three25"
   icons     = true
 else
   www_re    = "browser"
