@@ -54,55 +54,22 @@ end
 
 # Styles {{{
 style :title do
-  padding     2, 8
-  border      "#1a1a1a", 0
   foreground  "#ffffff"
-  background  "#1a1a1a"
-end
-
-style :views do
-  padding     1, 8, 2, 8
-  border      "#1a1a1a", 0
-  foreground  "#777777"
-  background  "#1a1a1a"
-  margin_bottom  1
-end
-
-style :focus do
-  padding        1, 8, 0, 8
-  foreground     "#ffffff"
-  background     "#1a1a1a"
-  border_bottom  "#595959", 3
-end
-
-style :occupied do
-  padding        1, 8, 0, 8
-  foreground     "#a8a8a8"
-  background     "#1a1a1a"
-  border_bottom  "#404040", 3
 end
 
 style :urgent do
   padding        1, 8, 0, 8
-  border         0
   foreground     "#a8a8a8"
-  background     "#1a1a1a"
   border_bottom  "#DF8787", 3
 end
 
 style :sublets do
-  padding        2, 8
-  border         "#1a1a1a", 0
-  foreground     "#a8a8a8"
-  background     "#1a1a1a"
+  foreground "#a8a8a8"
 end
 
 style :separator do
   padding        1, 0, 2, 0
-  border         0
-  background     "#1a1a1a"
   foreground     "#DF8787"
-  margin_bottom  1
 end
 
 style :clients do
@@ -116,6 +83,32 @@ style :subtle do
   panel       "#1a1a1a"
   background  "#595959"
   stipple     "#595959"
+end
+
+style :focus do
+  foreground     "#ffffff"
+  border_bottom  "#595959", 3
+end
+
+style :occupied do
+  foreground     "#a8a8a8"
+  border_bottom  "#404040", 3
+end
+
+style :unoccupied do
+  padding     1, 8, 2, 8
+  foreground  "#777777"
+  margin_bottom 1
+end
+
+style :all do
+  background  "#1a1a1a"
+  border      0
+  padding     2, 8
+end
+
+style :views do
+  padding 1, 8, 0, 8
 end
 # }}}
 
@@ -209,9 +202,9 @@ grab modkey + "-C-A-r",   :SubtleRestart
 
 # Gravity keys and focus
 gravities = [
-  [:top_left, :top_left33, :top_left66, :top_left75],
+  [:top_left, :top_left33, :top_left66],
   [:top, :top33, :top66, :top75],
-  [:top_right, :top_right33, :top_right66, :top_right75],
+  [:top_right, :top_right33, :top_right66],
   [:left, :left33, :left66],
   [:center, :center33, :center66],
   [:right, :right33, :right66],
