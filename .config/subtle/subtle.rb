@@ -53,18 +53,19 @@ end
 # }}}
 
 # Styles {{{
+style :all do
+  background  "#1a1a1a"
+  border      0
+  padding     2, 8
+end
+
 style :title do
   foreground  "#ffffff"
 end
 
-style :urgent do
-  padding        1, 8, 0, 8
-  foreground     "#a8a8a8"
-  border_bottom  "#DF8787", 3
-end
-
 style :sublets do
   foreground "#a8a8a8"
+  icon       "#777777"
 end
 
 style :separator do
@@ -85,30 +86,30 @@ style :subtle do
   stipple     "#595959"
 end
 
-style :focus do
-  foreground     "#ffffff"
-  border_bottom  "#595959", 3
-end
-
-style :occupied do
-  foreground     "#a8a8a8"
-  border_bottom  "#404040", 3
-end
-
-style :unoccupied do
-  padding     1, 8, 2, 8
-  foreground  "#777777"
-  margin_bottom 1
-end
-
-style :all do
-  background  "#1a1a1a"
-  border      0
-  padding     2, 8
-end
-
 style :views do
   padding 1, 8, 0, 8
+
+  style :focus do
+    foreground     "#ffffff"
+    border_bottom  "#595959", 3
+  end
+
+  style :occupied do
+    foreground     "#a8a8a8"
+    border_bottom  "#404040", 3
+  end
+
+  style :unoccupied do
+    padding       1, 8, 2, 8
+    foreground    "#777777"
+    margin_bottom 1
+  end
+
+  style :urgent do
+    padding        1, 8, 0, 8
+    foreground     "#a8a8a8"
+    border_bottom  "#DF8787", 3
+  end
 end
 # }}}
 
@@ -531,13 +532,6 @@ end
 # Sublets {{{
 sublet :clock do
   format_string "%a %b %d,"
-  icon_fg "#777777"
-end
-
-[ :cpu, :jdownloader, :wifi, :mpd, :volume ].each do |sublet|
-  sublet sublet do
-    icon_fg "#777777"
-  end
 end
 # }}}
 
