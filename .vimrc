@@ -83,6 +83,15 @@ nnoremap <F12> :set invpaste paste?<CR>
 imap <F12> <C-O><F12>
 set pastetoggle=<F12>
 
+" Brackets
+"inoremap {      {}<Left>
+"inoremap {<CR>  {<CR>}<Tab><Esc>O
+"inoremap {{     {
+"inoremap {}     {}
+
+" Commands
+command W w !sudo tee % /dev/null
+
 " Filetype
 if has("autocmd")
   filetype plugin on
