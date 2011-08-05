@@ -216,3 +216,10 @@
    fun:rb_thread_create_timer_thread
    ...
 }
+{
+   FC
+   Memcheck:Leak
+   fun:malloc
+   fun:FcPatternObjectInsertElt
+   ...
+}

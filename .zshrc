@@ -152,6 +152,9 @@ if [ -e $HOME/bin ] ; then
   export PATH=$HOME/bin:$PATH
 fi
 
+# Adding android stuff
+export PATH=$PATH:/opt/android-sdk/platform-tools
+
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
   export EDITOR=/usr/bin/vim

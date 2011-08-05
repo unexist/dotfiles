@@ -3,10 +3,14 @@ editor = vim
 username = unexist
 
 [extensions]
-hgext.keyword  =
-hgext.record   =
-hgext.graphlog =
-hgext.color    =
+hgext.keyword    =
+hgext.record     =
+hgext.graphlog   =
+hgext.color      =
+hgext.transplant =
+hggit            = /home/unexist/.hgext/hggit/hggit
+hgcrecord        = /home/unexist/.hgext/crecord/crecord
+histedit         = /home/unexist/.hgext/histedit/hg_histedit.py
 
 [keyword]
 **.* =

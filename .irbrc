@@ -2,7 +2,7 @@
 #
 # @file Irb config
 #
-# @copyright (c) 2010, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2010-2011, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
