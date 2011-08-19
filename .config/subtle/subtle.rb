@@ -39,14 +39,14 @@ set :separator, "·"
 # Screens {{{
 screen 1 do
   stipple false
-  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :sublets, :center]
+  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :cpu, :wifi, :jdownloader, :separator, :center]
   bottom  []
   view    1
 end
 
 screen 2 do
   stipple false
-  top     [:views, :spacer, :title, :tray, :center, :mpd, :separator, :volume, :center]
+  top     [:views, :spacer, :title, :tray, :center, :mpd, :sublets, :separator, :volume, :center]
   bottom  []
   view    0
 end
@@ -240,6 +240,7 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
+grab modkey + "-f", "firefox -no-remote -ProfileManager"
 
 # Contrib
 grab "W-x" do
