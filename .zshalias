@@ -39,7 +39,7 @@ if [ -e /usr/bin/sudo ] ; then
 
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
-    alias p="sudo packer --noconfirm --noedit"
+    alias p="packer --noedit"
     alias S="sudo pacman -S"
     alias R="sudo pacman -R"
   elif [ -e /usr/bin/apt-get ] ; then
