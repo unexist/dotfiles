@@ -9,10 +9,12 @@ xhost +localhost
 xhost +$HOST
 
 # X options
+xset b
 xset m 4 2
 xsetroot -solid "#595959"
 setxkbmap -layout 'de(nodeadkeys)'
 setxkbmap -option compose:caps
+
 
 # Xdefaults
 if [ -e $HOME/.Xdefaults ] ; then
@@ -33,8 +35,10 @@ fi
 if [ -e /usr/bin/xrandr ] ; then
   if [ "xsubtle" = "x$1" ] ; then
     xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --right-of DVI-0 --dpi 96
+    #xrandr --output DFP1 --primary --mode 1680x1050 --pos 1680x0 --output DFP2 --mode 1680x1050 --pos 0x0 --right-of DFP1 --dpi 96
   elif [ "xxbmc" = "x$1" ] ; then
     xrandr --output DVI-0 --off --output HDMI-0 --mode 1920x1080
+    #xrandr --output DFP1 --off --output DFP2 --mode 1920x1080
   fi
 fi
 
