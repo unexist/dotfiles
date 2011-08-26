@@ -11,17 +11,14 @@ require "socket"
 begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
-  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/merger.rb"
 
+  Subtle::Contrib::Selector.font  = "xft:Envy Code R:pixelsize=13"
   Subtle::Contrib::Launcher.fonts = [
     "xft:Envy Code R:pixelsize=80",
     "xft:Envy Code R:pixelsize=13"
   ]
 
   Subtle::Contrib::Launcher.browser_screen_num = 0
-
-  Subtle::Contrib::Selector.font = "xft:Envy Code R:pixelsize=13"
-  Subtle::Contrib::Merger.font   = "xft:Envy Code R:pixelsize=13"
 rescue LoadError
 end # }}}
 
@@ -251,17 +248,13 @@ grab "W-z" do
   Subtle::Contrib::Selector.run
 end
 
-grab "W-u" do
-  Subtle::Contrib::Merger.run
-end
-
 # Scratchpad
 grab "W-y" do
   if((c = Subtlext::Client["scratch"]))
     c.toggle_stick
     c.focus
   elsif((c = Subtlext::Subtle.spawn("urxvt -name scratch")))
-    c.tags  = [] 
+    c.tags  = []
     c.flags = [ :stick ]
   end
 end
