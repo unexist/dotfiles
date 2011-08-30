@@ -30,13 +30,13 @@ set :urgent,    false
 set :resize,    false
 set :tiling,    false
 set :font,      "xft:Envy Code R:pixelsize=13"
-set :separator, "·"
+set :separator, "∞"
 # }}}
 
 # Screens {{{
 screen 1 do
   stipple false
-  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :cpu, :wifi, :jdownloader, :separator, :center]
+  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu,:separator,  :wifi, :separator, :jdownloader, :center]
   bottom  []
   view    1
 end
@@ -51,64 +51,60 @@ end
 
 # Styles {{{
 style :all do
-  background  "#1a1a1a"
-  border      0
-  padding     2, 8
+  padding    2, 6, 2, 6
+  background "#1a1a1a"
 end
 
 style :title do
-  foreground  "#ffffff"
-end
-
-style :sublets do
-  foreground "#a8a8a8"
-  icon       "#777777"
-end
-
-style :separator do
-  padding        1, 0, 2, 0
-  foreground     "#DF8787"
-end
-
-style :clients do
-  active      "#a8a8a8", 2
-  inactive    "#404040", 2
-  margin      3
-end
-
-style :subtle do
-  padding     0
-  panel       "#1a1a1a"
-  background  "#595959"
-  stipple     "#595959"
+  foreground "#FFFFFF"
 end
 
 style :views do
-  padding 1, 8, 0, 8
-
   style :focus do
-    foreground     "#ffffff"
-    border_bottom  "#595959", 3
+    foreground    "#ffffff"
+    border_bottom "#acaa53", 2
   end
 
   style :occupied do
-    foreground     "#a8a8a8"
-    border_bottom  "#404040", 3
+    foreground    "#7c7c72"
+    border_bottom "#949269", 2
   end
 
   style :unoccupied do
-    padding       1, 8, 2, 8
-    foreground    "#777777"
-    margin_bottom 1
+    foreground "#7c7c72"
   end
 
   style :urgent do
-    padding        1, 8, 0, 8
-    foreground     "#a8a8a8"
-    border_bottom  "#DF8787", 3
+    foreground "#c0bd5c"
+    icon       "#c0bd5c"
+  end
+
+  style :visible do
+    padding_top 0
+    border_top  "#494948", 2
   end
 end
-# }}}
+
+style :sublets do
+  foreground "#7c7c72"
+  icon       "#7c7c72"
+end
+
+style :separator do
+  foreground "#acaa53"
+end
+
+style :clients do
+  active   "#7c7c72", 2
+  inactive "#494948", 2
+  margin   2
+end
+
+style :subtle do
+  panel      "#1a1a1a"
+  background "#595959"
+  stipple    "#595959"
+end # }}}
 
 # Gravities {{{
 gravity :top_left,       [   0,   0,  50,  50 ]
