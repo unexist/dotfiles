@@ -141,7 +141,7 @@ gravity :bottom,         [   0,  50, 100,  50 ]
 gravity :bottom66,       [   0,  34, 100,  66 ]
 gravity :bottom33,       [   0,  67, 100,  33 ]
 
-gravity :bottom_right,   [  50,  50,  50,  50 ]
+gravity :bottom_right,   [  50,  50,  50,  50 ], :vert
 gravity :bottom_right66, [  50,  34,  50,  66 ]
 gravity :bottom_right33, [  50,  67,  50,  33 ]
 gravity :bottom_right25, [  50,  75,  50,  25 ]
@@ -482,42 +482,78 @@ end
 
 iconpath = "#{ENV["HOME"]}/.local/share/icons"
 
+space = {
+  :cannon  => Subtlext::Icon.new("~/projects/icons/space/cannon.xbm"),
+  :ufo     => Subtlext::Icon.new("~/projects/icons/space/ufo.xbm"),
+  :shelter => Subtlext::Icon.new("~/projects/icons/space/shelter.xbm"),
+  :terms   => Subtlext::Icon.new("~/projects/icons/space/invader1.xbm"),
+  :www     => Subtlext::Icon.new("~/projects/icons/space/invader2.xbm"),
+  :void    => Subtlext::Icon.new("~/projects/icons/space/invader3.xbm"),
+  :sketch  => Subtlext::Icon.new("~/projects/icons/space/invader4.xbm"),
+  :test    => Subtlext::Icon.new("~/projects/icons/space/invader5.xbm"),
+  :editor  => Subtlext::Icon.new("~/projects/icons/space/invader6.xbm")
+}
+
 view "terms" do
   match     "terms|eight|two"
-  icon      "#{iconpath}/terminal.xbm"
+  #icon      "#{iconpath}/terminal.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/cannon.xbm")
   icon_only icons
 end
 
 view "www" do
   match     www_re
-  icon      "#{iconpath}/world.xbm"
+  #icon      "#{iconpath}/world.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/ufo.xbm")
   icon_only icons
 end
 
 view "void" do
   match     "default|void|powerfolder|pms"
-  icon      "#{iconpath}/quote.xbm"
+  #icon      "#{iconpath}/quote.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/invader3.xbm")
   icon_only icons
 end
 
 view "sketch" do
   match     "inkscape|dia_*|gimp_.*"
-  icon      "#{iconpath}/paint.xbm"
+  #icon      "#{iconpath}/paint.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/invader4.xbm")
   icon_only icons
 end
 
 view "test" do
   match     test_re
-  icon      "#{iconpath}/bug.xbm"
+  #icon      "#{iconpath}/bug.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/invader5.xbm")
   icon_only icons
 end
 
 view "editor" do
   match     editor_re
-  icon      "#{iconpath}/ruby.xbm"
+  #icon      "#{iconpath}/ruby.xbm"
+  icon      Subtlext::Icon.new("~/projects/icons/space/invader6.xbm")
   icon_only icons
 end
-# }^}}
+
+on :view_jump do |v|
+  views = Hash[*Subtlext::Screen.all.map { |s|
+    [ s.view.name.to_sym, space[space.keys[s.id]] ] }.flatten
+  ]
+
+  Subtlext::View.all.each do |va|
+    sym = va.name.to_sym
+
+    if(views.keys.include?(sym))
+      va.icon.copy_area(views[sym])
+    else
+      va.icon.copy_area(space[va.name.to_sym])
+    end
+  end
+
+  Subtlext::Subtle.render
+end
+# }}}
 
 # Sublets {{{
 sublet :clock do
