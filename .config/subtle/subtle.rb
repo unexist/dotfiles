@@ -483,15 +483,15 @@ end
 iconpath = "#{ENV["HOME"]}/.local/share/icons"
 
 space = {
-  :cannon  => Subtlext::Icon.new("~/projects/icons/space/cannon.xbm"),
-  :ufo     => Subtlext::Icon.new("~/projects/icons/space/ufo.xbm"),
-  :shelter => Subtlext::Icon.new("~/projects/icons/space/shelter.xbm"),
-  :terms   => Subtlext::Icon.new("~/projects/icons/space/invader1.xbm"),
-  :www     => Subtlext::Icon.new("~/projects/icons/space/invader2.xbm"),
-  :void    => Subtlext::Icon.new("~/projects/icons/space/invader3.xbm"),
-  :sketch  => Subtlext::Icon.new("~/projects/icons/space/invader4.xbm"),
-  :test    => Subtlext::Icon.new("~/projects/icons/space/invader5.xbm"),
-  :editor  => Subtlext::Icon.new("~/projects/icons/space/invader6.xbm")
+  :cannon  => Subtlext::Icon.new("#{iconpath}/cannon.xbm"),
+  :ufo     => Subtlext::Icon.new("#{iconpath}/ufo.xbm"),
+  :shelter => Subtlext::Icon.new("#{iconpath}/shelter.xbm"),
+  :terms   => Subtlext::Icon.new("#{iconpath}/invader1.xbm"),
+  :www     => Subtlext::Icon.new("#{iconpath}/invader2.xbm"),
+  :void    => Subtlext::Icon.new("#{iconpath}/invader3.xbm"),
+  :sketch  => Subtlext::Icon.new("#{iconpath}/invader4.xbm"),
+  :test    => Subtlext::Icon.new("#{iconpath}/invader5.xbm"),
+  :editor  => Subtlext::Icon.new("#{iconpath}/invader6.xbm")
 }
 
 view "terms" do
