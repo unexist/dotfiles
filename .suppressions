@@ -337,3 +337,13 @@
    obj:/lib/libc-2.14.so
    ...
 }
+{
+   FC
+   Memcheck:Leak
+   fun:realloc
+   fun:FcPatternObjectInsertElt
+   fun:FcPatternObjectAddWithBinding
+   fun:FcFontRenderPrepare
+   fun:FcFontMatch
+   ...
+}
