@@ -347,3 +347,16 @@
    fun:FcFontMatch
    ...
 }
+{
+   FC
+   Memcheck:Overlap
+   fun:memcpy
+   obj:/usr/lib/libfreetype.so.6.7.1
+   fun:TT_RunIns
+   obj:/usr/lib/libfreetype.so.6.7.1
+   obj:/usr/lib/libfreetype.so.6.7.1
+   obj:/usr/lib/libfreetype.so.6.7.1
+   fun:FT_Load_Glyph
+   fun:XftFontLoadGlyphs
+   ...
+}
