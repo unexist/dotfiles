@@ -52,7 +52,7 @@ end
 style :all do
   padding    2, 6, 2, 6
   background "#1a1a1a"
-  font,      "xft:Envy Code R:pixelsize=13"
+  font       "xft:Envy Code R:pixelsize=13"
 end
 
 style :title do
