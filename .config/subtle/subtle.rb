@@ -386,7 +386,7 @@ tag "dialogs" do
 end
 
 tag "flash" do
-  match "exe|<unknown>"
+  match "exe|<unknown>|plugin-container"
   stick true
 end
 
