@@ -330,14 +330,18 @@ end
 
 tag "xeph640" do
   match    "xeph640"
-  geometry [ 943, 548, 640, 480 ]
+  position [ 943, 548 ]
 end
 
 tag "xeph800" do
   match    "xeph800"
-  geometry [ 855, 172, 800, 800 ]
+  position [ 855, 172 ]
 end
 
+tag "xeph1024" do
+  match    "xeph1024"
+  position [ 705, 172 ]
+end
 
 tag "android" do
   match "SDL_App"
