@@ -501,42 +501,42 @@ space = {
 view "terms" do
   match     "terms|eight|two"
   #icon      "#{iconpath}/terminal.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/cannon.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/cannon.xbm")
   icon_only icons
 end
 
 view "www" do
   match     www_re
   #icon      "#{iconpath}/world.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/ufo.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/ufo.xbm")
   icon_only icons
 end
 
 view "void" do
   match     "default|void|powerfolder|pms"
   #icon      "#{iconpath}/quote.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/invader3.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/invader3.xbm")
   icon_only icons
 end
 
 view "sketch" do
   match     "inkscape|dia_*|gimp_.*"
   #icon      "#{iconpath}/paint.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/invader4.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/invader4.xbm")
   icon_only icons
 end
 
 view "test" do
   match     test_re
   #icon      "#{iconpath}/bug.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/invader5.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/invader5.xbm")
   icon_only icons
 end
 
 view "editor" do
   match     editor_re
   #icon      "#{iconpath}/ruby.xbm"
-  icon      Subtlext::Icon.new("~/projects/icons/space/invader6.xbm")
+  icon      Subtlext::Icon.new("#{iconpath}/invader6.xbm")
   icon_only icons
 end
 
