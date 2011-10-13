@@ -83,6 +83,7 @@ chatnets = {
 # Channels {{{
 channels = (
   { name = "#dorfelite"; chatnet = "irc"; autojoin = "yes"; },
+  { name = "#demo.ger"; chatnet = "irc"; autojoin = "yes"; },
   { name = "#subtle"; chatnet = "frn"; autojoin = "yes"; },
   { name = "#archlinux.de"; chatnet = "frn"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "frn"; autojoin = "yes"; },
@@ -292,18 +293,43 @@ settings = {
 
 # Ignores {{{
 ignores = (
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "&bitlbee" ); },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#archlinux" ); },
-  { 
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "&bitlbee" );
+  },
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#archlinux" );
+  },
+  {
     level = "JOINS PARTS QUITS MODES NICKS";
     channels = ( "#archlinux.de" );
   },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#dokuleser" ); },
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#dokuleser" );
+  },
   { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#xlib" ); },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#ruby-pro" ); },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#the.c.club" ); },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#dorfelite" ); },
-  { level = "JOINS PARTS QUITS MODES NICKS"; channels = ( "#cinch" ); }
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#ruby-pro" );
+  },
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#the.c.club" );
+  },
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#dorfelite" );
+  },
+  {
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#demo.ger" );
+  },
+  { 
+    level = "JOINS PARTS QUITS MODES NICKS";
+    channels = ( "#cinch" );
+  }
 );
 # }}}
 
@@ -333,7 +359,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#twitter_unixist";
+        name = "#twitter_chkappel";
         tag = "bee";
       }
     );
@@ -353,8 +379,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#dokuleser";
-        tag = "hai";
+        name = "#dorfelite";
+        tag = "irc";
       }
     );
   };
@@ -373,12 +399,22 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
+        name = "#dokuleser";
+        tag = "hai";
+      }
+    );
+  };
+  8 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
         name = "#archlinux.de";
         tag = "frn";
       }
     );
   };
-  8 = {
+  9 = {
     items = (
       {
         type = "CHANNEL";
@@ -388,7 +424,7 @@ windows = {
       }
     );
   };
-  9 = {
+  10 = {
     items = (
       { 
         type = "CHANNEL";
@@ -398,7 +434,17 @@ windows = {
       }
     );
   };
-  10 = {
+  11 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#demo.ger";
+        tag = "irc";
+      }
+    );
+  };
+  12 = {
     items = (
       {
         type = "CHANNEL";
@@ -408,16 +454,12 @@ windows = {
       }
     );
   };
-  11 = {
+  13 = { };
+  14 = {
     items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#the.c.club";
-        tag = "qun";
-      }
+      { type = "QUERY"; chat_type = "IRC"; name = "lianj"; tag = "frn"; }
     );
   };
 };
-mainwindows = { 5 = { first_line = "1"; lines = "27"; }; };
+mainwindows = { 6 = { first_line = "1"; lines = "31"; }; };
 # }}}
