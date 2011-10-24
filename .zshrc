@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2010, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2011, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -143,6 +143,9 @@ fi
 #RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
 
 umask 022
+
+# Fix broken locales in arch
+export LC_CTYPE="en_US.UTF-8"
 
 # Man search order
 export MANSECT="2:3:3p:1:1p:8:4:5:6:7:9:0p:tcl:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x"
