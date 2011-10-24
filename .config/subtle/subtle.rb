@@ -34,17 +34,21 @@ set :separator, "∞"
 
 # Screens {{{
 screen 1 do
-  stipple false
-  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu,:separator,  :wifi, :separator, :jdownloader, :center]
+  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center]
   bottom  []
-  view    1
+  view    5
 end
 
 screen 2 do
-  stipple false
-  top     [:views, :spacer, :title, :tray, :center, :mpd, :sublets, :separator, :volume, :center]
+  top     [:mpd, :separator, :volume, :spacer, :tray, :title, :center, :views, :center]
   bottom  []
   view    0
+end
+
+screen 3 do
+  top     [:views, :spacer, :title, :center, :wifi, :jdownloader, :center]
+  bottom  []
+  view    1
 end
 # }}}
 
@@ -130,7 +134,7 @@ gravity :center33,       [  33,  33,  33,  33 ]
 
 gravity :right,          [  50,   0,  50, 100 ]
 gravity :right66,        [  34,   0,  66, 100 ]
-gravity :right33,        [  67,  50,  33, 100 ]
+gravity :right33,        [  67,   0,  33, 100 ]
 
 gravity :bottom_left,    [   0,  50,  50,  50 ]
 gravity :bottom_left66,  [   0,  34,  50,  66 ]
@@ -297,11 +301,6 @@ tag "terms" do
   resize   true
 end
 
-tag "test" do
-  match instance: "test", class: "urxvt"
-  geometry [ 943, 548, 640, 480 ]
-end
-
 tag "browser" do
   match "navigator|(google\-)?chrom[e|ium]"
 
@@ -310,11 +309,6 @@ tag "browser" do
   else
     gravity :center
   end
-end
-
-tag "pdf" do
-  match "apvlv|evince"
-  stick true
 end
 
 tag "editor" do
@@ -338,11 +332,6 @@ tag "xeph800" do
   position [ 855, 172 ]
 end
 
-tag "xeph1024" do
-  match    "xeph1024"
-  position [ 705, 172 ]
-end
-
 tag "android" do
   match "SDL_App"
 end
@@ -356,21 +345,15 @@ tag "mplayer" do
 end
 
 tag "stick" do
-  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev"
+  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|evince|exe|<unknown>|plugin-container"
   stick  true
   float  true
 end
 
 tag "urgent" do
-  match  "sun-awt-X11-XDialogPeer"
-  type   :dialog
   stick  true
   urgent true
   float  true
-end
-
-tag "void" do
-  match "jd-Main|Virtualbox"
 end
 
 tag "powerfolder" do
@@ -379,18 +362,9 @@ tag "powerfolder" do
   stick true
 end
 
-tag "pms" do
-  match "net-pms-PMS"
-  resize true
-end
-
 tag "dialogs" do
+  match  "sun-awt-X11-XDialogPeer"
   match type: [ :dialog, :splash ]
-  stick true
-end
-
-tag "flash" do
-  match "exe|<unknown>|plugin-container"
   stick true
 end
 
@@ -455,19 +429,6 @@ end
 
 tag "inkscape" do
   match "inkscape"
-end
-
-tag "xfontsel" do
-  match    "xfontsel"
-  geometry [464, 433, 676, 113]
-  stick    true
-end
-
-tag "xev" do
-  match    name: "Event[ ]Tester"
-  geometry [1213, 98, 377, 321]
-  float    true
-  stick    true
 end
 # }}}
 
@@ -567,8 +528,5 @@ end
 
 # Commands {{{
 def xbmc
-  Subtlext::Screen[0].view = :terms
-  Subtlext::Screen[1].view = :browser
-
   Subtlext::Subtle.spawn("xinit xbmc -- :#{rand(10)}")
 end # }}}
