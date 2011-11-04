@@ -29,7 +29,6 @@ set :gravity,   :center
 set :urgent,    false
 set :resize,    false
 set :tiling,    false
-set :separator, "∞"
 # }}}
 
 # Screens {{{
@@ -64,18 +63,18 @@ style :title do
 end
 
 style :views do
+  foreground "#7c7c72"
+  icon       "#7c7c72"
+
   style :focus do
     foreground    "#ffffff"
+    icon          "#ffffff"
     border_bottom "#acaa53", 2
   end
 
   style :occupied do
     foreground    "#7c7c72"
     border_bottom "#949269", 2
-  end
-
-  style :unoccupied do
-    foreground "#7c7c72"
   end
 
   style :urgent do
@@ -87,6 +86,11 @@ style :views do
     padding_top 0
     border_top  "#494948", 2
   end
+
+  style :separator do
+    foreground "#acaa53"
+    separator ">"
+  end
 end
 
 style :sublets do
@@ -96,6 +100,7 @@ end
 
 style :separator do
   foreground "#acaa53"
+  separator  "∞"
 end
 
 style :clients do
