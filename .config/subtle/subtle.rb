@@ -86,11 +86,6 @@ style :views do
     padding_top 0
     border_top  "#494948", 2
   end
-
-  style :separator do
-    foreground "#acaa53"
-    separator ">"
-  end
 end
 
 style :sublets do
