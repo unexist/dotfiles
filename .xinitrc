@@ -34,7 +34,7 @@ fi
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
   if [ "xsubtle" = "x$1" ] ; then
-    xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --right-of DVI-0 --dpi 96
+    xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --left-of DVI-0 --dpi 96
     #xrandr --output DFP1 --primary --mode 1680x1050 --pos 1680x0 --output DFP2 --mode 1680x1050 --pos 0x0 --right-of DFP1 --dpi 96
   elif [ "xxbmc" = "x$1" ] ; then
     xrandr --output DVI-0 --off --output HDMI-0 --mode 1920x1080
@@ -50,7 +50,11 @@ fi
 #fi
 
 # Windowmanager
-exec $1 &
+if [ "xsubtle" = "x$1" ] ; then
+  exec $1 -n &
+else
+  exec $1 &
+fi
 pid=$!
 
 sleep 2
@@ -58,7 +62,16 @@ sleep 2
 # Term
 if [ -e /usr/bin/urxvt ] && [ "xxbmc" != "x$1" ] ; then
   /usr/bin/urxvt -name urxvt1 -urgentOnBell &
-  /usr/bin/urxvt -name urxvt2 -e tmux &
+
+  # Attach to session if there is any
+  if [ -e /usr/bin/tmux ] ; then
+    tmux has-session
+
+    if [ $? -eq 1 ]; then
+      /usr/bin/urxvt -name urxvt2 -e tmux &
+    else
+      /usr/bin/urxvt -name urxvt2 -e tmux attach-session &
+    fi
 fi
 
 # Numlockx
