@@ -360,3 +360,36 @@
    fun:XftFontLoadGlyphs
    ...
 }
+{
+   Libc
+   Memcheck:Addr8
+   obj:/lib/libc-2.14.1.so
+   ...
+}
+{
+   Libc
+   Memcheck:Cond
+   obj:/lib/libc-2.14.1.so
+   ...
+}
+{
+   Libc
+   Memcheck:Value8
+   obj:/lib/libc-2.14.1.so
+   ...
+}
+{
+   Ruby 192
+   Memcheck:Value8
+   fun:strlen
+   fun:strhash
+   fun:st_lookup
+   ...
+}
+{
+   Ruby 192
+   Memcheck:Value8
+   fun:st_hash
+   fun:st_lookup
+   ...
+}
