@@ -164,9 +164,9 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if("telas" == host || "mockra" == host) #< Netbooks
+if "telas" == host || "mockra" == host #< Netbooks
   gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
-elsif("test" == host) #< Usually VMs
+elsif "test" == host #< Usually VMs
   modkey = "A"
 end
 
@@ -261,7 +261,7 @@ end
 
 # Pychrom
 grab modkey + "-p" do
-  if((t = Subtlext::Tray[:pychrom]))
+  if (t = Subtlext::Tray[:pychrom])
     t.click
   else
     Subtlext::Subtle.spawn("pychrom")
@@ -302,9 +302,9 @@ tag "terms" do
 end
 
 tag "browser" do
-  match "navigator|(google\-)?chrom[e|ium]"
+  match "navigator|(google\-)?chrom[e|ium]|firefox"
 
-  if("proteus" == host or "pc03112" == host)
+  if "proteus" == host
     gravity :top75
   else
     gravity :center
@@ -315,7 +315,7 @@ tag "editor" do
   match  "[g]?vim|eclipse"
   resize true
 
-  if("mockra" == host or "proteus" == host or "pc03112" == host)
+  if "mockra" == host or "proteus" == host
     gravity :top75
   else
     gravity :center
@@ -433,7 +433,7 @@ end
 # }}}
 
 # Views {{{
-if("mockra" == host or "proteus" == host or "pc03112" == host)
+if "mockra" == host or "proteus" == host
   www_re    = "browser|one25|three25"
   test_re   = "xeph[0-9]+|android|three25"
   editor_re = "editor|one25|three25"
@@ -509,7 +509,7 @@ on :view_jump do |v|
   Subtlext::View.all.each do |va|
     sym = va.name.to_sym
 
-    if(views.keys.include?(sym))
+    if views.keys.include?(sym)
       va.icon.copy_area(views[sym])
     else
       va.icon.copy_area(space[va.name.to_sym])
