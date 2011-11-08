@@ -72,6 +72,7 @@ if [ -e /usr/bin/urxvt ] && [ "xxbmc" != "x$1" ] ; then
     else
       /usr/bin/urxvt -name urxvt2 -e tmux attach-session &
     fi
+  fi
 fi
 
 # Numlockx
