@@ -250,10 +250,10 @@ end
 
 # Scratchpad
 grab "W-y" do
-  if((c = Subtlext::Client["scratch"]))
+  if (c = Subtlext::Client.first("scratch"))
     c.toggle_stick
     c.focus
-  elsif((c = Subtlext::Subtle.spawn("urxvt -name scratch")))
+  elsif (c = Subtlext::Subtle.spawn("urxvt -name scratch"))
     c.tags  = []
     c.flags = [ :stick ]
   end
