@@ -171,14 +171,7 @@ if [ -f /usr/bin/psql ] ; then
 fi
 
 # XDG dirs
-export XDG_DESKTOP_DIR=$HOME
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_TEMPLATES_DIR=$HOME
-export XDG_PUBLICSHARE_DIR=$HOME
-export XDG_DOCUMENTS_DIR="$HOME/docs"
-export XDG_MUSIC_DIR="$HOME/media/music"
-export XDG_PICTURES_DIR="$HOME/images"
-export XDG_VIDEOS_DIR="$HOME/media/videos"
+source $HOME/.config/user-dirs.dirs
 
 # Git
 if [ -e /usr/bin/git ] ; then
