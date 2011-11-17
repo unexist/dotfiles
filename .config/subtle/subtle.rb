@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #
 # This program can be distributed under the terms of the GNU GPL.
 # See the file COPYING.
@@ -212,14 +213,23 @@ gravities = [
 ]
 
 gravities.each_index do |i|
+  # Set gravities
   grab "%s-%s" % [ modkey, gravkeys[i] ], gravities[i]
 
-  grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda {
-    c = Subtlext::Client.visible.select { |c|
+  # Focus client with gravity
+  grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda { |cur|
+    idx     = 0
+    clients = Subtlext::Client.visible.select { |c|
       gravities[i].include?(c.gravity.name.to_sym)
     }
 
-    c.first.focus unless(c.empty?)
+    # Cycle through clients with same gravity
+    if clients.include?(cur)
+      idx = clients.index(cur) + 1
+      idx = 0 if idx >= clients.size
+    end
+
+    clients[idx].focus
   }
 end
 
