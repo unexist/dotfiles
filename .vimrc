@@ -35,7 +35,7 @@ set nobackup
 set autowriteall
 set noswapfile
 set list!
-set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:<
+set listchars=trail:-,tab:>-,eol:¬,nbsp:%,extends:>,precedes:<
 set dy+=lastline
 set dy+=uhex
 set t_Co=256
