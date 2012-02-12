@@ -24,12 +24,14 @@ rescue LoadError
 end # }}}
 
 # Options {{{
-set :step,      5
-set :snap,      10
-set :gravity,   :center
-set :urgent,    false
-set :resize,    false
-set :tiling,    false
+set :increase_step,     5
+set :border_snap,       10
+set :default_gravity,   :center
+set :urgent_dialogs,    false
+set :honor_size_hints,  false
+set :gravity_tiling,    false
+#set :click_to_focus,    false
+set :skip_pointer_warp, false
 # }}}
 
 # Screens {{{
@@ -109,7 +111,8 @@ style :subtle do
   panel      "#1a1a1a"
   background "#595959"
   stipple    "#595959"
-end # }}}
+end
+# }}}
 
 # Gravities {{{
 gravity :top_left,       [   0,   0,  50,  50 ]
@@ -146,7 +149,7 @@ gravity :bottom,         [   0,  50, 100,  50 ]
 gravity :bottom66,       [   0,  34, 100,  66 ]
 gravity :bottom33,       [   0,  67, 100,  33 ]
 
-gravity :bottom_right,   [  50,  50,  50,  50 ], :vert
+gravity :bottom_right,   [  50,  50,  50,  50 ]
 gravity :bottom_right66, [  50,  34,  50,  66 ]
 gravity :bottom_right33, [  50,  67,  50,  33 ]
 gravity :bottom_right25, [  50,  75,  50,  25 ]
@@ -165,7 +168,7 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if "telas" == host || "mockra" == host #< Netbooks
+if "telas" == host or "mockra" == host #< Netbooks
   gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
 elsif "test" == host #< Usually VMs
   modkey = "A"
@@ -185,14 +188,19 @@ grab modkey + "-S-f",     :WindowFloat
 grab modkey + "-S-space", :WindowFull
 grab modkey + "-S-s",     :WindowStick
 grab modkey + "-S-equal", :WindowZaphod
-grab modkey + "-r",       :WindowRaise
-grab modkey + "-l",       :WindowLower
-grab modkey + "-Left",    :WindowLeft
-grab modkey + "-Down",    :WindowDown
-grab modkey + "-Up",      :WindowUp
-grab modkey + "-Right",   :WindowRight
-grab modkey + "-k",       :WindowKill
-grab modkey + "-h", lambda { |c| c.retag }
+grab modkey + "-S-r",     :WindowRaise
+grab modkey + "-S-l",     :WindowLower
+grab modkey + "-S-k",     :WindowKill
+grab modkey + "-S-h", lambda { |c| c.retag }
+
+# Movement
+{
+ WindowLeft: [ "Left", "h" ], WindowDown:  [ "Down",  "j" ],
+ WindowUp:   [ "Up",   "k" ], WindowRight: [ "Right", "l" ]
+}.each do |k, v|
+  grab "%s-%s" % [ modkey, v.first ], k
+  grab "%s-%s" % [ modkey, v.last  ], k
+end
 
 # Reload/restart
 grab modkey + "-C-q",     :SubtleQuit
@@ -248,6 +256,7 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
 grab modkey + "-f", "firefox -no-remote -ProfileManager"
+grab modkey + "-c", "chromium"
 
 # Contrib
 grab "W-x" do
@@ -334,7 +343,7 @@ end
 
 tag "xeph640" do
   match    "xeph640"
-  position [ 943, 548 ]
+  position [ 82, 549 ]
 end
 
 tag "xeph800" do
@@ -349,9 +358,7 @@ end
 tag "mplayer" do
   match   "mplayer"
   float   true
-  stick   true
-  #urgent  true
-  position [ 2650, 50 ]
+  stick   1
 end
 
 tag "stick" do
@@ -378,14 +385,14 @@ tag "dialogs" do
   stick true
 end
 
-tag "one" do
+tag "three" do
   match    "urxvt2"
-  gravity  :bottom_left
+  gravity  :bottom_right
 end
 
-tag "one25" do
+tag "three25" do
   match    "urxvt2"
-  gravity  :bottom_left25
+  gravity  :bottom_right25
 end
 
 tag "two" do
@@ -444,13 +451,13 @@ end
 
 # Views {{{
 if "mockra" == host or "proteus" == host
-  www_re    = "browser|one25|three25"
-  test_re   = "xeph[0-9]+|android|three25"
-  editor_re = "editor|one25|three25"
+  www_re    = "browser|three25|three25"
+  test_re   = "xeph[0-9]+|three25"
+  editor_re = "editor|three25|three25"
   icons     = true
 else
   www_re    = "browser"
-  test_re   = "android|xeph[0-9]+|eight|one$|test"
+  test_re   = "xeph[0-9]+|eight|three$|test"
   editor_re = "editor"
   icons     = true
 end
@@ -491,7 +498,7 @@ view "void" do
 end
 
 view "sketch" do
-  match     "inkscape|dia_*|gimp_.*"
+  match     "inkscape|dia_*|gimp_.*|android"
   #icon      "#{iconpath}/paint.xbm"
   icon      Subtlext::Icon.new("#{iconpath}/invader4.xbm")
   icon_only icons
@@ -511,7 +518,7 @@ view "editor" do
   icon_only icons
 end
 
-on :view_jump do |v|
+on :view_focus do |v|
   views = Hash[*Subtlext::Screen.all.map { |s|
     [ s.view.name.to_sym, space[space.keys[s.id]] ] }.flatten
   ]
