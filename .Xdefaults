@@ -133,9 +133,10 @@ URxvt.font: xft:envy code r:medium:pixelsize=13
 URxvt.termName: rxvt-256color
 !URxvt.background: #1a1a1a
 !URxvt.foreground: #e2e2e5
-URxvt.underlineURLs: true
-URxvt.urlLauncher: chromium
 URxvt.perl-lib: /home/unexist/.urxvt/
-URxvt.perl-ext: selection,mark-yank-urls,font
+URxvt.perl-ext: default,font,matcher
+URxvt.underlineURLs: true
+URxvt.matcher.button: 1
+URxvt.urlLauncher: /home/unexist/.urxvt/browser.sh
 URxvt.keysym.M-plus: perl:font:increase
 URxvt.keysym.M-minus: perl:font:decrease
