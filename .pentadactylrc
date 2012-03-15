@@ -1,1 +1,3 @@
 set guioptions=BbCrs
+set passkeys+='google\.com/reader':jk
+set passkeys+='9gag\.com':jk
