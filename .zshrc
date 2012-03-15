@@ -135,14 +135,14 @@ function chpwd
 
 function xbmcpush
 {
-  rsync -v -e ssh --remove-source-files *.mkv unexist@192.168.1.5:$*
+  rsync -v -e ssh --remove-source-files *.mkv xbmc@192.168.1.5:$*
 }
 
 # Prompt
 if [ "$USER" = "root" ] ; then
-  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%}> %{\e[0m%}'
+  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} ➤ %{\e[0m%}'
 else
-  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%}> %{\e[0m%}'
+  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} ➤ %{\e[0m%}'
 fi
 
 #RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
