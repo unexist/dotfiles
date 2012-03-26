@@ -83,6 +83,18 @@ nnoremap <F12> :set invpaste paste?<CR>
 imap <F12> <C-O><F12>
 set pastetoggle=<F12>
 
+" Move split
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
+
+
 " Brackets
 "inoremap {      {}<Left>
 "inoremap {<CR>  {<CR>}<Tab><Esc>O
@@ -100,3 +112,7 @@ endif
 
 " Match
 match ErrorMsg '\%>80v.\+'
+
+" Line numbering
+:au InsertEnter * :set number
+:au InsertLeave * :set relativenumber
