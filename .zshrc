@@ -135,7 +135,7 @@ function chpwd
 
 function xbmcpush
 {
-  rsync -v -e ssh --remove-source-files *.mkv xbmc@192.168.1.5:$*
+  rsync -avh --progress -e ssh --remove-source-files *.mkv xbmc@192.168.1.5:$*
 }
 
 # Prompt
@@ -176,7 +176,9 @@ if [ -f /usr/bin/psql ] ; then
 fi
 
 # XDG dirs
-source $HOME/.config/user-dirs.dirs
+if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
+  source $HOME/.config/user-dirs.dirs
+fi
 
 # Git
 if [ -e /usr/bin/git ] ; then
