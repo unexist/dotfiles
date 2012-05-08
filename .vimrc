@@ -70,9 +70,10 @@ map <F3> <Esc>:NERDTreeToggle<CR>
 map <F7> <Esc>:setlocal spell! spelllang=de<CR>
 map <F8> <Esc>:call ToggleCopy()<CR>
 map <F9> <ESC>:so $VIMRUNTIME/syntax/hitest.vim<CR>
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map <F10> :TagbarToggle<CR>
 map <F11> <Esc>:syntax sync fromstart<CR>
 
 " Qname
@@ -114,5 +115,5 @@ endif
 match ErrorMsg '\%>80v.\+'
 
 " Line numbering
-:au InsertEnter * :set number
-:au InsertLeave * :set relativenumber
+":au InsertEnter * :set number
+":au InsertLeave * :set relativenumber
