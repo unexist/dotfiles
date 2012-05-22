@@ -9,11 +9,15 @@ xhost +localhost
 xhost +$HOST
 
 # X options
-xset b
-xset m 4 2
+xset -b
+xset m 6 1
 xsetroot -solid "#595959"
+
+# Keymap
 setxkbmap -layout 'de(nodeadkeys)'
-setxkbmap -option compose:caps
+setxkbmap -option caps:escape
+setxkbmap -option compose:rctrl
+setxkbmap -option terminate:ctrl_alt_bksp
 
 
 # Xdefaults
