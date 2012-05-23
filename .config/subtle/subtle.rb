@@ -42,7 +42,7 @@ screen 1 do
 end
 
 screen 2 do
-  top     [:mpd, :separator, :volume, :spacer, :tray, :title, :center, :views, :center]
+  top     [:mpd, :separator, :volume, :spacer, :title, :tray, :center, :views, :center]
   bottom  []
   view    5
 end
@@ -159,7 +159,7 @@ gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
 gravity :gimp_dock,      [  90,   0,  10, 100 ]
 
 gravity :dia_toolbox,    [   0,   0,  15, 100 ]
-gravity :dia_window,     [  15,   0,  85, 100 ]
+gravity :dia_diagram,    [  15,   0,  85, 100 ]
 # }}}
 
 # Grabs {{{
@@ -255,7 +255,7 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
-grab modkey + "-f", "firefox -no-remote -ProfileManager"
+grab modkey + "-f", "firefox -no-remote -profileManager"
 grab modkey + "-c", "chromium"
 
 # Contrib
@@ -321,9 +321,9 @@ tag "terms" do
 end
 
 tag "browser" do
-  match "navigator|(google\-)?chrom[e|ium]|firefox"
+  match "navigator|(google\-)?chrom[e|ium]|firefox|dwb"
 
-  if "proteus" == host
+  if "mockra" == host or "proteus" == host
     gravity :top75
   else
     gravity :center
@@ -415,33 +415,20 @@ tag "eight" do
   gravity  :top
 end
 
-tag "gimp_image" do
-  match    role: "gimp-image-window"
-  gravity  :gimp_image
+tag "gimp" do
+  match role: "gimp.*"
+
+  on_match do |c|
+    c.gravity = ("gimp_" + c.role.split("-")[1]).to_sym
+  end
 end
 
-tag "gimp_toolbox" do
-  match    role: "gimp-toolbox$"
-  gravity  :gimp_toolbox
-end
+tag "dia" do
+  match "dia"
 
-tag "gimp_dock" do
-  match    role: "gimp-dock"
-  gravity  :gimp_dock
-end
-
-tag "gimp_scum" do
-  match role: "gimp-.*|screenshot"
-end
-
-tag "dia_window" do
-  match   role: "diagram_window"
-  gravity :dia_window
-end
-
-tag "dia_toolbox" do
-  match   role: "toolbox_window"
-  gravity :dia_toolbox
+  on_match do |c|
+    c.gravity = ("dia_" + c.role.split("_").first).to_sym
+  end
 end
 
 tag "inkscape" do
@@ -498,7 +485,7 @@ view "void" do
 end
 
 view "sketch" do
-  match     "inkscape|dia_*|gimp_.*|android"
+  match     "inkscape|dia|gimp|android"
   #icon      "#{iconpath}/paint.xbm"
   icon      Subtlext::Icon.new("#{iconpath}/invader4.xbm")
   icon_only icons
@@ -542,8 +529,3 @@ sublet :clock do
   format_string "%a %b %d,"
 end
 # }}}
-
-# Commands {{{
-def xbmc
-  Subtlext::Subtle.spawn("xinit xbmc -- :#{rand(10)}")
-end # }}}
