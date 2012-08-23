@@ -16,7 +16,7 @@ alias q='clear && logout'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias grep='grep -nI'
+alias grep='grep -nI --color'
 
 # Security
 alias rm='rm -i'
@@ -27,6 +27,7 @@ alias mv='mv -i'
 alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
 alias ssh_freebsd="ssh -X unexist@78.47.240.165 -p 2031"
 alias ssh_gentoo="ssh -X unexist@80.190.156.238"
+alias ssh_vm="ssh -X proteus@83.169.19.144"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
@@ -115,7 +116,7 @@ fi
 # Mplayer
 if [ -f /usr/bin/mplayer ] ; then
   alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
-  alias mp="mplayer -vo x11 -nosound -zoom"
+  alias mp="mplayer -vo x11 -nosound -zoom -fs"
 fi
 
 # xrandr
@@ -141,4 +142,9 @@ fi
 # ImageMagick
 if [ -f /usr/bin/import ] ; then
   alias import="import +repage"
+fi
+
+# Rsync
+if [ -f /usr/bin/rsync ]; then
+  alias rcp="rsync -avh --progress"
 fi

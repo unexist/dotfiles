@@ -361,10 +361,15 @@ tag "mplayer" do
   stick   1
 end
 
-tag "stick" do
-  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|evince|exe|<unknown>|plugin-container"
+tag "stickandfloat" do
+  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container"
   stick  true
   float  true
+end
+
+tag "stick" do
+  match "evince"
+  stick true
 end
 
 tag "urgent" do

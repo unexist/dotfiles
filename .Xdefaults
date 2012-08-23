@@ -136,7 +136,7 @@ URxvt.termName: rxvt-256color
 URxvt.perl-lib: /home/unexist/.urxvt/
 URxvt.perl-ext: default,font,matcher
 URxvt.underlineURLs: true
-URxvt.matcher.button: 1
+URxvt.matcher.button: 3
 URxvt.urlLauncher: /home/unexist/.urxvt/browser.sh
 URxvt.keysym.M-plus: perl:font:increase
 URxvt.keysym.M-minus: perl:font:decrease

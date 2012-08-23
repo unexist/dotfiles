@@ -38,6 +38,7 @@ setopt short_loops
 setopt listpacked
 setopt pushd_ignore_dups
 setopt prompt_subst
+unsetopt bang_hist #< Disable inline history
 
 # History
 HISTSIZE=5000

@@ -10,14 +10,15 @@ snippet main
 
 		return 0;
 	}
-snippet fun
+snippet priv
 	/* ${1:function_name} {{{ */
-	${2:void}
+	static ${2:void}
 	$1(${3:void})
 	{
 		${4:/* code */}
 	} /* }}} */
-snippet fund
+snippet pub
+	
 	 /** ${1:function_name} {{{
 	  * @brief ${2:brief}
 	  * @return ${3:return}
@@ -134,16 +135,33 @@ snippet fpr
 snippet debug
 	printf("DEBUG %s:%d\n", __FILE__, __LINE__);
 ################################################
+# Misc
+################################################
+snippet free
+	free(${1:value});
+snippet ifree
+	if(${1:value}) free($1);
+snippet ass
+	assert(${1:value});
+snippet ret
+	ret ${1:value};
+snippet //
+	/* ${1:Comment} */
+snippet {{
+	{ /* {{{ */
+snippet }}
+	} /* }}} */
+################################################
 # Docs
 ################################################
-snippet doc
+snippet docblk
 	 /** ${1:description} {{{
 	  * @brief ${2:brief}
 	  * ${3}
 	  **/
-snippet par
+snippet docpar
 	@param[${1:in}]  ${2:variable}  ${3:description}
-snippet ret
+snippet docret
 	@return ${1:return}
 ################################################
 # Ruby

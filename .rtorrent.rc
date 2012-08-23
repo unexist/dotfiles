@@ -1,7 +1,7 @@
 port_range = 6881-6882
 download_rate = 0
 upload_rate = 5
-directory = /home/unexist/downloads/torrent
-session = /home/unexist/downloads/torrent/session
+directory = /home/unexist/downloads/torrents
+session = /home/unexist/downloads/torrents/session
 scgi_port = localhost:5000
-schedule = watch_directory,10,10,load_start=/home/unexist/downloads/torrent/*.torrent
+schedule = watch_directory,10,10,load_start=/home/unexist/downloads/torrents/*.torrent
