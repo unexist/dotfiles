@@ -38,6 +38,8 @@ setopt short_loops
 setopt listpacked
 setopt pushd_ignore_dups
 setopt prompt_subst
+setopt no_beep
+setopt rm_star_wait
 unsetopt bang_hist #< Disable inline history
 
 # History
