@@ -44,13 +44,13 @@ end
 screen 2 do
   top     [:mpd, :separator, :volume, :spacer, :title, :tray, :center, :views, :center]
   bottom  []
-  view    5
+  view    1
 end
 
 screen 3 do
   top     [:views, :spacer, :title, :center, :wifi, :jdownloader, :center]
   bottom  []
-  view    1
+  view    2
 end
 # }}}
 
@@ -256,7 +256,9 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
 grab modkey + "-f", "firefox -no-remote -profileManager"
-grab modkey + "-c", "chromium"
+
+# Hack
+grab modkey + "-c", "xclip -o | sed 's#^[ ]*(.*)[ ]*-[ ]*(.)[ ]*#\1-\2#' | tr ' ' '.' | xclip -i"
 
 # Contrib
 grab "W-x" do
@@ -272,7 +274,8 @@ grab "W-y" do
   if (c = Subtlext::Client.first("scratch"))
     c.toggle_stick
     c.focus
-  elsif (c = Subtlext::Subtle.spawn("urxvt -name scratch"))
+    c.raise
+  elsif (c = Subtlext::Client.spawn("urxvt -name scratch"))
     c.tags  = []
     c.flags = [ :stick ]
   end
@@ -283,7 +286,7 @@ grab modkey + "-p" do
   if (t = Subtlext::Tray[:pychrom])
     t.click
   else
-    Subtlext::Subtle.spawn("pychrom")
+    Subtlext::Client.spawn("pychrom")
   end
 end
 
@@ -320,6 +323,11 @@ tag "terms" do
   resize   true
 end
 
+tag "scratch" do
+  match   instance: "scratch"
+  gravity :bottom33
+end
+
 tag "browser" do
   match "navigator|(google\-)?chrom[e|ium]|firefox|dwb"
 
@@ -331,7 +339,7 @@ tag "browser" do
 end
 
 tag "editor" do
-  match  "[g]?vim|eclipse"
+  match  "[g]?vim"
   resize true
 
   if "mockra" == host or "proteus" == host
@@ -349,10 +357,6 @@ end
 tag "xeph800" do
   match    "xeph800"
   position [ 855, 172 ]
-end
-
-tag "android" do
-  match "SDL_App"
 end
 
 tag "mplayer" do
@@ -418,6 +422,10 @@ end
 tag "eight" do
   match    "urxvt1"
   gravity  :top
+end
+
+tag "android" do
+  match "emulator-arm|eclipse|SDL_App"
 end
 
 tag "gimp" do
@@ -489,7 +497,7 @@ view "void" do
   icon_only icons
 end
 
-view "sketch" do
+view "misc" do
   match     "inkscape|dia|gimp|android"
   #icon      "#{iconpath}/paint.xbm"
   icon      Subtlext::Icon.new("#{iconpath}/invader4.xbm")
