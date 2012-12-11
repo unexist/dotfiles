@@ -41,6 +41,7 @@ setopt prompt_subst
 setopt no_beep
 setopt rm_star_wait
 unsetopt bang_hist #< Disable inline history
+setopt no_bang_hist
 
 # History
 HISTSIZE=5000
@@ -163,8 +164,15 @@ if [ -e $HOME/bin ] ; then
   export PATH=$HOME/bin:$PATH
 fi
 
+# Adding go stuff
+if [ -e $HOME/google_appengine ] ; then
+  export PATH=$HOME/google_appengine:$PATH
+fi
+
 # Adding android stuff
-export PATH=$PATH:/opt/android-sdk/platform-tools
+if [ -e /opt/android-sdk/platform-tools ] ; then
+  export PATH=/opt/android-sdk/platform-tools:$PATH
+fi
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
@@ -217,3 +225,5 @@ fi
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
