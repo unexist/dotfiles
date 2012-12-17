@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2010, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2012, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -25,9 +25,6 @@ alias mv='mv -i'
 
 # Bookmarks
 alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
-alias ssh_freebsd="ssh -X unexist@78.47.240.165 -p 2031"
-alias ssh_gentoo="ssh -X unexist@80.190.156.238"
-alias ssh_vm="ssh -X proteus@83.169.19.144"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then

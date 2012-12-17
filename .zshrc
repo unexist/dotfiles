@@ -23,6 +23,10 @@ compdef -d mplayer
 compdef -d chmod
 colors
 
+# Style
+zstyle ':completion:*' group-name '' #< Sort completion groups
+zstyle ':completion:*' menu select #< Enable menu list
+
 # Options
 setopt correct
 setopt hist_ignore_all_dups
@@ -42,6 +46,7 @@ setopt no_beep
 setopt rm_star_wait
 unsetopt bang_hist #< Disable inline history
 setopt no_bang_hist
+setopt menu_complete
 
 # History
 HISTSIZE=5000
