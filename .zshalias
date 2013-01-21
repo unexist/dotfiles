@@ -61,8 +61,11 @@ fi
 # Mercurial
 if [ -e /usr/bin/hg ] ; then
   alias hgs="hg status|grep -v '^?'"
-  alias hgd="hg diff"
-  alias hgc="hg ci"
+fi
+
+# Subversion
+if [ -e /usr/bin/svn ] ; then
+  alias svns="svn status|grep -v '^?'"
 fi
 
 # Mpd
