@@ -36,13 +36,13 @@ set :skip_pointer_warp, false
 
 # Screens {{{
 screen 1 do
-  top     [:title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center]
+  top     [:tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center]
   bottom  []
   view    0
 end
 
 screen 2 do
-  top     [:mpd, :separator, :volume, :spacer, :title, :tray, :center, :views, :center]
+  top     [:mpd, :separator, :volume, :spacer, :title, :center, :views, :center]
   bottom  []
   view    1
 end
@@ -314,6 +314,56 @@ grab modkey + "-numbersign" do
   urxvt1.gravity = { sym => :bottom_right25 }
   urxvt2.gravity = { sym => :bottom_left25 }
 end
+
+# Scratch
+scratch_stack   = []
+scratch_current = 0
+
+# Add window to stack
+grab modkey + "-KP_Add" do |c|
+  unless scratch_stack.include?(c.win)
+    scratch_stack << c.win
+    c.tags = []
+    c.toggle_stick if c.is_stick?
+  end
+end
+
+# Remove window from stack
+grab modkey + "-KP_Subtract" do |c|
+  if scratch_stack.include?(c.win)
+    c.retag
+    scratch_stack.delete(c.win)
+  end
+end
+
+# Cycle through stack windows
+grab modkey + "-comma" do
+  # Get id of next window
+  if 0 < scratch_current
+    cur_idx = scratch_stack.index(scratch_current)
+
+    # Hide current window
+    cur_client = Subtlext::Client[scratch_current]
+    cur_client.toggle_stick
+
+    # Check whether cur is last window of stack
+    if cur_idx == scratch_stack.size - 1
+      scratch_current = 0
+
+      return
+    end
+
+    idx = cur_idx + 1
+  else
+    idx = 0
+  end
+
+  # Show next window
+  cur = Subtlext::Client[scratch_stack[idx]]
+
+  scratch_current = cur.win
+  cur.toggle_stick
+end
 # }}}
 
 # Tags {{{
@@ -366,7 +416,7 @@ tag "mplayer" do
 end
 
 tag "stickandfloat" do
-  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container"
+  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb"
   stick  true
   float  true
 end
