@@ -25,6 +25,7 @@ alias mv='mv -i'
 
 # Bookmarks
 alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
+alias ssh_kufa="ssh -X kufa@kulturfabrik-krefeld.de"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
