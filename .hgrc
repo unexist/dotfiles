@@ -8,8 +8,8 @@ hgext.record     =
 hgext.graphlog   =
 hgext.color      =
 hgext.transplant =
-hgcrecord        = /home/unexist/.hgext/crecord/crecord
-histedit         = /home/unexist/.hgext/histedit/hg_histedit.py
+#hgcrecord        = /home/unexist/.hgext/crecord/crecord
+#histedit         = /home/unexist/.hgext/histedit/hg_histedit.py
 
 [keyword]
 **.* =
