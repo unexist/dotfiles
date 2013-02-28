@@ -1,6 +1,7 @@
 [ui]
 editor = vim
 username = unexist
+commitsubrepos = false
 
 [extensions]
 hgext.keyword    =
