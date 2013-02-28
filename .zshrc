@@ -43,10 +43,10 @@ setopt listpacked
 setopt pushd_ignore_dups
 setopt prompt_subst
 setopt no_beep
-setopt rm_star_wait
+#setopt rm_star_wait
 unsetopt bang_hist #< Disable inline history
 setopt no_bang_hist
-setopt menu_complete
+#setopt menu_complete
 
 # History
 HISTSIZE=5000
@@ -54,7 +54,7 @@ HISTFILE=~/.zsh_history
 SAVEHIST=5000
 
 # Style
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u' 
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
 
 # Keys bindings
@@ -178,6 +178,10 @@ fi
 if [ -e /opt/android-sdk/platform-tools ] ; then
   export PATH=/opt/android-sdk/platform-tools:$PATH
 fi
+
+# Sencha stuff
+export PATH=/home/unexist/bin/Sencha/Cmd/3.0.0.250:$PATH
+export SENCHA_CMD_3_0_0="/home/unexist/bin/Sencha/Cmd/3.0.0.250"
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then

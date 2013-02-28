@@ -34,26 +34,6 @@ set :gravity_tiling,    false
 set :skip_pointer_warp, false
 # }}}
 
-# Screens {{{
-screen 1 do
-  top     [:tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center]
-  bottom  []
-  view    0
-end
-
-screen 2 do
-  top     [:mpd, :separator, :volume, :spacer, :title, :center, :views, :center]
-  bottom  []
-  view    1
-end
-
-screen 3 do
-  top     [:views, :spacer, :title, :center, :wifi, :jdownloader, :center]
-  bottom  []
-  view    2
-end
-# }}}
-
 # Styles {{{
 style :all do
   padding    2, 6, 2, 6
@@ -107,10 +87,16 @@ style :clients do
   margin   2
 end
 
-style :subtle do
-  panel      "#1a1a1a"
-  background "#595959"
-  stipple    "#595959"
+style :panel_top do
+  background "#1a1a1a"
+  screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center ]
+  screen     3, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
+  screen     4, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
+end
+
+style :panel_bottom do
+  background "#333333"
+  screen     2, [ :title, :spacer, :views ]
 end
 # }}}
 
@@ -370,7 +356,15 @@ end
 tag "terms" do
   match    instance: "xterm|urxvt"
   gravity  :center
-  resize   true
+  set      :resize
+end
+
+tag "first",  "urxvt1"
+tag "second", "urxvt2"
+
+tag "three" do
+  match   instance: "urxvt2"
+  gravity :three
 end
 
 tag "scratch" do
@@ -381,7 +375,7 @@ end
 tag "browser" do
   match "navigator|(google\-)?chrom[e|ium]|firefox|dwb"
 
-  if "mockra" == host or "proteus" == host
+  if "mockra" == host
     gravity :top75
   else
     gravity :center
@@ -390,9 +384,9 @@ end
 
 tag "editor" do
   match  "[g]?vim"
-  resize true
+  set    :resize
 
-  if "mockra" == host or "proteus" == host
+  if "mockra" == host
     gravity :top75
   else
     gravity :center
@@ -410,68 +404,33 @@ tag "xeph800" do
 end
 
 tag "mplayer" do
-  match   "mplayer"
-  float   true
-  stick   1
+  match     "mplayer"
+  set       :floating
+  stick_to  2
 end
 
 tag "stickandfloat" do
   match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb"
-  stick  true
-  float  true
+  set    :sticky, :floating
 end
 
 tag "stick" do
   match "evince"
-  stick true
+  set    :sticky
 end
 
 tag "urgent" do
-  stick  true
-  urgent true
-  float  true
+  set :sticky, :urgent, :floating
 end
 
 tag "powerfolder" do
   match "de-dal33t-powerfolder-PowerFolder"
-  float true
-  stick true
+  set   :floating, :sticky
 end
 
 tag "dialogs" do
-  match  "sun-awt-X11-XDialogPeer"
-  match type: [ :dialog, :splash ]
-  stick true
-end
-
-tag "three" do
-  match    "urxvt2"
-  gravity  :bottom_right
-end
-
-tag "three25" do
-  match    "urxvt2"
-  gravity  :bottom_right25
-end
-
-tag "two" do
-  match    "urxvt2"
-  gravity  :bottom
-end
-
-tag "three25" do
-  match    "urxvt1"
-  gravity  :bottom_right25
-end
-
-tag "seven" do
-  match    "urxvt1"
-  gravity  :top_left
-end
-
-tag "eight" do
-  match    "urxvt1"
-  gravity  :top
+  match "sun-awt-X11-XDialogPeer"
+  set   :sticky
 end
 
 tag "android" do
@@ -500,90 +459,60 @@ end
 # }}}
 
 # Views {{{
-if "mockra" == host or "proteus" == host
+if "mockra" == host
   www_re    = "browser|three25|three25"
   test_re   = "xeph[0-9]+|three25"
   editor_re = "editor|three25|three25"
   icons     = true
 else
   www_re    = "browser"
-  test_re   = "xeph[0-9]+|eight|three$|test"
+  test_re   = "xeph[0-9]+|three$|test"
   editor_re = "editor"
   icons     = true
 end
 
-iconpath = "#{ENV["HOME"]}/.local/share/icons"
-
-space = {
-  :cannon  => Subtlext::Icon.new("#{iconpath}/cannon.xbm"),
-  :ufo     => Subtlext::Icon.new("#{iconpath}/ufo.xbm"),
-  :shelter => Subtlext::Icon.new("#{iconpath}/shelter.xbm"),
-  :terms   => Subtlext::Icon.new("#{iconpath}/invader1.xbm"),
-  :www     => Subtlext::Icon.new("#{iconpath}/invader2.xbm"),
-  :void    => Subtlext::Icon.new("#{iconpath}/invader3.xbm"),
-  :sketch  => Subtlext::Icon.new("#{iconpath}/invader4.xbm"),
-  :test    => Subtlext::Icon.new("#{iconpath}/invader5.xbm"),
-  :editor  => Subtlext::Icon.new("#{iconpath}/invader6.xbm")
-}
+diamond = "#{ENV["HOME"]}/.local/share/icons/black_diamond_with_question_mark.xbm"
 
 view "terms" do
-  match     "terms|eight|two"
+  match     "terms"
   #icon      "#{iconpath}/terminal.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/cannon.xbm")
+  icon      diamond
   icon_only icons
 end
 
 view "www" do
   match     www_re
   #icon      "#{iconpath}/world.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/ufo.xbm")
+  icon      diamond
   icon_only icons
 end
 
 view "void" do
   match     "default|void|powerfolder|pms"
   #icon      "#{iconpath}/quote.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/invader3.xbm")
+  icon      diamond
   icon_only icons
 end
 
 view "misc" do
   match     "inkscape|dia|gimp|android"
   #icon      "#{iconpath}/paint.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/invader4.xbm")
+  icon      diamond
   icon_only icons
 end
 
 view "test" do
   match     test_re
   #icon      "#{iconpath}/bug.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/invader5.xbm")
+  icon      diamond
   icon_only icons
 end
 
 view "editor" do
   match     editor_re
   #icon      "#{iconpath}/ruby.xbm"
-  icon      Subtlext::Icon.new("#{iconpath}/invader6.xbm")
+  icon      diamond
   icon_only icons
-end
-
-on :view_focus do |v|
-  views = Hash[*Subtlext::Screen.all.map { |s|
-    [ s.view.name.to_sym, space[space.keys[s.id]] ] }.flatten
-  ]
-
-  Subtlext::View.all.each do |va|
-    sym = va.name.to_sym
-
-    if views.keys.include?(sym)
-      va.icon.copy_area(views[sym])
-    else
-      va.icon.copy_area(space[va.name.to_sym])
-    end
-  end
-
-  Subtlext::Subtle.render
 end
 # }}}
 
@@ -592,3 +521,9 @@ sublet :clock do
   format_string "%a %b %d,"
 end
 # }}}
+
+# Virtual {{{
+screen 1 do
+  virtual [  0,  0, 100, 50 ]
+  virtual [  0, 50, 100, 50 ]
+end # }}}
