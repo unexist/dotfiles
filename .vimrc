@@ -34,6 +34,7 @@ set wildignore=*.o,*.swp
 set nobackup
 set autowriteall
 set noswapfile
+set cursorline
 set list!
 set listchars=trail:-,tab:>-,eol:¬,nbsp:%,extends:>,precedes:<
 set dy+=lastline
