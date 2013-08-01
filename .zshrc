@@ -147,6 +147,20 @@ function xbmcpush
   rsync -avh --progress -e ssh --remove-source-files *.mkv xbmc@192.168.1.5:$*
 }
 
+function pp
+{
+  for i in *.(mkv|avi|wmv|mp[1-9]); do
+    mplayer -vo x11 -nosound -zoom -fs "$i"
+
+    echo -n "Keep? (Y/n) "
+    read keep
+
+    if [ "x$keep" = "xn" ] ; then
+      rm -rf "$i"
+    fi
+  done
+}
+
 # Prompt
 if [ "$USER" = "root" ] ; then
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} ➤ %{\e[0m%}'
@@ -198,14 +212,6 @@ fi
 # XDG dirs
 if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
   source $HOME/.config/user-dirs.dirs
-fi
-
-# Git
-if [ -e /usr/bin/git ] ; then
-  export GIT_AUTHOR_NAME="unexist"
-  export GIT_AUTHOR_EMAIL="unexist@dorfelite.net"
-  export GIT_COMMITTER_NAME="unexist"
-  export GIT_COMMITTER_EMAIL="unexist@dorfelite.net"
 fi
 
 # Browser
