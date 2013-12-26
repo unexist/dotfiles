@@ -39,14 +39,17 @@ if [ -e /usr/bin/sudo ] ; then
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
     alias p="packer --noedit"
-    alias S="sudo pacman -S"
+    alias I="sudo pacman -S"
     alias R="sudo pacman -R"
+    alias S="sudo pacman -S"
   elif [ -e /usr/bin/apt-get ] ; then
     alias p="sudo apt-get"
-    alias S="sudo apt-get install"
+    alias I="sudo apt-get install"
     alias R="sudo apt-get remove"
+    alias S="apt-cache search"
   fi
 fi
+
 
 # Valgrind
 if [ -e /usr/bin/valgrind ] ; then
@@ -55,8 +58,8 @@ if [ -e /usr/bin/valgrind ] ; then
 fi
 
 # Calc
-if [ -e /usr/bin/calc ] ; then
-  alias calc='noglob calc'
+if [ -e /usr/bin/concalc ] ; then
+  alias calc='noglob concalc'
 fi
 
 # Mercurial
@@ -67,6 +70,11 @@ fi
 # Subversion
 if [ -e /usr/bin/svn ] ; then
   alias svns="svn status|grep -v '^?'"
+fi
+
+# Git
+if [ -e /usr/bin/git ] ; then
+  alias gits="git status"
 fi
 
 # Mpd
@@ -84,6 +92,7 @@ if [ -e /usr/bin/chrome ] ; then
   alias chrome="chrome &>/dev/null &!"
 elif [ -e /usr/bin/chromium ] ; then
   alias chrome="chromium &>/dev/null &!"
+  alias chromeunsec="chromium --disable-web-security &>/dev/null &!"
 elif [ -e /usr/bin/google-chrome ] ; then
   alias chrome="google-chrome &>/dev/null &!"
 elif [ -e /usr/bin/chromium-browser ] ; then
