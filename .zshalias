@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2012, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2013, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -32,18 +32,17 @@ if [ -e /usr/bin/sudo ] ; then
   alias halt="sudo /sbin/halt"
   alias reboot="sudo /sbin/reboot"
   alias ntpd="sudo ntpdate -b pool.ntp.org"
-  alias ncfg="sudo netcfg-menu"
   alias killjobs="sudo lprm -"
   alias s="sudo"
 
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
     alias p="packer --noedit"
-    alias S="sudo pacman -S"
+    alias I="sudo pacman -S"
     alias R="sudo pacman -R"
   elif [ -e /usr/bin/apt-get ] ; then
     alias p="sudo apt-get"
-    alias S="sudo apt-get install"
+    alias I="sudo apt-get install"
     alias R="sudo apt-get remove"
   fi
 fi
@@ -69,6 +68,11 @@ if [ -e /usr/bin/svn ] ; then
   alias svns="svn status|grep -v '^?'"
 fi
 
+# Git
+if [ -e /usr/bin/git ] ; then
+  alias gits="git status|grep -v '^?'"
+fi
+
 # Mpd
 if [ -e /usr/bin/mpc ] ; then
   alias mpc="nocorrect mpc"
@@ -80,15 +84,14 @@ if [ -e /usr/bin/firefox ] ; then
 fi
 
 # Chrome/chromium
-if [ -e /usr/bin/chrome ] ; then
-  alias chrome="chrome &>/dev/null &!"
-elif [ -e /usr/bin/chromium ] ; then
-  alias chrome="chromium &>/dev/null &!"
-elif [ -e /usr/bin/google-chrome ] ; then
-  alias chrome="google-chrome &>/dev/null &!"
-elif [ -e /usr/bin/chromium-browser ] ; then
-  alias chrome="chromium-browser &>/dev/null &!"
-fi
+for i in chrome chromium google-chrome chromium-browser; do
+  command -v $i &>/dev/null
+
+  if [ $? -eq 0 ] ; then
+    alias chrome="$i &>/dev/null &!"
+    alias chromeunsafe="$i --disable-web-security &>/dev/null &!"
+  fi
+done
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
@@ -109,21 +112,10 @@ if [ -f /usr/bin/keychain ] ; then
   alias kc="keychain -q --nocolor id_rsa && source $HOME/.keychain/$HOST-sh"
 fi
 
-# Uzbl
-if [ -f /usr/bin/uzbl ] ; then
-  alias uzbl="uzbl &>/dev/null &!"
-fi
-
 # Mplayer
 if [ -f /usr/bin/mplayer ] ; then
   alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
   alias mp="mplayer -vo x11 -nosound -zoom -fs"
-fi
-
-# xrandr
-if [ -f /usr/bin/xrandr ] ; then
-  alias xrtv='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --primary --output DFP4 --mode 1920x1080 --pos 1680x0 --right-of DFP1'
-  alias xrnm='xrandr --output DFP1 --mode 1680x1050 --pos 0x0 --output DFP4 --mode 1680x1050 --pos 1680x0 --right-of DFP1'
 fi
 
 # subtle
@@ -135,11 +127,6 @@ if [ -f $HOME/projects/subtle-contrib/ruby/vitag.rb ] ; then
   alias vitag="ruby $HOME/projects/subtle-contrib/ruby/vitag.rb"
 fi
 
-# Ruby
-if [ -d $HOME/projects/shreds ] ; then
-  alias tv="ruby $HOME/projects/shreds/ruby/tv.rb"
-fi
-
 # ImageMagick
 if [ -f /usr/bin/import ] ; then
   alias import="import +repage"
@@ -147,5 +134,10 @@ fi
 
 # Rsync
 if [ -f /usr/bin/rsync ]; then
-  alias rcp="rsync -avh --progress"
+  alias rsync="rsync -avh --progress"
+fi
+
+# Java
+if [ -e "/usr/lib/jvm/default-java" ] ; then
+  export JAVA_HOME="/usr/lib/jvm/default-java"
 fi
