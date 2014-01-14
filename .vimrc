@@ -39,14 +39,14 @@ set list!
 set listchars=trail:-,tab:>-,eol:¬,nbsp:%,extends:>,precedes:<
 set dy+=lastline
 set dy+=uhex
-set t_Co=256
+"set t_Co=256
 set vb
 "set spell spelllang=de_DE
 
 syntax on
 
 " Colorscheme
-colorscheme xoria256
+"colorscheme xoria256
 
 " Commandline
 if has("cmdline_info")
