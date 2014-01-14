@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2011, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2013, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -78,11 +78,6 @@ bindkey "\e[3~" delete-char
 bindkey "^R" history-incremental-search-backward
 
 # Functions
-function vman
-{ 
-  /usr/bin/man $* | col -b | view -c 'set ft=man nomod nolist' -
-}
-
 function pastie
 {
   url=$(curl http://pastie.caboo.se/pastes/create \
@@ -126,27 +121,6 @@ function ansi-colors
   done
 }
 
-function toggle-asound
-{
-  if [ -e /etc/asound.conf ] ; then
-    echo "asound.conf -> asound_conf"
-    sudo mv /etc/asound.conf /etc/asound_conf
-  elif [ -e /etc/asound_conf ] ; then
-    echo "asound_conf -> asound.conf"
-    sudo mv /etc/asound_conf /etc/asound.conf
-  fi
-}
-
-function chpwd
-{
-  RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
-}
-
-function xbmcpush
-{
-  rsync -avh --progress -e ssh --remove-source-files *.mkv xbmc@192.168.1.5:$*
-}
-
 function pp
 {
   for i in *.(mkv|avi|wmv|mp[1-9]); do
@@ -168,8 +142,6 @@ else
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} ➤ %{\e[0m%}'
 fi
 
-#RPROMPT="%F{black}[$DISPLAY/${RUBY_VERSION/ruby-/}]%f"
-
 umask 022
 
 # Fix broken locales in arch
@@ -189,8 +161,8 @@ if [ -e $HOME/google_appengine ] ; then
 fi
 
 # Adding android stuff
-if [ -e /opt/android-sdk/platform-tools ] ; then
-  export PATH=/opt/android-sdk/platform-tools:$PATH
+if [ -e /opt/android-sdk ] ; then
+  export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH
 fi
 
 # Sencha stuff
