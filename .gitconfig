@@ -3,3 +3,7 @@
 [user]
 	name = Christoph Kappel
 	email = chkappel@gmail.com
+
+[alias]
+	ci = commit
+	st = status
