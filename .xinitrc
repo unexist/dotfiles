@@ -54,17 +54,18 @@ fi
 #fi
 
 # Windowmanager
-if [ "xsubtle" = "x$1" ] ; then
-  exec $1 -n &
-else
-  exec $1 &
-fi
+#if [ "xsubtle" = "x$1" ] ; then
+#  exec $1 -n &
+#else
+#  exec $1 &
+#fi
+/home/unexist/projects/subtle/subtle &
 pid=$!
 
 sleep 2
 
 # Term
-if [ -e /usr/bin/urxvt ] && [ "xxbmc" != "x$1" ] ; then
+if [ -e /usr/bin/urxvt ] ; then
   /usr/bin/urxvt -name urxvt1 -urgentOnBell &
 
   # Attach to session if there is any
