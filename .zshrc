@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2013, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2016, Christoph Kappel <unexist@dorfelite.net>
 # @version $Id$
 #
 
@@ -162,7 +162,7 @@ fi
 
 # Adding android stuff
 if [ -e /opt/android-sdk ] ; then
-  export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$PATH
+  export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/opt/android-sdk/build-tools/20.0.0:$PATH
 fi
 
 # Sencha stuff
@@ -214,3 +214,6 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# JAVA
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
