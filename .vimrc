@@ -97,6 +97,11 @@ nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
+" Disable ex mode
+nnoremap Q <Nop>
+
+" Select all
+map <C-a> <ESC>:%y+<CR>
 
 " Brackets
 "inoremap {      {}<Left>

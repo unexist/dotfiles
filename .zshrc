@@ -47,6 +47,7 @@ setopt no_beep
 unsetopt bang_hist #< Disable inline history
 setopt no_bang_hist
 #setopt menu_complete
+setopt promptsubst
 
 # History
 HISTSIZE=5000
@@ -94,6 +95,9 @@ function imgur
 {
   for i in "$@"; do
     curl -s -F "image=@$i" -F "key=d159f6eac3eaf0205acbdb5a85ca3659" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+    curl -H "Authorization: Client-ID 3e7a4deb7ac67da" -F image=@$i \
+      https://api.imgur.com/3/upload | sed 's/.*http/http/; s/".*/\n/; s,\\/,/,g'
+
   done
 }
 
@@ -142,6 +146,10 @@ else
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} ➤ %{\e[0m%}'
 fi
 
+PS1=$'${(r:$COLUMNS::\u2500:)}'$PS1
+#PS1=$'%{\e(0%}${(r:$COLUMNS::q:)}%{\e(B%}'$PS1
+#PS1=$'${(r:$COLUMNS::-:)}'$PS1
+
 umask 022
 
 # Fix broken locales in arch
@@ -187,7 +195,7 @@ if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
 fi
 
 # Browser
-export BROWSER="/usr/bin/chromium-browser"
+export BROWSER="/usr/bin/chromium"
 
 # Update title
 case $TERM in
@@ -211,9 +219,18 @@ if [ -f /usr/bin/keychain ] ; then
 fi
 
 # RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
+  source "$HOME/.rvm/scripts/rvm"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+  # Add RVM to PATH for scripting
+  PATH=$PATH:$HOME/.rvm/bin
+fi
+
+# Pebble
+if [ -d $HOME/projects/pebble ] ; then
+  # Add pebble to PATH for scripting
+  PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
+fi
 
 # JAVA
-export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"

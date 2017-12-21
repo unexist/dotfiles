@@ -25,7 +25,9 @@ alias mv='mv -i'
 
 # Bookmarks
 alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
+alias mosh_debian="mosh --ssh='ssh -X -p 10152' unexist@80.244.246.114"
 alias ssh_kufa="ssh -X kufa@kulturfabrik-krefeld.de"
+alias ssh_new="ssh -x unexist@46.4.209.181"
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
@@ -34,16 +36,19 @@ if [ -e /usr/bin/sudo ] ; then
   alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias killjobs="sudo lprm -"
   alias s="sudo"
+  alias doch='sudo $(fc -ln -1)'
 
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
     alias p="packer --noedit"
     alias I="sudo pacman -S"
     alias R="sudo pacman -R"
+    alias S="pacman -Q"
   elif [ -e /usr/bin/apt-get ] ; then
     alias p="sudo apt-get"
     alias I="sudo apt-get install"
     alias R="sudo apt-get remove"
+    alias S="apt-cache search"
   fi
 fi
 
@@ -54,8 +59,8 @@ if [ -e /usr/bin/valgrind ] ; then
 fi
 
 # Calc
-if [ -e /usr/bin/calc ] ; then
-  alias calc='noglob calc'
+if [ -e /usr/bin/concalc ] ; then
+  alias calc='noglob concalc'
 fi
 
 # Mercurial
@@ -89,13 +94,13 @@ for i in chrome chromium google-chrome chromium-browser; do
 
   if [ $? -eq 0 ] ; then
     alias chrome="$i &>/dev/null &!"
-    alias chromeunsafe="$i --disable-web-security &>/dev/null &!"
+    alias chromeunsafe="$i --disable-web-security --user-data-dir --allow-file-access-from-files --enable-unrestricted-ssl3-fallback --ignore-certificate-errors &>/dev/null &!"
   fi
 done
 
 # Xephyr
 if [ -e /usr/bin/Xephyr ] ; then
-  XEPHYR_OPTS="-ac -noreset -nodri +extension RANDR +xinerama"
+  XEPHYR_OPTS="-ac -noreset +extension RANDR +xinerama"
     #-keybd ephyr,,,xkbmodel=evdev,xkblayout=de"
   alias xeph1024="Xephyr $XEPHYR_OPTS -name xeph1024 -screen 1024x600 :2 &>/dev/null &!"
   alias xeph800="Xephyr $XEPHYR_OPTS -name xeph800 -screen 800x800 :2 &!"
@@ -115,7 +120,7 @@ fi
 # Mplayer
 if [ -f /usr/bin/mplayer ] ; then
   alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
-  alias mp="mplayer -vo x11 -nosound -zoom -fs"
+  alias mp="mplayer -vo x11 -no-audio -zoom -fs"
 fi
 
 # subtle
@@ -141,3 +146,6 @@ fi
 if [ -e "/usr/lib/jvm/default-java" ] ; then
   export JAVA_HOME="/usr/lib/jvm/default-java"
 fi
+
+# PA
+alias louder="pactl -- set-sink-volume 0 "
