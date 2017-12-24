@@ -127,8 +127,8 @@ function ansi-colors
 
 function pp
 {
-  for i in *.(mkv|avi|wmv|mp[1-9]); do
-    mplayer -vo x11 -nosound -zoom -fs "$i"
+  for i in *.(mov|mkv|avi|wmv|mp[1-9]); do
+    DISPLAY=:0 mplayer -vo x11 -nosound -zoom -fs "$i"
 
     echo -n "Keep? (Y/n) "
     read keep
@@ -137,6 +137,18 @@ function pp
       rm -rf "$i"
     fi
   done
+}
+
+function convico
+{
+  convert "$1" -resize $2 ${2}x${2}.png
+}
+
+function t
+{
+  if ! [ -z "$TMUX" ]; then
+    tmux new-window -c $PWD
+  fi
 }
 
 # Prompt
@@ -171,6 +183,10 @@ fi
 # Adding android stuff
 if [ -e /opt/android-sdk ] ; then
   export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/opt/android-sdk/build-tools/20.0.0:$PATH
+fi
+
+if [ -e /opt/android-sdk/tools ] ; then
+  export PATH=/opt/android-sdk/tools:$PATH
 fi
 
 # Sencha stuff
@@ -216,6 +232,15 @@ if [ -f /usr/bin/keychain ] ; then
   fi
 
   source $HOME/.keychain/$HOST-sh
+fi
+
+# Pebble
+if [ -e $HOME/projects/pebble/PebbleSDK-2.0-BETA3 ] ; then
+  export PATH=/home/unexist/projects/pebble/PebbleSDK-2.0-BETA3/bin:$PATH
+fi
+
+if [ -e /home/unexist/projects/arm-cs-tools/bin ] ; then
+  export PATH=/home/unexist/projects/arm-cs-tools/bin:$PATH
 fi
 
 # RVM
