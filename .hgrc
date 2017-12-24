@@ -9,8 +9,7 @@ hgext.record     =
 hgext.graphlog   =
 hgext.color      =
 hgext.transplant =
-hgcrecord        = /home/unexist/.crecord/crecord
-histedit         = /home/unexist/.histedit/hg_histedit.py
+hgext.histedit   =
 
 [keyword]
 **.* =

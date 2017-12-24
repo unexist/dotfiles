@@ -32,9 +32,9 @@ set :honor_size_hints,  false
 set :gravity_tiling,    false
 #set :click_to_focus,    false
 set :skip_pointer_warp, false
-# }}}
+#  }}}
 
-# Styles {{{
+#  Styles {{{
 style :all do
   padding    2, 6, 2, 6
   background "#1a1a1a"
@@ -90,13 +90,8 @@ end
 style :panel_top do
   background "#1a1a1a"
   screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center ]
-  screen     3, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
-  screen     4, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
-end
-
-style :panel_bottom do
-  background "#333333"
-  screen     2, [ :title, :spacer, :views ]
+  screen     2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
+  screen     3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
 end
 # }}}
 
@@ -359,13 +354,15 @@ tag "terms" do
   set      :resize
 end
 
-tag "first",  "urxvt1"
-tag "second", "urxvt2"
-
-tag "three" do
-  match   instance: "urxvt2"
-  gravity :three
+tag "first" do
+  match    "urxvt1"
+  gravity :top
 end
+
+tag "second" do
+  match   "urxvt2"
+  gravity :bottom
+end  
 
 tag "scratch" do
   match   instance: "scratch"
@@ -414,11 +411,6 @@ tag "stickandfloat" do
   set    :sticky, :floating
 end
 
-tag "stick" do
-  match "evince"
-  set    :sticky
-end
-
 tag "urgent" do
   set :sticky, :urgent, :floating
 end
@@ -463,56 +455,54 @@ if "mockra" == host
   www_re    = "browser|three25|three25"
   test_re   = "xeph[0-9]+|three25"
   editor_re = "editor|three25|three25"
-  icons     = true
 else
   www_re    = "browser"
   test_re   = "xeph[0-9]+|three$|test"
   editor_re = "editor"
-  icons     = true
 end
 
 diamond = "#{ENV["HOME"]}/.local/share/icons/black_diamond_with_question_mark.xbm"
 
 view "terms" do
-  match     "terms"
+  match     "terms|first|second"
   #icon      "#{iconpath}/terminal.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 
 view "www" do
   match     www_re
   #icon      "#{iconpath}/world.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 
 view "void" do
   match     "default|void|powerfolder|pms"
   #icon      "#{iconpath}/quote.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 
 view "misc" do
   match     "inkscape|dia|gimp|android"
   #icon      "#{iconpath}/paint.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 
 view "test" do
   match     test_re
   #icon      "#{iconpath}/bug.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 
 view "editor" do
   match     editor_re
   #icon      "#{iconpath}/ruby.xbm"
   icon      diamond
-  icon_only icons
+  set       :icons_only
 end
 # }}}
 
@@ -523,7 +513,7 @@ end
 # }}}
 
 # Virtual {{{
-screen 1 do
-  virtual [  0,  0, 100, 50 ]
-  virtual [  0, 50, 100, 50 ]
-end # }}}
+#screen 1 do
+#  virtual [  0,  0, 100, 50 ]
+#  virtual [  0, 50, 100, 50 ]
+#end # }}}

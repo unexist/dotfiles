@@ -59,7 +59,7 @@ fi
 #else
 #  exec $1 &
 #fi
-/home/unexist/projects/subtle/subtle &
+/home/unexist/projects/subtle/subtle >~/subtle.log &
 pid=$!
 
 sleep 2
