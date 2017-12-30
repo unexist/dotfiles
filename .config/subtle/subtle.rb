@@ -36,9 +36,13 @@ set :skip_pointer_warp, false
 
 #  Styles {{{
 style :all do
+  background "#1a1a1a"
   padding    2, 6, 2, 6
   background "#1a1a1a"
   font       "xft:Envy Code R:pixelsize=13"
+end
+
+style :tray do
 end
 
 style :title do
@@ -88,7 +92,6 @@ style :clients do
 end
 
 style :panel_top do
-  background "#1a1a1a"
   screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center ]
   screen     2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
   screen     3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
@@ -236,10 +239,9 @@ grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
+grab modkey + "-n", "nvim-qt"
 grab modkey + "-f", "firefox -no-remote -profileManager"
-
-# Hack
-grab modkey + "-c", "xclip -o | sed 's#^[ ]*(.*)[ ]*-[ ]*(.)[ ]*#\1-\2#' | tr ' ' '.' | xclip -i"
+grab modkey + "-c", "chromium"
 
 # Contrib
 grab "W-x" do
@@ -354,15 +356,25 @@ tag "terms" do
   set      :resize
 end
 
-tag "first" do
+tag "top" do
   match    "urxvt1"
   gravity :top
 end
 
-tag "second" do
+tag "bottom" do
   match   "urxvt2"
   gravity :bottom
-end  
+end
+
+tag "seven" do
+  match   "urxvt1"
+  gravity :top_left
+end
+
+tag "one" do
+  match   "urxvt2"
+  gravity :bottom_left
+end
 
 tag "scratch" do
   match   instance: "scratch"
@@ -380,7 +392,7 @@ tag "browser" do
 end
 
 tag "editor" do
-  match  "[g]?vim"
+  match  "[ng]?vim"
   set    :resize
 
   if "mockra" == host
@@ -451,56 +463,40 @@ end
 # }}}
 
 # Views {{{
-if "mockra" == host
-  www_re    = "browser|three25|three25"
-  test_re   = "xeph[0-9]+|three25"
-  editor_re = "editor|three25|three25"
-else
-  www_re    = "browser"
-  test_re   = "xeph[0-9]+|three$|test"
-  editor_re = "editor"
-end
-
 diamond = "#{ENV["HOME"]}/.local/share/icons/black_diamond_with_question_mark.xbm"
 
 view "terms" do
-  match     "terms|first|second"
-  #icon      "#{iconpath}/terminal.xbm"
-  icon      diamond
-  set       :icons_only
+  match "terms|top|bottom"
+  icon  diamond
+  set   :icons_only
 end
 
 view "www" do
-  match     www_re
-  #icon      "#{iconpath}/world.xbm"
-  icon      diamond
-  set       :icons_only
+  match "browser"
+  icon  diamond
+  set   :icons_only
 end
 
 view "void" do
   match     "default|void|powerfolder|pms"
-  #icon      "#{iconpath}/quote.xbm"
   icon      diamond
   set       :icons_only
 end
 
 view "misc" do
   match     "inkscape|dia|gimp|android"
-  #icon      "#{iconpath}/paint.xbm"
   icon      diamond
   set       :icons_only
 end
 
 view "test" do
-  match     test_re
-  #icon      "#{iconpath}/bug.xbm"
+  match     "xeph[0-9]+|seven|one"
   icon      diamond
   set       :icons_only
 end
 
 view "editor" do
-  match     editor_re
-  #icon      "#{iconpath}/ruby.xbm"
+  match     "editor"
   icon      diamond
   set       :icons_only
 end
