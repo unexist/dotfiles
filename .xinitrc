@@ -85,4 +85,8 @@ if [ -e /usr/bin/numlockx ] ; then
   /usr/bin/numlockx >/dev/null &
 fi
 
+if [ -e /usr/bin/autocutsel ] ; then
+  /usr/bin/autocutsel -fork &
+  /usr/bin/autocutsel -selection PRIMARY -fork &
+
 wait $pid
