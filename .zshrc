@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2016, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2018, Christoph Kappel <unexist@subforge.org>
 # @version $Id$
 #
 
@@ -181,8 +181,8 @@ if [ -e $HOME/google_appengine ] ; then
 fi
 
 # Adding android stuff
-if [ -e /opt/android-sdk ] ; then
-  export PATH=/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/opt/android-sdk/build-tools/20.0.0:$PATH
+if [ -e $HOME/Android ] ; then
+  export PATH=$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH
 fi
 
 if [ -e /opt/android-sdk/tools ] ; then

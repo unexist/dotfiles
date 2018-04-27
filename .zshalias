@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2013, Christoph Kappel <unexist@dorfelite.net>
+# @copyright (c) 2006-2018, Christoph Kappel <unexist@subforge.org>
 # @version $Id$
 #
 
@@ -23,20 +23,13 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Bookmarks
-alias ssh_debian="ssh -X unexist@80.244.246.114 -p 10152"
-alias mosh_debian="mosh --ssh='ssh -X -p 10152' unexist@80.244.246.114"
-alias ssh_kufa="ssh -X kufa@kulturfabrik-krefeld.de"
-alias ssh_new="ssh -x unexist@46.4.209.181"
-
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
   alias halt="sudo /sbin/halt"
   alias reboot="sudo /sbin/reboot"
-  alias ntpd="sudo ntpdate -b pool.ntp.org"
   alias killjobs="sudo lprm -"
   alias s="sudo"
-  alias doch='sudo $(fc -ln -1)'
+  alias fuck="sudo $(fc -ln -1)"
 
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
@@ -56,6 +49,7 @@ fi
 if [ -e /usr/bin/valgrind ] ; then
   alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions"
   alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppressions"
+  alias sgcheck="valgrind --tool=exp-sgcheck"
 fi
 
 # Calc
@@ -66,11 +60,6 @@ fi
 # Mercurial
 if [ -e /usr/bin/hg ] ; then
   alias hgs="hg status|grep -v '^?'"
-fi
-
-# Subversion
-if [ -e /usr/bin/svn ] ; then
-  alias svns="svn status|grep -v '^?'"
 fi
 
 # Git
@@ -149,3 +138,10 @@ fi
 
 # PA
 alias louder="pactl -- set-sink-volume 0 "
+
+# PowerFolder
+alias pfkill="ps aux | grep -i powerfolder | grep java | awk '{print $2}' | xargs kill -9"
+
+if [ -e "/usr/bin/psql" ] ; then
+  alias pfdb="psql -U powerfolder powerfolder -h localhost"
+fi  
