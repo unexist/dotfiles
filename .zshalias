@@ -29,7 +29,7 @@ if [ -e /usr/bin/sudo ] ; then
   alias reboot="sudo /sbin/reboot"
   alias killjobs="sudo lprm -"
   alias s="sudo"
-  alias fuck="sudo $(fc -ln -1)"
+  alias fuck='sudo $(fc -ln -1)'
 
   # Based on dist
   if [ -e /usr/bin/pacman ] ; then
@@ -42,6 +42,7 @@ if [ -e /usr/bin/sudo ] ; then
     alias I="sudo apt-get install"
     alias R="sudo apt-get remove"
     alias S="apt-cache search"
+    alias keptback="sudo apt-get --with-new-pkgs upgrade"
   fi
 fi
 
@@ -83,7 +84,7 @@ for i in chrome chromium google-chrome chromium-browser; do
 
   if [ $? -eq 0 ] ; then
     alias chrome="$i &>/dev/null &!"
-    alias chromeunsafe="$i --disable-web-security --user-data-dir --allow-file-access-from-files --enable-unrestricted-ssl3-fallback --ignore-certificate-errors &>/dev/null &!"
+    alias chromeunsafe="$i --disable-web-security --user-data-dir=/tmp --allow-file-access-from-files --enable-unrestricted-ssl3-fallback --ignore-certificate-errors --temp-profile &>/dev/null &!"
   fi
 done
 
@@ -143,5 +144,5 @@ alias louder="pactl -- set-sink-volume 0 "
 alias pfkill="ps aux | grep -i powerfolder | grep java | awk '{print $2}' | xargs kill -9"
 
 if [ -e "/usr/bin/psql" ] ; then
-  alias pfdb="psql -U powerfolder powerfolder -h localhost"
+  alias pfsql="psql -U powerfolder powerfolder -h localhost"
 fi  
