@@ -36,15 +36,14 @@ fi
 #fi
 
 # xrandr
-#if [ -e /usr/bin/xrandr ] ; then
-#  if [ "xsubtle" = "x$1" ] ; then
-#    xrandr --output DVI-0 --primary --mode 1680x1050 --pos 1680x0 --output HDMI-0 --mode 1680x1050 --pos 0x0 --left-of DVI-0 --dpi 96
-#    #xrandr --output DFP1 --primary --mode 1680x1050 --pos 1680x0 --output DFP2 --mode 1680x1050 --pos 0x0 --right-of DFP1 --dpi 96
-#  elif [ "xxbmc" = "x$1" ] ; then
-#    xrandr --output DVI-0 --off --output HDMI-0 --mode 1920x1080
-#    #xrandr --output DFP1 --off --output DFP2 --mode 1920x1080
-#  fi
-#fi
+if [ -e /usr/bin/xrandr ] ; then
+  if [ "xsubtle" = "x$1" ] ; then
+    xrandr \
+      --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
+      --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
+      --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left --dpi 96
+  fi
+fi
 
 # Wallpaper
 #if [ -e /usr/bin/feh ] ; then
@@ -88,5 +87,6 @@ fi
 if [ -e /usr/bin/autocutsel ] ; then
   /usr/bin/autocutsel -fork &
   /usr/bin/autocutsel -selection PRIMARY -fork &
+fi
 
 wait $pid
