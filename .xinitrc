@@ -37,7 +37,7 @@ fi
 
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
-  if [ "xsubtle" = "x$1" ] ; then
+  if [ "xazath" = "x`hostname`" ] ; then
     xrandr \
       --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
       --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
