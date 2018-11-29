@@ -32,6 +32,7 @@ set :honor_size_hints,  false
 set :gravity_tiling,    false
 #set :click_to_focus,    false
 set :skip_pointer_warp, false
+set :wmname,            "LG3D"
 #  }}}
 
 #  Styles {{{
@@ -183,7 +184,7 @@ grab modkey + "-S-h", lambda { |c| c.retag }
  WindowUp:   [ "Up",   "k" ], WindowRight: [ "Right", "l" ]
 }.each do |k, v|
   grab "%s-%s" % [ modkey, v.first ], k
-  grab "%s-%s" % [ modkey, v.last  ], k
+  #grab "%s-%s" % [ modkey, v.last  ], k
 end
 
 # Reload/restart
@@ -229,12 +230,6 @@ end
 grab "XF86AudioMute",        :VolumeToggle
 grab "XF86AudioRaiseVolume", :VolumeRaise
 grab "XF86AudioLowerVolume", :VolumeLower
-grab "XF86AudioPlay",        :MpdToggle
-grab "XF86AudioStop",        :MpdStop
-grab "XF86AudioNext",        :MpdNext
-grab "XF86AudioPrev",        :MpdPrevious
-
-grab modkey + "-m", "mpc current | tr -d '\n' | xclip"
 
 # Programs
 grab modkey + "-Return", "urxvt"
@@ -242,18 +237,19 @@ grab modkey + "-g", "gvim"
 grab modkey + "-n", "nvim-qt"
 grab modkey + "-f", "firefox -no-remote -profileManager"
 grab modkey + "-c", "chromium"
+grab modkey + "-l", "slock"
 
 # Contrib
-grab "W-x" do
+grab modkey + "-x" do
   Subtle::Contrib::Launcher.run
 end
 
-grab "W-z" do
+grab modkey + "-z" do
   Subtle::Contrib::Selector.run
 end
 
 # Scratchpad
-grab "W-y" do
+grab modkey + "-y" do
   if (c = Subtlext::Client.first("scratch"))
     c.toggle_stick
     c.focus
@@ -427,9 +423,8 @@ tag "urgent" do
   set :sticky, :urgent, :floating
 end
 
-tag "powerfolder" do
-  match "de-dal33t-powerfolder-PowerFolder"
-  set   :floating, :sticky
+tag "postman" do
+  match "postman"
 end
 
 tag "dialogs" do
@@ -478,7 +473,7 @@ view "www" do
 end
 
 view "void" do
-  match     "default|void|powerfolder|pms"
+  match     "default|void"
   icon      diamond
   set       :icons_only
 end
@@ -490,7 +485,7 @@ view "misc" do
 end
 
 view "test" do
-  match     "xeph[0-9]+|seven|one"
+  match     "xeph[0-9]+|postman"
   icon      diamond
   set       :icons_only
 end
