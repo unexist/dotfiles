@@ -237,6 +237,7 @@ grab modkey + "-g", "gvim"
 grab modkey + "-n", "nvim-qt"
 grab modkey + "-f", "firefox -no-remote -profileManager"
 grab modkey + "-c", "chromium"
+grab modkey + "-c", "vivaldo"
 grab modkey + "-l", "slock"
 
 # Contrib
@@ -378,24 +379,14 @@ tag "scratch" do
 end
 
 tag "browser" do
-  match "navigator|(google\-)?chrom[e|ium]|firefox|dwb"
-
-  if "mockra" == host
-    gravity :top75
-  else
-    gravity :center
-  end
+  match "navigator|(google\-)?chrom[e|ium]|firefox|vivaldi"
+  gravity :center
 end
 
 tag "editor" do
   match  "[ng]?vim"
   set    :resize
-
-  if "mockra" == host
-    gravity :top75
-  else
-    gravity :center
-  end
+  gravity :center
 end
 
 tag "xeph640" do
@@ -452,9 +443,8 @@ tag "dia" do
   end
 end
 
-tag "inkscape" do
-  match "inkscape"
-end
+tag "inkscape", "inkscape"
+tag "slack", "slack"
 # }}}
 
 # Views {{{
@@ -479,7 +469,7 @@ view "void" do
 end
 
 view "misc" do
-  match     "inkscape|dia|gimp|android"
+  match     "inkscape|dia|gimp|android|slack"
   icon      diamond
   set       :icons_only
 end
