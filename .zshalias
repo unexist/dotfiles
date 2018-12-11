@@ -163,3 +163,7 @@ if [ -e "/bin/netstat" ] ; then
     sudo netstat -ltnp | \grep -w ":$1"
   }
 fi  
+
+function bl {
+  su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
+}
