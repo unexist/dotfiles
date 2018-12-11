@@ -384,7 +384,7 @@ tag "browser" do
 end
 
 tag "editor" do
-  match  "[ng]?vim"
+  match  "[ng]?vim|intellij"
   set    :resize
   gravity :center
 end
@@ -414,10 +414,6 @@ tag "urgent" do
   set :sticky, :urgent, :floating
 end
 
-tag "postman" do
-  match "postman"
-end
-
 tag "dialogs" do
   match "sun-awt-X11-XDialogPeer"
   set   :sticky
@@ -443,8 +439,23 @@ tag "dia" do
   end
 end
 
+tag "javastuff" do
+  match "sun-awt-X11-XFramePeer"
+
+  on_match do |c|
+    case c.name
+      when /intellij/i
+        c.tag "editor"
+      when /dashboard/i
+        c.tag "test"
+    end
+  end
+end
+
 tag "inkscape", "inkscape"
-tag "slack", "slack"
+tag "test" do
+  match "postman"
+end
 # }}}
 
 # Views {{{
@@ -475,7 +486,7 @@ view "misc" do
 end
 
 view "test" do
-  match     "xeph[0-9]+|postman"
+  match     "xeph[0-9]+|test"
   icon      diamond
   set       :icons_only
 end
