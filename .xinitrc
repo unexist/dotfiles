@@ -54,7 +54,7 @@ fi
 
 # Windowmanager
 #if [ "xsubtle" = "x$1" ] ; then
-#  exec $1 -n &
+#  exec /home/unexist/projects/subtle/subtle >~/subtle.log &
 #else
 #  exec $1 &
 #fi
