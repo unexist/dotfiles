@@ -150,11 +150,20 @@ if [ -e "/usr/bin/xrandr" ] ; then
   alias xrandr3="xrandr \
     --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
     --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
-    --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left --dpi 96"
+    --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left \
+    --dpi 96"
 
   alias xrandr2="xrandr \
     --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
-    --output DP-2-2 --mode 1920x1080 --pos 768x0 --right-of eDP-1 --dpi 96"
+    --output DP-2-2 --mode 1920x1080 --pos 768x0 --right-of eDP-1 \
+    --output DP-2-3 --off
+    --dpi 96"
+
+  alias xrandr1="xrandr \
+    --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
+    --output DP-2-2 --off \
+    --output DP-2-3 --off \
+    --dpi 96"
 fi
 
 # netstat
