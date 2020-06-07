@@ -1,12 +1,12 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2018, Christoph Kappel <unexist@subforge.org>
+# @copyright (c) 2006-2020, Christoph Kappel <unexist@subforge.org>
 # @version $Id$
 #
 
 # Colors
-export ZLS_COLORS=`dircolors | sed s/LS/ZLS/ | head -n 1`
+#export ZLS_COLORS=`dircolors | sed s/LS/ZLS/ | head -n 1`
 
 # Modules
 autoload complist
@@ -79,39 +79,11 @@ bindkey "\e[3~" delete-char
 bindkey "^R" history-incremental-search-backward
 
 # Functions
-function pastie
-{
-  url=$(curl http://pastie.caboo.se/pastes/create \
-    -H "Expect:" \
-    -F "paste[parser]=plain_text" \
-    -F "paste[body]=<-" \
-    -F "paste[authorization]=burger" \
-    -s -L -o /dev/null -w "%{url_effective}")
-  echo -n "$url" | xclip
-  echo "$url"
-}
-
-function imgur
-{
-  for i in "$@"; do
-    curl -s -F "image=@$i" -F "key=d159f6eac3eaf0205acbdb5a85ca3659" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
-    curl -H "Authorization: Client-ID 3e7a4deb7ac67da" -F image=@$i \
-      https://api.imgur.com/3/upload | sed 's/.*http/http/; s/".*/\n/; s,\\/,/,g'
-
-  done
-}
-
 function search-backwords {
    zle history-incremental-search-backward $BUFFER
 }
 
-function rc
-{
-  sudo /etc/rc.d/$*
-}
-
-function ansi-colors
-{
+function ansi-colors {
   typeset esc="\033[" line1 line2
   echo " _ _ _40 _ _ _41_ _ _ _42 _ _ 43_ _ _ 44_ _ _45 _ _ _ 46_ _ _ 47_ _ _ 49_ _"
   for fore in 30 31 32 33 34 35 36 37; do
@@ -125,33 +97,21 @@ function ansi-colors
   done
 }
 
-function pp
-{
-  for i in *.(mov|mkv|avi|wmv|mp[1-9]); do
-    DISPLAY=:0 mplayer -vo x11 -nosound -zoom -fs "$i"
-
-    echo -n "Keep? (Y/n) "
-    read keep
-
-    if [ "x$keep" = "xn" ] ; then
-      rm -rf "$i"
-    fi
-  done
-}
-
-function convico
-{
-  convert "$1" -resize $2 ${2}x${2}.png
-}
-
-function t
-{
+function t {
   if ! [ -z "$TMUX" ]; then
     tmux new-window -c $PWD
   fi
 }
 
 # Prompt
+prompt_status() {
+  if [[ $? == "0" ]]; then
+    echo -e ""
+    else
+    echo -e "🚨 "
+  fi
+}
+
 if [ "$USER" = "root" ] ; then
   PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} ➤ %{\e[0m%}'
 else
@@ -175,9 +135,18 @@ if [ -e $HOME/bin ] ; then
   export PATH=$HOME/bin:$PATH
 fi
 
-# Adding go stuff
-if [ -e $HOME/google_appengine ] ; then
-  export PATH=$HOME/google_appengine:$PATH
+if [ -e /usr/local/bin/ ] ; then
+  export PATH=/usr/local/bin:$PATH
+fi
+
+# Adding brew stuff
+if [ -e /usr/local/bin/brew ] ; then
+  export PATH="$(brew --prefix)/bin:$PATH"
+fi
+
+# Adding rust stuff
+if [ -e $HOME/.cargo/bin ] ; then
+  export PATH=$HOME/.cargo/bin:$PATH
 fi
 
 # Adding android stuff
@@ -188,10 +157,6 @@ fi
 if [ -e /opt/android-sdk/tools ] ; then
   export PATH=/opt/android-sdk/tools:$PATH
 fi
-
-# Sencha stuff
-export PATH=/home/unexist/bin/Sencha/Cmd/3.0.0.250:$PATH
-export SENCHA_CMD_3_0_0="/home/unexist/bin/Sencha/Cmd/3.0.0.250"
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
@@ -234,13 +199,15 @@ if [ -f /usr/bin/keychain ] ; then
   source $HOME/.keychain/$HOST-sh
 fi
 
-# Pebble
-if [ -e $HOME/projects/pebble/PebbleSDK-2.0-BETA3 ] ; then
-  export PATH=/home/unexist/projects/pebble/PebbleSDK-2.0-BETA3/bin:$PATH
-fi
-
+# Arm
 if [ -e /home/unexist/projects/arm-cs-tools/bin ] ; then
   export PATH=/home/unexist/projects/arm-cs-tools/bin:$PATH
+fi
+
+# Pebble
+if [ -d $HOME/projects/pebble ] ; then
+  # Add pebble to PATH for scripting
+  PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
 fi
 
 # RVM
@@ -251,11 +218,7 @@ if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
   PATH=$PATH:$HOME/.rvm/bin
 fi
 
-# Pebble
-if [ -d $HOME/projects/pebble ] ; then
-  # Add pebble to PATH for scripting
-  PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
-fi
-
 # JAVA
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

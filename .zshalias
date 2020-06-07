@@ -6,7 +6,7 @@
 #
 
 # ls
-alias ls='ls --color -phFX --group-directories-first'
+alias ls='lsd -hF' #-phFG'
 alias la='ls -a'
 alias ll='ls -l'
 alias l='ls -l'
@@ -59,12 +59,16 @@ if [ -e /usr/bin/concalc ] ; then
 fi
 
 # Mercurial
-if [ -e /usr/bin/hg ] ; then
+command -v hg &>/dev/null
+
+if [ $? -eq 0 ]; then
   alias hgs="hg status|grep -v '^?'"
 fi
 
 # Git
-if [ -e /usr/bin/git ] ; then
+command -v git &>/dev/null
+
+if [ $? -eq 0 ]; then
   alias gits="git status|grep -v '^?'"
 fi
 
