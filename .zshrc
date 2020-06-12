@@ -80,42 +80,39 @@ bindkey "^R" history-incremental-search-backward
 
 # Functions
 function search-backwords {
-   zle history-incremental-search-backward $BUFFER
+    zle history-incremental-search-backward $BUFFER
 }
 
 function ansi-colors {
-  typeset esc="\033[" line1 line2
-  echo " _ _ _40 _ _ _41_ _ _ _42 _ _ 43_ _ _ 44_ _ _45 _ _ _ 46_ _ _ 47_ _ _ 49_ _"
-  for fore in 30 31 32 33 34 35 36 37; do
-    line1="$fore "
-    line2="   "
-    for back in 40 41 42 43 44 45 46 47 49; do
-      line1="${line1}${esc}${back};${fore}m Normal ${esc}0m"
-      line2="${line2}${esc}${back};${fore};1m Bold   ${esc}0m"
-    done
-    echo -e "$line1\n$line2"
-  done
-}
+    typeset esc="\033[" line1 line2
+    echo " _ _ _40 _ _ _41_ _ _ _42 _ _ 43_ _ _ 44_ _ _45 _ _ _ 46_ _ _ 47_ _ _ 49_ _"
 
-function t {
-  if ! [ -z "$TMUX" ]; then
-    tmux new-window -c $PWD
-  fi
+    for fore in 30 31 32 33 34 35 36 37; do
+        line1="$fore "
+        line2="   "
+
+        for back in 40 41 42 43 44 45 46 47 49; do
+            line1="${line1}${esc}${back};${fore}m Normal ${esc}0m"
+            line2="${line2}${esc}${back};${fore};1m Bold   ${esc}0m"
+        done
+
+        echo -e "$line1\n$line2"
+    done
 }
 
 # Prompt
 prompt_status() {
-  if [[ $? == "0" ]]; then
-    echo -e ""
+    if [[ $? == "0" ]]; then
+        echo -e ""
     else
-    echo -e "🚨 "
-  fi
+        echo -e "🚨 "
+    fi
 }
 
 if [ "$USER" = "root" ] ; then
-  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} ➤ %{\e[0m%}'
+    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} $(prompt_status)➤ %{\e[0m%}'
 else
-  PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} ➤ %{\e[0m%}'
+    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} $(prompt_status)➤ %{\e[0m%}'
 fi
 
 PS1=$'${(r:$COLUMNS::\u2500:)}'$PS1
@@ -132,90 +129,76 @@ export MANSECT="2:3:3p:1:1p:8:4:5:6:7:9:0p:tcl:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x"
 
 # Extending the path var
 if [ -e $HOME/bin ] ; then
-  export PATH=$HOME/bin:$PATH
+    export PATH=$HOME/bin:$PATH
 fi
 
 if [ -e /usr/local/bin/ ] ; then
-  export PATH=/usr/local/bin:$PATH
+    export PATH=/usr/local/bin:$PATH
 fi
 
 # Adding brew stuff
 if [ -e /usr/local/bin/brew ] ; then
-  export PATH="$(brew --prefix)/bin:$PATH"
+    export PATH="$(brew --prefix)/bin:$PATH"
 fi
 
 # Adding rust stuff
 if [ -e $HOME/.cargo/bin ] ; then
-  export PATH=$HOME/.cargo/bin:$PATH
+    export PATH=$HOME/.cargo/bin:$PATH
 fi
 
 # Adding android stuff
 if [ -e $HOME/Android ] ; then
-  export PATH=$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH
+    export PATH=$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH
 fi
 
 if [ -e /opt/android-sdk/tools ] ; then
-  export PATH=/opt/android-sdk/tools:$PATH
+    export PATH=/opt/android-sdk/tools:$PATH
 fi
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
-  export EDITOR=/usr/bin/vim
-fi
-
-# PostgreSQL
-if [ -f /usr/bin/psql ] ; then
-  export PGDATA=/home/unexist/misc/postgres
-  export PGUSER=unexist
-  export PGDATABASE=unexist
+    export EDITOR=/usr/bin/vim
 fi
 
 # XDG dirs
 if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
-  source $HOME/.config/user-dirs.dirs
+    source $HOME/.config/user-dirs.dirs
 fi
 
 # Browser
 export BROWSER="/usr/bin/chromium"
 
-# Update title
-case $TERM in
-  xterm*|urxvt*|screen*)
-    chpwd() { print -Pn "\e]0;%n@%m: %~\a" }
-    ;;
-esac
-
 # Aliases
 if [ -f $HOME/.zshalias ] ; then
-  source $HOME/.zshalias
+    source $HOME/.zshalias
 fi
 
 # Keychain
 if [ -f /usr/bin/keychain ] ; then
-  if ! [ -f $HOME/.keychain/$HOST-sh ] ; then
-    keychain -q --nocolor --nogui id_rsa
-  fi
+    if ! [ -f $HOME/.keychain/$HOST-sh ] ; then
+        keychain -q --nocolor --nogui id_rsa
+    fi
 
-  source $HOME/.keychain/$HOST-sh
+    source $HOME/.keychain/$HOST-sh
 fi
 
 # Arm
 if [ -e /home/unexist/projects/arm-cs-tools/bin ] ; then
-  export PATH=/home/unexist/projects/arm-cs-tools/bin:$PATH
+    export PATH=/home/unexist/projects/arm-cs-tools/bin:$PATH
 fi
 
 # Pebble
 if [ -d $HOME/projects/pebble ] ; then
-  # Add pebble to PATH for scripting
-  PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
+    # Add pebble to PATH for scripting
+    PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
 fi
 
 # RVM
 if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
-  source "$HOME/.rvm/scripts/rvm"
+    source "$HOME/.rvm/scripts/rvm"
 
-  # Add RVM to PATH for scripting
-  PATH=$PATH:$HOME/.rvm/bin
+    # Add RVM to PATH for scripting
+    PATH=$PATH:$HOME/.rvm/bin
 fi
 
 # JAVA

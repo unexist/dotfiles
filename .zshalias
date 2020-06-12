@@ -25,115 +25,129 @@ alias mv='mv -i'
 
 # Sudo
 if [ -e /usr/bin/sudo ] ; then
-  alias halt="sudo /sbin/halt"
-  alias reboot="sudo /sbin/reboot"
-  alias killjobs="sudo lprm -"
-  alias s="sudo"
-  alias fuck='sudo $(fc -ln -1)'
+    alias halt="sudo /sbin/halt"
+    alias reboot="sudo /sbin/reboot"
+    alias killjobs="sudo lprm -"
+    alias s="sudo"
+    alias fuck='sudo $(fc -ln -1)'
 
-  # Based on dist
-  if [ -e /usr/bin/pacman ] ; then
-    alias p="packer --noedit"
-    alias I="sudo pacman -S"
-    alias R="sudo pacman -R"
-    alias S="pacman -Q"
-  elif [ -e /usr/bin/apt-get ] ; then
-    alias p="sudo apt-get"
-    alias I="sudo apt-get install"
-    alias R="sudo apt-get remove"
-    alias S="apt-cache search"
-    alias keptback="sudo apt-get --with-new-pkgs upgrade"
-  fi
+    # Based on dist
+    if [ -e /usr/bin/pacman ] ; then
+        alias p="packer --noedit"
+        alias I="sudo pacman -S"
+        alias R="sudo pacman -R"
+        alias S="pacman -Q"
+    elif [ -e /usr/bin/apt-get ] ; then
+        alias p="sudo apt-get"
+        alias I="sudo apt-get install"
+        alias R="sudo apt-get remove"
+        alias S="apt-cache search"
+        alias keptback="sudo apt-get --with-new-pkgs upgrade"
+    fi
 fi
 
 # Valgrind
-if [ -e /usr/bin/valgrind ] ; then
-  alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions"
-  alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppressions"
-  alias sgcheck="valgrind --tool=exp-sgcheck"
+command -v valgrind &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias memcheck="valgrind --tool=memcheck --leak-check=full --suppressions=$HOME/.suppressions"
+    alias addrcheck="valgrind --tool=addrcheck --leak-check=full --suppressions=$HOME/.suppressions"
+    alias sgcheck="valgrind --tool=exp-sgcheck"
 fi
 
 # Calc
-if [ -e /usr/bin/concalc ] ; then
-  alias calc='noglob concalc'
+command -v concalc &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias calc='noglob concalc'
 fi
 
 # Mercurial
 command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
-  alias hgs="hg status|grep -v '^?'"
+    alias hgs="hg status|grep -v '^?'"
 fi
 
 # Git
 command -v git &>/dev/null
 
 if [ $? -eq 0 ]; then
-  alias gits="git status|grep -v '^?'"
+    alias gits="git status|grep -v '^?'"
 fi
 
 # Mpd
-if [ -e /usr/bin/mpc ] ; then
-  alias mpc="nocorrect mpc"
+command -v mpc &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias mpc="nocorrect mpc"
 fi
 
 # Firefox
-if [ -e /usr/bin/firefox ] ; then
-  alias ff="firefox -no-remote -ProfileManager &>/dev/null &!"
+command -v firefox &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias ff="firefox -no-remote -ProfileManager &>/dev/null &!"
 fi
 
 # Chrome/chromium
 for i in chrome chromium google-chrome chromium-browser; do
-  command -v $i &>/dev/null
+    command -v $i &>/dev/null
 
-  if [ $? -eq 0 ] ; then
-    alias chrome="$i &>/dev/null &!"
-    alias chromeunsafe="$i --disable-web-security --user-data-dir=/tmp --allow-file-access-from-files --enable-unrestricted-ssl3-fallback --ignore-certificate-errors --temp-profile &>/dev/null &!"
-  fi
+    if [ $? -eq 0 ] ; then
+        alias chrome="$i &>/dev/null &!"
+        alias chromeunsafe="$i --disable-web-security --user-data-dir=/tmp --allow-file-access-from-files --enable-unrestricted-ssl3-fallback --ignore-certificate-errors --temp-profile &>/dev/null &!"
+    fi
 done
 
 # Xephyr
-if [ -e /usr/bin/Xephyr ] ; then
-  XEPHYR_OPTS="-ac -noreset +extension RANDR +xinerama"
+command -v Xephyr &>/dev/null
+
+if [ $? -eq 0 ]; then
+    XEPHYR_OPTS="-ac -noreset +extension RANDR +xinerama"
     #-keybd ephyr,,,xkbmodel=evdev,xkblayout=de"
-  alias xeph1024="Xephyr $XEPHYR_OPTS -name xeph1024 -screen 1024x600 :2 &>/dev/null &!"
-  alias xeph800="Xephyr $XEPHYR_OPTS -name xeph800 -screen 800x800 :2 &!"
-  alias xeph640="Xephyr $XEPHYR_OPTS -name xeph640 -screen 640x480 :2 &!"
+    alias xeph1024="Xephyr $XEPHYR_OPTS -name xeph1024 -screen 1024x600 :2 &>/dev/null &!"
+    alias xeph800="Xephyr $XEPHYR_OPTS -name xeph800 -screen 800x800 :2 &!"
+    alias xeph640="Xephyr $XEPHYR_OPTS -name xeph640 -screen 640x480 :2 &!"
 fi
 
 # GVim
-if [ -e /usr/bin/gvim ] ; then
-  alias gvim="gvim &>/dev/null &!"
+command -v gvim &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias gvim="gvim &>/dev/null &!"
 fi
 
 # Keychain
-if [ -f /usr/bin/keychain ] ; then
-  alias kc="keychain -q --nocolor id_rsa && source $HOME/.keychain/$HOST-sh"
-fi
+command -v keychain &>/dev/null
 
-# Mplayer
-if [ -f /usr/bin/mplayer ] ; then
-  alias dts="mplayer -ac hwdts,hwac3, -ao alsa:device=spdif"
-  alias mp="mplayer -vo x11 -no-audio -zoom -fs"
+if [ $? -eq 0 ]; then
+    alias kc="keychain -q --nocolor id_rsa && source $HOME/.keychain/$HOST-sh"
 fi
 
 # subtle
-if [ -f /usr/bin/subtle ] ; then
-  alias sirb='ripl -r"subtle/subtlext"'
-fi
+command -v subtle &>/dev/null
 
-if [ -f $HOME/projects/subtle-contrib/ruby/vitag.rb ] ; then
-  alias vitag="ruby $HOME/projects/subtle-contrib/ruby/vitag.rb"
+if [ $? -eq 0 ]; then
+    alias sirb='ripl -r"subtle/subtlext"'
+
+    if [ -f $HOME/projects/subtle-contrib/ruby/vitag.rb ] ; then
+        alias vitag="ruby $HOME/projects/subtle-contrib/ruby/vitag.rb"
+    fi
 fi
 
 # ImageMagick
-if [ -f /usr/bin/import ] ; then
-  alias import="import +repage"
+command -v import &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias import="import +repage"
 fi
 
 # Rsync
-if [ -f /usr/bin/rsync ]; then
-  alias rsync="rsync -avh --progress"
+command -v rsync &>/dev/null
+
+if [ $? -eq 0 ]; then
+  alias rsync="rsync -trvh"
 fi
 
 # Java
@@ -141,42 +155,53 @@ if [ -e "/usr/lib/jvm/default-java" ] ; then
   export JAVA_HOME="/usr/lib/jvm/default-java"
 fi
 
-# PA
-alias louder="pactl -- set-sink-volume 0 "
-
-# Twttr
-if [ -e "/usr/bin/psql" ] ; then
-  alias tsql="PGPASSWORD=twttr psql -U twttr twttr -h localhost"
-fi  
-
 # xrandr
-if [ -e "/usr/bin/xrandr" ] ; then
-  alias xrandr3="xrandr \
-    --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
-    --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
-    --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left \
-    --dpi 96"
+command -v xrandr &>/dev/null
 
-  alias xrandr2="xrandr \
-    --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
-    --output DP-2-2 --mode 1920x1080 --pos 768x0 --right-of eDP-1 \
-    --output DP-2-3 --off
-    --dpi 96"
+if [ $? -eq 0 ]; then
+    alias xrandr3="xrandr \
+        --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
+        --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
+        --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left \
+        --dpi 96"
 
-  alias xrandr1="xrandr \
-    --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
-    --output DP-2-2 --off \
-    --output DP-2-3 --off \
-    --dpi 96"
+    alias xrandr2="xrandr \
+        --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
+        --output DP-2-2 --mode 1920x1080 --pos 768x0 --right-of eDP-1 \
+        --output DP-2-3 --off
+        --dpi 96"
+
+    alias xrandr1="xrandr \
+        --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
+        --output DP-2-2 --off \
+        --output DP-2-3 --off \
+        --dpi 96"
 fi
 
-# netstat
-if [ -e "/bin/netstat" ] ; then
-  function port2proc {
-    sudo netstat -ltnp | \grep -w ":$1"
-  }
-fi  
+# Netstat
+command -v netstat &>/dev/null
 
-function bl {
-  su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
-}
+if [ $? -eq 0 ]; then
+    function port2proc {
+        sudo netstat -ltnp | \grep -w ":$1"
+    }
+fi
+
+# macOS
+if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
+    alias ldd="otool -L"
+
+    if type brew &>/dev/null; then
+        HOMEBREW_PREFIX=$(brew --prefix)
+
+        # gnubin
+        for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do
+            export PATH=$d:$PATH
+        done
+
+        # gnuman
+        for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman; do
+            export MANPATH=$d:$MANPATH
+        done
+    fi
+fi

@@ -14,9 +14,9 @@ set showcmd
 set noincsearch
 set hlsearch
 set nowrap
-set ts=2
+set ts=4
 set bs=2
-set sw=2
+set sw=4
 set ch=1
 set scrolloff=2
 set expandtab
@@ -50,20 +50,20 @@ syntax on
 
 " Commandline
 if has("cmdline_info")
-  set ruler
-  set showcmd
+    set ruler
+    set showcmd
 endif
 
 " Functions
 function! ToggleCopy()
-  if exists("&number")
-    set number!
-    set listchars=
-  else
-    set number
-    set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:< 
-    syntax sync fromstart
-  endif
+    if exists("&number")
+        set number!
+        set listchars=
+    else
+        set number
+        set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:< 
+        syntax sync fromstart
+    endif
 endfunction
 
 " Maps
@@ -114,8 +114,8 @@ command W w !sudo tee % /dev/null
 
 " Filetype
 if has("autocmd")
-  filetype plugin on
-  filetype indent off
+    filetype plugin on
+    filetype indent off
 endif
 
 " Match
