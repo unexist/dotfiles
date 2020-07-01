@@ -66,7 +66,32 @@ fi
 command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias hgs="hg status|grep -v '^?'"
+    alias hgs="hg status | grep -v '^?'"
+
+    local function find_file_by_idx() {
+        local IDX=${1}
+        local STATUS=`hg status | grep -v '^?'`
+
+        echo ${STATUS}
+
+        if [ -z "${IDX}" ] ; then
+            vared -p "Idx? " -c IDX
+        fi
+
+        FILE=`echo ${STATUS} | sed -n "${IDX}p" | cut -d ' ' -f2`
+    }
+
+    function hgd() {
+        find_file_by_idx
+
+        hg diff ${FILE}
+    }
+
+    function hgc() {
+        find_file_by_idx
+
+        hg ci ${FILE}
+    }
 fi
 
 # Git
@@ -147,7 +172,7 @@ fi
 command -v rsync &>/dev/null
 
 if [ $? -eq 0 ]; then
-  alias rsync="rsync -trvh"
+  alias rsync="rsync -trvh --progress"
 fi
 
 # Java
