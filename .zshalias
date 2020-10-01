@@ -16,7 +16,7 @@ alias q='clear && logout'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias grep='grep -nI --color'
+alias grep='grep -nI --color=always'
 
 # Security
 alias rm='rm -i'
@@ -66,11 +66,11 @@ fi
 command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias hgs="hg status | grep -v '^?'"
+    alias hgs="hg status | grep -v '^?' --color=always"
 
     local function find_file_by_idx() {
         local IDX=${1}
-        local STATUS=`hg status | grep -v '^?'`
+        local STATUS=`hg status | grep -v '^?' --color=always`
 
         echo ${STATUS}
 

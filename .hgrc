@@ -10,6 +10,7 @@ hgext.graphlog   =
 hgext.color      =
 hgext.transplant =
 hgext.histedit   =
+hgext.strip      =
 
 [keyword]
 **.* =

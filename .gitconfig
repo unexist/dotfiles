@@ -1,11 +1,3 @@
-[color]
-	ui = auto
 [user]
 	name = Christoph Kappel
-	email = unexist@subforge.org
-
-[alias]
-	ci = commit
-	st = status
-[credential]
-	helper = cache --timeout=28800
+	email = christoph.kappel@openknowledge.de
