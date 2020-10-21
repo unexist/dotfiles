@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2020, Christoph Kappel <unexist@subforge.org>
+# @copyright (c) 2006-2020, Christoph Kappel <christoph@unexist.dev>
 # @version $Id$
 #
 

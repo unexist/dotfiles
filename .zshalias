@@ -1,7 +1,7 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2020, Christoph Kappel <unexist@subforge.org>
+# @copyright (c) 2006-2020, Christoph Kappel <christoph@unexist.dev>
 # @version $Id$
 #
 
@@ -210,6 +210,13 @@ if [ $? -eq 0 ]; then
     function port2proc {
         sudo netstat -ltnp | \grep -w ":$1"
     }
+fi
+
+# Delta
+command -v delta &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias delta="delta -s"
 fi
 
 # macOS
