@@ -1,7 +1,7 @@
 "
 " @file Vim config
 "
-" @copyright (c) 2008-2010, Christoph Kappel <unexist@dorfelite.net>
+" @copyright (c) 2008-2020, Christoph Kappel <christoph@unexist.dev>
 " @version $Id$
 "
 
@@ -34,36 +34,37 @@ set wildignore=*.o,*.swp
 set nobackup
 set autowriteall
 set noswapfile
-set cursorline
 set list!
 set listchars=trail:-,tab:>-,eol:¬,nbsp:%,extends:>,precedes:<
 set dy+=lastline
 set dy+=uhex
-"set t_Co=256
+set t_Co=256
 set vb
-"set spell spelllang=de_DE
+
+" Spellcheck
+au FileType markdown set spell spelllang=en_us
 
 syntax on
 
 " Colorscheme
-"colorscheme xoria256
+colorscheme murphy
 
 " Commandline
 if has("cmdline_info")
-    set ruler
-    set showcmd
+  set ruler
+  set showcmd
 endif
 
 " Functions
 function! ToggleCopy()
-    if exists("&number")
-        set number!
-        set listchars=
-    else
-        set number
-        set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:< 
-        syntax sync fromstart
-    endif
+  if exists("&number")
+    set number!
+    set listchars=
+  else
+    set number
+    set listchars=trail:-,tab:>-,eol:<,nbsp:%,extends:>,precedes:< 
+    syntax sync fromstart
+  endif
 endfunction
 
 " Maps
@@ -97,11 +98,6 @@ nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
-" Disable ex mode
-nnoremap Q <Nop>
-
-" Select all
-map <C-a> <ESC>:%y+<CR>
 
 " Brackets
 "inoremap {      {}<Left>
@@ -114,8 +110,8 @@ command W w !sudo tee % /dev/null
 
 " Filetype
 if has("autocmd")
-    filetype plugin on
-    filetype indent off
+  filetype plugin on
+  filetype indent off
 endif
 
 " Match
