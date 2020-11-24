@@ -205,3 +205,8 @@ fi
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Kubectl
+if [ -e "$HOME/.krew/bin" ] ; then
+    export PATH="${PATH}:${HOME}/.krew/bin"
+fi

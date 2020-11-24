@@ -207,9 +207,7 @@ fi
 command -v netstat &>/dev/null
 
 if [ $? -eq 0 ]; then
-    function port2proc {
-        sudo netstat -ltnp | \grep -w ":$1"
-    }
+    alias p2p="sudo netstat -ltnp | \grep -w \":$1\""
 fi
 
 # Delta
@@ -217,6 +215,21 @@ command -v delta &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias delta="delta -s"
+fi
+
+# k8s
+command -v kubectl &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias k="kubectl"
+    alias ka="kubectl apply -f"
+    alias kd="kubectl delete -f"
+
+    RPROMPT="[$(kubectl config current-context)]"
+
+    function k8stoken {
+        kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | \grep admin-user | awk '{print $1}')
+    }
 fi
 
 # macOS
