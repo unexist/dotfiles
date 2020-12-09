@@ -224,8 +224,19 @@ if [ $? -eq 0 ]; then
     alias k="kubectl"
     alias ka="kubectl apply -f"
     alias kd="kubectl delete -f"
+    alias kx="kubectl ctx"
+    alias kn="kubectl ns"
+    alias kp="kubectl ipick"
 
-    RPROMPT="[$(kubectl config current-context)]"
+    function kshell {
+        kubectl exec --stdin --tty ${1} -- /bin/sh
+    }
+
+    #function precmd {
+    #    K8S_CTX=`kubectl config current-context`
+    #}
+
+    #RPROMPT="[${K8S_CTX}]"
 
     function k8stoken {
         kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | \grep admin-user | awk '{print $1}')
