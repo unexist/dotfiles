@@ -210,3 +210,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ -e "$HOME/.krew/bin" ] ; then
     export PATH="${PATH}:${HOME}/.krew/bin"
 fi
+
+# brew
+command -v brew &>/dev/null
+
+if [ $? -eq 0 ]; then
+    export HOMEBREW_NO_AUTO_UPDATE=1
+fi

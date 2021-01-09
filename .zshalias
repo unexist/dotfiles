@@ -227,6 +227,7 @@ if [ $? -eq 0 ]; then
     alias kx="kubectl ctx"
     alias kn="kubectl ns"
     alias kp="kubectl ipick"
+    alias kpf="kubectl port-forward"
 
     function kshell {
         kubectl exec --stdin --tty ${1} -- /bin/sh
@@ -243,6 +244,12 @@ if [ $? -eq 0 ]; then
     }
 fi
 
+command -v minikube &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias minidocker=eval $(minikube -p minikube docker-env)
+fi
+
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     alias ldd="otool -L"
@@ -252,12 +259,16 @@ if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
 
         # gnubin
         for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do
-            export PATH=$d:$PATH
+            export PATH="$d:$PATH"
         done
 
         # gnuman
         for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman; do
             export MANPATH=$d:$MANPATH
         done
+    fi
+
+    if [ -e "/usr/local/opt/libpq/bin" ] ; then
+        export PATH="/usr/local/opt/libpq/bin:$PATH"
     fi
 fi
