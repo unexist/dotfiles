@@ -2,30 +2,40 @@
     "editor.fontFamily": "'Iosevka Nerd Font Mono', monospace",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
+    "editor.fontWeight": "500",
     "editor.formatOnType": true,
-    "files.trimTrailingWhitespace": true,
-    "search.smartCase": false,
-    "vim.statusBarColorControl": true,
-    "vim.ignorecase": false,
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    },
-    "amVim.smartRelativeLineNumbers": true,
-    "docomment.activateOnEnter": true,
-    "window.zoomLevel": 0,
     "editor.showFoldingControls": "always",
     "editor.tabCompletion": "on",
     "editor.wrappingIndent": "indent",
     "editor.formatOnPaste": true,
     "editor.useLigatures": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.rulers": [
+        100,
+        120
+    ],
     "workbench.list.openMode": "doubleClick",
     "workbench.fontAliasing": "antialiased",
-    "editor.fontWeight": "500",
     "workbench.sideBar.location": "right",
-    "C_Cpp.updateChannel": "Insiders",
     "workbench.editor.showTabs": false,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "files.trimTrailingWhitespace": true,
+    "search.smartCase": false,
+    "search.exclude": {
+        "**/.git": true,
+        "**/tmp": true,
+        "**/node_modules": true,
+        "**/target": true
+    }
+    "vim.statusBarColorControl": true,
+    "vim.ignorecase": false,
+    "amVim.smartRelativeLineNumbers": true,
+    "docomment.activateOnEnter": true,
+    "window.zoomLevel": 0,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -36,5 +46,6 @@
     "rust.rustup": {
         "toolchain": "nightly-x86_64-apple-darwin"
     },
-    "cSpell.language": "de, en"
+    "cSpell.language": "de, en",
+    "C_Cpp.updateChannel": "Insiders"
 }
