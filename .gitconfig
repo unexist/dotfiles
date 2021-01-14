@@ -3,3 +3,7 @@
 	email = christoph.kappel@openknowledge.de
 [core]
 	autocrlf = input
+[alias]
+    ci = commit
+    forget = rm -r --cached
+    am = git commit --amend
