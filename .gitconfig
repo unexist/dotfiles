@@ -6,4 +6,4 @@
 [alias]
     ci = commit
     forget = rm -r --cached
-    am = git commit --amend
+    am = commit --amend
