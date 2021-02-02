@@ -1,9 +1,12 @@
 [user]
-	name = Christoph Kappel
-	email = christoph.kappel@openknowledge.de
+    name = Christoph Kappel
+    email = christoph.kappel@openknowledge.de
 [core]
-	autocrlf = input
+    autocrlf = input
+    pager = less -FX
 [alias]
     ci = commit
     forget = rm -r --cached
     am = commit --amend
+[pager]
+    show = cat
