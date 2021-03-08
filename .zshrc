@@ -217,3 +217,8 @@ command -v brew &>/dev/null
 if [ $? -eq 0 ]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
+
+# VScode
+if [ -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] ; then
+    export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+fi
