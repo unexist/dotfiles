@@ -8,5 +8,8 @@
     ci = commit
     forget = rm -r --cached
     am = commit --amend
+    quit = rebase --quit
 [pager]
     show = cat
+[credential]
+    helper = store
