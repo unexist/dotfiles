@@ -30,7 +30,8 @@
         "**/tmp": true,
         "**/node_modules": true,
         "**/target": true
-    }
+    },
+    "search.quickOpen.history.filterSortOrder": "default",
     "vim.statusBarColorControl": true,
     "vim.ignorecase": false,
     "amVim.smartRelativeLineNumbers": true,
@@ -47,5 +48,13 @@
         "toolchain": "nightly-x86_64-apple-darwin"
     },
     "cSpell.language": "de, en",
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "tabnine.experimentalAutoImports": true,
+    "cSpell.userWords": [
+        "endianness"
+    ],
+    "hg.autoRefresh": false,
+    "hg.countBadge": "off",
+    "redhat.telemetry.enabled": false
+
 }

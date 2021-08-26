@@ -78,6 +78,12 @@ bindkey "\e[3~" delete-char
 #bindkey "^R" search-backwords
 bindkey "^R" history-incremental-search-backward
 
+# macOS
+if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
+    bindkey "^[[~1" beginning-of-line
+    bindkey "^[[~4" end-of-line
+fi
+
 # Functions
 function search-backwords {
     zle history-incremental-search-backward $BUFFER
@@ -222,3 +228,7 @@ fi
 if [ -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] ; then
     export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/unexist/.sdkman"
+[[ -s "/Users/unexist/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/unexist/.sdkman/bin/sdkman-init.sh"

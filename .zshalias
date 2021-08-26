@@ -6,7 +6,7 @@
 #
 
 # ls
-alias ls='lsd -hF' #-phFG'
+alias ls='lsd -hF --group-dirs=first' #-phFG'
 alias la='ls -a'
 alias ll='ls -l'
 alias l='ls -l'
@@ -17,6 +17,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias grep='grep -nI --color=always'
+alias less='less -Xr'
 
 # Security
 alias rm='rm -i'
@@ -221,6 +222,14 @@ fi
 command -v kubectl &>/dev/null
 
 if [ $? -eq 0 ]; then
+    local configs="$HOME/.kube/config"
+
+    for config in $HOME/.kube/*.yaml ; do
+        configs="$configs:$config"
+    done
+
+    export KUBECONFIG="$configs"
+
     alias k="kubectl"
     alias ka="kubectl apply -f"
     alias kd="kubectl delete -f"
@@ -229,25 +238,42 @@ if [ $? -eq 0 ]; then
     alias kp="kubectl ipick"
     alias kpf="kubectl port-forward"
 
-    function kshell {
-        kubectl exec --stdin --tty ${1} -- /bin/sh
+    function klj {
+        kubectl logs ${1} | jq . -C | less
     }
 
-    #function precmd {
-    #    K8S_CTX=`kubectl config current-context`
-    #}
+    function kdpf {
+        kubectl delete pods ${1} --grace-period=0 --force
+    }
 
-    #RPROMPT="[${K8S_CTX}]"
-
-    function k8stoken {
-        kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | \grep admin-user | awk '{print $1}')
+    function ksh {
+        kubectl exec --stdin --tty ${1} -- /bin/sh
     }
 fi
 
 command -v minikube &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias minidocker=eval $(minikube -p minikube docker-env)
+    alias mk="minikube"
+    alias mkv="minikube start --driver=virtualbox"
+
+    function mkdocker {
+        eval $(minikube -p minikube docker-env)
+    }
+fi
+
+command -v kustomize &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias ku="kustomize"
+    alias ku2k="kustomize build | kubectl apply -f -"
+fi
+
+# Mvn
+command -v mvn &>/dev/null
+
+if [ $? -eq 0 ] ; then
+    alias vlmvn="mvn  -Dmaven.wagon.http.ssl.insecure=true"
 fi
 
 # macOS
@@ -270,5 +296,15 @@ if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
 
     if [ -e "/usr/local/opt/libpq/bin" ] ; then
         export PATH="/usr/local/opt/libpq/bin:$PATH"
+    fi
+
+    # VScode
+    if [ -e /Applications/Visual\ Studio\ Code.app ] ; then
+        alias vopen="open -a 'Visual Studio Code'"
+    fi
+
+    # Chrome
+    if [ -e /Applications/Google\ Chrome.app ] ; then
+         alias copen="open -a 'Google Chrome.app'"
     fi
 fi
