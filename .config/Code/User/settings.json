@@ -55,6 +55,7 @@
     ],
     "hg.autoRefresh": false,
     "hg.countBadge": "off",
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "extensions.ignoreRecommendations": true
 
 }

@@ -1,9 +1,12 @@
 #
 # @file Zsh alias file
 #
-# @copyright (c) 2006-2020, Christoph Kappel <christoph@unexist.dev>
+# @copyright (c) 2006-2021, Christoph Kappel <christoph@unexist.dev>
 # @version $Id$
 #
+
+# Delete old aliases
+unalias -m "*"
 
 # ls
 alias ls='lsd -hF --group-dirs=first' #-phFG'
@@ -233,11 +236,11 @@ if [ $? -eq 0 ]; then
     export KUBECONFIG="$configs"
 
     alias k="kubectl"
-    alias ka="kubectl apply -f"
-    alias kd="kubectl delete -f"
+    alias ka="kubectl apply"
+    alias kd="kubectl delete"
     alias kctx="kubectl ctx"
     alias kns="kubectl ns"
-    alias kp="kubectl ipick"
+    alias kip="kubectl ipick"
     alias kpf="kubectl port-forward"
 
     function klj {
@@ -268,8 +271,6 @@ command -v kustomize &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias ku="kustomize"
-    alias kua="kustomize build . | kubectl apply -f -"
-    alias kud="kustomize build . | kubectl delete -f -"
 fi
 
 # Mvn
