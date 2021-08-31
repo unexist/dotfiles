@@ -235,8 +235,8 @@ if [ $? -eq 0 ]; then
     alias k="kubectl"
     alias ka="kubectl apply -f"
     alias kd="kubectl delete -f"
-    alias kx="kubectl ctx"
-    alias kn="kubectl ns"
+    alias kctx="kubectl ctx"
+    alias kns="kubectl ns"
     alias kp="kubectl ipick"
     alias kpf="kubectl port-forward"
 
@@ -268,14 +268,15 @@ command -v kustomize &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias ku="kustomize"
-    alias ku2k="kustomize build | kubectl apply -f -"
+    alias kua="kustomize build . | kubectl apply -f -"
+    alias kud="kustomize build . | kubectl delete -f -"
 fi
 
 # Mvn
 command -v mvn &>/dev/null
 
 if [ $? -eq 0 ] ; then
-    alias vlmvn="mvn  -Dmaven.wagon.http.ssl.insecure=true"
+    alias mvninsec="mvn  -Dmaven.wagon.http.ssl.insecure=true"
 fi
 
 # macOS
