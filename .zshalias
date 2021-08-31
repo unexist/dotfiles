@@ -224,9 +224,11 @@ command -v kubectl &>/dev/null
 if [ $? -eq 0 ]; then
     local configs="$HOME/.kube/config"
 
-    for config in $HOME/.kube/*.yaml ; do
-        configs="$configs:$config"
-    done
+    if ! [ -z `find "$HOME/.kube" -maxdepth 1 -type f -name "*.yaml"` ] ; then
+        for config in $HOME/.kube/*.yaml ; do
+            configs="$configs:$config"
+        done
+    fi
 
     export KUBECONFIG="$configs"
 
@@ -255,7 +257,7 @@ command -v minikube &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias mk="minikube"
-    alias mkv="minikube start --driver=virtualbox"
+    alias mkv="minikube --driver=virtualbox"
 
     function mkdocker {
         eval $(minikube -p minikube docker-env)
