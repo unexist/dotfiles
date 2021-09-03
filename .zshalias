@@ -227,7 +227,7 @@ command -v kubectl &>/dev/null
 if [ $? -eq 0 ]; then
     local configs="$HOME/.kube/config"
 
-    if ! [ -z `find "$HOME/.kube" -maxdepth 1 -type f -name "*.yaml"` ] ; then
+    if [ -d "$HOME/.kube" ] && ! [ -z `find "$HOME/.kube" -maxdepth 1 -type f -name "*.yaml"` ] ; then
         for config in $HOME/.kube/*.yaml ; do
             configs="$configs:$config"
         done
