@@ -243,17 +243,10 @@ if [ $? -eq 0 ]; then
     alias kip="kubectl ipick"
     alias kpf="kubectl port-forward"
 
-    function klj {
-        kubectl logs ${1} | jq . -C | less
-    }
-
-    function kdpf {
-        kubectl delete pods ${1} --grace-period=0 --force
-    }
-
-    function ksh {
-        kubectl exec --stdin --tty ${1} -- /bin/sh
-    }
+    # Add custom plugins to path
+    if [ -d "$HOME/Projects/kubectl-plugins/bin" ] ; then
+        export PATH="$HOME/Projects/kubectl-plugins/bin:$PATH"
+    fi
 fi
 
 command -v minikube &>/dev/null
