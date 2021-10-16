@@ -70,39 +70,38 @@ fi
 command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias hgs="hg status | grep -v '^?' --color=always"
+    alias hgs="hg status -X unknown"
 
-    local function find_file_by_idx() {
-        local IDX=${1}
-        local STATUS=`hg status | grep -v '^?' --color=always`
+    command -v fzf &>/dev/null
 
-        echo ${STATUS}
+    if [ $? -eq 0 ]; then
+        function hgd() {
+            hg diff "$(hg status -X unknown | fzf | cut -d ' ' -f2)"
+        }
 
-        if [ -z "${IDX}" ] ; then
-            vared -p "Idx? " -c IDX
-        fi
-
-        FILE=`echo ${STATUS} | sed -n "${IDX}p" | cut -d ' ' -f2`
-    }
-
-    function hgd() {
-        find_file_by_idx
-
-        hg diff ${FILE}
-    }
-
-    function hgc() {
-        find_file_by_idx
-
-        hg ci ${FILE}
-    }
+        function hgc() {
+            hg ci "$(hg status -X unknown | fzf -m | cut -d ' ' -f2)"
+        }
+    fi
 fi
 
 # Git
 command -v git &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias gits="git status|grep -v '^?'"
+    alias gits="git status --untracked-files=no --short"
+
+    command -v fzf &>/dev/null
+
+    if [ $? -eq 0 ]; then
+        function gitd() {
+            git diff "$(git status --untracked-files=no --short | fzf | cut -d ' ' -f2)"
+        }
+
+        function gitc() {
+            git commit "$(git status --untracked-files=no --short | fzf -m | cut -d ' ' -f2)"
+        }
+    fi
 fi
 
 # Mpd
