@@ -76,11 +76,11 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function hgd() {
-            hg diff "$(hg status -X unknown | fzf | cut -d ' ' -f2)"
+            hg diff $(hg status -X unknown | fzf | cut -d ' ' -f2 | xargs echo)
         }
 
         function hgc() {
-            hg ci "$(hg status -X unknown | fzf -m | cut -d ' ' -f2)"
+            hg ci $(hg status -X unknown | fzf -m | cut -d ' ' -f2 | xargs echo)
         }
     fi
 fi
@@ -95,11 +95,11 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function gitd() {
-            git diff "$(git status --untracked-files=no --short | fzf | cut -d ' ' -f2)"
+            git diff $(git status --untracked-files=no --short | fzf | cut -d ' ' -f2 | xargs echo)
         }
 
         function gitc() {
-            git commit "$(git status --untracked-files=no --short | fzf -m | cut -d ' ' -f2)"
+            git commit $(git status --untracked-files=no --short | fzf -m | cut -d ' ' -f2 | xargs echo)
         }
     fi
 fi
