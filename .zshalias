@@ -50,6 +50,21 @@ if [ -e /usr/bin/sudo ] ; then
     fi
 fi
 
+# fff
+command -v fff &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function f() {
+        local fffpwd="${HOME}/.fff_d"
+
+        FFF_CD_ON_EXIT=1 FFF_CD_FILE=${fffpwd} fff
+
+        if [ -f $fffpwd ] ; then
+            cd "`cat ${fffpwd}`"
+        fi
+    }
+fi
+
 # Valgrind
 command -v valgrind &>/dev/null
 
@@ -76,11 +91,11 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function hgd() {
-            hg diff $(hg status -X unknown | fzf | cut -d ' ' -f2 | xargs)
+            hg diff $(hg status -X unknown | fzf --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
 
         function hgc() {
-            hg ci $(hg status -X unknown | fzf --multi | cut -d ' ' -f2 | xargs)
+            hg ci $(hg status -X unknown | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
     fi
 fi
@@ -95,11 +110,11 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function gitd() {
-            git diff $(git status --untracked-files=no --short | fzf | cut -d ' ' -f3 | xargs)
+            git diff $(git status --untracked-files=no --short | fzf --tac --no-sort | cut -d ' ' -f3 | xargs)
         }
 
         function gitc() {
-            git commit $(git status --untracked-files=no --short | fzf -m | cut -d ' ' -f3 | xargs)
+            git commit $(git status --untracked-files=no --short | fzf --multi --tac --no-sort | cut -d ' ' -f3 | xargs)
         }
     fi
 fi
@@ -175,7 +190,7 @@ fi
 command -v rsync &>/dev/null
 
 if [ $? -eq 0 ]; then
-  alias rsync="rsync -trvh --progress"
+  alias rsync="USER=unexist rsync -trvh --progress"
 fi
 
 # Java
@@ -256,6 +271,23 @@ if [ $? -eq 0 ]; then
 
     function mkdocker {
         eval $(minikube -p minikube docker-env)
+    }
+fi
+
+command -v lazydocker &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias lzd="lazydocker"
+fi
+command -v podman &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias pd="podman"
+    alias pdcrm="podman ps -a | fzf --tac --no-sort | cut -d ' ' -f1 | xargs podman rm -f"
+    alias pdprm="podman pod ls | fzf --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
+
+    function pdl() {
+        eval `podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | sed -nE "s#(.*)#-l \'podman logs -f \1\'#gp" | xargs -r -0 -n10 -d'\n' echo multitail`
     }
 fi
 
