@@ -288,17 +288,28 @@ if [ $? -eq 0 ]; then
 
     alias pdrc="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman rm -f"
     alias pdrp="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
+    alias pdps="podman ps -a --pod --format 'table {{.ID}} {{.Image}} {{.Status}} {{.Names}} {{.PodName}}'"
 
-    function pdsh() {
+    function pdshc() {
         local ID=`podman ps | fzf --tac --no-sort | cut -d ' ' -f1 | xargs -r`
 
         if ! [ -z "$ID" ] ; then
-            podman exec -it $ID /bin/bash
+            podman exec -it $ID /bin/sh
         fi
     }
 
+    function pdshp() {
+        local ID=`podman pod ls | fzf --tac --no-sort | cut -d ' ' -f1 | xargs -r`
+
+        if ! [ -z "$ID" ] ; then
+            podman run -it --pod $ID --rm markeijsermans/debug:kitchen-sink /bin/bash
+        fi
+    }
+
+
+
     function pdl() {
-        eval `podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | sed -nE "s#(.*)#-l \'podman logs -f \1\'#gp" | xargs -r -0 -n10 -d'\n' echo multitail -C -cT ansi`
+        eval `podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | sed -nE "s#(.*)#-l \'podman logs -f \1\'#gp" | xargs -r -0 -n10 -d'\n' echo multitail -du -C -cT ansi`
     }
 fi
 
