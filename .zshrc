@@ -50,9 +50,9 @@ setopt no_bang_hist
 setopt promptsubst
 
 # History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=5000
+export HISTSIZE=5000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=5000
 
 # Style
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -150,6 +150,11 @@ fi
 # Adding rust stuff
 if [ -e $HOME/.cargo/bin ] ; then
     export PATH=$HOME/.cargo/bin:$PATH
+fi
+
+# Adding go stuff
+if [ -e $HOME/go/bin ] ; then
+    export PATH=$HOME/go/bin:$PATH
 fi
 
 # Adding android stuff
