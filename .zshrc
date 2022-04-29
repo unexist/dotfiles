@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2020, Christoph Kappel <christoph@unexist.dev>
+# @copyright (c) 2006-2022, Christoph Kappel <christoph@unexist.dev>
 # @version $Id$
 #
 
@@ -66,6 +66,13 @@ bindkey "^t" transpose-chars
 bindkey "^q" quote-line
 bindkey "^k" kill-line
 bindkey "^w" delete-word
+
+
+command -v navi &>/dev/null
+
+if [ $? -eq 0 ]; then
+    bindkey -s "^N" 'navi^M'
+fi
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[7~" beginning-of-line
@@ -233,3 +240,8 @@ fi
 if [ -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] ; then
     export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
+
+# Testcontainers
+export TESTCONTAINERS_CHECKS_DISABLE=true
+export TESTCONTAINERS_RYUK_DISABLED=true
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=unix:///Users/christoph.kappel/.local/share/containers/podman/machine/podman-machine-default/podman.sock
