@@ -50,6 +50,15 @@ if [ -e /usr/bin/sudo ] ; then
     fi
 fi
 
+# hh
+command -v hstr &>/dev/null
+
+if [ $? -eq 0 ]; then
+    export HSTR_CONFIG=prompt-bottom,hicolor
+    alias hh="hstr"
+fi
+
+
 # fff
 command -v fff &>/dev/null
 
@@ -86,6 +95,7 @@ command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias hgs="hg status -X unknown"
+    alias hgp="hg push"
 
     command -v fzf &>/dev/null
 
@@ -276,11 +286,20 @@ if [ $? -eq 0 ]; then
     }
 fi
 
+command -v kustomize &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias ku="kustomize"
+fi
+
+# Docker
 command -v lazydocker &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias lzd="lazydocker"
 fi
+
+# Podman
 command -v podman &>/dev/null
 
 if [ $? -eq 0 ]; then
@@ -289,6 +308,14 @@ if [ $? -eq 0 ]; then
     alias pdrc="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman rm -f"
     alias pdrp="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
     alias pdps="podman ps -a --pod --format 'table {{.ID}} {{.Image}} {{.Status}} {{.Names}} {{.PodName}}'"
+
+    function pdive() {
+        local ID=`podman images | fzf --tac --no-sort | cut -d ' ' -f9 | xargs -r`
+
+        if ! [ -z "$ID" ] ; then
+            dive $ID
+        fi
+    }
 
     function pdshc() {
         local ID=`podman ps | fzf --tac --no-sort | cut -d ' ' -f1 | xargs -r`
@@ -306,17 +333,16 @@ if [ $? -eq 0 ]; then
         fi
     }
 
-
-
     function pdl() {
         eval `podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | sed -nE "s#(.*)#-l \'podman logs -f \1\'#gp" | xargs -r -0 -n10 -d'\n' echo multitail -du -C -cT ansi`
     }
 fi
 
-command -v kustomize &>/dev/null
+# Nomad
+command -v nomad &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias ku="kustomize"
+    alias nd="nomad"
 fi
 
 # Mvn

@@ -245,3 +245,8 @@ fi
 export TESTCONTAINERS_CHECKS_DISABLE=true
 export TESTCONTAINERS_RYUK_DISABLED=true
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=unix:///Users/christoph.kappel/.local/share/containers/podman/machine/podman-machine-default/podman.sock
+
+# ZVM
+if [ -e /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ] ; then
+    source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+fi
