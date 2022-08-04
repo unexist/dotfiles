@@ -352,6 +352,20 @@ if [ $? -eq 0 ] ; then
     alias mvninsec="mvn  -Dmaven.wagon.http.ssl.insecure=true"
 fi
 
+# Navi
+command -v navi &>/dev/null
+
+if [ $? -eq 0 ]; then
+    bindkey -s "^N" 'navi^M'
+fi
+
+# zoxide
+command -v zoxide &>/dev/null
+
+if [ $? -eq 0 ]; then
+    alias z="zoxide"
+fi
+
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     alias ldd="otool -L"
