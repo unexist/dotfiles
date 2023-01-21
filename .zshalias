@@ -74,6 +74,15 @@ if [ $? -eq 0 ]; then
     }
 fi
 
+# llama
+command -v llama &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function ll {
+        cd "$(llama)"
+    }
+fi
+
 # Valgrind
 command -v valgrind &>/dev/null
 
@@ -115,6 +124,7 @@ command -v git &>/dev/null
 
 if [ $? -eq 0 ]; then
     alias gits="git status --untracked-files=no --short"
+    alias gitp="git push"
 
     command -v fzf &>/dev/null
 
@@ -269,6 +279,8 @@ if [ $? -eq 0 ]; then
     alias kip="kubectl ipick"
     alias kpf="kubectl port-forward"
 
+    alias kdp="kubectl get pods | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs kubectl delete pod"
+
     # Add custom plugins to path
     if [ -d "$HOME/Projects/kubectl-plugins/bin" ] ; then
         export PATH="$HOME/Projects/kubectl-plugins/bin:$PATH"
@@ -307,7 +319,10 @@ if [ $? -eq 0 ]; then
 
     alias pdrc="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman rm -f"
     alias pdrp="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
+    alias pdic="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman inspect"
+    alias pdip="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman inspect"
     alias pdps="podman ps -a --pod --format 'table {{.ID}} {{.Image}} {{.Status}} {{.Names}} {{.PodName}}'"
+    alias pdonce="podman run -it --rm"
 
     function pdive() {
         local ID=`podman images | fzf --tac --no-sort | cut -d ' ' -f9 | xargs -r`
