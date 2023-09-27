@@ -134,36 +134,41 @@ export LC_CTYPE="en_US.UTF-8"
 export MANSECT="2:3:3p:1:1p:8:4:5:6:7:9:0p:tcl:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x"
 
 # Extending the path var
-if [ -e $HOME/bin ] ; then
-    export PATH=$HOME/bin:$PATH
+if [ -e "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
 fi
 
-if [ -e /usr/local/bin/ ] ; then
-    export PATH=/usr/local/bin:$PATH
+if [ -e "/usr/local/bin" ] ; then
+    export PATH="/usr/local/bin:$PATH"
 fi
 
 # Adding brew stuff
-if [ -e /usr/local/bin/brew ] ; then
+if [ -e "/usr/local/bin/brew" ] ; then
     export PATH="$(brew --prefix)/bin:$PATH"
 fi
 
 # Adding rust stuff
-if [ -e $HOME/.cargo/bin ] ; then
-    export PATH=$HOME/.cargo/bin:$PATH
+if [ -e "$HOME/.cargo/bin" ] ; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Adding go stuff
-if [ -e $HOME/go/bin ] ; then
-    export PATH=$HOME/go/bin:$PATH
+if [ -e "$HOME/go/bin" ] ; then
+    export PATH="$HOME/go/bin:$PATH"
 fi
 
 # Adding android stuff
-if [ -e $HOME/Android ] ; then
-    export PATH=$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH
+if [ -e "$HOME/Android" ] ; then
+    export PATH="$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH"
 fi
 
-if [ -e /opt/android-sdk/tools ] ; then
-    export PATH=/opt/android-sdk/tools:$PATH
+if [ -e "/opt/android-sdk/tools" ] ; then
+    export PATH="/opt/android-sdk/tools:$PATH"
+fi
+
+# Adding Python
+if [ -e "$HOME/Library/Python/3.9/bin" ] ; then
+    export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 fi
 
 # Setting default editor
@@ -215,7 +220,11 @@ fi
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# jenv
+if [ -f "$HOME/.jenv//jenv.version" ] ; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
+fi
 
 # Kubectl
 if [ -e "$HOME/.krew/bin" ] ; then
@@ -250,3 +259,6 @@ command -v zoxide &>/dev/null
 if [ $? -eq 0 ]; then
     eval "$(zoxide init zsh)"
 fi
+
+# iTerm
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
