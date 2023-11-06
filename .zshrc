@@ -82,6 +82,9 @@ bindkey "^R" history-incremental-search-backward
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     bindkey "^[[~1" beginning-of-line
     bindkey "^[[~4" end-of-line
+
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
 fi
 
 # Functions
@@ -258,6 +261,13 @@ command -v zoxide &>/dev/null
 
 if [ $? -eq 0 ]; then
     eval "$(zoxide init zsh)"
+fi
+
+command -v carapace &>/dev/null
+
+if [ $? -eq 0 ]; then
+    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+    source <(carapace _carapace)
 fi
 
 # iTerm
