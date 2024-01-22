@@ -4,13 +4,18 @@ username = unexist
 commitsubrepos = false
 
 [extensions]
-hgext.keyword    =
-hgext.record     =
-hgext.graphlog   =
-hgext.color      =
-hgext.transplant =
-hgext.histedit   =
-hgext.strip      =
+hgext.keyword     =
+hgext.record      =
+hgext.graphlog    =
+hgext.color       =
+hgext.transplant  =
+hgext.histedit    =
+hgext.strip       =
+mercurial_keyring = $HOME/Library/Python/3.9/lib/python/site-packages/mercurial_keyring.py
+
+[extdiff]
+cmd.dft = difft
+opts.dft = --missing-as-empty
 
 [keyword]
 **.* =
@@ -26,3 +31,7 @@ Rev = {rev}
 
 [color]
 mode = auto
+
+[auth]
+unexistdev.prefix   = https://hg.unexist.dev
+unexistdev.username = unexist

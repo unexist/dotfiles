@@ -1,15 +1,3 @@
 [user]
-    name = Christoph Kappel
-    email = christoph.kappel@openknowledge.de
-[core]
-    autocrlf = input
-    pager = less -FX
-[alias]
-    ci = commit
-    forget = rm -r --cached
-    am = commit --amend
-    quit = rebase --quit
-[pager]
-    show = cat
-[credential]
-    helper = store
+	name = unexist
+	email = christoph@unexist.dev

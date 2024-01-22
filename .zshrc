@@ -263,11 +263,18 @@ if [ $? -eq 0 ]; then
     eval "$(zoxide init zsh)"
 fi
 
-command -v carapace &>/dev/null
+#command -v carapace &>/dev/null
+#
+#if [ $? -eq 0 ]; then
+#    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+#    source <(carapace _carapace)
+#fi
+
+# mcfly
+command -v mcfly &>/dev/null
 
 if [ $? -eq 0 ]; then
-    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-    source <(carapace _carapace)
+    eval "$(mcfly init zsh)"
 fi
 
 # iTerm

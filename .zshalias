@@ -317,6 +317,7 @@ command -v podman &>/dev/null
 if [ $? -eq 0 ]; then
     alias pd="podman"
 
+    alias pdls="podman ps -a --pod --format 'table {{.ID}} {{.Image}} {{.Status}} {{.Names}} {{.PodName}}'"
     alias pdrc="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman rm -f"
     alias pdrp="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
     alias pdic="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman inspect"
