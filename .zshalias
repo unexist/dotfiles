@@ -375,13 +375,6 @@ if [ $? -eq 0 ]; then
     bindkey -s "^N" 'navi^M'
 fi
 
-# zoxide
-command -v zoxide &>/dev/null
-
-if [ $? -eq 0 ]; then
-    alias z="zoxide"
-fi
-
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     alias ldd="otool -L"
