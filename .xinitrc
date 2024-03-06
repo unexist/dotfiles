@@ -22,12 +22,12 @@ setxkbmap -option terminate:ctrl_alt_bksp
 
 # Xdefaults
 if [ -e $HOME/.Xdefaults ] ; then
-  xrdb ~/.Xdefaults
+    xrdb ~/.Xdefaults
 fi
 
 # Xmodmap
 if [ -e $HOME/.Xmodmap ] ; then
-  xmodmap $HOME/.Xmodmap
+    xmodmap $HOME/.Xmodmap
 fi
 
 # Redshift
@@ -37,12 +37,11 @@ fi
 
 # xrandr
 if [ -e /usr/bin/xrandr ] ; then
-  if [ "xazath" = "x`hostname`" ] ; then
-    xrandr \
-      --output eDP-1 --primary --mode 1366x768 --pos 0x0 \
-      --output DP-2-2 --mode 1920x1200 --pos 768x0 --right-of eDP-1 \
-      --output DP-2-3 --mode 1920x1080 --pos 2688x0 --right-of DP-2-2 --rotate left --dpi 96
-  fi
+    if [ "xmeanas" = "x`hostname`" ] ; then
+        xrandr \
+            --output eDP-1 --primary --mode 1920x1200 --pos 0x0 \
+            --output DP-3 --mode 2560x1080 --pos 1920x0 --right-of eDP-1 --dpi 96
+    fi
 fi
 
 # Wallpaper
@@ -67,35 +66,35 @@ sleep 2
 command -v urxvt &>/dev/null
 
 if [ $? -eq 0 ]; then
-  urxvt -name urxvt1 -urgentOnBell &
+    urxvt -name urxvt1 -urgentOnBell &
 
-  # Attach to session if there is any
-  command -v tmux &>/dev/null
+    # Attach to session if there is any
+    command -v tmux &>/dev/null
 
-  if [ $? -eq 0 ]; then
-    tmux has-session
+    if [ $? -eq 0 ]; then
+        tmux has-session
 
-    if [ $? -eq 1 ]; then
-      urxvt -name urxvt2 -e tmux &
-    else
-      urxvt -name urxvt2 -e tmux attach-session &
+        if [ $? -eq 1 ]; then
+            urxvt -name urxvt2 -e tmux &
+        else
+            urxvt -name urxvt2 -e tmux attach-session &
+        fi
     fi
-  fi
 fi
 
 # Numlockx
 command -v numlockx &>/dev/null
 
 if [ $? -eq 0 ]; then
-  numlockx >/dev/null &
+    numlockx >/dev/null &
 fi
 
 # autocutsel
 command -v autocutsel &>/dev/null
 
 if [ $? -eq 0 ]; then
-  autocutsel -fork &
-  autocutsel -selection PRIMARY -fork &
+    autocutsel -fork &
+    autocutsel -selection PRIMARY -fork &
 fi
 
 # xinput
@@ -104,6 +103,13 @@ command -v xinput &>/dev/null
 if [ $? -eq 0 ]; then
     xinput set-prop 9 "libinput Tapping Enabled" 1
     xinput set-prop 9 "libinput Middle Emulation Enabled" 1
+fi
+
+# Bluetooth
+command -v blueman-applet &>/dev/null
+
+if [ $? -eq 0 ]; then
+    blueman-applet &
 fi
 
 wait $pid
