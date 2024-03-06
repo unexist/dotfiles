@@ -1,7 +1,7 @@
 #
 # @file Zsh profile
 #
-# @copyright (c) 2006-2022, Christoph Kappel <christoph@unexist.dev>
+# @copyright (c) 2006-present, Christoph Kappel <christoph@unexist.dev>
 # @version $Id$
 #
 
@@ -185,7 +185,7 @@ if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
 fi
 
 # Browser
-export BROWSER="/usr/bin/chromium"
+export BROWSER="/usr/bin/brave-browser"
 
 # Aliases
 if [ -f $HOME/.zshalias ] ; then
@@ -221,7 +221,13 @@ if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
 fi
 
 # JAVA
-export JAVA_HOME="$(/usr/libexec/java_home)"
+command -v java_home &>/dev/null
+
+if [ $? -eq 0 ]; then
+    export JAVA_HOME="$(/usr/libexec/java_home)"
+else
+    export JAVA_HOME="$(dirname $(dirname $(readlink -f $(which javac))))"
+fi
 
 # jenv
 if [ -f "$HOME/.jenv//jenv.version" ] ; then
@@ -239,11 +245,6 @@ command -v brew &>/dev/null
 
 if [ $? -eq 0 ]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
-fi
-
-# VScode
-if [ -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] ; then
-    export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
 # Testcontainers
