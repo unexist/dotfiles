@@ -114,14 +114,14 @@ prompt_status() {
     if [[ $? == "0" ]]; then
         echo -e ""
     else
-        echo -e "🚨 "
+        echo -e "󰵙 "
     fi
 }
 
 if [ "$USER" = "root" ] ; then
-    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} $(prompt_status)➤ %{\e[0m%}'
+    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[30;1m%} $(prompt_status) %{\e[0m%}'
 else
-    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} $(prompt_status)➤ %{\e[0m%}'
+    PS1=%1~$'%{\e[36;1m%}%(1j.%%%j.)%{\e[34;1m%} $(prompt_status) %{\e[0m%}'
 fi
 
 PS1=$'${(r:$COLUMNS::\u2500:)}'$PS1
@@ -279,4 +279,6 @@ if [ $? -eq 0 ]; then
 fi
 
 # iTerm
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -e "${HOME}/.iterm2_shell_integration.zsh" ] ; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
