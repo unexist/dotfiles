@@ -1,7 +1,7 @@
 #
 # Xinitrc script
 #
-# Copyright (c) 2004-2010, Christoph Kappel <unexist@dorfelite.net>
+# Copyright (c) 2004-present, Christoph Kappel <christoph@unexist.dev>
 #
 
 # Host
@@ -64,29 +64,46 @@ pid=$!
 sleep 2
 
 # Term
-if [ -e /usr/bin/urxvt ] ; then
-  /usr/bin/urxvt -name urxvt1 -urgentOnBell &
+command -v urxvt &>/dev/null
+
+if [ $? -eq 0 ]; then
+  urxvt -name urxvt1 -urgentOnBell &
 
   # Attach to session if there is any
-  if [ -e /usr/bin/tmux ] ; then
+  command -v tmux &>/dev/null
+
+  if [ $? -eq 0 ]; then
     tmux has-session
 
     if [ $? -eq 1 ]; then
-      /usr/bin/urxvt -name urxvt2 -e tmux &
+      urxvt -name urxvt2 -e tmux &
     else
-      /usr/bin/urxvt -name urxvt2 -e tmux attach-session &
+      urxvt -name urxvt2 -e tmux attach-session &
     fi
   fi
 fi
 
 # Numlockx
-if [ -e /usr/bin/numlockx ] ; then
-  /usr/bin/numlockx >/dev/null &
+command -v numlockx &>/dev/null
+
+if [ $? -eq 0 ]; then
+  numlockx >/dev/null &
 fi
 
-if [ -e /usr/bin/autocutsel ] ; then
-  /usr/bin/autocutsel -fork &
-  /usr/bin/autocutsel -selection PRIMARY -fork &
+# autocutsel
+command -v autocutsel &>/dev/null
+
+if [ $? -eq 0 ]; then
+  autocutsel -fork &
+  autocutsel -selection PRIMARY -fork &
+fi
+
+# xinput
+command -v xinput &>/dev/null
+
+if [ $? -eq 0 ]; then
+    xinput set-prop 9 "libinput Tapping Enabled" 1
+    xinput set-prop 9 "libinput Middle Emulation Enabled" 1
 fi
 
 wait $pid
