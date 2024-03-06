@@ -8,15 +8,17 @@
 
 require "socket"
 
+FONT="Iosevka Nerd Font Mono"
+
 # Contrib {{{
 begin
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
   require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
 
-  Subtle::Contrib::Selector.font  = "xft:Envy Code R:pixelsize=13"
+  Subtle::Contrib::Selector.font  = "xft:#{FONT}:pixelsize=13"
   Subtle::Contrib::Launcher.fonts = [
-    "xft:Envy Code R:pixelsize=80",
-    "xft:Envy Code R:pixelsize=13"
+    "xft:#{FONT}:pixelsize=80",
+    "xft:#{FONT}:pixelsize=13"
   ]
 
   Subtle::Contrib::Launcher.browser_screen_num = 0
@@ -40,7 +42,7 @@ style :all do
   background "#1a1a1a"
   padding    2, 6, 2, 6
   background "#1a1a1a"
-  font       "xft:Envy Code R:pixelsize=13"
+  font       "xft:#{FONT}:pixelsize=13"
 end
 
 style :tray do
@@ -93,7 +95,7 @@ style :clients do
 end
 
 style :panel_top do
-  screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :sublets, :center ]
+  screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :center ]
   screen     2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
   screen     3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
 end
@@ -153,7 +155,7 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if "telas" == host or "mockra" == host #< Netbooks
+if "meanas" == host or "telas" == host or "mockra" == host #< Netbooks
   gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
 elsif "test" == host #< Usually VMs
   modkey = "A"
@@ -234,14 +236,15 @@ grab "XF86AudioLowerVolume", :VolumeLower
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
-grab modkey + "-n", "nvim-qt"
 grab modkey + "-f", "firefox -no-remote -profileManager"
 grab modkey + "-c", "chromium"
-grab modkey + "-c", "vivaldo"
+grab modkey + "-b", "brave-browser"
+grab modkey + "-b", "rambox"
+grab modkey + "-i", "#{ENV["HOME"]}/applications/idea-IU-233.14475.28/bin/idea.sh"
 grab modkey + "-l", "slock"
 
 # Contrib
-grab modkey + "-x" do
+grab modkey + "-space" do
   Subtle::Contrib::Launcher.run
 end
 
@@ -379,12 +382,12 @@ tag "scratch" do
 end
 
 tag "browser" do
-  match "navigator|(google\-)?chrom[e|ium]|firefox|vivaldi"
+  match "navigator|(google\-)?chrom[e|ium]|firefox|vivaldi|brave"
   gravity :center
 end
 
 tag "editor" do
-  match  "[ng]?vim|intellij"
+  match  "[ng]?vim|intellij|idea"
   set    :resize
   gravity :center
 end
