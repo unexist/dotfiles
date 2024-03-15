@@ -119,7 +119,5 @@ if [ $? -eq 0 ]; then
     flameshot &
 fi
 
-
-
 wait $pid
 xinput set-prop 9 "libinput Tapping Enabled" 1
