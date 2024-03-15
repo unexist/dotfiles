@@ -12,16 +12,16 @@ FONT="Iosevka Nerd Font Mono"
 
 # Contrib {{{
 begin
-  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
-  require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
+    require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/launcher.rb"
+    require "#{ENV["HOME"]}/projects/subtle-contrib/ruby/selector.rb"
 
-  Subtle::Contrib::Selector.font  = "xft:#{FONT}:pixelsize=13"
-  Subtle::Contrib::Launcher.fonts = [
-    "xft:#{FONT}:pixelsize=80",
-    "xft:#{FONT}:pixelsize=13"
-  ]
+    Subtle::Contrib::Selector.font  = "xft:#{FONT}:pixelsize=13"
+    Subtle::Contrib::Launcher.fonts = [
+        "xft:#{FONT}:pixelsize=80",
+        "xft:#{FONT}:pixelsize=13"
+    ]
 
-  Subtle::Contrib::Launcher.browser_screen_num = 0
+    Subtle::Contrib::Launcher.browser_screen_num = 0
 rescue LoadError
 end # }}}
 
@@ -37,67 +37,67 @@ set :skip_pointer_warp, false
 set :wmname,            "LG3D"
 #  }}}
 
-#  Styles {{{
+#  Styles {{{ 
 style :all do
-  background "#1a1a1a"
-  padding    2, 6, 2, 6
-  background "#1a1a1a"
-  font       "xft:#{FONT}:pixelsize=13"
+    background "#1a1a1a"
+    padding    2, 6, 2, 6
+    background "#1a1a1a"
+    font       "xft:#{FONT}:pixelsize=13"
 end
 
 style :tray do
 end
 
 style :title do
-  foreground "#FFFFFF"
+    foreground "#FFFFFF"
 end
 
 style :views do
-  foreground "#7c7c72"
-  icon       "#7c7c72"
+    foreground "#7c7c72"
+    icon       "#7c7c72"
 
-  style :focus do
-    foreground    "#ffffff"
-    icon          "#ffffff"
-    border_bottom "#acaa53", 2
-  end
+    style :focus do
+        foreground    "#ffffff"
+        icon          "#ffffff"
+        border_bottom "#acaa53", 2
+    end
 
-  style :occupied do
-    foreground    "#7c7c72"
-    border_bottom "#949269", 2
-  end
+    style :occupied do
+        foreground    "#7c7c72"
+        border_bottom "#949269", 2
+    end
 
-  style :urgent do
-    foreground "#c0bd5c"
-    icon       "#c0bd5c"
-  end
+    style :urgent do
+        foreground "#c0bd5c"
+        icon       "#c0bd5c"
+    end
 
-  style :visible do
-    padding_top 0
-    border_top  "#494948", 2
-  end
+    style :visible do
+        padding_top 0
+        border_top  "#494948", 2
+    end
 end
 
 style :sublets do
-  foreground "#7c7c72"
-  icon       "#7c7c72"
+    foreground "#7c7c72"
+    icon       "#7c7c72"
 end
 
 style :separator do
-  foreground "#acaa53"
-  separator  "∞"
+    foreground "#acaa53"
+    separator  "∞"
 end
 
 style :clients do
-  active   "#7c7c72", 2
-  inactive "#494948", 2
-  margin   2
+    active   "#7c7c72", 2
+    inactive "#494948", 2
+    margin   2
 end
 
 style :panel_top do
-  screen     1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :center ]
-  screen     2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
-  screen     3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
+    screen 1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :center ]
+    screen 2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
+    screen 3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
 end
 # }}}
 
@@ -156,16 +156,16 @@ modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
 if "meanas" == host or "telas" == host or "mockra" == host #< Netbooks
-  gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
+    gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
 elsif "test" == host #< Usually VMs
-  modkey = "A"
+    modkey = "A"
 end
 
 # Views and screens
 (1..6).each do |i|
-  grab modkey + "-#{i}",   "ViewSwitch#{i}".to_sym
-  grab modkey + "-S-#{i}", "ViewJump#{i}".to_sym
-  grab modkey + "-F#{i}",  "ScreenJump#{i}".to_sym
+    grab modkey + "-#{i}",   "ViewSwitch#{i}".to_sym
+    grab modkey + "-S-#{i}", "ViewJump#{i}".to_sym
+    grab modkey + "-F#{i}",  "ScreenJump#{i}".to_sym
 end
 
 # Windows
@@ -185,8 +185,8 @@ grab modkey + "-S-h", lambda { |c| c.retag }
  WindowLeft: [ "Left", "h" ], WindowDown:  [ "Down",  "j" ],
  WindowUp:   [ "Up",   "k" ], WindowRight: [ "Right", "l" ]
 }.each do |k, v|
-  grab "%s-%s" % [ modkey, v.first ], k
-  #grab "%s-%s" % [ modkey, v.last  ], k
+    grab "%s-%s" % [ modkey, v.first ], k
+    #grab "%s-%s" % [ modkey, v.last  ], k
 end
 
 # Reload/restart
@@ -196,36 +196,36 @@ grab modkey + "-C-A-r",   :SubtleRestart
 
 # Gravity keys and focus
 gravities = [
-  [:top_left, :top_left33, :top_left66],
-  [:top, :top33, :top66, :top75],
-  [:top_right, :top_right33, :top_right66],
-  [:left, :left33, :left66],
-  [:center, :center33, :center66],
-  [:right, :right33, :right66],
-  [:bottom_left, :bottom_left25, :bottom_left33, :bottom_left66],
-  [:bottom, :bottom33, :bottom66],
-  [:bottom_right, :bottom_right25, :bottom_right33, :bottom_right66]
+    [:top_left, :top_left33, :top_left66],
+    [:top, :top33, :top66, :top75],
+    [:top_right, :top_right33, :top_right66],
+    [:left, :left33, :left66],
+    [:center, :center33, :center66],
+    [:right, :right33, :right66],
+    [:bottom_left, :bottom_left25, :bottom_left33, :bottom_left66],
+    [:bottom, :bottom33, :bottom66],
+    [:bottom_right, :bottom_right25, :bottom_right33, :bottom_right66]
 ]
 
 gravities.each_index do |i|
-  # Set gravities
-  grab "%s-%s" % [ modkey, gravkeys[i] ], gravities[i]
+    # Set gravities
+    grab "%s-%s" % [ modkey, gravkeys[i] ], gravities[i]
 
-  # Focus client with gravity
-  grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda { |cur|
-    idx     = 0
-    clients = Subtlext::Client.visible.select { |c|
-      gravities[i].include?(c.gravity.name.to_sym)
+    # Focus client with gravity
+    grab "%s-C-%s" % [ modkey, gravkeys[i] ], lambda { |cur|
+      idx     = 0
+      clients = Subtlext::Client.visible.select { |c|
+        gravities[i].include?(c.gravity.name.to_sym)
+      }
+
+      # Cycle through clients with same gravity
+      if clients.include?(cur)
+        idx = clients.index(cur) + 1
+        idx = 0 if idx >= clients.size
+      end
+
+      clients[idx].focus
     }
-
-    # Cycle through clients with same gravity
-    if clients.include?(cur)
-      idx = clients.index(cur) + 1
-      idx = 0 if idx >= clients.size
-    end
-
-    clients[idx].focus
-  }
 end
 
 # Multimedia keys
@@ -236,66 +236,65 @@ grab "XF86AudioLowerVolume", :VolumeLower
 # Programs
 grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
-grab modkey + "-f", "firefox -no-remote -profileManager"
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
-grab modkey + "-b", "rambox"
+grab modkey + "-r", "rambox"
 grab modkey + "-i", "#{ENV["HOME"]}/applications/idea-IU-233.14475.28/bin/idea.sh"
 grab modkey + "-l", "slock"
 
 # Contrib
 grab modkey + "-space" do
-  Subtle::Contrib::Launcher.run
+    Subtle::Contrib::Launcher.run
 end
 
 grab modkey + "-z" do
-  Subtle::Contrib::Selector.run
+    Subtle::Contrib::Selector.run
 end
 
 # Scratchpad
 grab modkey + "-y" do
-  if (c = Subtlext::Client.first("scratch"))
-    c.toggle_stick
-    c.focus
-    c.raise
-  elsif (c = Subtlext::Client.spawn("urxvt -name scratch"))
-    c.tags  = []
-    c.flags = [ :stick ]
-  end
+    if (c = Subtlext::Client.first("scratch"))
+        c.toggle_stick
+        c.focus
+        c.raise
+    elsif (c = Subtlext::Client.spawn("urxvt -name scratch"))
+        c.tags  = []
+        c.flags = [ :stick ]
+    end
 end
 
 # Pychrom
-grab modkey + "-p" do
-  if (t = Subtlext::Tray[:pychrom])
+grab modkey + "-f" do
+  if (t = Subtlext::Tray[:flameshot])
     t.click
   else
-    Subtlext::Client.spawn("pychrom")
+    Subtlext::Client.spawn("flameshot")
   end
 end
 
 # Tabbing
 grab modkey + "-Tab" do
-  Subtlext::Client.recent[1].focus
+    Subtlext::Client.recent[1].focus
 end
 
 # Set layout
 grab modkey + "-numbersign" do
-  # Find stuff
-  view   = Subtlext::View.current
-  tag    = view.tags.first
-  client = view.clients.first
-  urxvt1 = Subtlext::Client['urxvt1']
-  urxvt2 = Subtlext::Client['urxvt2']
+    # Find stuff
+    view   = Subtlext::View.current
+    tag    = view.tags.first
+    client = view.clients.first
+    urxvt1 = Subtlext::Client['urxvt1']
+    urxvt2 = Subtlext::Client['urxvt2']
 
-  # Update tags
-  urxvt1 + tag
-  urxvt2 + tag
+    # Update tags
+    urxvt1 + tag
+    urxvt2 + tag
 
-  # Update gravities
-  sym = view.name.to_sym
-  client.gravity = { sym => :top75 }
-  urxvt1.gravity = { sym => :bottom_right25 }
-  urxvt2.gravity = { sym => :bottom_left25 }
+    # Update gravities
+    sym = view.name.to_sym
+    client.gravity = { sym => :top75 }
+    urxvt1.gravity = { sym => :bottom_right25 }
+    urxvt2.gravity = { sym => :bottom_left25 }
 end
 
 # Scratch
@@ -304,210 +303,205 @@ scratch_current = 0
 
 # Add window to stack
 grab modkey + "-KP_Add" do |c|
-  unless scratch_stack.include?(c.win)
-    scratch_stack << c.win
-    c.tags = []
-    c.toggle_stick if c.is_stick?
-  end
+    unless scratch_stack.include?(c.win)
+        scratch_stack << c.win
+        c.tags = []
+        c.toggle_stick if c.is_stick?
+    end
 end
 
 # Remove window from stack
 grab modkey + "-KP_Subtract" do |c|
-  if scratch_stack.include?(c.win)
-    c.retag
-    scratch_stack.delete(c.win)
-  end
+    if scratch_stack.include?(c.win)
+        c.retag
+        scratch_stack.delete(c.win)
+    end
 end
 
 # Cycle through stack windows
 grab modkey + "-comma" do
-  # Get id of next window
-  if 0 < scratch_current
-    cur_idx = scratch_stack.index(scratch_current)
+    # Get id of next window
+    if 0 < scratch_current
+        cur_idx = scratch_stack.index(scratch_current)
 
-    # Hide current window
-    cur_client = Subtlext::Client[scratch_current]
-    cur_client.toggle_stick
+        # Hide current window
+        cur_client = Subtlext::Client[scratch_current]
+        cur_client.toggle_stick
 
-    # Check whether cur is last window of stack
-    if cur_idx == scratch_stack.size - 1
-      scratch_current = 0
+        # Check whether cur is last window of stack
+        if cur_idx == scratch_stack.size - 1
+            scratch_current = 0
 
-      return
+            return
+        end
+
+        idx = cur_idx + 1
+    else
+        idx = 0
     end
 
-    idx = cur_idx + 1
-  else
-    idx = 0
-  end
+    # Show next window
+    cur = Subtlext::Client[scratch_stack[idx]]
 
-  # Show next window
-  cur = Subtlext::Client[scratch_stack[idx]]
-
-  scratch_current = cur.win
-  cur.toggle_stick
+    scratch_current = cur.win
+    cur.toggle_stick
 end
 # }}}
 
 # Tags {{{
+tag "rambox" do
+    match instance: "rambox"
+    gravity :center
+end
+
 tag "terms" do
-  match    instance: "xterm|urxvt"
-  gravity  :center
-  set      :resize
+    match    instance: "xterm|urxvt"
+    gravity  :center
+    set      :resize
 end
 
 tag "top" do
-  match    "urxvt1"
-  gravity :top
+    match    "urxvt1"
+    gravity :top
 end
 
 tag "bottom" do
-  match   "urxvt2"
-  gravity :bottom
+    match   "urxvt2"
+    gravity :bottom
 end
 
 tag "seven" do
-  match   "urxvt1"
-  gravity :top_left
+    match   "urxvt1"
+    gravity :top_left
 end
 
 tag "one" do
-  match   "urxvt2"
-  gravity :bottom_left
+    match   "urxvt2"
+    gravity :bottom_left
 end
 
 tag "scratch" do
-  match   instance: "scratch"
-  gravity :bottom33
+    match   instance: "scratch"
+    gravity :bottom33
 end
 
 tag "browser" do
-  match "navigator|(google\-)?chrom[e|ium]|firefox|vivaldi|brave"
-  gravity :center
+    match "navigator|(google\-)?chrom[e|ium]|firefox|brave"
+    gravity :center
 end
 
 tag "editor" do
-  match  "[ng]?vim|intellij|idea"
-  set    :resize
-  gravity :center
+    match  "[ng]?vim|intellij|jetbrains-idea"
+    set    :resize
+    gravity :center
 end
 
 tag "xeph640" do
-  match    "xeph640"
-  position [ 82, 549 ]
+    match    "xeph640"
+    position [ 82, 549 ]
 end
 
 tag "xeph800" do
-  match    "xeph800"
-  position [ 855, 172 ]
+    match    "xeph800"
+    position [ 855, 172 ]
 end
 
 tag "mplayer" do
-  match     "mplayer"
-  set       :floating
-  stick_to  2
+    match     "mplayer"
+    set       :floating
+    stick_to  2
 end
 
 tag "stickandfloat" do
-  match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb"
-  set    :sticky, :floating
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb"
+    set    :sticky, :floating
 end
 
 tag "urgent" do
-  set :sticky, :urgent, :floating
+    set :sticky, :urgent, :floating
 end
 
 tag "dialogs" do
-  match "sun-awt-X11-XDialogPeer"
-  set   :sticky
-end
-
-tag "android" do
-  match "emulator-arm|eclipse|SDL_App"
+    match "sun-awt-X11-XDialogPeer"
+    set   :sticky
 end
 
 tag "gimp" do
-  match role: "gimp.*"
+    match role: "gimp.*"
 
-  on_match do |c|
-    c.gravity = ("gimp_" + c.role.split("-")[1]).to_sym
-  end
+    on_match do |c|
+      c.gravity = ("gimp_" + c.role.split("-")[1]).to_sym
+    end
 end
 
 tag "dia" do
-  match "dia"
+    match "dia"
 
-  on_match do |c|
-    c.gravity = ("dia_" + c.role.split("_").first).to_sym
-  end
+    on_match do |c|
+      c.gravity = ("dia_" + c.role.split("_").first).to_sym
+    end
 end
 
 tag "javastuff" do
-  match "sun-awt-X11-XFramePeer"
+    match "sun-awt-X11-XFramePeer"
 
-  on_match do |c|
-    case c.name
-      when /intellij/i
-        c.tag "editor"
-      when /dashboard/i
-        c.tag "test"
+    on_match do |c|
+      case c.name
+        when /intellij/i
+          c.tag "editor"
+        when /dashboard/i
+          c.tag "test"
+      end
     end
-  end
 end
 
 tag "inkscape", "inkscape"
 tag "test" do
-  match "postman"
+    match "postman|insomnia"
 end
 # }}}
 
 # Views {{{
 diamond = "#{ENV["HOME"]}/.local/share/icons/black_diamond_with_question_mark.xbm"
 
+view "comm" do
+    match "rambox"
+    icon  diamond
+    set   :icons_only
+end
+
 view "terms" do
-  match "terms|top|bottom"
-  icon  diamond
-  set   :icons_only
+    match "terms|top|bottom"
+    icon  diamond
+    set   :icons_only
 end
 
 view "www" do
-  match "browser"
-  icon  diamond
-  set   :icons_only
-end
-
-view "void" do
-  match     "default|void"
-  icon      diamond
-  set       :icons_only
-end
-
-view "misc" do
-  match     "inkscape|dia|gimp|android|slack"
-  icon      diamond
-  set       :icons_only
-end
-
-view "test" do
-  match     "xeph[0-9]+|test"
-  icon      diamond
-  set       :icons_only
+    match "browser"
+    icon  diamond
+    set   :icons_only
 end
 
 view "editor" do
-  match     "editor"
-  icon      diamond
-  set       :icons_only
+    match     "editor"
+    icon      diamond
+    set       :icons_only
+end
+
+view "void" do
+    match   "default|void"
+    icon    diamond
+    set     :icons_only
 end
 # }}}
 
-# Sublets {{{
+# Sublets {{{ 
 sublet :clock do
-  format_string "%a %b %d,"
+    format_string "%a %b %d,"
 end
 # }}}
 
-# Virtual {{{
+# Virtual {{{ 
 #screen 1 do
 #  virtual [  0,  0, 100, 50 ]
 #  virtual [  0, 50, 100, 50 ]

@@ -10,6 +10,12 @@ misc/*
 projects/*
 university/*
 work/*
+applications/*
 
-.Trash
 Library/*
+.Trash
+.cache
+.local/share
+.rvm
+.m2
+.gem

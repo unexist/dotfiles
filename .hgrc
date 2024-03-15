@@ -11,7 +11,8 @@ hgext.color       =
 hgext.transplant  =
 hgext.histedit    =
 hgext.strip       =
-mercurial_keyring = $HOME/Library/Python/3.9/lib/python/site-packages/mercurial_keyring.py
+mercurial_keyring =
+#mercurial_keyring = $HOME/Library/Python/3.9/lib/python/site-packages/mercurial_keyring.py
 
 [extdiff]
 cmd.dft = difft

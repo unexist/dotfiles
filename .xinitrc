@@ -112,4 +112,14 @@ if [ $? -eq 0 ]; then
     blueman-applet &
 fi
 
+# Flameshot
+command -v flameshot &>/dev/null
+
+if [ $? -eq 0 ]; then
+    flameshot &
+fi
+
+
+
 wait $pid
+xinput set-prop 9 "libinput Tapping Enabled" 1

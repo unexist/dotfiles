@@ -1,7 +1,7 @@
 !
 ! Xdefaults
 !
-! Copyright (c) 2004-2011, Christoph Kappel <unexist@dorfelite.net>
+! Copyright (c) 2004-present, Christoph Kappel <unexist@dorfelite.net>
 !
 ! Black       = color0 + DarkGray = color8
 ! DarkRed     = color1 + Red      = color9
@@ -128,7 +128,8 @@ Xft.hinstyle: hintslight
 URxvt.scrollBar: false
 URxvt.loginShell: true
 !*font: -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
-URxvt.font: xft:envy code r:medium:pixelsize=13
+!URxvt.font: xft:envy code r:medium:pixelsize=13
+URxvt.font: xft:Iosevka Nerd Font Mono:pixelsize=15
 !URxvt.boldFont: xft:envy code r:medium:pixelsize=13
 URxvt.termName: rxvt-256color
 !URxvt.background: #1a1a1a
