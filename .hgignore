@@ -11,12 +11,14 @@ projects/*
 university/*
 work/*
 applications/*
+documents/*
 
 Library/*
 .Trash
 .cache
 .local/share
 .rvm
+.rustup
 .m2
 .gem
 .bundle
