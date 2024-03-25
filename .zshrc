@@ -156,8 +156,13 @@ if [ -e "$HOME/.cargo/bin" ] ; then
 fi
 
 # Adding go stuff
-if [ -e "$HOME/go/bin" ] ; then
-    export PATH="$HOME/go/bin:$PATH"
+if [ -e "$HOME/applications/go/bin" ] ; then
+    export PATH="$HOME/applications/go/bin:$PATH"
+fi
+
+# Adding zig stuff
+if [ -e "$HOME/applications/zig-linux-x86_64-0.11.0" ] ; then
+    export PATH="$HOME/applications/zig-linux-x86_64-0.11.0:$PATH"
 fi
 
 # Adding android stuff
@@ -167,6 +172,11 @@ fi
 
 if [ -e "/opt/android-sdk/tools" ] ; then
     export PATH="/opt/android-sdk/tools:$PATH"
+fi
+
+# Adding spark stuff
+if [ -e "$HOME/applications/spark-3.5.1-bin-hadoop3" ] ; then
+    export PATH="$HOME/applications/spark-3.5.1-bin-hadoop3/bin:$HOME/applications/spark-3.5.1-bin-hadoop3/sbin:$PATH"
 fi
 
 # Adding Python
