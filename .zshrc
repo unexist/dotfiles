@@ -158,11 +158,13 @@ fi
 # Adding go stuff
 if [ -e "$HOME/applications/go/bin" ] ; then
     export PATH="$HOME/applications/go/bin:$PATH"
+    export GOROOT="$HOME/applications/go"
+    export GOPATH="$HOME/applications/go-packages"
 fi
 
 # Adding zig stuff
-if [ -e "$HOME/applications/zig-linux-x86_64-0.11.0" ] ; then
-    export PATH="$HOME/applications/zig-linux-x86_64-0.11.0:$PATH"
+if [ -e "$HOME/applications/zig" ] ; then
+    export PATH="$HOME/applications/zig:$PATH"
 fi
 
 # Adding android stuff
