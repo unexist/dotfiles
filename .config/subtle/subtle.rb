@@ -239,8 +239,8 @@ grab modkey + "-g", "gvim"
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
-grab modkey + "-i", "#{ENV["HOME"]}/applications/idea-IU-233.14475.28/bin/idea.sh"
-grab modkey + "-l", "slock"
+grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
+grab modkey + "S-l", "slock"
 
 # Contrib
 grab modkey + "-space" do
@@ -413,7 +413,7 @@ tag "mplayer" do
 end
 
 tag "stickandfloat" do
-    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb"
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot"
     set    :sticky, :floating
 end
 
