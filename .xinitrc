@@ -66,19 +66,22 @@ sleep 2
 command -v urxvt &>/dev/null
 
 if [ $? -eq 0 ]; then
-    urxvt -name urxvt1 -urgentOnBell &
-
-    # Attach to session if there is any
+    # Attach to sessions if there are any
     command -v tmux &>/dev/null
 
     if [ $? -eq 0 ]; then
-        tmux has-session
+        for termname in urxvt1 urxvt2 ; do
+            tmux has-session -t $termname
 
-        if [ $? -eq 1 ]; then
-            urxvt -name urxvt2 -e tmux &
-        else
-            urxvt -name urxvt2 -e tmux attach-session &
-        fi
+            if [ $? -eq 1 ]; then
+                urxvt -name $termname -urgentOnBell -e tmux new -s $termname &
+            else
+                urxvt -name $termname -urgentOnBell -e tmux attach-session -t $termname &
+            fi
+        done
+    else
+        urxvt -name urxvt1 -urgentOnBell &
+        urxvt -name urxvt2 -urgentOnBell &
     fi
 fi
 
