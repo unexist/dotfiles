@@ -24,3 +24,5 @@ Library/*
 .bundle
 .config/BraveSoftware
 .config/rambox/Partitions
+.config/Jetbrains
+.darling

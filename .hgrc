@@ -11,7 +11,7 @@ hgext.color       =
 hgext.transplant  =
 hgext.histedit    =
 hgext.strip       =
-mercurial_keyring =
+#mercurial_keyring =
 
 [extdiff]
 cmd.dft = difft

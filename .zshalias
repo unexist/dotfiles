@@ -322,6 +322,7 @@ if [ $? -eq 0 ]; then
     alias pdrp="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman pod rm -f"
     alias pdic="podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman inspect"
     alias pdip="podman pod ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman inspect"
+    alias pdir="podman image ls | fzf --multi --tac --no-sort | cut -d ' ' -f1 | xargs podman image rm"
     alias pdps="podman ps -a --pod --format 'table {{.ID}} {{.Image}} {{.Status}} {{.Names}} {{.PodName}}'"
     alias pdonce="podman run -it --rm"
 

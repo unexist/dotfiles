@@ -234,7 +234,6 @@ grab "XF86AudioRaiseVolume", :VolumeRaise
 grab "XF86AudioLowerVolume", :VolumeLower
 
 # Programs
-grab modkey + "-Return", "urxvt"
 grab modkey + "-g", "gvim"
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
