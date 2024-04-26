@@ -408,11 +408,11 @@ end
 tag "mplayer" do
     match     "mplayer"
     set       :floating
-    stick_to  2
+    #stick_to  2
 end
 
 tag "stickandfloat" do
-    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot"
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet"
     set    :sticky, :floating
 end
 
