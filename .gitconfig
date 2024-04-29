@@ -1,6 +1,9 @@
 [user]
 	name = unexist
 	email = christoph@unexist.dev
+[alias]
+	st = status
+	ci = commit -v
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
