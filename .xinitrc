@@ -122,5 +122,12 @@ if [ $? -eq 0 ]; then
     flameshot &
 fi
 
+# ssh-agent
+command -v ssh-agent &>/dev/null
+
+if [ $? -eq 0 ]; then
+    eval "$(ssh-agent -s)"
+fi
+
 wait $pid
 xinput set-prop 9 "libinput Tapping Enabled" 1
