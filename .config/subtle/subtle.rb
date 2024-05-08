@@ -155,7 +155,7 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if "meanas" == host or "telas" == host or "mockra" == host #< Netbooks
+if "telas" == host or "mockra" == host #< Netbooks
     gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
 elsif "test" == host #< Usually VMs
     modkey = "A"
@@ -234,12 +234,12 @@ grab "XF86AudioRaiseVolume", :VolumeRaise
 grab "XF86AudioLowerVolume", :VolumeLower
 
 # Programs
-grab modkey + "-g", "gvim"
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
 grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
-grab modkey + "S-l", "slock"
+grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
+grab modkey + "C-end", "slock"
 
 # Contrib
 grab modkey + "-space" do
@@ -390,7 +390,7 @@ tag "browser" do
 end
 
 tag "editor" do
-    match  "[ng]?vim|intellij|jetbrains-idea"
+    match  "[ng]?vim|intellij|jetbrains-[idea|goland]"
     set    :resize
     gravity :center
 end
