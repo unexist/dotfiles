@@ -19,7 +19,6 @@ setxkbmap -option caps:escape
 setxkbmap -option compose:rctrl
 setxkbmap -option terminate:ctrl_alt_bksp
 
-
 # Xdefaults
 if [ -e $HOME/.Xdefaults ] ; then
     xrdb ~/.Xdefaults
