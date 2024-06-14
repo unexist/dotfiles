@@ -114,6 +114,13 @@ if [ $? -eq 0 ]; then
     blueman-applet &
 fi
 
+# nm-tray
+command -v nm-applet &>/dev/null
+
+if [ $? -eq 0 ]; then
+    nm-applet &
+fi
+
 # Flameshot
 command -v flameshot &>/dev/null
 
