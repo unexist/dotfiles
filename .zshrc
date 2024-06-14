@@ -157,7 +157,7 @@ fi
 
 # Adding go stuff
 if [ -e "$HOME/applications/go/bin" ] ; then
-    export PATH="$HOME/applications/go/bin:$PATH"
+    export PATH="$HOME/applications/go/bin:$HOME/applications/go-packages/bin:$PATH"
     export GOROOT="$HOME/applications/go"
     export GOPATH="$HOME/applications/go-packages"
 fi
