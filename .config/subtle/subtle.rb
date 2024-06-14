@@ -411,8 +411,8 @@ tag "mplayer" do
     #stick_to  2
 end
 
-tag "stickandfloat" do
-    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet"
+tag "omni" do
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet|nm-tray"
     set    :sticky, :floating
 end
 
