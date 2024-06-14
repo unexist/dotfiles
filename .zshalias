@@ -110,11 +110,11 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function hgd() {
-            hg diff $(hg status -X unknown | fzf --tac --no-sort | cut -d ' ' -f2 | xargs)
+            hg diff $(hg status -mard | fzf --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
 
         function hgc() {
-            hg ci $(hg status -X unknown | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
+            hg ci $(hg status -mard | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
     fi
 fi
