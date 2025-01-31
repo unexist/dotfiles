@@ -4,6 +4,10 @@
 # Copyright (c) 2004-present, Christoph Kappel <christoph@unexist.dev>
 #
 
+# Config
+#TERMINAL=urxvt
+TERMINAL=alacritty
+
 # Host
 xhost +localhost
 xhost +$HOST
@@ -39,7 +43,7 @@ if [ -e /usr/bin/xrandr ] ; then
     if [ "xmeanas" = "x`hostname`" ] ; then
         xrandr \
             --output eDP-1 --primary --mode 1920x1200 --pos 0x0 \
-            --output DP-3 --mode 2560x1080 --pos 1920x0 --right-of eDP-1 --dpi 96
+            --output DP-1 --mode 2560x1080 --pos 1920x0 --right-of eDP-1 --dpi 96
     fi
 fi
 
@@ -62,25 +66,26 @@ pid=$!
 sleep 2
 
 # Term
-command -v urxvt &>/dev/null
+command -v $TERMINAL &>/dev/null
 
 if [ $? -eq 0 ]; then
+
     # Attach to sessions if there are any
     command -v tmux &>/dev/null
 
     if [ $? -eq 0 ]; then
-        for termname in urxvt1 urxvt2 ; do
+        for termname in term1 term2 ; do
             tmux has-session -t $termname
 
             if [ $? -eq 1 ]; then
-                urxvt -name $termname -urgentOnBell -e tmux new -s $termname &
+                $TERMINAL --class $termname -e tmux new -s $termname &
             else
-                urxvt -name $termname -urgentOnBell -e tmux attach-session -t $termname &
+                $TERMINAL --class $termname -e tmux attach-session -t $termname &
             fi
         done
     else
-        urxvt -name urxvt1 -urgentOnBell &
-        urxvt -name urxvt2 -urgentOnBell &
+        $TERMINAL --class term1 &
+        $TERMINAL --class term2 &
     fi
 fi
 

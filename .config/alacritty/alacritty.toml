@@ -4,7 +4,7 @@ padding.x = 10
 padding.y = 10
 
 [font]
-size = 15
+size = 11
 normal.family = "Iosevka Nerd Font Mono"
 bold.family = "Iosevka Nerd Font Mono"
 italic.family = "Iosevka Nerd Font Mono"

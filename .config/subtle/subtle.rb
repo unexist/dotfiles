@@ -237,9 +237,10 @@ grab "XF86AudioLowerVolume", :VolumeLower
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
-grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
-grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
-grab modkey + "C-end", "slock"
+grab modkey + "-S-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
+grab modkey + "-S-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
+grab modkey + "-S-r", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
+grab modkey + "-C-end", "slock"
 
 # Contrib
 grab modkey + "-space" do
@@ -256,7 +257,7 @@ grab modkey + "-y" do
         c.toggle_stick
         c.focus
         c.raise
-    elsif (c = Subtlext::Client.spawn("urxvt -name scratch"))
+    elsif (c = Subtlext::Client.spawn("alacritty -class scratch"))
         c.tags  = []
         c.flags = [ :stick ]
     end
@@ -282,18 +283,18 @@ grab modkey + "-numbersign" do
     view   = Subtlext::View.current
     tag    = view.tags.first
     client = view.clients.first
-    urxvt1 = Subtlext::Client['urxvt1']
-    urxvt2 = Subtlext::Client['urxvt2']
+    term1 = Subtlext::Client['term1']
+    term2 = Subtlext::Client['term2']
 
     # Update tags
-    urxvt1 + tag
-    urxvt2 + tag
+    term1 + tag
+    term2 + tag
 
     # Update gravities
     sym = view.name.to_sym
     client.gravity = { sym => :top75 }
-    urxvt1.gravity = { sym => :bottom_right25 }
-    urxvt2.gravity = { sym => :bottom_left25 }
+    term1.gravity = { sym => :bottom_right25 }
+    term2.gravity = { sym => :bottom_left25 }
 end
 
 # Scratch
@@ -354,28 +355,28 @@ tag "rambox" do
 end
 
 tag "terms" do
-    match    instance: "xterm|urxvt"
+    match    instance: "xterm|term"
     gravity  :center
     set      :resize
 end
 
 tag "top" do
-    match    "urxvt1"
+    match    "term1"
     gravity :top
 end
 
 tag "bottom" do
-    match   "urxvt2"
+    match   "term2"
     gravity :bottom
 end
 
 tag "seven" do
-    match   "urxvt1"
+    match   "term1"
     gravity :top_left
 end
 
 tag "one" do
-    match   "urxvt2"
+    match   "term2"
     gravity :bottom_left
 end
 
