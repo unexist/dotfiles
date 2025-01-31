@@ -115,10 +115,10 @@ if [ $? -eq 0 ]; then
 fi
 
 # nm-tray
-command -v nm-applet &>/dev/null
+command -v nm-tray &>/dev/null
 
 if [ $? -eq 0 ]; then
-    nm-applet &
+    nm-tray &
 fi
 
 # Flameshot

@@ -10,6 +10,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+#[url "ssh://git@apps.ces.eu/ctr/git/"]
+#	insteadOf = https://apps.ces.eu/ctr/git/
+#[url "ssh://git@apps.ces.eu/ctr/gitlab/"]
+#	insteadOf = https://apps.ces.eu/ctr/gitlab/
 [credential]
 	helper = store
 [core]
