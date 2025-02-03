@@ -237,9 +237,9 @@ grab "XF86AudioLowerVolume", :VolumeLower
 grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
-grab modkey + "-S-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
-grab modkey + "-S-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
-grab modkey + "-S-r", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
+grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
+grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
+grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
 grab modkey + "-C-end", "slock"
 
 # Contrib
