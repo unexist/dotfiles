@@ -377,6 +377,16 @@ if [ $? -eq 0 ]; then
     bindkey -s "^N" 'navi^M'
 fi
 
+# systemd
+command -v systemctl &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function sysreload {
+        systemctl restart $1
+        systemctl status $1
+    }
+fi
+
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     alias ldd="otool -L"

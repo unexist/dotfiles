@@ -136,7 +136,7 @@ export LC_CTYPE="en_US.UTF-8"
 # Man search order
 export MANSECT="2:3:3p:1:1p:8:4:5:6:7:9:0p:tcl:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x"
 
-# Extending the path var
+# Extending the path
 if [ -e "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
@@ -167,29 +167,20 @@ if [ -e "$HOME/applications/zig" ] ; then
     export PATH="$HOME/applications/zig:$PATH"
 fi
 
-# Adding android stuff
-if [ -e "$HOME/Android" ] ; then
-    export PATH="$HOME/Android/Sdk/build-tools/27.0.3/:$HOME/Android/Sdk/platform-tools/:$PATH"
-fi
-
-if [ -e "/opt/android-sdk/tools" ] ; then
-    export PATH="/opt/android-sdk/tools:$PATH"
-fi
-
 # Adding spark stuff
 if [ -e "$HOME/applications/spark-3.5.1-bin-hadoop3" ] ; then
     export PATH="$HOME/applications/spark-3.5.1-bin-hadoop3/bin:$HOME/applications/spark-3.5.1-bin-hadoop3/sbin:$PATH"
-fi
-
-# Adding Python
-if [ -e "$HOME/Library/Python/3.9/bin" ] ; then
-    export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 fi
 
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
     export EDITOR=/usr/bin/vim
 fi
+
+# Testcontainers
+export TESTCONTAINERS_CHECKS_DISABLE=true
+export TESTCONTAINERS_RYUK_DISABLED=true
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=unix://${HOME}/.local/share/containers/podman/machine/podman-machine-default/podman.sock
 
 # fzf settings
 command -v fzf &>/dev/null
@@ -205,6 +196,9 @@ fi
 
 # Browser
 export BROWSER="/usr/bin/brave-browser"
+
+# cups
+export CUPS_USER='ad-ces\\ckappel'
 
 # Aliases
 if [ -f $HOME/.zshalias ] ; then
@@ -266,24 +260,9 @@ if [ $? -eq 0 ]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-# Testcontainers
-export TESTCONTAINERS_CHECKS_DISABLE=true
-export TESTCONTAINERS_RYUK_DISABLED=true
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=unix:///Users/christoph.kappel/.local/share/containers/podman/machine/podman-machine-default/podman.sock
-
 # Zsh vi mode
-if [ -e /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ] ; then
-    source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-fi
-
-# systemd
-command -v systemctl &>/dev/null
-
-if [ $? -eq 0 ]; then
-    function sysreload {
-        systemctl restart $1
-        systemctl status $1
-    }
+if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
+    source ${HOME}/bin/zsh-vi-mode.zsh
 fi
 
 # zoxide
