@@ -110,7 +110,7 @@ function ansi-colors {
 }
 
 # Prompt
-prompt_status() {
+function prompt_status {
     if [[ $? == "0" ]]; then
         echo -e ""
     else
@@ -191,6 +191,13 @@ if [ -f /usr/bin/vim ] ; then
     export EDITOR=/usr/bin/vim
 fi
 
+# fzf settings
+command -v fzf &>/dev/null
+
+if [ $? -eq 0 ]; then
+    export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+fi
+
 # XDG dirs
 if [ -e "$HOME/.config/user-dirs.dirs" ] ; then
     source $HOME/.config/user-dirs.dirs
@@ -267,6 +274,16 @@ export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=unix:///Users/christoph.kappel/.loc
 # Zsh vi mode
 if [ -e /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ] ; then
     source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+fi
+
+# systemd
+command -v systemctl &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function sysreload {
+        systemctl restart $1
+        systemctl status $1
+    }
 fi
 
 # zoxide

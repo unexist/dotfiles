@@ -155,8 +155,8 @@ host     = Socket.gethostname
 modkey   = "W"
 gravkeys = [ "KP_7", "KP_8", "KP_9", "KP_4", "KP_5", "KP_6", "KP_1", "KP_2", "KP_3" ]
 
-if "telas" == host or "mockra" == host #< Netbooks
-    gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
+if "telas" == host or "mockra" == host or "meanas" == host
+    gravkeys = [ "A-q", "A-w", "A-e", "A-a", "A-s", "A-d", "A-y", "A-x", "A-c" ]
 elsif "test" == host #< Usually VMs
     modkey = "A"
 end
