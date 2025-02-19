@@ -493,6 +493,12 @@ view "void" do
     icon    diamond
     set     :icons_only
 end
+
+view "curved" do
+    match   "editor|default|void"
+    icon    diamond
+    set     :icons_only
+end
 # }}}
 
 # Sublets {{{ 
