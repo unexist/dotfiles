@@ -349,6 +349,9 @@ end
 # }}}
 
 # Tags {{{
+RE_BROWSER = "navigator|(google\-)?chrom[e|ium]|firefox|brave"
+RE_JETBRAINS = "jetbrains-[idea|goland|rustrover]"
+
 tag "rambox" do
     match instance: "rambox"
     gravity :center
@@ -370,14 +373,24 @@ tag "bottom" do
     gravity :bottom
 end
 
-tag "seven" do
-    match   "term1"
-    gravity :top_left
-end
-
 tag "one" do
     match   "term2"
     gravity :bottom_left
+end
+
+tag "four" do
+    match   RE_JETBRAINS
+    gravity :left
+end
+
+tag "six" do
+    match   RE_BROWSER
+    gravity :right
+end
+
+tag "seven" do
+    match   "term1"
+    gravity :top_left
 end
 
 tag "scratch" do
@@ -386,12 +399,12 @@ tag "scratch" do
 end
 
 tag "browser" do
-    match "navigator|(google\-)?chrom[e|ium]|firefox|brave"
+    match RE_BROWSER
     gravity :center
 end
 
-tag "editor" do
-    match  "[ng]?vim|intellij|jetbrains-[idea|goland]"
+tag "jetbrains" do
+    match  RE_JETBRAINS
     set    :resize
     gravity :center
 end
@@ -447,8 +460,8 @@ tag "javastuff" do
 
     on_match do |c|
       case c.name
-        when /intellij/i
-          c.tag "editor"
+        when /jetbrains/i
+          c.tag "jetbrains"
         when /dashboard/i
           c.tag "test"
       end
@@ -456,6 +469,7 @@ tag "javastuff" do
 end
 
 tag "inkscape", "inkscape"
+
 tag "test" do
     match "postman|insomnia"
 end
@@ -482,20 +496,20 @@ view "www" do
     set   :icons_only
 end
 
-view "editor" do
-    match     "editor"
-    icon      diamond
-    set       :icons_only
+view "code" do
+    match "jetbrains"
+    icon  diamond
+    set   :icons_only
 end
 
-view "void" do
-    match   "default|void"
+view "wide" do
+    match   "four|six"
     icon    diamond
     set     :icons_only
 end
 
-view "curved" do
-    match   "editor|default|void"
+view "void" do
+    match   "default|void"
     icon    diamond
     set     :icons_only
 end
