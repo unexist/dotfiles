@@ -234,12 +234,12 @@ grab "XF86AudioRaiseVolume", :VolumeRaise
 grab "XF86AudioLowerVolume", :VolumeLower
 
 # Programs
-grab modkey + "-c", "chromium"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
 grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
 grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
 grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
+grab modkey + "-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
 grab modkey + "-C-end", "slock"
 
 # Contrib
@@ -350,7 +350,7 @@ end
 
 # Tags {{{
 RE_BROWSER = "navigator|(google\-)?chrom[e|ium]|firefox|brave"
-RE_JETBRAINS = "jetbrains-[idea|goland|rustrover]"
+RE_JETBRAINS = "jetbrains-[idea|goland|rustrover|clion]"
 
 tag "rambox" do
     match instance: "rambox"
