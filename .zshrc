@@ -76,7 +76,6 @@ bindkey "\e[3~" delete-char
 # History search
 #zle -N search-backwords
 #bindkey "^R" search-backwords
-bindkey "^R" history-incremental-search-backward
 
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
@@ -170,6 +169,11 @@ fi
 # Adding spark stuff
 if [ -e "$HOME/applications/spark-3.5.1-bin-hadoop3" ] ; then
     export PATH="$HOME/applications/spark-3.5.1-bin-hadoop3/bin:$HOME/applications/spark-3.5.1-bin-hadoop3/sbin:$PATH"
+fi
+
+# Adding pipx stuff
+if [ -e "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Setting default editor
@@ -272,18 +276,13 @@ if [ $? -eq 0 ]; then
     eval "$(zoxide init zsh)"
 fi
 
-#command -v carapace &>/dev/null
-#
-#if [ $? -eq 0 ]; then
-#    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-#    source <(carapace _carapace)
-#fi
-
 # mcfly
 command -v mcfly &>/dev/null
 
 if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
+elif
+    bindkey "^R" history-incremental-search-backward
 fi
 
 # iTerm
