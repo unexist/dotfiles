@@ -281,7 +281,7 @@ command -v mcfly &>/dev/null
 
 if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
-elif
+else
     bindkey "^R" history-incremental-search-backward
 fi
 
