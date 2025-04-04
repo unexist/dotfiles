@@ -48,6 +48,7 @@ unsetopt bang_hist #< Disable inline history
 setopt no_bang_hist
 #setopt menu_complete
 setopt promptsubst
+setopt ignore_eof
 
 # History
 export HISTSIZE=5000
