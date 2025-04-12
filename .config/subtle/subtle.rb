@@ -95,9 +95,9 @@ style :clients do
 end
 
 style :panel_top do
-    screen 1, [ :tray, :title, :spacer, :views, :center, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :center ]
-    screen 2, [ :mpd, :separator, :volume, :spacer, :title, :center, :views, :center ]
-    screen 3, [ :views, :spacer, :title, :center, :wifi, :jdownloader, :center ]
+    screen 1, [ :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :spacer, :views, :center, :title, :center ]
+    screen 2, [ :views, :spacer, :center, :title, :center ]
+    screen 3, [ :tray, :spacer, :views, :center, :title, :center ]
 end
 # }}}
 
@@ -522,7 +522,7 @@ end
 # }}}
 
 # Virtual {{{ 
-#screen 1 do
-#  virtual [  0,  0, 100, 50 ]
-#  virtual [  0, 50, 100, 50 ]
-#end # }}}
+screen 1 do
+  virtual [   0,  0, 50, 100 ]
+  virtual [  50,  0, 50, 100 ]
+end # }}}
