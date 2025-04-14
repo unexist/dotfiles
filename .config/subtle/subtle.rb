@@ -95,9 +95,9 @@ style :clients do
 end
 
 style :panel_top do
-    screen 1, [ :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :spacer, :views, :center, :title, :center ]
+    screen 1, [ :tray, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :spacer, :views, :center, :title, :center ]
     screen 2, [ :views, :spacer, :center, :title, :center ]
-    screen 3, [ :tray, :spacer, :views, :center, :title, :center ]
+    screen 3, [ :views, :center, :title, :center ]
 end
 # }}}
 
