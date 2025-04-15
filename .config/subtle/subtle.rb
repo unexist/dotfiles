@@ -522,7 +522,9 @@ end
 # }}}
 
 # Virtual {{{ 
-screen 1 do
-  virtual [   0,  0, 50, 100 ]
-  virtual [  50,  0, 50, 100 ]
+if 2 == Subtlext::Screen.list.length
+  screen 1 do
+    virtual [   0,  0, 50, 100 ]
+    virtual [  50,  0, 50, 100 ]
+  end 
 end # }}}
