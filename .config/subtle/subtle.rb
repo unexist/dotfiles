@@ -229,9 +229,12 @@ gravities.each_index do |i|
 end
 
 # Multimedia keys
-grab "XF86AudioMute",        :VolumeToggle
-grab "XF86AudioRaiseVolume", :VolumeRaise
-grab "XF86AudioLowerVolume", :VolumeLower
+#grab "XF86AudioMute",        :VolumeToggle
+#grab "XF86AudioRaiseVolume", :VolumeRaise
+#grab "XF86AudioLowerVolume", :VolumeLower
+grab "XF86AudioMute",        "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+grab "XF86AudioRaiseVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+grab "XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
 # Programs
 grab modkey + "-b", "brave-browser"
