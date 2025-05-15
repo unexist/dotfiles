@@ -188,6 +188,15 @@ if [ $? -eq 0 ]; then
     alias kc="keychain -q --nocolor id_rsa && source $HOME/.keychain/$HOST-sh"
 fi
 
+# dive
+command -v dive &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function divep {
+        dive podman://$1
+    }
+fi
+
 # subtle
 command -v subtle &>/dev/null
 
@@ -331,7 +340,7 @@ if [ $? -eq 0 ]; then
         local ID=`podman images | fzf --tac --no-sort | cut -d ' ' -f9 | xargs -r`
 
         if ! [ -z "$ID" ] ; then
-            dive $ID
+            dive podman://$ID
         fi
     }
 

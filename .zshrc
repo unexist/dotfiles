@@ -48,7 +48,7 @@ unsetopt bang_hist #< Disable inline history
 setopt no_bang_hist
 #setopt menu_complete
 setopt promptsubst
-setopt ignore_eof
+#setopt ignore_eof
 
 # History
 export HISTSIZE=5000
@@ -77,6 +77,7 @@ bindkey "\e[3~" delete-char
 # History search
 #zle -N search-backwords
 #bindkey "^R" search-backwords
+bindkey "^R" history-incremental-search-backward
 
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
@@ -88,10 +89,6 @@ if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
 fi
 
 # Functions
-function search-backwords {
-    zle history-incremental-search-backward $BUFFER
-}
-
 function ansi-colors {
     typeset esc="\033[" line1 line2
     echo " _ _ _40 _ _ _41_ _ _ _42 _ _ 43_ _ _ 44_ _ _45 _ _ _ 46_ _ _ 47_ _ _ 49_ _"
@@ -203,7 +200,7 @@ fi
 export BROWSER="/usr/bin/brave-browser"
 
 # cups
-export CUPS_USER='ad-ces\\ckappel'
+export CUPS_USER='ad-ces\ckappel'
 
 # Aliases
 if [ -f $HOME/.zshalias ] ; then
@@ -217,17 +214,6 @@ if [ -f /usr/bin/keychain ] ; then
     fi
 
     source $HOME/.keychain/$HOST-sh
-fi
-
-# Arm
-if [ -e /home/unexist/projects/arm-cs-tools/bin ] ; then
-    export PATH=/home/unexist/projects/arm-cs-tools/bin:$PATH
-fi
-
-# Pebble
-if [ -d $HOME/projects/pebble ] ; then
-    # Add pebble to PATH for scripting
-    PATH=$PATH:$HOME/projects/pebble/pebble-sdk-4.3-linux64/bin
 fi
 
 # RVM
@@ -265,11 +251,6 @@ if [ $? -eq 0 ]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-# Zsh vi mode
-if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
-    source ${HOME}/bin/zsh-vi-mode.zsh
-fi
-
 # zoxide
 command -v zoxide &>/dev/null
 
@@ -282,11 +263,12 @@ command -v mcfly &>/dev/null
 
 if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
-else
-    bindkey "^R" history-incremental-search-backward
 fi
 
-# iTerm
-if [ -e "${HOME}/.iterm2_shell_integration.zsh" ] ; then
-    source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# Zsh vi mode
+if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
+    source ${HOME}/bin/zsh-vi-mode.zsh
 fi
+

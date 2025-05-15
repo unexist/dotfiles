@@ -1,0 +1,8 @@
+# supported options are "docker" and "podman"
+container-engine: podman
+# continue with analysis even if there are errors parsing the image archive
+ignore-errors: false
+log:
+  enabled: true
+  path: ./dive.log
+  level: info
