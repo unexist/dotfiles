@@ -1,3 +1,11 @@
+"
+" @file Ideavim config
+"
+" @copyright (c) 2020-present, Christoph Kappel <christoph@unexist.dev>
+" @version $Id$
+"
+
+" Settings
 set nocompatible
 set backspace=indent,eol,start
 set history=50
@@ -27,3 +35,7 @@ set dy+=uhex
 set visualbell
 set noerrorbells
 set relativenumber
+
+" Completion
+imap <C-n> <ESC>:action HippieCompletion<CR>a
+imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
