@@ -37,5 +37,5 @@ set noerrorbells
 set relativenumber
 
 " Completion
-imap <C-n> <ESC>:action HippieCompletion<CR>a
-imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+imap <C-n> <Action>(HippieCompletion)
+imap <C-p> <Action>(HippieBackwardCompletion)
