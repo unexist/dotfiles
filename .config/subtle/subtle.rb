@@ -260,7 +260,7 @@ grab modkey + "-y" do
         c.toggle_stick
         c.focus
         c.raise
-    elsif (c = Subtlext::Client.spawn("alacritty -class scratch"))
+    elsif (c = Subtlext::Client.spawn("alacritty --class scratch"))
         c.tags  = []
         c.flags = [ :stick ]
     end
