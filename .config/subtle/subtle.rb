@@ -258,8 +258,8 @@ end
 grab modkey + "-y" do
     if (c = Subtlext::Client.first("scratch"))
         c.toggle_stick
-        c.focus
         c.raise
+        c.focus
     elsif (c = Subtlext::Client.spawn("alacritty --class scratch"))
         c.tags  = []
         c.flags = [ :stick ]
@@ -429,7 +429,7 @@ tag "mplayer" do
 end
 
 tag "omni" do
-    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet|nm-tray|mupdf"
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet|nm-tray|mupdf|vdpau"
     set    :sticky, :floating
 end
 
