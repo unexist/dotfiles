@@ -488,7 +488,7 @@ view "comm" do
 end
 
 view "terms" do
-    match "terms|top|bottom"
+    match "terms|top|bottom|xeph800"
     icon  diamond
     set   :icons_only
 end
