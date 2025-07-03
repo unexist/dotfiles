@@ -419,7 +419,7 @@ end
 
 tag "xeph800" do
     match    "xeph800"
-    position [ 855, 172 ]
+    position [ 4167, 108 ]
 end
 
 tag "mplayer" do
