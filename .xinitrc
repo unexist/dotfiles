@@ -14,7 +14,7 @@ xhost +$HOST
 
 # X options
 xset -b
-xset m 6 1
+xset m 0 0
 xsetroot -solid "#595959"
 
 # Keymap
@@ -113,11 +113,11 @@ if [ $? -eq 0 ]; then
 fi
 
 # Bluetooth
-command -v blueman-applet &>/dev/null
+#command -v blueman-applet &>/dev/null
 
-if [ $? -eq 0 ]; then
-    blueman-applet &
-fi
+#if [ $? -eq 0 ]; then
+#    blueman-applet &
+#fi
 
 # nm-tray
 command -v nm-tray &>/dev/null
