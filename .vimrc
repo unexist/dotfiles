@@ -41,6 +41,10 @@ set dy+=uhex
 set t_Co=256
 set vb
 
+" Prevent screen clear
+set t_ti=
+set t_te=
+
 " Spellcheck
 au FileType markdown set spell spelllang=en_us
 
