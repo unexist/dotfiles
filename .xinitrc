@@ -39,11 +39,14 @@ fi
 #fi
 
 # xrandr
-if [ -e /usr/bin/xrandr ] ; then
+command -v xrandr &>/dev/null
+
+if [ $? -eq 0 ]; then
     if [ "xmeanas" = "x`hostname`" ] ; then
         xrandr \
-            --output eDP-1 --primary --mode 1920x1200 --pos 0x0 \
-            --output DP-1 --mode 2560x1080 --pos 1920x0 --right-of eDP-1 --dpi 96
+            --output DP-1 --mode 5120x1440 --pos 0x0 --primary \
+            --output eDP-1 --mode 1920x1200 --pos 1920x0 --right-of DP-1 \
+            --dpi 96
     fi
 fi
 
@@ -61,7 +64,7 @@ fi
 #  exec $1 &
 #fi
 /home/unexist/projects/subtle/subtle >~/subtle.log &
-pid=$!
+WM_PID=$!
 
 sleep 2
 
@@ -133,6 +136,13 @@ if [ $? -eq 0 ]; then
     flameshot &
 fi
 
+# qpwgraph
+command -v qpwgraph &>/dev/null
+
+if [ $? -eq 0 ]; then
+    qpwgraph -m &
+fi
+
 # ssh-agent
 command -v ssh-agent &>/dev/null
 
@@ -140,5 +150,5 @@ if [ $? -eq 0 ]; then
     eval "$(ssh-agent -s)"
 fi
 
-wait $pid
-xinput set-prop 9 "libinput Tapping Enabled" 1
+# Finally wait for window manager
+wait $WM_PID
