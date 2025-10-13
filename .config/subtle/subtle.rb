@@ -243,7 +243,7 @@ grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
 grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
 grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
 grab modkey + "-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
-grab modkey + "-C-end", "slock"
+grab modkey + "-end", "slock"
 
 # Contrib
 grab modkey + "-space" do
@@ -488,7 +488,7 @@ view "comm" do
 end
 
 view "terms" do
-    match "terms|top|bottom|xeph800"
+    match "terms|top|bottom"
     icon  diamond
     set   :icons_only
 end
@@ -500,7 +500,7 @@ view "www" do
 end
 
 view "code" do
-    match "jetbrains"
+    match "jetbrains|xeph[0-9]+"
     icon  diamond
     set   :icons_only
 end
