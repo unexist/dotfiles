@@ -1,1 +1,1 @@
-load_script("/home/unexist/.config/wireplumber/scripts/auto-connect-ports.lua")
+load_script("/home/unexist/.local/share/wireplumber/scripts/auto-connect-ports.lua")
