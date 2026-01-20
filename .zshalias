@@ -18,9 +18,11 @@ alias q='clear && logout'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias grep='grep -nI --color=always'
+alias grep='grep -nIs --color=always'
 alias less='less -Xr'
 alias reload="source $HOME/.zshrc"
+alias find='find -readable'
+alias ip='ip -c -p -h'
 
 # Security
 alias rm='rm -i'
