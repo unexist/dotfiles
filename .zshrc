@@ -169,7 +169,7 @@ if [ -e "$HOME/applications/spark-3.5.1-bin-hadoop3" ] ; then
     export PATH="$HOME/applications/spark-3.5.1-bin-hadoop3/bin:$HOME/applications/spark-3.5.1-bin-hadoop3/sbin:$PATH"
 fi
 
-# Adding pipx stuff
+# Adding pipx/uv stuff
 if [ -e "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
