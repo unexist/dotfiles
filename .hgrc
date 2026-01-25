@@ -39,3 +39,5 @@ unexistdev.username = unexist
 [alias]
 gitpush = !hg bookmark -r default master && hg push
 addci = !hg add $@ && hg ci $@
+
+%include ~/.hgrc.auth
