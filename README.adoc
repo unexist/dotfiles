@@ -1,3 +1,0 @@
-= Dotfiles
-
-This repository just holds a collection of my accumulated dotfiles.
