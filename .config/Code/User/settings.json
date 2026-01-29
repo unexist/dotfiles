@@ -17,7 +17,7 @@
     "workbench.list.openMode": "doubleClick",
     "workbench.fontAliasing": "antialiased",
     "workbench.sideBar.location": "right",
-    "workbench.editor.showTabs": false,
+    "workbench.editor.showTabs": "single",
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
@@ -56,6 +56,8 @@
     "hg.autoRefresh": false,
     "hg.countBadge": "off",
     "redhat.telemetry.enabled": false,
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "security.promptForLocalFileProtocolHandling": false,
+    "nrf-connect.enableTelemetry": true
 
 }
