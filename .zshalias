@@ -119,12 +119,33 @@ if [ $? -eq 0 ]; then
             hg ci $(hg status -mard | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
 
+        #function sysz() {
+            #echo -e "start\nstop\nrestart\nstatus" | fzf --no-sort --prompt "$1> " | xargs -i sudo systemctl {} $1
+        #}
+
+        #function _sysz_completion() {
+        #    _values $(systemctl list-units --type=service --plain --no-legend --no-pager --output short | awk '{print $1}' | sed -e 's#.service##')
+        #}
+
         function sysz() {
-            echo -e "start\nstop\nrestart\nstatus" | fzf --no-sort --prompt "$1> " | xargs -i sudo systemctl {} $1
+            systemctl $2 $1
         }
 
         function _sysz_completion() {
-            _values $(systemctl list-units --type=service --plain --no-legend --no-pager --output short | awk '{print $1}' | sed -e 's#.service##')
+            _arguments \
+                '1: :->unit' \
+                '2: :->syscmd'
+
+            case $state in
+                unit)
+                    _values $(systemctl list-units --type=service --plain \
+                        --no-legend --no-pager --output short \
+                        | awk '{print $1}' | sed -e 's#.service##')
+                    ;;
+                syscmd)
+                    _values 'start' 'stop' 'restart' 'status'
+                    ;;
+            esac
         }
 
         compdef _sysz_completion sysz
