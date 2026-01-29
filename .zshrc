@@ -265,8 +265,6 @@ if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
 fi
 
-
-
 # Zsh vi mode
 if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
     source ${HOME}/bin/zsh-vi-mode.zsh

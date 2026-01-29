@@ -118,6 +118,16 @@ if [ $? -eq 0 ]; then
         function hgc() {
             hg ci $(hg status -mard | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
+
+        function sysz() {
+            echo -e "start\nstop\nrestart\nstatus" | fzf --no-sort --prompt "$1> " | xargs -i sudo systemctl {} $1
+        }
+
+        function _sysz_completion() {
+            _values $(systemctl list-units --type=service --plain --no-legend --no-pager --output short | awk '{print $1}' | sed -e 's#.service##')
+        }
+
+        compdef _sysz_completion sysz
     fi
 fi
 
