@@ -7,6 +7,7 @@ elif [ "xcurved" = "x$1" ] ; then
         --output DP-1 --mode 5120x1440 --pos 0x0 --primary \
         --output eDP-1 --mode 1920x1200 --pos 1920x0 --right-of DP-1 \
         --dpi 96
+    xrandr --output DP-1 --brightness 0.6
 elif [ "xwork" = "x$1" ] ; then
     xrandr --output eDP-1 --mode 1920x1200 --pos 0x0 \
         --output DP-4 --mode 1920x1080 --pos 3840x0 --right-of eDP-1 --primary \
