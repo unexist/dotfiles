@@ -15,6 +15,7 @@ xhost +$HOST
 # X options
 xset -b
 xset m 0 0
+xset -dpms
 xsetroot -solid "#595959"
 
 # Keymap

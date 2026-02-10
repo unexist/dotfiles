@@ -23,6 +23,7 @@ Library/*
 .gradle
 .gem
 .bundle
+.hgrc.auth
 .config/BraveSoftware
 .config/chromium
 .config/rambox

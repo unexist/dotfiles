@@ -35,7 +35,6 @@ mode = auto
 [auth]
 unexistdev.prefix   = https://hg.unexist.dev
 unexistdev.username = unexist
-unexistdev.password = kindgrind
 
 [alias]
 gitpush = !hg bookmark -r default master && hg push
