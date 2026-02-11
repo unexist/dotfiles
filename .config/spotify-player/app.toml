@@ -1,4 +1,4 @@
-client_id = "b100f326d39c4af6a848a6292cfb8291"
+#client_id = "caba72479eb7410f8afe560599b236fe"
 theme = "dracula"
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8989/login"
