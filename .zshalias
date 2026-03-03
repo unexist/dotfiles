@@ -107,6 +107,7 @@ command -v hg &>/dev/null
 if [ $? -eq 0 ]; then
     alias hgs="hg status -X unknown"
     alias hgp="hg push"
+    alias hgpu="hg pull -u"
 
     command -v fzf &>/dev/null
 
