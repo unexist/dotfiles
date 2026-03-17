@@ -15,6 +15,7 @@ xhost +$HOST
 # X options
 xset -b
 xset m 0 0
+xset s off
 xset -dpms
 xsetroot -solid "#595959"
 
@@ -82,7 +83,7 @@ if [ $? -eq 0 ]; then
             tmux has-session -t $termname
 
             if [ $? -eq 1 ]; then
-                $TERMINAL --class $termname -e tmux new -s $termname &
+                $TERMINAL --class $termname -e tmux new -A -D -s $termname &
             else
                 $TERMINAL --class $termname -e tmux attach-session -t $termname &
             fi
