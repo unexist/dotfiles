@@ -174,6 +174,11 @@ if [ -e "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Addind moonbit stuff
+if [ -e "$HOME/.moon/bin" ] ; then
+    export PATH="$HOME/.moon/bin:$PATH"
+fi
+
 # Setting default editor
 if [ -f /usr/bin/vim ] ; then
     export EDITOR=/usr/bin/vim
@@ -269,4 +274,3 @@ fi
 if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
     source ${HOME}/bin/zsh-vi-mode.zsh
 fi
-
