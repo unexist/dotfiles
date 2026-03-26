@@ -61,6 +61,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 # Keys bindings
 bindkey "^e" edit-command-line
+bindkey -M vicmd v edit-command-line
 bindkey "^f" forward-word
 bindkey "^b" backward-word
 bindkey "^t" transpose-chars
