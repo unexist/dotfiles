@@ -154,10 +154,16 @@ if [ -e "$HOME/.cargo/bin" ] ; then
 fi
 
 # Adding go stuff
-if [ -e "$HOME/applications/go/bin" ] ; then
-    export PATH="$HOME/applications/go/bin:$HOME/applications/go-packages/bin:$PATH"
-    export GOROOT="$HOME/applications/go"
-    export GOPATH="$HOME/applications/go-packages"
+if [ -e "$HOME/applications/go/bin" ] || [ -e "$HOME/go/bin" ] ; then
+    local apps=""
+
+    if [ -e "$HOME/applications/go/bin" ] ; then
+        apps="applications/"
+    fi
+
+    export PATH="$HOME/${apps}go/bin:$HOME/applications/go-packages/bin:$PATH"
+    export GOROOT="$HOME/${apps}go"
+    export GOPATH="$HOME/${apps}go-packages"
 fi
 
 # Adding zig stuff
