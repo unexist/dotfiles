@@ -277,6 +277,11 @@ if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
 fi
 
+# mise
+if [ -e "$HOME/.local/bin/mise" ] ; then
+    eval "$($HOME/.local/bin/mise activate zsh)"
+fi
+
 # Zsh vi mode
 if [ -e ${HOME}/bin/zsh-vi-mode.zsh ] ; then
     source ${HOME}/bin/zsh-vi-mode.zsh
