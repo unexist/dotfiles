@@ -95,9 +95,10 @@ style :clients do
 end
 
 style :panel_top do
-    screen 1, [ :tray, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :spacer, :views, :center, :title, :center ]
-    screen 2, [ :views, :spacer, :center, :title, :center ]
-    screen 3, [ :views, :center, :title, :center ]
+    screen 1, [ :views, :center, :title, :center ]
+    screen 2, [ :tray, :clock, :fuzzytime, :separator, :cpu, :separator, :sublets, :spacer, :views, :center, :title, :center ]
+    screen 3, [ :views, :spacer, :center, :title, :center ]
+    screen 4, [ :views, :center, :title, :center ]
 end
 # }}}
 
@@ -527,7 +528,8 @@ end
 # Virtual {{{ 
 if 2 == Subtlext::Screen.list.length
   screen 1 do
-    virtual [   0,  0, 50, 100 ]
-    virtual [  50,  0, 50, 100 ]
+    virtual [   0,  0, 33, 100 ]
+    virtual [  33,  0, 34, 100 ]
+    virtual [  67,  0, 33, 100 ]
   end 
 end # }}}
