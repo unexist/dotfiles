@@ -61,6 +61,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 # Keys bindings
 bindkey "^e" edit-command-line
+bindkey -M vicmd v edit-command-line
 bindkey "^f" forward-word
 bindkey "^b" backward-word
 bindkey "^t" transpose-chars
@@ -153,10 +154,16 @@ if [ -e "$HOME/.cargo/bin" ] ; then
 fi
 
 # Adding go stuff
-if [ -e "$HOME/applications/go/bin" ] ; then
-    export PATH="$HOME/applications/go/bin:$HOME/applications/go-packages/bin:$PATH"
-    export GOROOT="$HOME/applications/go"
-    export GOPATH="$HOME/applications/go-packages"
+if [ -e "$HOME/applications/go/bin" ] || [ -e "$HOME/go/bin" ] ; then
+    local apps=""
+
+    if [ -e "$HOME/applications/go/bin" ] ; then
+        apps="applications/"
+    fi
+
+    export PATH="$HOME/${apps}go/bin:$HOME/applications/go-packages/bin:$PATH"
+    export GOROOT="$HOME/${apps}go"
+    export GOPATH="$HOME/${apps}go-packages"
 fi
 
 # Adding zig stuff
@@ -268,6 +275,11 @@ command -v mcfly &>/dev/null
 
 if [ $? -eq 0 ]; then
     eval "$(mcfly init zsh)"
+fi
+
+# mise
+if [ -e "$HOME/.local/bin/mise" ] ; then
+    eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
 # Zsh vi mode
