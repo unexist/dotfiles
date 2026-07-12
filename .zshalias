@@ -356,6 +356,8 @@ if [ $? -eq 0 ]; then
     function pdl() {
         eval `podman ps -a | fzf --multi --tac --no-sort | cut -d ' ' -f1 | sed -nE "s#(.*)#-l \'podman logs -f \1\'#gp" | xargs -r -0 -n10 -d'\n' echo multitail -du -C -cT ansi`
     }
+
+    alias pdmqtt="podman run -it --rm -p 3000:3000 -e MQTT_EXPLORER_SKIP_AUTH=true ghcr.io/thomasnordquist/mqtt-explorer:latest"
 fi
 
 # Nomad
