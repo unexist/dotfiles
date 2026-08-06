@@ -430,7 +430,7 @@ tag "mplayer" do
 end
 
 tag "omni" do
-    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet|nm-tray|mupdf|vdpau"
+    match  "dialog|subtly|python|gtk.rb|display|pychrom|skype|xev|exe|<unknown>|plugin-container|tester.rb|flameshot|blueman-applet|nm-tray|mupdf|vdpau|vlc"
     set    :sticky, :floating
 end
 
