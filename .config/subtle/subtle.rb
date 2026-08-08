@@ -245,6 +245,7 @@ grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
 grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
 grab modkey + "-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
 grab modkey + "-p", "#{ENV["HOME"]}/applications/BambuStudio_ubuntu24.04-v02.08.00.50-20260625193201.AppImage"
+grab modkey + "-j", "#{ENV["HOME"]}/applications/jdownloader/JDownloader2"
 grab modkey + "-end", "slock"
 
 # Contrib
