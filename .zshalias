@@ -381,6 +381,15 @@ if [ $? -eq 0 ] ; then
     alias ocr="flameshot gui --raw | tesseract stdin stdout | xclip -in -selection clipboard"
 fi
 
+# xclip¬
+command -v xclip &>/dev/null
+
+if [ $? -eq 0 ]; then
+    function catx() {
+        cat $@ | xclip
+    }
+fi
+
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     alias ldd="otool -L"
