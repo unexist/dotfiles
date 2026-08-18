@@ -95,7 +95,7 @@ fi
 command -v hg &>/dev/null
 
 if [ $? -eq 0 ]; then
-    alias hgs="hg status -m -a -r -d"
+    alias hgs="hg status -m -a -r -d ."
     alias hgp="hg push"
     alias hgpu="hg pull -u"
 
@@ -103,35 +103,12 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function hgd() {
-            hg diff $(hg status -mard | fzf --tac --no-sort | cut -d ' ' -f2 | xargs)
+            hg diff $(hg status -m -a -r -d . | fzf --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
 
         function hgc() {
-            hg ci $(hg status -mard | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
+            hg ci $(hg status -m -a -r -d . | fzf --multi --tac --no-sort | cut -d ' ' -f2 | xargs)
         }
-
-        function sysz() {
-            systemctl $2 $1
-        }
-
-        function _sysz_completion() {
-            _arguments \
-                '1: :->unit' \
-                '2: :->syscmd'
-
-            case $state in
-                unit)
-                    _values $(systemctl list-units --type=service --plain \
-                        --no-legend --no-pager --output short \
-                        | awk '{print $1}' | sed -e 's#.service##')
-                    ;;
-                syscmd)
-                    _values 'start' 'stop' 'restart' 'status'
-                    ;;
-            esac
-        }
-
-        compdef _sysz_completion sysz
     fi
 fi
 
@@ -379,6 +356,38 @@ command -v tesseract &>/dev/null
 
 if [ $? -eq 0 ] ; then
     alias ocr="flameshot gui --raw | tesseract stdin stdout | xclip -in -selection clipboard"
+fi
+
+# systemctl
+command -v systemctl &>/dev/null
+
+if [ $? -eq 0 ]; then
+    command -v fzf &>/dev/null
+
+    if [ $? -eq 0 ]; then
+        function sysz() {
+            systemctl $2 $1
+        }
+
+        function _sysz_completion() {
+            _arguments \
+                '1: :->unit' \
+                '2: :->syscmd'
+
+            case $state in
+                unit)
+                    _values $(systemctl list-units --type=service --plain \
+                        --no-legend --no-pager --output short \
+                        | awk '{print $1}' | sed -e 's#.service##')
+                    ;;
+                syscmd)
+                    _values 'start' 'stop' 'restart' 'status'
+                    ;;
+            esac
+        }
+
+        compdef _sysz_completion sysz
+    fi
 fi
 
 # macOS
