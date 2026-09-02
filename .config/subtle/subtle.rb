@@ -163,7 +163,7 @@ elsif "test" == host #< Usually VMs
 end
 
 # Views and screens
-(1..6).each do |i|
+(1..7).each do |i|
     grab modkey + "-#{i}",   "ViewSwitch#{i}".to_sym
     grab modkey + "-S-#{i}", "ViewJump#{i}".to_sym
     grab modkey + "-F#{i}",  "ScreenJump#{i}".to_sym
@@ -241,10 +241,10 @@ grab "XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 grab modkey + "-b", "brave-browser"
 grab modkey + "-r", "rambox"
 grab modkey + "-i", "#{ENV["HOME"]}/applications/idea/bin/idea.sh"
-grab modkey + "-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
+grab modkey + "-S-g", "#{ENV["HOME"]}/applications/goland/bin/goland.sh"
+grab modkey + "-g", "gram"
 grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
-grab modkey + "-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
-grab modkey + "-p", "#{ENV["HOME"]}/applications/BambuStudio_ubuntu24.04-v02.08.00.50-20260625193201.AppImage"
+grab modkey + "-S-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
 grab modkey + "-j", "#{ENV["HOME"]}/applications/jdownloader/JDownloader2"
 grab modkey + "-end", "slock"
 
@@ -356,7 +356,7 @@ end
 
 # Tags {{{
 RE_BROWSER = "navigator|(google\-)?chrom[e|ium]|firefox|brave"
-RE_JETBRAINS = "jetbrains-[idea|goland|rustrover|clion]"
+RE_EDITOR = "app.liten.Gram|jetbrains-[idea|goland|rustrover|clion]"
 
 tag "rambox" do
     match instance: "rambox"
@@ -385,7 +385,7 @@ tag "one" do
 end
 
 tag "four" do
-    match   RE_JETBRAINS
+    match   RE_EDITOR
     gravity :left
 end
 
@@ -409,8 +409,8 @@ tag "browser" do
     gravity :center
 end
 
-tag "jetbrains" do
-    match  RE_JETBRAINS
+tag "editor" do
+    match  RE_EDITOR
     set    :resize
     gravity :center
 end
@@ -482,8 +482,10 @@ end
 
 tag "inkscape", "inkscape"
 
+tag "bambu", "bambu-studio"
+
 tag "test" do
-    match "postman|insomnia"
+    match "postman|insomnia|bruno"
 end
 # }}}
 
@@ -509,13 +511,19 @@ view "www" do
 end
 
 view "code" do
-    match "jetbrains|xeph[0-9]+"
+    match "editor|xeph[0-9]+"
     icon  diamond
     set   :icons_only
 end
 
 view "wide" do
     match   "four|six"
+    icon    diamond
+    set     :icons_only
+end
+
+view "bambu" do
+    match   "bambu"
     icon    diamond
     set     :icons_only
 end
