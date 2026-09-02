@@ -21,6 +21,7 @@ set ch=1
 set scrolloff=2
 set expandtab
 set showmatch
+set matchtime=1
 set showmode
 set shortmess=aIT
 set foldmethod=marker

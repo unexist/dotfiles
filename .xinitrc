@@ -47,7 +47,7 @@ if [ $? -eq 0 ]; then
     if [ "xmeanas" = "x`hostname`" ] ; then
         xrandr \
             --output DP-1 --mode 5120x1440 --pos 0x0 --primary \
-            --output eDP-1 --mode 1920x1200 --pos 1920x0 --right-of DP-1 \
+            --output eDP-1 --mode 1920x1200 --pos 1920x0 --left-of DP-1 \
             --dpi 96
     fi
 fi
@@ -87,11 +87,22 @@ if [ $? -eq 0 ]; then
             else
                 $TERMINAL --class $termname -e tmux attach-session -t $termname &
             fi
+
+            alias $termname="$TERMINAL --class $termname -e tmux new -A -D -s $termname &"
         done
     else
         $TERMINAL --class term1 &
         $TERMINAL --class term2 &
     fi
+fi
+
+# xclip
+command -v xclip &>/dev/null
+
+if [ $? -eq 0 ]; then
+    catx() {
+        cat $@ | xclip
+    }
 fi
 
 # Numlockx

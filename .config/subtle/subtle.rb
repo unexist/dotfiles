@@ -274,7 +274,7 @@ grab modkey + "-f" do
   if (t = Subtlext::Tray[:flameshot])
     t.click
   else
-    Subtlext::Client.spawn("flameshot")
+    Subtlext::Client.spawn("flameshot gui")
   end
 end
 
