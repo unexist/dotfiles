@@ -35,11 +35,6 @@ if [ -e $HOME/.Xmodmap ] ; then
     xmodmap $HOME/.Xmodmap
 fi
 
-# Redshift
-#if [ -e /usr/bin/redshift ] ; then
-#  redshift -l 51.31:6.55 &
-#fi
-
 # xrandr
 command -v xrandr &>/dev/null
 
@@ -50,6 +45,11 @@ if [ $? -eq 0 ]; then
             --output eDP-1 --mode 1920x1200 --pos 1920x0 --left-of DP-1 \
             --dpi 96
     fi
+fi
+
+# xdg-desktop-portal
+if [ -f /usr/libexec/xdg-desktop-portal-gtk ] ; then
+    /usr/libexec/xdg-desktop-portal-gtk &
 fi
 
 # Wallpaper
@@ -110,14 +110,6 @@ command -v numlockx &>/dev/null
 
 if [ $? -eq 0 ]; then
     numlockx >/dev/null &
-fi
-
-# autocutsel
-command -v autocutsel &>/dev/null
-
-if [ $? -eq 0 ]; then
-    autocutsel -fork &
-    autocutsel -selection PRIMARY -fork &
 fi
 
 # xinput
