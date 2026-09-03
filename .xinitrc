@@ -157,5 +157,3 @@ fi
 
 # Finally wait for window manager
 wait $WM_PID
-
-xterm &
