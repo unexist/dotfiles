@@ -399,7 +399,18 @@ if [ $? -eq 0 ]; then
     fi
 fi
 
+# mise
+command -v mise &>/dev/null
 
+if [ $? -eq 0 ]; then
+    command -v fzf &>/dev/null
+
+    if [ $? -eq 0 ]; then
+        function miset() {
+            mise $(mise tasks | fzf --tac --no-sort)
+        }
+    fi
+fi
 
 # macOS
 if [[ "x$OSTYPE" == "xdarwin"* ]] ; then

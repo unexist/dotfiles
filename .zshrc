@@ -89,6 +89,11 @@ if [[ "x$OSTYPE" == "xdarwin"* ]] ; then
     export LC_ALL=en_US.UTF-8
 fi
 
+# WSL (systemd-detect-virt can also be used)
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+    export GRAM_ALLOW_EMULATED_GPU=1
+fi
+
 # Functions
 function ansi-colors {
     typeset esc="\033[" line1 line2
