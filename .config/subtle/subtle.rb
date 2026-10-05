@@ -516,11 +516,11 @@ view "code" do
     set   :icons_only
 end
 
-view "wide" do
-    match   "four|six"
-    icon    diamond
-    set     :icons_only
-end
+#view "wide" do
+#    match   "four|six"
+#    icon    diamond
+#    set     :icons_only
+#end
 
 view "bambu" do
     match   "bambu"
