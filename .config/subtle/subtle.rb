@@ -246,7 +246,7 @@ grab modkey + "-g", "gram"
 grab modkey + "-u", "#{ENV["HOME"]}/applications/rustrover/bin/rustrover.sh"
 grab modkey + "-S-c", "#{ENV["HOME"]}/applications/clion/bin/clion.sh"
 grab modkey + "-j", "#{ENV["HOME"]}/applications/jdownloader/JDownloader2"
-grab modkey + "-end", "slock"
+grab modkey + "-A-l", "slock"
 
 # Contrib
 grab modkey + "-space" do
