@@ -79,6 +79,7 @@
     },
   },
   "outline_panel": {
+     "dock": "right",
     "folder_icons": true,
     "file_icons": true,
     "default_width": 300,
@@ -104,7 +105,7 @@
   "ui_font_family": "Iosevka Nerd Font Mono",
   "ui_font_size": 14,
   "buffer_font_family": "Iosevka Nerd Font Mono",
-  "buffer_font_size": 16.5,
+  "buffer_font_size": 14,
   "buffer_line_height": {
     "custom": 2,
   },
