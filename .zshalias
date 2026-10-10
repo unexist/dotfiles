@@ -407,7 +407,7 @@ if [ $? -eq 0 ]; then
 
     if [ $? -eq 0 ]; then
         function miset() {
-            mise $(mise tasks | fzf --tac --no-sort)
+            mise $(mise tasks | fzf)
         }
     fi
 fi
